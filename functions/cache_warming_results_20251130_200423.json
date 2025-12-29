@@ -1,0 +1,122 @@
+[
+  {
+    "query": "What are your pricing plans?",
+    "status": "success",
+    "elapsed_seconds": 3.01297664642334,
+    "content_length": 804
+  },
+  {
+    "query": "How much do your services cost?",
+    "status": "success",
+    "elapsed_seconds": 3.3441405296325684,
+    "content_length": 803
+  },
+  {
+    "query": "Can I get a quote?",
+    "status": "success",
+    "elapsed_seconds": 2.331578493118286,
+    "content_length": 537
+  },
+  {
+    "query": "What payment methods do you accept?",
+    "status": "success",
+    "elapsed_seconds": 2.7627975940704346,
+    "content_length": 658
+  },
+  {
+    "query": "What services do you offer?",
+    "status": "success",
+    "elapsed_seconds": 7.195953845977783,
+    "content_length": 1912
+  },
+  {
+    "query": "Tell me about your core services",
+    "status": "success",
+    "elapsed_seconds": 4.250115394592285,
+    "content_length": 1247
+  },
+  {
+    "query": "What can EthosPrompt help me with?",
+    "status": "success",
+    "elapsed_seconds": 5.445585012435913,
+    "content_length": 1648
+  },
+  {
+    "query": "How do I get started?",
+    "status": "success",
+    "elapsed_seconds": 3.8258907794952393,
+    "content_length": 953
+  },
+  {
+    "query": "Can I schedule a demo?",
+    "status": "success",
+    "elapsed_seconds": 2.134927272796631,
+    "content_length": 464
+  },
+  {
+    "query": "What is the onboarding process?",
+    "status": "success",
+    "elapsed_seconds": 3.966503620147705,
+    "content_length": 1046
+  },
+  {
+    "query": "What AI capabilities do you offer?",
+    "status": "success",
+    "elapsed_seconds": 5.813267707824707,
+    "content_length": 1720
+  },
+  {
+    "query": "How does your AI agent work?",
+    "status": "success",
+    "elapsed_seconds": 3.8698813915252686,
+    "content_length": 1060
+  },
+  {
+    "query": "What LLM models do you use?",
+    "status": "success",
+    "elapsed_seconds": 3.0339887142181396,
+    "content_length": 846
+  },
+  {
+    "query": "How does system integration work?",
+    "status": "success",
+    "elapsed_seconds": 4.149973630905151,
+    "content_length": 1055
+  },
+  {
+    "query": "What systems can you integrate with?",
+    "status": "success",
+    "elapsed_seconds": 4.123088121414185,
+    "content_length": 1050
+  },
+  {
+    "query": "How secure is your platform?",
+    "status": "success",
+    "elapsed_seconds": 4.466073036193848,
+    "content_length": 1142
+  },
+  {
+    "query": "Do you comply with GDPR?",
+    "status": "success",
+    "elapsed_seconds": 4.229268789291382,
+    "content_length": 1132
+  },
+  {
+    "query": "What support do you provide?",
+    "status": "success",
+    "elapsed_seconds": 3.7483761310577393,
+    "content_length": 961
+  },
+  {
+    "query": "Do you provide 24/7 support?",
+    "status": "success",
+    "elapsed_seconds": 4.031541347503662,
+    "content_length": 1041
+  },
+  {
+    "query": "How fast is your platform?",
+    "status": "success",
+    "elapsed_seconds": 3.3248400688171387,
+    "content_length": 908
+  }
+]

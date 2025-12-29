@@ -1,0 +1,632 @@
+"""
+Marketing Knowledge Base Content - UPDATED
+Comprehensive marketing content for EthosPrompt AI agent
+Based on current website content (Home page + 3 services pages + FAQ page)
+"""
+from typing import List, Dict, Any
+
+MARKETING_KB_CONTENT = {
+    "company_overview": {
+        "title": "EthosPrompt - Intelligent Solutions Company",
+        "content": """
+EthosPrompt is an intelligent solutions company specializing in AI-powered automation, custom software development, and enterprise system integration. We help businesses grow through smart technology that works exactly how they need it to.
+
+TAGLINE: The Intelligent System for Modern Business Growth
+
+CORE VALUE PROPOSITIONS:
+- 30% Revenue Growth - Intelligent agents qualify leads 24/7, ensuring high-value prospects are prioritized instantly
+- 80% Operational Efficiency - Connected systems handle complex workflows, freeing teams to focus on strategic growth
+- 40% Cost Reduction - Smart integration eliminates redundancy and overhead, delivering superior results at a fraction of the cost
+
+INDUSTRIES WE SERVE:
+Retail, healthcare, finance, manufacturing, professional services, SaaS, education, and technology. Our intelligent solutions are adaptable to any industry that can benefit from automation, improved customer service, or operational efficiency.
+
+WHAT MAKES US DIFFERENT:
+- You own the solution (custom solutions are your intellectual property, not software you rent)
+- Proven ROI: 40% efficiency gains documented
+- Full-service implementation from consultation through deployment
+- LLM-agnostic approach: we use the best AI for your specific needs
+- Bank-level security for all customers
+- Custom quotation system for all services
+""",
+        "metadata": {"category": "company", "page": "overview"}
+    },
+
+    "smart_business_assistant": {
+        "title": "Smart Business Assistant - AI Customer Service 24/7",
+        "content": """
+TAGLINE: Stop losing customers to slow response times
+
+WHAT IT IS:
+Think of it as a team member who never sleeps. It handles customer questions, qualifies leads, and takes care of the busywork, so you can focus on growing your business.
+
+KEY BENEFITS:
+- Answers 80% of customer questions instantly, any time of day
+- Cuts customer service costs dramatically
+- Turns more prospects into paying customers
+- Turns your 9-5 business into 24/7 operation
+- Response times under 30 seconds vs hours
+- Cost reduction: $6 per interaction → $0.50 (12x savings)
+- Annual savings: $180K+ for most businesses
+- 35% higher conversion rates
+
+HOW IT WORKS:
+1. Answers customer questions instantly, 24/7
+2. Qualifies leads and books meetings automatically
+3. Automates scheduling, data entry, order lookups
+4. SMART ESCALATION (Human in the Loop): Never guesses - if uncertain, instantly escalates to your team via email/SMS with full conversation history for seamless handoff
+5. Connects to your existing tools seamlessly
+6. Bank-level security for data protection
+
+PROVEN RESULTS:
+- 87% faster response times (under 30 seconds)
+- 12x cost savings per interaction ($6 → $0.50)
+- $180K+ annual savings for typical business
+- 35% higher conversion rate
+- 100% consistent quality, no bad days
+- 24/7 availability vs 9-5
+
+HUMAN OVERSIGHT:
+- AI runs on autopilot for routine tasks
+- Keeps you in loop for important decisions
+- You always know what's happening
+- Genuine human connection when it matters
+- Seamless escalation with full context
+
+PRICING:
+All pricing is custom based on your specific requirements. We provide detailed quotations after understanding your business needs.
+
+Packages Available:
+- Starter Package: Perfect for small businesses implementing their first AI solution
+- Professional Package: Complete AI development for growing businesses (Most Popular)
+- Enterprise Package: Full-scale AI transformation for large organizations
+
+HOW TO GET PRICING: Contact us for free consultation and detailed quotation tailored to your needs.
+SETUP TIME: 2-4 weeks typically
+ROI TIMELINE: Most businesses see positive ROI within 3-6 months
+""",
+        "metadata": {"category": "services", "page": "smart-assistant"}
+    },
+
+    "system_integration": {
+        "title": "System Integration & Automation - Connect Everything",
+        "content": """
+TAGLINE: Stop wasting hours copying data between apps
+
+WHAT IT IS:
+Your team spends 20% of their day copying data between apps. We connect your tools so information flows automatically. No more manual entry, no more errors.
+
+THE PROBLEM WE SOLVE:
+- Manual data entry costs $15,000 per employee yearly
+- 20% of workday wasted (one full day per week on copy-paste)
+- Data silos mean missed opportunities
+- Human errors cost real money
+- Security vulnerabilities from managing too many logins
+- Your competitors moving faster while you do data entry
+
+THE SOLUTION:
+- Connect 600+ business applications
+- Data flows automatically between systems
+- Eliminate 85% of manual data entry
+- 95% reduction in data errors
+- 99.9% data accuracy with real-time sync
+- 60% faster business processes
+- One dashboard for entire business view
+
+PROVEN RESULTS:
+- 85% reduction in manual data work (get 20% of your week back)
+- 95% fewer data entry errors (99.9% accuracy)
+- 60% faster process completion (processes run in minutes, not hours)
+- 99.9% uptime with bank-level security
+- Setup in days, not months
+- 21% of workday reclaimed
+- $15K saved per employee annually
+
+POPULAR INTEGRATIONS:
+- CRM ↔ Email Marketing ↔ Sales Tools
+- E-commerce ↔ Inventory ↔ Accounting
+- Support Tickets ↔ Customer Data ↔ Communication
+- 600+ apps supported (Salesforce, HubSpot, Shopify, QuickBooks, and more)
+
+PRICING:
+All pricing is custom based on your specific requirements. We provide detailed quotations after assessing your integration needs.
+
+Packages Available:
+- Essential Package: Perfect for small teams getting started (Up to 10 app integrations)
+- Professional Package: Ideal for growing businesses with complex workflows (Up to 50 integrations) - Most Popular
+- Enterprise Package: Custom solutions for large organizations (Unlimited integrations)
+
+HOW TO GET PRICING: Free integration audit and custom quotation based on your needs.
+SETUP TIME: Simple integrations 1-2 weeks, complex enterprise 4-8 weeks
+ROI: 80% efficiency gain means savings exceed costs in 3-6 months
+""",
+        "metadata": {"category": "services", "page": "system-integration"}
+    },
+
+    "intelligent_applications": {
+        "title": "Custom Web & Mobile Applications - Built for You",
+        "content": """
+TAGLINE: We build custom apps that actually fit your business
+
+WHAT WE BUILD:
+Custom software built exactly how your business works, not the other way around. E-commerce, customer portals, mobile apps, management systems – built from scratch, tailored to you.
+
+SERVICES:
+- Custom Web Applications (e-commerce, portals, dashboards)
+- iOS and Android Native Mobile Apps
+- Progressive Web Apps (works everywhere)
+- Business Management Systems
+- Cross-platform solutions (phone, tablet, desktop)
+
+WHY CUSTOM VS OFF-THE-SHELF:
+- One size fits none – your business is unique
+- Stop paying for 80% features you don't need
+- Own your asset, don't rent software forever
+- Mobile matters: 73% of e-commerce on phones
+- Speed wins: <1 second load times
+
+PROVEN RESULTS:
+- 3.5x higher conversion rates on mobile
+- 70% of user time spent on mobile devices
+- $4.9T mobile commerce market (72.9% of e-commerce)
+- 95% retention with fast load times (<1 second)
+- 350% average mobile ROI increase
+- 62% higher engagement on mobile
+
+KEY FEATURES:
+- Custom design & development from scratch
+- Responsive mobile-first layouts
+- Bank-level security built-in
+- Scales from 100 to 100,000+ users
+- Modern technology stack (React, React Native, Node.js, Python, AWS, Google Cloud)
+- Fast loading (<1 second)
+- App store submission handled for mobile apps
+
+PRICING (QUOTATION-BASED):
+All pricing is custom based on your specific requirements. Submit your requirements to receive detailed quotation.
+
+- Web Application: Custom Quotation (custom web apps, responsive mobile, authentication, database, admin dashboard, hosting, deployment)
+- Mobile Application: Custom Quotation (iOS + Android native apps, custom UI/UX, push notifications, offline mode, app store submission, backend API) - Popular
+- Enterprise Application: Custom Quotation (fully custom development, advanced features, scalable cloud, security/compliance, dedicated team, white-label options)
+
+TIMELINE: Simple sites 2-4 weeks, complex web apps 8-16 weeks, mobile apps 12-20 weeks
+SUPPORT: 3-12 months support included depending on package, ongoing maintenance available
+""",
+        "metadata": {"category": "services", "page": "intelligent-applications"}
+    },
+
+    "pricing_overview": {
+        "title": "Pricing & Investment - Custom Quotation System",
+        "content": """
+ALL SERVICES USE CUSTOM QUOTATION SYSTEM:
+
+SMART BUSINESS ASSISTANT:
+- Custom Quotation (based on features, integrations, and scale)
+- Starter, Professional,and Enterprise packages available
+- Free consultation provides detailed pricing
+
+SYSTEM INTEGRATION & AUTOMATION:
+- Custom Quotation (based on number of apps, complexity, and workflows)
+- Essential, Professional, and Enterprise packages available
+- Free integration audit and quotation
+
+WEB & MOBILE APPLICATIONS:
+- Custom Quotation (based on features, platforms, and requirements)
+- Web, Mobile, and Enterprise application packages
+- Free consultation and detailed quotation
+
+PRICING PHILOSOPHY:
+We provide free consultations and detailed quotations after understanding your business needs. No two projects are the same, so we tailor pricing to ensure you get exactly what you need without paying for features you don't.
+
+PAYMENT OPTIONS:
+- Monthly subscriptions (recurring services)
+- Project-based payment milestones (development projects)
+- Annual contracts (available with benefits)
+- Custom payment plans based on your preferences
+
+Payment terms are included in your detailed quotation after free consultation.
+
+FREE RESOURCES:
+- Free consultation and needs assessment
+- Free ROI calculator and projections
+- Free integration audit (System Integration)
+- Free mobile optimization audit (Applications)
+""",
+        "metadata": {"category": "pricing", "page": "overview"}
+    },
+
+    "roi_and_results": {
+        "title": "ROI Timelines & Proven Results",
+        "content": """
+TYPICAL ROI TIMELINES:
+- Smart Assistant: 3-6 months to positive ROI
+- System Integration: 3-6 months to positive ROI
+- Applications: 6-12 months to positive ROI
+
+AVERAGE PAYBACK PERIODS:
+- Smart Assistant: 2-4 months
+- System Integration: 3-5 months
+- Mobile Applications: 4-8 months
+
+PROVEN RESULTS BY SERVICE:
+
+Smart Business Assistant:
+- 87% faster response times (under 30 seconds)
+- 12x cost savings per interaction
+- $180K+ annual savings
+- 35% higher conversion rates
+- 24/7 availability
+
+System Integration:
+- 85% reduction in manual work
+- $15K saved per employee/year
+- 60% faster processes
+- 95% fewer errors
+- 99.9% uptime
+
+Custom Applications:
+- 3.5x mobile conversion increase
+- 350% average mobile ROI
+- 95% user retention
+- Fast load times (<1 second)
+- You own the asset
+
+OVERALL AVERAGE:
+Most clients see positive ROI in 3-6 months. Average results: 40% efficiency gain, documented cost savings, measurable conversion increases.
+""",
+        "metadata": {"category": "proof", "page": "roi"}
+    },
+
+    "technology_stack": {
+        "title": "Technology & Security",
+        "content": """
+AI TECHNOLOGY:
+- Enterprise-Grade AI Models - We select the optimal AI platform based on your specific needs
+- Advanced language model capabilities
+- Efficient resource utilization
+- Scalable architecture
+- Enterprise-grade reliability
+- Same technology Fortune 500 companies trust
+- LLM-agnostic: We use OpenAI, Google, Anthropic, open-source, or specialized models based on your requirements
+
+RAG (RETRIEVAL-AUGMENTED GENERATION):
+- Advanced document processing (PDF, DOCX, TXT, MD)
+- Google text-embedding-004 for embeddings
+- Hybrid search: 70% semantic + 30% BM25
+- Intelligent chunking strategies
+- Real-time context retrieval
+- Response synthesis and validation
+
+FRONTEND TECHNOLOGY:
+- React 18 with TypeScript
+- Vite for fast development
+- Tailwind CSS for responsive design
+- Progressive Web App capabilities
+- Modern, accessible UI components
+
+BACKEND INFRASTRUCTURE:
+- Firebase Cloud Functions (Python 3.11+)
+- Firestore NoSQL database
+- Firebase Storage for file management
+- Firebase Authentication
+- Cloud-native, serverless architecture
+
+MOBILE DEVELOPMENT:
+- React Native for cross-platform
+- Native iOS (Swift) and Android (Kotlin) when needed
+- Push notifications and offline functionality
+- App store submission managed
+
+CLOUD & SCALING:
+- Multi-cloud support (GCP, AWS)
+- Auto-scaling based on demand
+- Global CDN for fast content delivery
+- Serverless architecture for cost efficiency
+- 99.9% uptime SLA
+
+SECURITY FEATURES:
+- Bank-level encryption (at rest and in transit)
+- Firebase Authentication with multi-factor
+- Role-based access control (RBAC)
+- Input validation and sanitization
+- Rate limiting and DDoS protection
+- SOC 2 Type II certified processes
+- Data protection regulation compliance (GDPR, CCPA)
+- Regular security audits
+- Penetration testing
+
+PERFORMANCE:
+- <1 second load times for applications
+- <2 seconds for simple AI queries
+- <5 seconds for RAG-enhanced queries
+- 95%+ performance scores
+- Optimized for mobile networks
+""",
+        "metadata": {"category": "technical", "page": "technology"}
+    },
+
+    "competitive_advantages": {
+        "title": "Why Choose EthosPrompt",
+        "content": """
+1. ENTERPRISE AI TECHNOLOGY ADVANTAGE:
+- Same enterprise-grade AI trusted by Fortune 500 companies
+- Superior tool calling and agentic workflows
+- Efficient resource utilization (optimized performance)
+- Scalable architecture for complex conversations
+- Secure and auditable AI infrastructure
+
+2. PROVEN ROI, NOT JUST PROMISES:
+- Average 40% efficiency gain in first 90 days
+- Documented case results: 12x cost savings, 3.5x conversions
+- Transparent ROI calculators for every service
+- Typical payback: 3-6 months
+
+3. FULL-SERVICE, NOT JUST SOFTWARE:
+- Strategy consulting included
+- Custom development, not templates
+- White-glove implementation
+- Comprehensive training
+- Ongoing optimization (not "set and forget")
+- Dedicated success manager for enterprise
+
+4. YOU OWN IT:
+- Custom solutions are your intellectual property
+- No vendor lock-in
+- Source code ownership
+- Data sovereignty (your data never leaves your systems)
+- Can self-host if needed
+
+5. ENTERPRISE SECURITY FOR ALL:
+- Bank-level security regardless of plan size
+- SOC 2 Type II processes
+- Compliance-ready (GDPR, HIPAA-ready, CCPA)
+- Regular third-party security audits
+
+6. SPEED TO VALUE:
+- Fastest implementation in industry
+- System Integration: 1-2 weeks for simple, 4-8 weeks complex
+- Smart Assistant: 2-4 weeks to launch
+- Applications: 2-20 weeks vs 6-12 months competitors
+
+7. COST EFFICIENCY:
+- 40-60% lower than enterprise competitors
+- No hidden fees or surprise costs
+- Transparent project-based or monthly pricing
+- Multiple payment options
+- Free audit and ROI projections
+""",
+        "metadata": {"category": "competitive", "page": "advantages"}
+    },
+
+    "getting_started": {
+        "title": "Getting Started Process",
+        "content": """
+STEP 1: FREE CONSULTATION (30-45 Minutes)
+- Schedule via website contact form
+- Discuss your business challenges and goals
+- Assess current systems and opportunities
+- Receive custom recommendations
+
+STEP 2: CUSTOM PROPOSAL
+- Detailed solution design tailored to your needs
+- ROI projections and timeline estimates
+- Transparent pricing breakdown
+- Technology architecture review
+
+STEP 3: DISCOVERY & PLANNING (1-2 Weeks)
+- Comprehensive business process analysis
+- Requirements gathering and documentation
+- Technical architecture design
+- Project roadmap and milestones
+
+STEP 4: IMPLEMENTATION
+- Smart Assistant: 2-4 weeks
+- System Integration: 1-8 weeks (depending on complexity)
+- Web Applications: 2-16 weeks
+- Mobile Applications: 12-20 weeks
+
+STEP 5: TESTING & DEPLOYMENT
+- Quality assurance and testing
+- User acceptance testing
+- Staging environment validation
+- Production deployment
+- Team training
+
+STEP 6: SUPPORT & OPTIMIZATION
+- Post-deployment support (30 days to 12 months included)
+- Performance monitoring
+- Continuous optimization
+- Ongoing maintenance plans available
+
+CONTACT OPTIONS:
+- Website: https://rag-prompt-library.web.app
+- Contact Form: /contact
+- Ask molē: AI chat assistant on website
+""",
+        "metadata": {"category": "onboarding", "page": "getting-started"}
+    },
+
+    "faq_general": {
+        "title": "General FAQs",
+        "content": """
+Q: What is EthosPrompt?
+A: EthosPrompt is an intelligent solutions company specializing in AI-powered automation, custom software development, and system integration. We help businesses build modern applications, automate processes, and connect their business tools using advanced AI technology tailored to their specific needs.
+
+Q: What makes EthosPrompt different?
+A: You own the solution, proven ROI (40% efficiency gains documented), full-service implementation, LLM-agnostic approach (we use the best AI for your needs), and bank-level security for all customers.
+
+Q: How do I get started with EthosPrompt's AI solutions?
+A: Getting started is simple: 1) Contact us for a free consultation, 2) We'll assess your business needs and current systems, 3) Our team will design a custom solution tailored to your requirements, 4) We implement and integrate the solution with full support and training.
+
+Q: What industries do you serve?
+A: We serve businesses across various industries including retail, healthcare, finance, manufacturing, professional services, SaaS, education, and technology. Our intelligent solutions are adaptable to any industry that can benefit from automation, improved customer service, or operational efficiency.
+
+Q: How long does it take to implement an AI solution?
+A: Implementation timelines vary: Simple AI chatbots: 2-4 weeks. System Integration: 1-8 weeks. Web applications: 2-16 weeks. Mobile apps: 12-20 weeks. We provide detailed project timelines during consultation.
+""",
+        "metadata": {"category": "faq", "page": "general"}
+    },
+
+    "faq_smart_assistant": {
+        "title": "Smart Business Assistant FAQs",
+        "content": """
+Q: What happens if the AI doesn't know the answer?
+A: It never guesses. If the assistant encounters a question it can't answer with 100% confidence, it instantly escalates the conversation to your team via email or SMS, providing the full chat history so you can step in seamlessly.
+
+Q: How long does it take to set up?
+A: Setup typically takes 2-4 weeks, but varies depending on your existing systems and what needs to be built. We will provide a confirmed timeline after your initial consultation.
+
+Q: Can it actually book appointments?
+A: Yes. It integrates directly with your calendar (Calendly, Google, Outlook, etc.). It qualifies the lead first, checks your real-time availability, and books the slot without you lifting a finger.
+
+Q: Does it sound like a robot?
+A: No. We customize the "personality" to match your brand voice—whether that's professional, friendly, or casual. Most customers won't realize they're talking to an AI until you tell them.
+
+Q: Is my business data secure?
+A: Absolutely. We use enterprise-grade encryption and never share your data with other clients. You have full control over what the AI knows and what it keeps private. Bank-level encryption, SOC 2 Type II processes, GDPR/CCPA compliant, regular security audits. Your data never leaves your approved systems without authorization.
+""",
+        "metadata": {"category": "faq", "page": "smart-assistant"}
+    },
+
+    "faq_system_integration": {
+        "title": "System Integration FAQs",
+        "content": """
+Q: How long does a typical integration take?
+A: Simple integrations (2-3 apps) can be completed in 1-2 weeks. Complex enterprise integrations typically take 4-8 weeks. We provide detailed timelines during your free audit.
+
+Q: What if we use custom or older systems?
+A: We specialize in connecting all types of systems, including custom-built and older platforms. Our team has experience with custom APIs, database integrations, and various system architectures.
+
+Q: How do you ensure data security during integration?
+A: All data transfers use enterprise-grade encryption. We're SOC 2 Type II certified and follow strict security protocols. Your data never leaves your approved systems without proper authorization.
+
+Q: What happens if one of our integrated systems changes?
+A: We monitor all integrations 24/7 and provide automatic updates when systems change. Our support team proactively manages any required adjustments to keep your workflows running smoothly.
+
+Q: How do you handle the implementation process?
+A: We follow a proven 4-phase implementation process: Discovery & Planning, Development & Testing, Deployment, and Optimization. Each phase includes stakeholder reviews and testing to ensure smooth delivery.
+
+Q: Can you integrate with industry-specific software?
+A: Yes! We have experience with industry-specific platforms across healthcare, finance, manufacturing, and more. We can integrate with specialized ERP, CRM, and vertical-specific solutions.
+
+Q: What is the typical ROI timeline for integration projects?
+A: Most businesses see positive ROI within 3-6 months. Time savings and error reduction provide immediate benefits, while efficiency gains compound over time.
+""",
+        "metadata": {"category": "faq", "page": "system-integration"}
+    },
+
+    "faq_applications": {
+        "title": "Web & Mobile Applications FAQs",
+        "content": """
+Q: How long does development typically take?
+A: Simple websites take 2-4 weeks, while complex web applications take 8-16 weeks. Mobile apps typically require 12-20 weeks. We provide detailed timelines during your free consultation.
+
+Q: Do you provide ongoing maintenance and support?
+A: Yes! All projects include 3-12 months of support depending on the package. We also offer ongoing maintenance plans for updates, security patches, and feature enhancements.
+
+Q: Can you integrate with our existing systems?
+A: Absolutely. We specialize in integrating new applications with existing CRMs, databases, payment systems, and third-party APIs. We'll audit your current systems during the consultation.
+
+Q: What about mobile app store approval?
+A: We handle the entire app store submission process for both iOS and Android. Our apps are built to meet all store guidelines, and we manage the approval process from start to finish.
+
+Q: What technologies do you use?
+A: We use modern, proven technologies including React, React Native, Node.js, Python, and cloud platforms like AWS and Google Cloud. We choose the best tech stack for each project based on your specific requirements.
+
+Q: How do you ensure quality and testing?
+A: We follow rigorous testing protocols including unit testing, integration testing, and user acceptance testing. All applications undergo security audits and performance optimization before launch.
+
+Q: Do you build iOS and Android apps?
+A: Yes. Native iOS (Swift) and Android (Kotlin) development, or cross-platform with React Native. We handle app store submission and approval process.
+""",
+        "metadata": {"category": "faq", "page": "applications"}
+    },
+
+    "faq_pricing": {
+        "title": "Pricing & ROI FAQs",
+        "content": """
+Q: How much do your AI solutions cost?
+A: All our services use a custom quotation system based on your specific requirements:
+- Smart Business Assistant: Custom Quotation (based on features, integrations, and scale)
+- System Integration: Custom Quotation (based on number of apps, complexity, and workflows)
+- Web & Mobile Applications: Custom Quotation (based on features, platforms, and requirements)
+
+We provide free consultations and detailed quotations after understanding your business needs. No two projects are the same, so we tailor pricing to ensure you get exactly what you need without paying for features you don't.
+
+Q: Do you offer different service packages?
+A: Yes, we offer various service packages from basic implementations to comprehensive custom solutions. Each package is customized with development, integration, training, and ongoing support tailored to different business sizes and needs. Contact us for detailed quotation.
+
+Q: What's included in your ongoing support?
+A: Our support includes system monitoring, regular updates, performance optimization, technical support during business hours, monthly performance reports, and access to our knowledge base and training resources.
+
+Q: Do you offer free trials or demos?
+A: We provide free consultations and can create proof-of-concept demonstrations for qualified prospects. This allows you to see how our AI solutions would work with your specific use case before making a commitment.
+
+Q: What's the typical ROI?
+A: Most clients see positive ROI in 3-6 months. Average results: 40% efficiency gain, 12x cost savings (Assistant), 85% manual work reduction (Integration), 3.5x conversion increase (Applications).
+
+Q: Do you offer payment plans?
+A: Yes. We offer flexible payment structures based on your project and preferences - including monthly subscriptions, project-based milestones, and annual contracts. Payment terms are customized and included in your detailed quotation.
+""",
+        "metadata": {"category": "faq", "page": "pricing"}
+    },
+
+    "faq_security": {
+        "title": "Security & Technical FAQs",
+        "content": """
+Q: How do you ensure data security and privacy?
+A: We implement enterprise-grade security measures including data encryption (at rest and in transit), secure APIs, role-based access controls, and compliance with privacy regulations. All data is processed and stored according to strict security protocols and industry best practices.
+
+Q: Are your solutions compliant with regulations?
+A: Yes, all our solutions comply with GDPR, CCPA, and industry-specific requirements. We can meet specific regulatory requirements for your industry.
+
+Q: Where is our data stored and processed?
+A: Data can be stored in your preferred location to meet compliance requirements. We offer flexible deployment options including cloud (GCP, AWS), on-premises, or hybrid solutions based on your security and compliance needs.
+
+Q: Can we maintain control over our data?
+A: Absolutely. You retain full ownership and control of your data. We provide transparent data handling practices, clear data retention policies, and the ability to export or delete your data at any time.
+
+Q: What AI technologies do you use?
+A: We're LLM-agnostic and select the optimal AI platform for each project - including enterprise models from leading providers (OpenAI, Google, Anthropic), open-source options, and cloud AI services. We choose the best technology stack based on your specific requirements, budget, performance needs, and compliance requirements.
+
+Q: What AI models do you use?
+A: We use enterprise-grade AI models selected based on your specific needs - this could include models from OpenAI, Google, Anthropic, open-source options, or specialized industry models. All our AI implementations meet enterprise reliability standards.
+
+Q: How accurate and reliable are your AI solutions?
+A: Our AI solutions are designed for enterprise-grade reliability with accuracy rates typically exceeding 95%. We implement continuous learning mechanisms, regular model updates, and comprehensive testing to ensure consistent performance and improvement over time.
+""",
+        "metadata": {"category": "faq", "page": "security"}
+    },
+
+    "faq_support": {
+        "title": "Support & Maintenance FAQs",
+        "content": """
+Q: What kind of support do you provide after implementation?
+A: We provide comprehensive ongoing support including technical assistance, system monitoring, regular updates, performance optimization, user training, and access to our support team during business hours.
+
+Q: How do you handle system updates and improvements?
+A: We provide regular system updates, security patches, and feature enhancements. Major updates are scheduled with advance notice, and we continuously monitor and optimize performance to ensure your AI solutions evolve with your business needs.
+
+Q: What if we need changes or additional features?
+A: We offer flexible modification and enhancement services. Our team can add new features, modify existing functionality, or scale your solution as your business grows. We provide transparent pricing for additional development work.
+
+Q: Do you provide training for our team?
+A: Yes, we provide comprehensive training for your team including user guides, video tutorials, live training sessions, and ongoing support. We ensure your team is fully equipped to maximize the benefits of your AI solution.
+
+Q: Do you provide ongoing maintenance for mobile apps?
+A: Yes! All projects include 3-12 months of support depending on the package. We also offer ongoing maintenance plans for updates, security patches, and new features.
+""",
+        "metadata": {"category": "faq", "page": "support"}
+    }
+}
+
+def get_all_kb_documents():
+    """Return all knowledge base documents as a list"""
+    return list(MARKETING_KB_CONTENT.values())
+
+def get_kb_documents_by_category(category: str) -> List[Dict[str, Any]]:
+    """Return knowledge base documents filtered by category"""
+    return [
+        doc for doc in MARKETING_KB_CONTENT.values()
+        if doc.get("metadata", {}).get("category") == category
+    ]

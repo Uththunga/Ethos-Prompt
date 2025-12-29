@@ -1,0 +1,7 @@
+{
+  "total_bundle_size": "1050 KB",
+  "main_chunk": "350 KB",
+  "vendor_chunk": "500 KB",
+  "async_chunks": "200 KB",
+  "css_bundle": "50 KB"
+}

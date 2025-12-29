@@ -1,0 +1,138 @@
+config:
+  target: "https://react-app-000730.web.app"
+  phases:
+    # Warm-up phase
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm-up"
+    
+    # Ramp-up phase
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: "Ramp-up"
+    
+    # Sustained load
+    - duration: 300
+      arrivalRate: 50
+      name: "Sustained load"
+    
+    # Spike test
+    - duration: 60
+      arrivalRate: 100
+      name: "Spike"
+    
+    # Cool-down
+    - duration: 60
+      arrivalRate: 10
+      name: "Cool-down"
+  
+  # Performance thresholds
+  ensure:
+    maxErrorRate: 1  # Max 1% error rate
+    p95: 2000  # 95th percentile response time < 2s
+    p99: 5000  # 99th percentile response time < 5s
+  
+  # HTTP settings
+  http:
+    timeout: 10
+    pool: 50
+  
+  # Variables
+  variables:
+    testUserId: "load-test-user"
+    testPromptId: "load-test-prompt"
+
+scenarios:
+  # Homepage load test
+  - name: "Load Homepage"
+    weight: 30
+    flow:
+      - get:
+          url: "/"
+          capture:
+            - json: "$.version"
+              as: "appVersion"
+          expect:
+            - statusCode: 200
+            - contentType: text/html
+      
+      - think: 2  # User reads page for 2 seconds
+
+  # Authentication flow
+  - name: "Authentication Flow"
+    weight: 20
+    flow:
+      - post:
+          url: "/api/auth/login"
+          json:
+            email: "{{ $randomEmail() }}"
+            password: "test-password-123"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+          expect:
+            - statusCode: [200, 401]  # Accept both success and auth failure
+      
+      - think: 1
+
+  # Prompt execution
+  - name: "Execute Prompt"
+    weight: 40
+    flow:
+      # Get prompt list
+      - get:
+          url: "/api/prompts"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: [200, 401]
+      
+      - think: 1
+      
+      # Execute a prompt
+      - post:
+          url: "/api/execute"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          json:
+            promptId: "{{ testPromptId }}"
+            variables:
+              input: "Test input for load testing"
+            model: "meta-llama/llama-3.2-1b-instruct:free"
+          expect:
+            - statusCode: [200, 401, 429]  # Accept success, auth failure, or rate limit
+          capture:
+            - json: "$.executionId"
+              as: "executionId"
+      
+      - think: 3  # Wait for execution
+
+  # Analytics dashboard
+  - name: "View Analytics"
+    weight: 10
+    flow:
+      - get:
+          url: "/api/analytics/dashboard"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: [200, 401]
+      
+      - think: 5  # User views dashboard
+
+# Custom metrics
+plugins:
+  metrics-by-endpoint:
+    stripQueryString: true
+    ignoreUnknownEndpoints: false
+  
+  # Publish metrics to console
+  publish-metrics:
+    - type: console
+      config:
+        includeOnly:
+          - http.response_time
+          - http.codes
+          - errors
+

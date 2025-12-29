@@ -1,0 +1,139 @@
+# Research Paper Summary: Attention Is All You Need
+
+## Citation
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. In Advances in neural information processing systems (pp. 5998-6008).
+
+## Abstract
+
+The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+
+## Introduction
+
+Recurrent neural networks (RNNs), long short-term memory (LSTM), and gated recurrent neural networks have been firmly established as state-of-the-art approaches in sequence modeling and transduction problems such as language modeling and machine translation. However, recurrent models typically factor computation along the symbol positions of the input and output sequences, which precludes parallelization within training examples.
+
+## Model Architecture
+
+### The Transformer
+
+The Transformer follows the overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder.
+
+**Encoder**: The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers:
+1. Multi-head self-attention mechanism
+2. Position-wise fully connected feed-forward network
+
+**Decoder**: The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack.
+
+### Attention Mechanism
+
+An attention function can be described as mapping a query and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors. The output is computed as a weighted sum of the values, where the weight assigned to each value is computed by a compatibility function of the query with the corresponding key.
+
+**Scaled Dot-Product Attention**:
+```
+Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V
+```
+
+Where:
+- Q: Query matrix
+- K: Key matrix
+- V: Value matrix
+- d_k: Dimension of keys
+
+**Multi-Head Attention**: Instead of performing a single attention function, multi-head attention linearly projects the queries, keys, and values h times with different, learned linear projections. This allows the model to jointly attend to information from different representation subspaces at different positions.
+
+### Position-wise Feed-Forward Networks
+
+Each layer contains a fully connected feed-forward network, which is applied to each position separately and identically. This consists of two linear transformations with a ReLU activation in between:
+
+```
+FFN(x) = max(0, xW1 + b1)W2 + b2
+```
+
+### Positional Encoding
+
+Since the model contains no recurrence and no convolution, in order for the model to make use of the order of the sequence, positional encodings are added to the input embeddings at the bottoms of the encoder and decoder stacks. The positional encodings use sine and cosine functions of different frequencies:
+
+```
+PE(pos, 2i) = sin(pos / 10000^(2i/d_model))
+PE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))
+```
+
+## Why Self-Attention
+
+Three desirable properties of self-attention layers compared to recurrent and convolutional layers:
+
+1. **Computational Complexity**: Self-attention layers are faster than recurrent layers when the sequence length is smaller than the representation dimensionality.
+
+2. **Parallelization**: Self-attention layers can be parallelized, while recurrent layers cannot due to their sequential nature.
+
+3. **Path Length**: The maximum path length between any two positions in the input and output sequences is O(1) for self-attention, compared to O(n) for recurrent layers.
+
+## Training
+
+### Training Data and Batching
+
+The models were trained on the standard WMT 2014 English-German dataset consisting of about 4.5 million sentence pairs. Sentences were encoded using byte-pair encoding, which has a shared source-target vocabulary of about 37000 tokens.
+
+### Hardware and Schedule
+
+The models were trained on one machine with 8 NVIDIA P100 GPUs. The base models took 12 hours to train for 100,000 steps. The big models took 3.5 days (300,000 steps).
+
+### Optimizer
+
+Adam optimizer was used with β1 = 0.9, β2 = 0.98, and ε = 10^-9. The learning rate was varied over the course of training according to a specific schedule.
+
+### Regularization
+
+**Residual Dropout**: Dropout was applied to the output of each sub-layer, before it is added to the sub-layer input and normalized. Additionally, dropout was applied to the sums of the embeddings and the positional encodings in both the encoder and decoder stacks. For the base model, a rate of Pdrop = 0.1 was used.
+
+**Label Smoothing**: During training, label smoothing of value εls = 0.1 was employed. This hurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.
+
+## Results
+
+### Machine Translation
+
+On the WMT 2014 English-to-German translation task, the big transformer model achieved a BLEU score of 28.4, improving over the existing best results by more than 2.0 BLEU. On the WMT 2014 English-to-French translation task, the big model achieved a BLEU score of 41.0, outperforming all previously published single models.
+
+### Model Variations
+
+The paper explored variations of the Transformer architecture:
+- Varying the number of attention heads
+- Varying the attention key and value dimensions
+- Varying model size
+- Varying dropout rates
+
+Results showed that:
+- Multi-head attention is important for performance
+- Reducing attention key size hurts model quality
+- Bigger models perform better
+- Dropout is helpful for avoiding overfitting
+
+### Training Cost
+
+The base model required approximately 0.4 petaflop-days of training, while the big model required 3.3 petaflop-days. This is significantly less than the training costs of previous state-of-the-art models.
+
+## Conclusion
+
+The Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution. The model achieves state-of-the-art results on machine translation tasks while being more parallelizable and requiring significantly less time to train.
+
+## Impact and Future Work
+
+The paper suggests several directions for future work:
+1. Applying Transformers to other tasks beyond text
+2. Investigating local, restricted attention mechanisms
+3. Making generation less sequential
+4. Extending to other modalities (images, audio, video)
+
+## Key Contributions
+
+1. **Novel Architecture**: Introduced the Transformer architecture based entirely on attention mechanisms
+2. **Performance**: Achieved state-of-the-art results on machine translation benchmarks
+3. **Efficiency**: Demonstrated superior training efficiency compared to recurrent models
+4. **Parallelization**: Enabled parallel processing of sequences
+5. **Foundation**: Laid the groundwork for future models like BERT, GPT, and T5
+
+## Significance
+
+This paper has become one of the most influential works in natural language processing and deep learning. The Transformer architecture has become the foundation for most modern language models and has been successfully applied to various domains beyond NLP, including computer vision, speech recognition, and protein folding prediction.
+
+The attention mechanism introduced in this paper has fundamentally changed how we approach sequence-to-sequence problems and has enabled the development of large language models that power many of today's AI applications.
+

@@ -1,0 +1,20 @@
+{
+  "real_user_monitoring": {
+    "core_web_vitals_tracking": true,
+    "performance_observer_api": true,
+    "user_experience_metrics": true,
+    "field_data_collection": true
+  },
+  "synthetic_monitoring": {
+    "lighthouse_ci": true,
+    "pagespeed_insights": true,
+    "webpagetest_integration": true,
+    "performance_budgets": true
+  },
+  "alerting": {
+    "performance_regression_alerts": true,
+    "core_web_vitals_alerts": true,
+    "user_experience_alerts": true,
+    "performance_budget_alerts": true
+  }
+}

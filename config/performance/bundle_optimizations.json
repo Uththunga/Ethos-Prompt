@@ -1,0 +1,26 @@
+{
+  "code_splitting": {
+    "route_based_splitting": true,
+    "component_lazy_loading": true,
+    "vendor_chunk_splitting": true,
+    "dynamic_imports": true
+  },
+  "tree_shaking": {
+    "unused_code_elimination": true,
+    "dead_code_elimination": true,
+    "side_effect_free_modules": true,
+    "production_optimizations": true
+  },
+  "dependency_optimization": {
+    "bundle_analyzer": true,
+    "dependency_audit": true,
+    "alternative_libraries": true,
+    "polyfill_optimization": true
+  },
+  "compression": {
+    "minification": true,
+    "uglification": true,
+    "gzip_compression": true,
+    "brotli_compression": true
+  }
+}

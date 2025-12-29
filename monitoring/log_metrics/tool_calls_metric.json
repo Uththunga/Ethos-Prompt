@@ -1,0 +1,17 @@
+{
+  "name": "marketing_api_tool_calls",
+  "description": "Number of tool calls made by marketing API",
+  "filter": "resource.type=\"cloud_run_revision\"\nresource.labels.service_name=\"marketing-api\"\njsonPayload.monitoring.event=\"business_metrics\"\njsonPayload.monitoring.tool_calls>0",
+  "metricDescriptor": {
+    "metricKind": "DELTA",
+    "valueType": "DISTRIBUTION"
+  },
+  "valueExtractor": "EXTRACT(jsonPayload.monitoring.tool_calls)",
+  "bucketOptions": {
+    "exponentialBuckets": {
+      "numFiniteBuckets": 32,
+      "growthFactor": 2.0,
+      "scale": 1.0
+    }
+  }
+}

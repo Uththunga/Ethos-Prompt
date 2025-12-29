@@ -1,0 +1,92 @@
+[
+  {
+    "query": "What services does EthosPrompt offer?",
+    "expected_doc_id": "offering_smart_business_assistant",
+    "category": "offerings",
+    "min_score": 0.7
+  },
+  {
+    "query": "Tell me about EthosPrompt's company mission",
+    "expected_doc_id": "foundation_company_overview",
+    "category": "foundation",
+    "min_score": 0.75
+  },
+  {
+    "query": "How much does the Smart Business Assistant cost?",
+    "expected_doc_id": "engagement_pricing",
+    "category": "engagement",
+    "min_score": 0.7
+  },
+  {
+    "query": "What makes EthosPrompt different from competitors?",
+    "expected_doc_id": "differentiation_usps",
+    "category": "differentiation",
+    "min_score": 0.7
+  },
+  {
+    "query": "How do I get started with EthosPrompt?",
+    "expected_doc_id": "engagement_onboarding",
+    "category": "engagement",
+    "min_score": 0.7
+  },
+  {
+    "query": "What is RAG technology?",
+    "expected_doc_id": "offering_smart_business_assistant",
+    "category": "offerings",
+    "min_score": 0.6
+  },
+  {
+    "query": "Does EthosPrompt offer system integration?",
+    "expected_doc_id": "offering_system_integration",
+    "category": "offerings",
+    "min_score": 0.8
+  },
+  {
+    "query": "What's included in the pricing?",
+    "expected_doc_id": "engagement_pricing",
+    "category": "engagement",
+    "min_score": 0.7
+  },
+  {
+    "query": "Can EthosPrompt build custom web applications?",
+    "expected_doc_id": "offering_intelligent_applications",
+    "category": "offerings",
+    "min_score": 0.8
+  },
+  {
+    "query": "What technology stack does EthosPrompt use?",
+    "expected_doc_id": "differentiation_technology",
+    "category": "differentiation",
+    "min_score": 0.75
+  },
+  {
+    "query": "Who is EthosPrompt's target audience?",
+    "expected_doc_id": "foundation_target_audience",
+    "category": "foundation",
+    "min_score": 0.7
+  },
+  {
+    "query": "What are common objections to EthosPrompt's pricing?",
+    "expected_doc_id": "support_objections",
+    "category": "support",
+    "min_score": 0.7
+  },
+  {
+    "query": "Is EthosPrompt secure?",
+    "expected_doc_id": "differentiation_technology",
+    "category": "differentiation",
+    "min_score": 0.6
+  },
+  {
+    "query": "What is the ROI of using EthosPrompt?",
+    "expected_doc_id": "differentiation_proof",
+    "category": "differentiation",
+    "min_score": 0.7
+  },
+  {
+    "query": "Tell me about EthosPrompt's brand voice guidelines",
+    "expected_doc_id": "foundation_brand_voice",
+    "category": "foundation",
+    "min_score": 0.8
+  }
+]

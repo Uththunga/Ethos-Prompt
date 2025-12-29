@@ -1,0 +1,9 @@
+{
+  "dashboard_load_time": "< 2s",
+  "chart_render_time": "< 500ms",
+  "data_query_time": "< 1s",
+  "export_generation": "< 30s",
+  "real_time_update_latency": "< 100ms",
+  "concurrent_users": "> 1000",
+  "data_throughput": "> 10MB/s"
+}

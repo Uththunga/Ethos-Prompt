@@ -1,0 +1,70 @@
+{
+  "roles": {
+    "owner": {
+      "permissions": [
+        "all"
+      ],
+      "description": "Full workspace control",
+      "can_delete_workspace": true,
+      "can_manage_billing": true,
+      "can_manage_members": true,
+      "can_manage_settings": true,
+      "can_create_prompts": true,
+      "can_edit_prompts": true,
+      "can_delete_prompts": true,
+      "can_view_analytics": true
+    },
+    "admin": {
+      "permissions": [
+        "manage_members",
+        "manage_content",
+        "view_analytics"
+      ],
+      "description": "Administrative access",
+      "can_delete_workspace": false,
+      "can_manage_billing": false,
+      "can_manage_members": true,
+      "can_manage_settings": true,
+      "can_create_prompts": true,
+      "can_edit_prompts": true,
+      "can_delete_prompts": true,
+      "can_view_analytics": true
+    },
+    "editor": {
+      "permissions": [
+        "edit_content",
+        "create_content"
+      ],
+      "description": "Content creation and editing",
+      "can_delete_workspace": false,
+      "can_manage_billing": false,
+      "can_manage_members": false,
+      "can_manage_settings": false,
+      "can_create_prompts": true,
+      "can_edit_prompts": true,
+      "can_delete_prompts": false,
+      "can_view_analytics": false
+    },
+    "viewer": {
+      "permissions": [
+        "view_content"
+      ],
+      "description": "Read-only access",
+      "can_delete_workspace": false,
+      "can_manage_billing": false,
+      "can_manage_members": false,
+      "can_manage_settings": false,
+      "can_create_prompts": false,
+      "can_edit_prompts": false,
+      "can_delete_prompts": false,
+      "can_view_analytics": false
+    }
+  },
+  "permission_hierarchy": [
+    "owner",
+    "admin",
+    "editor",
+    "viewer"
+  ],
+  "default_role": "viewer"
+}

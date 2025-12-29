@@ -1,0 +1,20 @@
+{
+  "query_optimization": {
+    "index_optimization": true,
+    "query_plan_analysis": true,
+    "composite_indexes": true,
+    "query_rewriting": true
+  },
+  "connection_optimization": {
+    "connection_pooling": true,
+    "connection_reuse": true,
+    "connection_timeout_optimization": true,
+    "read_write_splitting": true
+  },
+  "caching_optimization": {
+    "query_result_caching": true,
+    "prepared_statement_caching": true,
+    "metadata_caching": true,
+    "connection_metadata_caching": true
+  }
+}

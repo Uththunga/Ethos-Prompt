@@ -1,0 +1,713 @@
+{
+  "info": {
+    "name": "RAG Prompt Library API",
+    "description": "Complete API collection for RAG Prompt Library platform",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{api_key}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.ragpromptlibrary.com/v1",
+      "type": "string"
+    },
+    {
+      "key": "staging_url",
+      "value": "https://staging-api.ragpromptlibrary.com/v1",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "your-api-key-here",
+      "type": "string"
+    },
+    {
+      "key": "prompt_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "document_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "workspace_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "execution_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get API Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/info",
+              "host": ["{{base_url}}"],
+              "path": ["info"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Prompts",
+      "item": [
+        {
+          "name": "List Prompts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/prompts?limit=10&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["prompts"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "tags",
+                  "value": "marketing,content",
+                  "disabled": true
+                },
+                {
+                  "key": "workspace_id",
+                  "value": "workspace_123",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Prompt",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/prompts/{{prompt_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["prompts", "{{prompt_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Prompt",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Content Generator\",\n  \"description\": \"Generate engaging content for marketing campaigns\",\n  \"content\": \"Generate compelling {{content_type}} content about {{topic}} for {{audience}}. The tone should be {{tone}} and include a call-to-action.\",\n  \"tags\": [\"marketing\", \"content\", \"copywriting\"],\n  \"variables\": [\n    {\n      \"name\": \"content_type\",\n      \"type\": \"string\",\n      \"description\": \"Type of content (blog post, email, social media)\",\n      \"required\": true\n    },\n    {\n      \"name\": \"topic\",\n      \"type\": \"string\",\n      \"description\": \"Main topic or subject\",\n      \"required\": true\n    },\n    {\n      \"name\": \"audience\",\n      \"type\": \"string\",\n      \"description\": \"Target audience\",\n      \"required\": true\n    },\n    {\n      \"name\": \"tone\",\n      \"type\": \"string\",\n      \"description\": \"Tone of voice\",\n      \"default\": \"professional\"\n    }\n  ],\n  \"workspace_id\": \"workspace_123\",\n  \"is_public\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/prompts",
+              "host": ["{{base_url}}"],
+              "path": ["prompts"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Prompt",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Content Generator\",\n  \"description\": \"Enhanced content generator with better prompts\",\n  \"tags\": [\"marketing\", \"content\", \"copywriting\", \"enhanced\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/prompts/{{prompt_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["prompts", "{{prompt_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Prompt",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/prompts/{{prompt_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["prompts", "{{prompt_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Execute Prompt",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"content_type\": \"blog post\",\n    \"topic\": \"artificial intelligence in healthcare\",\n    \"audience\": \"healthcare professionals\",\n    \"tone\": \"informative and professional\"\n  },\n  \"model\": \"gpt-4\",\n  \"rag_config\": {\n    \"document_ids\": [\"doc_123\", \"doc_456\"],\n    \"search_mode\": \"hybrid\",\n    \"max_chunks\": 5,\n    \"similarity_threshold\": 0.7\n  },\n  \"execution_config\": {\n    \"temperature\": 0.7,\n    \"max_tokens\": 1000,\n    \"stream\": false\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/prompts/{{prompt_id}}/execute",
+              "host": ["{{base_url}}"],
+              "path": ["prompts", "{{prompt_id}}", "execute"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Execute Prompt (Streaming)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/event-stream"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"topic\": \"machine learning trends\"\n  },\n  \"model\": \"gpt-4\",\n  \"execution_config\": {\n    \"stream\": true,\n    \"temperature\": 0.8\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/prompts/{{prompt_id}}/execute",
+              "host": ["{{base_url}}"],
+              "path": ["prompts", "{{prompt_id}}", "execute"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "item": [
+        {
+          "name": "List Documents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents?limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["documents"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "type",
+                  "value": "pdf",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "processed",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Document",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/{{document_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["documents", "{{document_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Document",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "metadata",
+                  "value": "{\"title\": \"Research Paper\", \"tags\": [\"research\", \"ai\"], \"description\": \"Latest AI research findings\"}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/documents/upload",
+              "host": ["{{base_url}}"],
+              "path": ["documents", "upload"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Document",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/{{document_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["documents", "{{document_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Workspaces",
+      "item": [
+        {
+          "name": "List Workspaces",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workspaces",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Workspace",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marketing Team\",\n  \"description\": \"Collaborative workspace for marketing team prompts and documents\",\n  \"is_public\": false,\n  \"settings\": {\n    \"allow_public_prompts\": true,\n    \"require_approval\": false,\n    \"allow_guest_access\": false\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workspaces",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Workspace",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invite Member",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"colleague@company.com\",\n  \"role\": \"editor\",\n  \"message\": \"Join our marketing workspace to collaborate on prompts!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}/invite",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}", "invite"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Executions",
+      "item": [
+        {
+          "name": "List Executions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/executions?limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["executions"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "prompt_id",
+                  "value": "prompt_123",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "success",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Execution",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/executions/{{execution_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["executions", "{{execution_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Usage Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analytics/usage?period=30d",
+              "host": ["{{base_url}}"],
+              "path": ["analytics", "usage"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "30d"
+                },
+                {
+                  "key": "workspace_id",
+                  "value": "workspace_123",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Performance Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analytics/performance?period=7d",
+              "host": ["{{base_url}}"],
+              "path": ["analytics", "performance"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "7d"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Workspaces",
+      "item": [
+        {
+          "name": "List Workspaces",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workspaces",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Workspace",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marketing Team\",\n  \"description\": \"Workspace for marketing content creation\",\n  \"settings\": {\n    \"default_model\": \"gpt-4\",\n    \"allow_public_prompts\": false,\n    \"require_approval\": true\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workspaces",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Workspace",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Workspace",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Marketing Team\",\n  \"description\": \"Updated workspace description\",\n  \"settings\": {\n    \"default_model\": \"gpt-4\",\n    \"allow_public_prompts\": true\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Workspace",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Workspace Members",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}/members",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}", "members"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invite Member",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"role\": \"editor\",\n  \"message\": \"Welcome to our marketing workspace!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}/members",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}", "members"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Member Role",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}/members/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}", "members", "{{user_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Member",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workspaces/{{workspace_id}}/members/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["workspaces", "{{workspace_id}}", "members", "{{user_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List Webhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/webhooks",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://your-app.com/webhooks/rag-prompt-library\",\n  \"events\": [\"prompt.executed\", \"document.processed\"],\n  \"secret\": \"your_webhook_secret\",\n  \"active\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/webhooks",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Webhook",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/webhooks/{{webhook_id}}/test",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks", "{{webhook_id}}", "test"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

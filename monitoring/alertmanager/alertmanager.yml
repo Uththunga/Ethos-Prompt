@@ -1,0 +1,280 @@
+# Notification Configuration for RAG Application Alerts
+# Defines how alerts are routed and delivered to different channels
+
+global:
+  # SMTP configuration for email alerts
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'alerts@react-rag-app.com'
+  smtp_auth_username: 'alerts@react-rag-app.com'
+  smtp_auth_password: '${SMTP_PASSWORD}'
+  smtp_require_tls: true
+
+# Alert routing configuration
+route:
+  group_by: ['alertname', 'severity', 'service']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
+  receiver: 'default'
+  
+  # Routing rules based on severity
+  routes:
+    # Critical alerts - immediate notification
+    - match:
+        severity: critical
+      receiver: 'critical-alerts'
+      group_wait: 10s
+      repeat_interval: 5m
+      continue: true
+    
+    # Warning alerts - standard notification
+    - match:
+        severity: warning
+      receiver: 'warning-alerts'
+      group_wait: 1m
+      repeat_interval: 1h
+      continue: true
+    
+    # Info alerts - low priority notification
+    - match:
+        severity: info
+      receiver: 'info-alerts'
+      group_wait: 5m
+      repeat_interval: 6h
+      continue: true
+    
+    # Service-specific routing
+    - match:
+        service: rag-app
+        alertname: ServiceDown
+      receiver: 'emergency-alerts'
+      group_wait: 0s
+      repeat_interval: 2m
+
+# Alert receivers and notification channels
+receivers:
+  # Default receiver for unmatched alerts
+  - name: 'default'
+    email_configs:
+      - to: 'admin@react-rag-app.com'
+        subject: '[RAG-APP] {{ .GroupLabels.alertname }}'
+        headers:
+          Priority: 'normal'
+        body: |
+          Alert: {{ .GroupLabels.alertname }}
+          Severity: {{ .CommonLabels.severity }}
+          Service: {{ .CommonLabels.service }}
+          Time: {{ .CommonAnnotations.timestamp }}
+          
+          {{ range .Alerts }}
+          - {{ .Annotations.summary }}
+            {{ .Annotations.description }}
+            {{ if .Annotations.runbook_url }}
+            Runbook: {{ .Annotations.runbook_url }}
+            {{ end }}
+          {{ end }}
+
+  # Critical alerts - multiple channels with escalation
+  - name: 'critical-alerts'
+    email_configs:
+      - to: 'admin@react-rag-app.com,devops@react-rag-app.com,backend@react-rag-app.com'
+        subject: '🚨 CRITICAL: [RAG-APP] {{ .GroupLabels.alertname }}'
+        headers:
+          Priority: 'high'
+          X-Priority: '1'
+        body: |
+          🚨 CRITICAL ALERT 🚨
+          
+          Alert: {{ .GroupLabels.alertname }}
+          Severity: {{ .CommonLabels.severity }}
+          Service: {{ .CommonLabels.service }}
+          Time: {{ .CommonAnnotations.timestamp }}
+          
+          {{ range .Alerts }}
+          - {{ .Annotations.summary }}
+            {{ .Annotations.description }}
+            {{ if .Annotations.runbook_url }}
+            Runbook: {{ .Annotations.runbook_url }}
+            {{ end }}
+            
+            IMMEDIATE ACTION REQUIRED!
+          {{ end }}
+          
+          This is a critical alert that requires immediate attention.
+          Please check the service status and follow the runbook procedures.
+    
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#alerts-critical'
+        username: 'RAG-App-Alerts'
+        icon_emoji: ':rotating_light:'
+        title: '🚨 CRITICAL: {{ .GroupLabels.alertname }}'
+        title_link: '{{ .CommonAnnotations.runbook_url }}'
+        text: |
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ if .Annotations.runbook_url }}
+          <{{ .Annotations.runbook_url }}|View Runbook>
+          {{ end }}
+          {{ end }}
+        color: 'danger'
+        fields:
+          - title: 'Severity'
+            value: '{{ .CommonLabels.severity }}'
+            short: true
+          - title: 'Service'
+            value: '{{ .CommonLabels.service }}'
+            short: true
+          - title: 'Time'
+            value: '{{ .CommonAnnotations.timestamp }}'
+            short: false
+
+  # Warning alerts - standard notification
+  - name: 'warning-alerts'
+    email_configs:
+      - to: 'admin@react-rag-app.com,devops@react-rag-app.com'
+        subject: '⚠️ WARNING: [RAG-APP] {{ .GroupLabels.alertname }}'
+        headers:
+          Priority: 'normal'
+        body: |
+          ⚠️ WARNING ALERT ⚠️
+          
+          Alert: {{ .GroupLabels.alertname }}
+          Severity: {{ .CommonLabels.severity }}
+          Service: {{ .CommonLabels.service }}
+          Time: {{ .CommonAnnotations.timestamp }}
+          
+          {{ range .Alerts }}
+          - {{ .Annotations.summary }}
+            {{ .Annotations.description }}
+            {{ if .Annotations.runbook_url }}
+            Runbook: {{ .Annotations.runbook_url }}
+            {{ end }}
+          {{ end }}
+          
+          Please investigate when convenient.
+    
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#alerts-warning'
+        username: 'RAG-App-Alerts'
+        icon_emoji: ':warning:'
+        title: '⚠️ WARNING: {{ .GroupLabels.alertname }}'
+        title_link: '{{ .CommonAnnotations.runbook_url }}'
+        text: |
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ if .Annotations.runbook_url }}
+          <{{ .Annotations.runbook_url }}|View Runbook>
+          {{ end }}
+          {{ end }}
+        color: 'warning'
+        fields:
+          - title: 'Severity'
+            value: '{{ .CommonLabels.severity }}'
+            short: true
+          - title: 'Service'
+            value: '{{ .CommonLabels.service }}'
+            short: true
+
+  # Info alerts - low priority notification
+  - name: 'info-alerts'
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#alerts-info'
+        username: 'RAG-App-Alerts'
+        icon_emoji: ':information_source:'
+        title: 'ℹ️ INFO: {{ .GroupLabels.alertname }}'
+        title_link: '{{ .CommonAnnotations.runbook_url }}'
+        text: |
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ if .Annotations.runbook_url }}
+          <{{ .Annotations.runbook_url }}|View Runbook>
+          {{ end }}
+          {{ end }}
+        color: 'good'
+
+  # Emergency alerts for service down
+  - name: 'emergency-alerts'
+    email_configs:
+      - to: 'admin@react-rag-app.com,devops@react-rag-app.com,cto@react-rag-app.com'
+        subject: '🚨 EMERGENCY: [RAG-APP] SERVICE DOWN'
+        headers:
+          Priority: 'urgent'
+          X-Priority: '1'
+          Importance: 'high'
+        body: |
+          🚨 EMERGENCY - SERVICE DOWN 🚨
+          
+          The RAG Application service is completely down and unavailable.
+          
+          Alert: {{ .GroupLabels.alertname }}
+          Time: {{ .CommonAnnotations.timestamp }}
+          
+          {{ range .Alerts }}
+          - {{ .Annotations.summary }}
+            {{ .Annotations.description }}
+            {{ if .Annotations.runbook_url }}
+            Runbook: {{ .Annotations.runbook_url }}
+            {{ end }}
+          {{ end }}
+          
+          IMMEDIATE EMERGENCY RESPONSE REQUIRED!
+          
+          1. Check service status immediately
+          2. Follow emergency runbook procedures
+          3. Escalate to on-call engineer if needed
+          4. Update status page
+    
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#alerts-emergency'
+        username: 'RAG-App-Emergency'
+        icon_emoji: ':fire:'
+        title: '🚨 EMERGENCY: SERVICE DOWN'
+        title_link: '{{ .CommonAnnotations.runbook_url }}'
+        text: |
+          @channel @here
+          
+          🚨 EMERGENCY - RAG APPLICATION SERVICE DOWN 🚨
+          
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ if .Annotations.runbook_url }}
+          <{{ .Annotations.runbook_url }}|Emergency Runbook>
+          {{ end }}
+          {{ end }}
+          
+          IMMEDIATE ACTION REQUIRED!
+        color: 'danger'
+
+# Inhibit rules to prevent alert spam
+inhibit_rules:
+  # Inhibit warning alerts when critical alerts are firing
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'service']
+  
+  # Inhibit info alerts when warning or critical alerts are firing
+  - source_match:
+      severity: 'warning'
+    target_match:
+      severity: 'info'
+    equal: ['alertname', 'service']
+  
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'info'
+    equal: ['alertname', 'service']
+
+# Templates for custom alert formatting
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'

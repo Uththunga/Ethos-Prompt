@@ -1,0 +1,103 @@
+{
+  "budgets": [
+    {
+      "name": "Bundle Size Budget",
+      "resourceSizes": [
+        {
+          "resourceType": "script",
+          "maximumSizeKb": 500
+        },
+        {
+          "resourceType": "stylesheet",
+          "maximumSizeKb": 100
+        },
+        {
+          "resourceType": "image",
+          "maximumSizeKb": 1000
+        },
+        {
+          "resourceType": "font",
+          "maximumSizeKb": 200
+        },
+        {
+          "resourceType": "total",
+          "maximumSizeKb": 2000
+        }
+      ]
+    },
+    {
+      "name": "Timing Budget",
+      "timings": [
+        {
+          "metric": "first-contentful-paint",
+          "budget": 1800
+        },
+        {
+          "metric": "largest-contentful-paint",
+          "budget": 2500
+        },
+        {
+          "metric": "first-input-delay",
+          "budget": 100
+        },
+        {
+          "metric": "cumulative-layout-shift",
+          "budget": 0.1
+        },
+        {
+          "metric": "time-to-first-byte",
+          "budget": 800
+        },
+        {
+          "metric": "total-blocking-time",
+          "budget": 200
+        },
+        {
+          "metric": "speed-index",
+          "budget": 3000
+        }
+      ]
+    }
+  ],
+  "lighthouse": {
+    "performance": 90,
+    "accessibility": 95,
+    "best-practices": 90,
+    "seo": 90,
+    "pwa": 80
+  },
+  "webpack": {
+    "maxAssetSize": 512000,
+    "maxEntrypointSize": 512000,
+    "hints": "error"
+  },
+  "vite": {
+    "chunkSizeWarningLimit": 500,
+    "assetsInlineLimit": 4096
+  },
+  "monitoring": {
+    "enabled": true,
+    "alertThresholds": {
+      "performance": {
+        "warning": 80,
+        "error": 70
+      },
+      "bundleSize": {
+        "warning": 400,
+        "error": 500
+      },
+      "memoryUsage": {
+        "warning": 40,
+        "error": 60
+      }
+    },
+    "reportingEndpoint": "https://analytics.your-domain.com/performance",
+    "slackWebhook": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+  },
+  "ci": {
+    "failOnBudgetExceeded": true,
+    "generateReport": true,
+    "uploadArtifacts": true,
+    "compareBaseline": true
+  }
+}

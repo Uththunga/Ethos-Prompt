@@ -1,0 +1,459 @@
+[
+  {
+    "id": "pricing_001",
+    "category": "pricing",
+    "query": "How much does it cost?",
+    "expected_content": ["custom quotation", "pricing", "quote"],
+    "expected_tools": ["search_kb", "get_pricing"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85,
+    "notes": "Should guide to quotation system"
+  },
+  {
+    "id": "pricing_002",
+    "category": "pricing",
+    "query": "What are your pricing plans?",
+    "expected_content": ["custom", "quotation", "consultation"],
+    "expected_tools": ["get_pricing"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "pricing_003",
+    "category": "pricing",
+    "query": "Do you have a free tier?",
+    "expected_content": ["pricing", "custom", "consultation"],
+    "expected_tools": ["search_kb", "get_pricing"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "pricing_004",
+    "category": "pricing",
+    "query": "How much for a Smart Business Assistant?",
+    "expected_content": ["smart business assistant", "quotation", "custom"],
+    "expected_tools": ["search_kb", "get_pricing"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "pricing_005",
+    "category": "pricing",
+    "query": "What's included in the Professional package?",
+    "expected_content": ["professional", "package", "quotation"],
+    "expected_tools": ["get_pricing"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "services_001",
+    "category": "services",
+    "query": "What services does EthosPrompt offer?",
+    "expected_content": ["smart business assistant", "system integration", "intelligent applications"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.9,
+    "notes": "Should list all 3 core services"
+  },
+  {
+    "id": "services_002",
+    "category": "services",
+    "query": "Tell me about Smart Business Assistant",
+    "expected_content": ["smart business assistant", "automate", "customer"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "services_003",
+    "category": "services",
+    "query": "Can you help with system integration?",
+    "expected_content": ["system integration", "connect", "automate"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "services_004",
+    "category": "services",
+    "query": "What is Intelligent Applications?",
+    "expected_content": ["intelligent applications", "custom", "ai"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "services_005",
+    "category": "services",
+    "query": "How can EthosPrompt help my business?",
+    "expected_content": ["automate", "efficiency", "roi"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "technical_001",
+    "category": "technical",
+    "query": "What technology stack do you use?",
+    "expected_content": ["technology", "rag", "ai"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "technical_002",
+    "category": "technical",
+    "query": "How long does implementation take?",
+    "expected_content": ["week", "timeline", "implementation"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "technical_003",
+    "category": "technical",
+    "query": "Do you integrate with Salesforce?",
+    "expected_content": ["integrate", "system", "crm"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "technical_004",
+    "category": "technical",
+    "query": "What's your RAG technology?",
+    "expected_content": ["rag", "retrieval", "knowledge"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "technical_005",
+    "category": "technical",
+    "query": "Is it secure?",
+    "expected_content": ["security", "data", "protection"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "contact_001",
+    "category": "contact",
+    "query": "I want to speak with someone",
+    "expected_content": ["contact", "consultation", "team"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8,
+    "notes": "Should guide to contact form or consultation"
+  },
+  {
+    "id": "contact_002",
+    "category": "contact",
+    "query": "How do I request a consultation?",
+    "expected_content": ["consultation", "contact", "email"],
+    "expected_tools": ["request_consultation"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "contact_003",
+    "category": "contact",
+    "query": "I'm interested in partnership",
+    "expected_content": ["partnership", "contact"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "contact_004",
+    "category": "contact",
+    "query": "Schedule a demo",
+    "expected_content": ["demo", "consultation", "contact"],
+    "expected_tools": ["request_consultation", "search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "contact_005",
+    "category": "contact",
+    "query": "I have a question about implementation",
+    "expected_content": ["implementation", "consultation", "contact"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "edge_001",
+    "category": "edge_case",
+    "query": "hi",
+    "expected_content": ["help", "ethosprompt", "services"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.7,
+    "notes": "Ambiguous query - should provide helpful intro"
+  },
+  {
+    "id": "edge_002",
+    "category": "edge_case",
+    "query": "What is molē?",
+    "expected_content": ["mol", "assistant", "ethosprompt"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "edge_003",
+    "category": "edge_case",
+    "query": "Tell me everything about your company",
+    "expected_content": ["ethosprompt", "services", "mission"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75,
+    "notes": "Very broad query - should be concise"
+  },
+  {
+    "id": "edge_004",
+    "category": "edge_case",
+    "query": "Do you offer digital transformation services?",
+    "expected_content": ["services", "smart business assistant", "system integration"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.7,
+    "notes": "Hallucination test - should NOT mention 'digital transformation'"
+  },
+  {
+    "id": "edge_005",
+    "category": "edge_case",
+    "query": "How much ROI can I expect?",
+    "expected_content": ["roi", "efficiency", "savings"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "multi_intent_001",
+    "category": "multi_intent",
+    "query": "What services do you offer and how much do they cost?",
+    "expected_content": ["services", "pricing", "custom quotation"],
+    "expected_tools": ["search_kb", "get_pricing"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8,
+    "notes": "Multi-intent: services + pricing"
+  },
+  {
+    "id": "multi_intent_002",
+    "category": "multi_intent",
+    "query": "Can you integrate with my CRM and how long would it take?",
+    "expected_content": ["integration", "timeline", "week"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "multi_intent_003",
+    "category": "multi_intent",
+    "query": "I need a Smart Assistant and want to know pricing and timeline",
+    "expected_content": ["smart assistant", "pricing", "timeline", "quotation"],
+    "expected_tools": ["search_kb", "get_pricing"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "comparison_001",
+    "category": "comparison",
+    "query": "What's the difference between Smart Assistant and custom applications?",
+    "expected_content": ["smart assistant", "intelligent applications", "custom"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "comparison_002",
+    "category": "comparison",
+    "query": "Why choose EthosPrompt over competitors?",
+    "expected_content": ["roi", "efficiency", "proven"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "usecase_001",
+    "category": "use_case",
+    "query": "Can you help automate customer support?",
+    "expected_content": ["smart assistant", "customer support", "automate"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "usecase_002",
+    "category": "use_case",
+    "query": "I need to connect my e-commerce platform to inventory system",
+    "expected_content": ["system integration", "connect", "automate"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "usecase_003",
+    "category": "use_case",
+    "query": "We want to build a custom AI chatbot",
+    "expected_content": ["intelligent applications", "custom", "ai"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "roi_001",
+    "category": "roi",
+    "query": "What results have other clients seen?",
+    "expected_content": ["roi", "efficiency", "savings"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "roi_002",
+    "category": "roi",
+    "query": "How fast will I see value?",
+    "expected_content": ["roi", "timeline", "efficiency"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "getting_started_001",
+    "category": "getting_started",
+    "query": "How do I get started?",
+    "expected_content": ["consultation", "contact", "quote"],
+    "expected_tools": ["search_kb", "request_consultation"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "getting_started_002",
+    "category": "getting_started",
+    "query": "What's the onboarding process?",
+    "expected_content": ["onboarding", "implementation", "timeline"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "support_001",
+    "category": "support",
+    "query": "What kind of support do you provide?",
+    "expected_content": ["support", "team", "assistance"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "support_002",
+    "category": "support",
+    "query": "Do you offer training?",
+    "expected_content": ["training", "support", "onboarding"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "features_001",
+    "category": "features",
+    "query": "What features does the Smart Assistant have?",
+    "expected_content": ["smart assistant", "features", "automate"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.85
+  },
+  {
+    "id": "features_002",
+    "category": "features",
+    "query": "Can it handle multilingual queries?",
+    "expected_content": ["multilingual", "language", "support"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "scalability_001",
+    "category": "scalability",
+    "query": "Can it scale as my business grows?",
+    "expected_content": ["scale", "grow", "flexible"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "industry_001",
+    "category": "industry",
+    "query": "Do you work with e-commerce companies?",
+    "expected_content": ["industry", "e-commerce", "use case"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.7
+  },
+  {
+    "id": "industry_002",
+    "category": "industry",
+    "query": "What industries do you serve?",
+    "expected_content": ["industry", "business", "solution"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "compliance_001",
+    "category": "compliance",
+    "query": "Are you GDPR compliant?",
+    "expected_content": ["gdpr", "compliance", "data protection"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "compliance_002",
+    "category": "compliance",
+    "query": "How do you handle data privacy?",
+    "expected_content": ["privacy", "data", "security"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "customization_001",
+    "category": "customization",
+    "query": "Can you customize the solution for our needs?",
+    "expected_content": ["custom", "tailor", "specific"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.8
+  },
+  {
+    "id": "deployment_001",
+    "category": "deployment",
+    "query": "Can it be deployed on-premise?",
+    "expected_content": ["deployment", "on-premise", "cloud"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "success_001",
+    "category": "success_stories",
+    "query": "Do you have case studies?",
+    "expected_content": ["case study", "success", "results"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  },
+  {
+    "id": "trial_001",
+    "category": "trial",
+    "query": "Do you offer a free trial?",
+    "expected_content": ["trial", "demo", "consultation"],
+    "expected_tools": ["search_kb"],
+    "expected_follow_ups": 3,
+    "quality_threshold": 0.75
+  }
+]

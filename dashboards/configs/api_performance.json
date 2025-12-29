@@ -1,0 +1,56 @@
+{
+  "id": "api_performance",
+  "name": "API Performance Dashboard",
+  "description": "Detailed API endpoint performance and usage metrics",
+  "created": "2025-07-22T19:16:02.526Z",
+  "refreshInterval": 30,
+  "widgets": [
+    {
+      "id": "api_performance_function_invocations",
+      "type": "metric",
+      "title": "Function Invocations",
+      "query": "cloud_function_invocations",
+      "visualization": "bar_chart",
+      "breakdown": [
+        "generate_prompt",
+        "execute_prompt",
+        "test_cors"
+      ],
+      "refreshInterval": 30
+    },
+    {
+      "id": "api_performance_function_duration",
+      "type": "metric",
+      "title": "Function Execution Duration",
+      "query": "cloud_function_duration",
+      "visualization": "heatmap",
+      "breakdown": [
+        "generate_prompt",
+        "execute_prompt",
+        "test_cors"
+      ],
+      "refreshInterval": 30
+    },
+    {
+      "id": "api_performance_api_errors",
+      "type": "metric",
+      "title": "API Errors by Endpoint",
+      "query": "api_errors_by_endpoint",
+      "visualization": "stacked_bar",
+      "breakdown": [
+        "4xx_errors",
+        "5xx_errors"
+      ],
+      "refreshInterval": 30
+    },
+    {
+      "id": "api_performance_request_volume",
+      "type": "metric",
+      "title": "Request Volume",
+      "query": "requests_per_minute",
+      "visualization": "line_chart",
+      "timeframe": "24h",
+      "refreshInterval": 30
+    }
+  ]
+}

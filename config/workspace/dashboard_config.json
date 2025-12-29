@@ -1,0 +1,40 @@
+{
+  "overview_dashboard": {
+    "widgets": [
+      "member_count",
+      "prompt_count",
+      "recent_activity",
+      "usage_trends"
+    ],
+    "refresh_interval": 300,
+    "access_roles": [
+      "owner",
+      "admin"
+    ]
+  },
+  "member_dashboard": {
+    "widgets": [
+      "member_activity",
+      "contribution_metrics",
+      "engagement_scores"
+    ],
+    "refresh_interval": 600,
+    "access_roles": [
+      "owner",
+      "admin"
+    ]
+  },
+  "performance_dashboard": {
+    "widgets": [
+      "response_times",
+      "success_rates",
+      "error_rates",
+      "optimization_tips"
+    ],
+    "refresh_interval": 180,
+    "access_roles": [
+      "owner",
+      "admin"
+    ]
+  }
+}

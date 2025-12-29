@@ -1,0 +1,60 @@
+{
+  "authentication": {
+    "overview": "Authentication methods and security",
+    "endpoints": [
+      "POST /auth/login",
+      "POST /auth/refresh",
+      "POST /auth/logout"
+    ],
+    "examples": "Complete code examples for all languages"
+  },
+  "prompts": {
+    "overview": "Prompt management and execution",
+    "endpoints": [
+      "GET /prompts",
+      "POST /prompts",
+      "PUT /prompts/{id}",
+      "DELETE /prompts/{id}",
+      "POST /prompts/{id}/execute"
+    ],
+    "examples": "CRUD operations and execution examples"
+  },
+  "documents": {
+    "overview": "Document upload and RAG processing",
+    "endpoints": [
+      "POST /documents",
+      "GET /documents",
+      "DELETE /documents/{id}",
+      "POST /documents/{id}/process"
+    ],
+    "examples": "File upload and processing workflows"
+  },
+  "workspaces": {
+    "overview": "Team collaboration and workspace management",
+    "endpoints": [
+      "GET /workspaces",
+      "POST /workspaces",
+      "PUT /workspaces/{id}",
+      "POST /workspaces/{id}/members"
+    ],
+    "examples": "Team management and collaboration"
+  },
+  "analytics": {
+    "overview": "Usage analytics and reporting",
+    "endpoints": [
+      "GET /analytics/dashboard",
+      "GET /analytics/metrics",
+      "GET /analytics/usage"
+    ],
+    "examples": "Analytics data retrieval and visualization"
+  },
+  "marketplace": {
+    "overview": "Template marketplace operations",
+    "endpoints": [
+      "GET /marketplace/templates",
+      "POST /marketplace/templates",
+      "GET /marketplace/categories"
+    ],
+    "examples": "Template browsing and publishing"
+  }
+}

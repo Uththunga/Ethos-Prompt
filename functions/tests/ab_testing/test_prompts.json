@@ -1,0 +1,108 @@
+[
+  {
+    "id": "tech_ai_trends",
+    "text": "What are the latest trends in artificial intelligence and machine learning?",
+    "category": "technology",
+    "expected_topics": ["machine learning", "neural networks", "deep learning", "AI", "LLM", "transformers"],
+    "documents": []
+  },
+  {
+    "id": "business_retention",
+    "text": "How can companies improve customer retention and reduce churn?",
+    "category": "business",
+    "expected_topics": ["customer service", "loyalty", "engagement", "satisfaction", "retention strategies"],
+    "documents": []
+  },
+  {
+    "id": "tech_cloud_computing",
+    "text": "Explain the benefits and challenges of cloud computing for enterprises.",
+    "category": "technology",
+    "expected_topics": ["scalability", "cost", "security", "infrastructure", "cloud providers"],
+    "documents": []
+  },
+  {
+    "id": "health_nutrition",
+    "text": "What are the key principles of a healthy diet and nutrition?",
+    "category": "health",
+    "expected_topics": ["balanced diet", "nutrients", "vitamins", "protein", "vegetables", "fruits"],
+    "documents": []
+  },
+  {
+    "id": "business_leadership",
+    "text": "What makes an effective leader in modern organizations?",
+    "category": "business",
+    "expected_topics": ["communication", "vision", "empathy", "decision making", "team building"],
+    "documents": []
+  },
+  {
+    "id": "tech_cybersecurity",
+    "text": "What are the most important cybersecurity practices for businesses?",
+    "category": "technology",
+    "expected_topics": ["encryption", "authentication", "firewall", "security", "data protection"],
+    "documents": []
+  },
+  {
+    "id": "education_online_learning",
+    "text": "How has online learning transformed education in recent years?",
+    "category": "education",
+    "expected_topics": ["remote learning", "digital tools", "accessibility", "engagement", "MOOCs"],
+    "documents": []
+  },
+  {
+    "id": "finance_investment",
+    "text": "What are the fundamental principles of long-term investing?",
+    "category": "finance",
+    "expected_topics": ["diversification", "risk management", "compound interest", "portfolio", "stocks"],
+    "documents": []
+  },
+  {
+    "id": "environment_sustainability",
+    "text": "What are the most effective strategies for environmental sustainability?",
+    "category": "environment",
+    "expected_topics": ["renewable energy", "carbon footprint", "recycling", "conservation", "climate change"],
+    "documents": []
+  },
+  {
+    "id": "tech_software_development",
+    "text": "What are the best practices for modern software development?",
+    "category": "technology",
+    "expected_topics": ["agile", "testing", "code review", "CI/CD", "version control", "documentation"],
+    "documents": []
+  },
+  {
+    "id": "psychology_productivity",
+    "text": "How can individuals improve their productivity and time management?",
+    "category": "psychology",
+    "expected_topics": ["focus", "prioritization", "habits", "goals", "time blocking", "distraction"],
+    "documents": []
+  },
+  {
+    "id": "business_marketing",
+    "text": "What are the key components of a successful digital marketing strategy?",
+    "category": "business",
+    "expected_topics": ["SEO", "content marketing", "social media", "analytics", "conversion", "branding"],
+    "documents": []
+  },
+  {
+    "id": "tech_data_science",
+    "text": "What skills are essential for a career in data science?",
+    "category": "technology",
+    "expected_topics": ["statistics", "programming", "machine learning", "data visualization", "SQL", "Python"],
+    "documents": []
+  },
+  {
+    "id": "health_mental_wellness",
+    "text": "What are effective strategies for maintaining mental health and wellness?",
+    "category": "health",
+    "expected_topics": ["stress management", "mindfulness", "exercise", "sleep", "therapy", "self-care"],
+    "documents": []
+  },
+  {
+    "id": "business_innovation",
+    "text": "How can organizations foster a culture of innovation?",
+    "category": "business",
+    "expected_topics": ["creativity", "experimentation", "risk-taking", "collaboration", "learning", "failure"],
+    "documents": []
+  }
+]
+

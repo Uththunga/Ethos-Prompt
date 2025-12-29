@@ -1,0 +1,38 @@
+{
+  "rollback_triggers": {
+    "automatic_triggers": {
+      "health_check_failure": true,
+      "error_rate_threshold": 5.0,
+      "response_time_threshold": 5000,
+      "availability_threshold": 95.0
+    },
+    "manual_triggers": {
+      "emergency_rollback": true,
+      "planned_rollback": true,
+      "partial_rollback": true
+    }
+  },
+  "rollback_strategies": {
+    "immediate_rollback": {
+      "duration": "< 2 minutes",
+      "method": "traffic_switch",
+      "validation": "health_checks"
+    },
+    "gradual_rollback": {
+      "duration": "5-10 minutes",
+      "method": "traffic_shifting",
+      "validation": "comprehensive_tests"
+    },
+    "database_rollback": {
+      "backup_restoration": true,
+      "migration_reversal": true,
+      "data_consistency_checks": true
+    }
+  },
+  "rollback_validation": {
+    "health_checks": true,
+    "smoke_tests": true,
+    "user_acceptance_tests": true,
+    "performance_validation": true
+  }
+}

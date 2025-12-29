@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Cache - RAG Prompt Library</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .button:hover {
+            background: #2563eb;
+        }
+        .success {
+            color: #059669;
+            background: #ecfdf5;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .error {
+            color: #dc2626;
+            background: #fef2f2;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .info {
+            color: #0369a1;
+            background: #f0f9ff;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Cache Management</h1>
+        <p>This tool helps resolve caching issues that may cause 404 errors for JavaScript files.</p>
+        
+        <div id="status"></div>
+        
+        <h3>Quick Actions:</h3>
+        <button class="button" onclick="clearAllCaches()">Clear All Caches</button>
+        <button class="button" onclick="unregisterServiceWorker()">Unregister Service Worker</button>
+        <button class="button" onclick="forceReload()">Force Reload</button>
+        <button class="button" onclick="clearBrowserCache()">Clear Browser Cache</button>
+        
+        <h3>Diagnostic Information:</h3>
+        <div id="diagnostics"></div>
+        
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click "Clear All Caches" to remove cached files</li>
+            <li>Click "Unregister Service Worker" to remove the service worker</li>
+            <li>Click "Force Reload" to reload with fresh resources</li>
+            <li>If issues persist, try "Clear Browser Cache" and restart your browser</li>
+        </ol>
+    </div>
+
+    <script>
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = `<div class="${type}">${message}</div>`;
+        }
+
+        function showDiagnostics() {
+            const diagnosticsDiv = document.getElementById('diagnostics');
+            const info = {
+                'User Agent': navigator.userAgent,
+                'Service Worker Support': 'serviceWorker' in navigator ? '✅ Supported' : '❌ Not Supported',
+                'Cache API Support': 'caches' in window ? '✅ Supported' : '❌ Not Supported',
+                'Current URL': window.location.href,
+                'Timestamp': new Date().toISOString()
+            };
+            
+            let html = '<ul>';
+            for (const [key, value] of Object.entries(info)) {
+                html += `<li><strong>${key}:</strong> ${value}</li>`;
+            }
+            html += '</ul>';
+            diagnosticsDiv.innerHTML = html;
+        }
+
+        async function clearAllCaches() {
+            try {
+                showStatus('🧹 Clearing all caches...', 'info');
+                
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    const deletePromises = cacheNames.map(name => caches.delete(name));
+                    await Promise.all(deletePromises);
+                    showStatus(`✅ Cleared ${cacheNames.length} cache(s): ${cacheNames.join(', ')}`, 'success');
+                } else {
+                    showStatus('❌ Cache API not supported in this browser', 'error');
+                }
+            } catch (error) {
+                showStatus(`❌ Error clearing caches: ${error.message}`, 'error');
+            }
+        }
+
+        async function unregisterServiceWorker() {
+            try {
+                showStatus('🔧 Unregistering service worker...', 'info');
+                
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    const unregisterPromises = registrations.map(reg => reg.unregister());
+                    await Promise.all(unregisterPromises);
+                    showStatus(`✅ Unregistered ${registrations.length} service worker(s)`, 'success');
+                } else {
+                    showStatus('❌ Service Worker not supported in this browser', 'error');
+                }
+            } catch (error) {
+                showStatus(`❌ Error unregistering service worker: ${error.message}`, 'error');
+            }
+        }
+
+        function forceReload() {
+            showStatus('🔄 Force reloading page...', 'info');
+            // Add timestamp to force reload
+            const url = new URL(window.location);
+            url.searchParams.set('_t', Date.now());
+            window.location.href = url.toString();
+        }
+
+        function clearBrowserCache() {
+            showStatus('🗑️ Attempting to clear browser cache...', 'info');
+            
+            // Try multiple methods
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    registrations.forEach(reg => reg.unregister());
+                });
+            }
+            
+            // Clear session storage
+            try {
+                sessionStorage.clear();
+                localStorage.clear();
+            } catch (e) {
+                console.warn('Could not clear storage:', e);
+            }
+            
+            // Force reload with cache bypass
+            setTimeout(() => {
+                window.location.reload(true);
+            }, 1000);
+            
+            showStatus('🔄 Browser cache clearing initiated. Page will reload...', 'success');
+        }
+
+        // Auto-run diagnostics on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showDiagnostics();
+            showStatus('🔧 Cache management tool ready. Use the buttons above to resolve caching issues.', 'info');
+        });
+    </script>
+</body>
+</html>

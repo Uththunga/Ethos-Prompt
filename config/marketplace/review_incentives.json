@@ -1,0 +1,35 @@
+{
+  "reviewer_rewards": {
+    "points_system": {
+      "helpful_review": 10,
+      "detailed_review": 25,
+      "expert_review": 50,
+      "first_review": 5
+    },
+    "badges": {
+      "helpful_reviewer": {
+        "threshold": 100,
+        "reward": "priority_support"
+      },
+      "expert_reviewer": {
+        "threshold": 500,
+        "reward": "beta_access"
+      },
+      "community_champion": {
+        "threshold": 1000,
+        "reward": "revenue_share"
+      }
+    },
+    "leaderboards": {
+      "monthly_top_reviewers": true,
+      "most_helpful_reviews": true,
+      "expert_contributors": true
+    }
+  },
+  "quality_incentives": {
+    "verified_purchase_bonus": 2.0,
+    "detailed_review_bonus": 1.5,
+    "photo_video_bonus": 1.3,
+    "early_review_bonus": 1.2
+  }
+}

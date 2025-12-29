@@ -1,0 +1,50 @@
+{
+  "rating_criteria": {
+    "overall_quality": {
+      "weight": 0.3,
+      "description": "Overall template quality and usefulness"
+    },
+    "ease_of_use": {
+      "weight": 0.25,
+      "description": "How easy is the template to understand and use"
+    },
+    "documentation": {
+      "weight": 0.2,
+      "description": "Quality of documentation and examples"
+    },
+    "originality": {
+      "weight": 0.15,
+      "description": "Uniqueness and creativity of the template"
+    },
+    "performance": {
+      "weight": 0.1,
+      "description": "Template performance and efficiency"
+    }
+  },
+  "review_features": {
+    "detailed_reviews": {
+      "min_length": 50,
+      "structured_feedback": true,
+      "pros_and_cons": true,
+      "use_case_examples": true
+    },
+    "review_moderation": {
+      "spam_detection": true,
+      "sentiment_analysis": true,
+      "fake_review_detection": true,
+      "community_reporting": true
+    },
+    "review_helpfulness": {
+      "helpful_votes": true,
+      "verified_purchase_badges": true,
+      "expert_reviewer_badges": true,
+      "review_quality_score": true
+    }
+  },
+  "rating_aggregation": {
+    "weighted_average": true,
+    "recency_bias": true,
+    "reviewer_credibility": true,
+    "outlier_detection": true
+  }
+}

@@ -1,0 +1,192 @@
+# Artillery Load Testing Configuration
+# Tests API endpoints, RAG pipeline, and frontend under high load
+
+config:
+  target: "https://react-app-000730.web.app"
+  phases:
+    # Warm-up phase
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm-up"
+    
+    # Ramp-up phase
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+      name: "Ramp-up"
+    
+    # Sustained load
+    - duration: 300
+      arrivalRate: 50
+      name: "Sustained load"
+    
+    # Spike test
+    - duration: 60
+      arrivalRate: 100
+      name: "Spike"
+    
+    # Cool-down
+    - duration: 60
+      arrivalRate: 10
+      name: "Cool-down"
+  
+  # Performance thresholds
+  ensure:
+    maxErrorRate: 1  # Max 1% error rate
+    p95: 2000  # 95th percentile response time < 2s
+    p99: 5000  # 99th percentile response time < 5s
+  
+  # HTTP settings
+  http:
+    timeout: 30
+    pool: 50
+  
+  # Plugins
+  plugins:
+    expect: {}
+    metrics-by-endpoint: {}
+  
+  # Variables
+  variables:
+    testUserId: "test-user-123"
+    testPromptId: "test-prompt-456"
+    testDocumentId: "test-doc-789"
+
+# Test scenarios
+scenarios:
+  # Scenario 1: Homepage and authentication
+  - name: "Homepage and Auth Flow"
+    weight: 20
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
+            - contentType: text/html
+      
+      - get:
+          url: "/login"
+          expect:
+            - statusCode: 200
+      
+      - think: 2
+      
+      - get:
+          url: "/dashboard"
+          expect:
+            - statusCode: [200, 302]  # May redirect if not authenticated
+  
+  # Scenario 2: Prompt listing and viewing
+  - name: "Browse Prompts"
+    weight: 30
+    flow:
+      - get:
+          url: "/prompts"
+          expect:
+            - statusCode: 200
+      
+      - think: 1
+      
+      - get:
+          url: "/prompts/{{ testPromptId }}"
+          expect:
+            - statusCode: [200, 404]
+      
+      - think: 2
+  
+  # Scenario 3: Prompt execution (API)
+  - name: "Execute Prompt"
+    weight: 25
+    flow:
+      - post:
+          url: "/api/prompts/execute"
+          json:
+            promptId: "{{ testPromptId }}"
+            variables:
+              input: "Test input for load testing"
+            model: "gpt-3.5-turbo"
+            temperature: 0.7
+          headers:
+            Content-Type: "application/json"
+          expect:
+            - statusCode: [200, 401, 429]  # 429 = rate limited
+          capture:
+            - json: "$.executionId"
+              as: "executionId"
+      
+      - think: 3
+      
+      # Check execution status
+      - get:
+          url: "/api/executions/{{ executionId }}"
+          expect:
+            - statusCode: [200, 404]
+  
+  # Scenario 4: Document upload and RAG
+  - name: "Document Upload and RAG"
+    weight: 15
+    flow:
+      - post:
+          url: "/api/documents/upload"
+          json:
+            fileName: "test-document.txt"
+            content: "This is a test document for load testing the RAG pipeline."
+            userId: "{{ testUserId }}"
+          headers:
+            Content-Type: "application/json"
+          expect:
+            - statusCode: [200, 201, 401, 413]  # 413 = payload too large
+          capture:
+            - json: "$.documentId"
+              as: "documentId"
+      
+      - think: 5
+      
+      # Search documents
+      - post:
+          url: "/api/documents/search"
+          json:
+            query: "test document"
+            userId: "{{ testUserId }}"
+            topK: 5
+          headers:
+            Content-Type: "application/json"
+          expect:
+            - statusCode: [200, 401]
+  
+  # Scenario 5: Analytics dashboard
+  - name: "Analytics Dashboard"
+    weight: 10
+    flow:
+      - get:
+          url: "/api/analytics/dashboard"
+          qs:
+            userId: "{{ testUserId }}"
+            period: "7d"
+          expect:
+            - statusCode: [200, 401]
+      
+      - think: 2
+      
+      - get:
+          url: "/api/analytics/model-stats"
+          qs:
+            period: "7d"
+          expect:
+            - statusCode: [200, 401]
+      
+      - think: 1
+      
+      - get:
+          url: "/api/analytics/model-recommendations"
+          qs:
+            task: "general"
+            goal: "balanced"
+          expect:
+            - statusCode: [200, 401]
+
+# After test hooks
+after:
+  flow:
+    - log: "Load test completed"
+

@@ -1,0 +1,50 @@
+{
+  "id": "business_metrics",
+  "name": "Business Metrics Dashboard",
+  "description": "Key business indicators and usage patterns",
+  "created": "2025-07-22T19:16:02.534Z",
+  "refreshInterval": 30,
+  "widgets": [
+    {
+      "id": "business_metrics_prompt_generation_rate",
+      "type": "metric",
+      "title": "Prompts Generated per Hour",
+      "query": "prompts_generated_per_hour",
+      "visualization": "line_chart",
+      "timeframe": "24h",
+      "refreshInterval": 30
+    },
+    {
+      "id": "business_metrics_user_engagement",
+      "type": "metric",
+      "title": "User Engagement Score",
+      "query": "user_engagement_score",
+      "visualization": "gauge",
+      "target": 80,
+      "refreshInterval": 30
+    },
+    {
+      "id": "business_metrics_conversion_funnel",
+      "type": "metric",
+      "title": "User Conversion Funnel",
+      "query": "conversion_funnel",
+      "visualization": "funnel",
+      "breakdown": [
+        "visitors",
+        "signups",
+        "active_users",
+        "power_users"
+      ],
+      "refreshInterval": 30
+    },
+    {
+      "id": "business_metrics_retention_rate",
+      "type": "metric",
+      "title": "User Retention Rate",
+      "query": "user_retention_rate",
+      "visualization": "cohort_chart",
+      "timeframe": "30d",
+      "refreshInterval": 30
+    }
+  ]
+}

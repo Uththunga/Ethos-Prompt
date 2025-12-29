@@ -1,0 +1,20 @@
+{
+  "pre_rollback": [
+    "assess_impact",
+    "notify_stakeholders",
+    "backup_current_state",
+    "prepare_rollback_plan"
+  ],
+  "rollback_execution": [
+    "switch_traffic",
+    "restore_database",
+    "update_configurations",
+    "validate_rollback"
+  ],
+  "post_rollback": [
+    "verify_system_health",
+    "notify_completion",
+    "conduct_post_mortem",
+    "update_documentation"
+  ]
+}

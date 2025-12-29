@@ -1,0 +1,35 @@
+{
+  "alert_types": {
+    "threshold_alerts": {
+      "metric_thresholds": true,
+      "percentage_changes": true,
+      "absolute_values": true,
+      "trend_based": true
+    },
+    "anomaly_alerts": {
+      "statistical_anomalies": true,
+      "pattern_deviations": true,
+      "seasonal_adjustments": true,
+      "ml_based_detection": true
+    },
+    "business_alerts": {
+      "kpi_monitoring": true,
+      "goal_tracking": true,
+      "sla_violations": true,
+      "revenue_impacts": true
+    }
+  },
+  "notification_channels": {
+    "email": true,
+    "slack": true,
+    "webhook": true,
+    "in_app": true,
+    "sms": true
+  },
+  "alert_management": {
+    "escalation_rules": true,
+    "suppression_rules": true,
+    "acknowledgment": true,
+    "resolution_tracking": true
+  }
+}

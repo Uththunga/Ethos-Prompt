@@ -1,0 +1,17 @@
+{
+  "firestore_rules": {
+    "workspace_isolation": true,
+    "member_access_only": true,
+    "cross_workspace_prevention": true
+  },
+  "api_isolation": {
+    "workspace_context_required": true,
+    "member_validation": true,
+    "data_filtering": true
+  },
+  "storage_isolation": {
+    "workspace_folders": true,
+    "access_control": true,
+    "quota_management": true
+  }
+}

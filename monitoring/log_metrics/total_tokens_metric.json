@@ -1,0 +1,17 @@
+{
+  "name": "marketing_api_total_tokens",
+  "description": "Total tokens used by marketing API",
+  "filter": "resource.type=\"cloud_run_revision\"\nresource.labels.service_name=\"marketing-api\"\njsonPayload.monitoring.event=\"business_metrics\"\njsonPayload.monitoring.total_tokens>0",
+  "metricDescriptor": {
+    "metricKind": "DELTA",
+    "valueType": "DISTRIBUTION"
+  },
+  "valueExtractor": "EXTRACT(jsonPayload.monitoring.total_tokens)",
+  "bucketOptions": {
+    "exponentialBuckets": {
+      "numFiniteBuckets": 64,
+      "growthFactor": 2.0,
+      "scale": 1.0
+    }
+  }
+}

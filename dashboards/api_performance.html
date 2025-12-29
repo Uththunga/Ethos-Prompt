@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Performance Dashboard - RAG Prompt Library</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .dashboard { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .widgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .widget { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .widget h3 { margin: 0 0 15px 0; color: #333; }
+        .metric-value { font-size: 2em; font-weight: bold; color: #2196F3; }
+        .metric-target { font-size: 0.9em; color: #666; margin-top: 5px; }
+        .status-good { color: #4CAF50; }
+        .status-warning { color: #FF9800; }
+        .status-error { color: #F44336; }
+        .refresh-info { text-align: right; color: #666; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>API Performance Dashboard</h1>
+            <p>Detailed API endpoint performance and usage metrics</p>
+            <div class="refresh-info">Auto-refresh: 30s | Last updated: <span id="lastUpdate">Loading...</span></div>
+        </div>
+        <div class="widgets" id="widgets">
+            
+                <div class="widget" id="widget-api_performance_function_invocations">
+                    <h3>Function Invocations</h3>
+                    <div id="content-api_performance_function_invocations">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-api_performance_function_duration">
+                    <h3>Function Execution Duration</h3>
+                    <div id="content-api_performance_function_duration">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-api_performance_api_errors">
+                    <h3>API Errors by Endpoint</h3>
+                    <div id="content-api_performance_api_errors">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-api_performance_request_volume">
+                    <h3>Request Volume</h3>
+                    <div id="content-api_performance_request_volume">Loading...</div>
+                </div>
+            
+        </div>
+    </div>
+    <script src="scripts/api_performance.js"></script>
+</body>
+</html>

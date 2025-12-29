@@ -1,0 +1,674 @@
+openapi: 3.0.3
+info:
+  title: RAG Prompt Library API
+  description: |
+    The RAG Prompt Library API provides comprehensive access to prompt management, 
+    document processing, and AI-powered content generation with Retrieval-Augmented Generation (RAG) capabilities.
+    
+    ## Features
+    - **Prompt Management**: Create, execute, and manage AI prompts
+    - **Document Processing**: Upload and process documents for RAG
+    - **Workspace Collaboration**: Team workspaces with role-based access
+    - **Analytics**: Usage tracking and performance metrics
+    - **Streaming**: Real-time response streaming
+    
+    ## Authentication
+    All API requests require authentication using an API key in the Authorization header:
+    ```
+    Authorization: Bearer your-api-key-here
+    ```
+    
+    ## Rate Limits
+    - Free Plan: 100 requests/hour, 1,000 requests/day
+    - Pro Plan: 1,000 requests/hour, 10,000 requests/day
+    - Enterprise Plan: 10,000 requests/hour, 100,000 requests/day
+  version: 1.0.0
+  contact:
+    name: RAG Prompt Library Support
+    email: support@ragpromptlibrary.com
+    url: https://docs.ragpromptlibrary.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.ragpromptlibrary.com/v1
+    description: Production server
+  - url: https://staging-api.ragpromptlibrary.com/v1
+    description: Staging server
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /prompts:
+    get:
+      summary: List prompts
+      description: Retrieve a paginated list of prompts with optional filtering
+      tags:
+        - Prompts
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: tags
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: workspace_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of prompts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prompts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Prompt'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+    post:
+      summary: Create prompt
+      description: Create a new prompt
+      tags:
+        - Prompts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePromptRequest'
+      responses:
+        '201':
+          description: Prompt created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prompt'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /prompts/{prompt_id}:
+    get:
+      summary: Get prompt
+      description: Retrieve a specific prompt by ID
+      tags:
+        - Prompts
+      parameters:
+        - name: prompt_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Prompt details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prompt'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update prompt
+      description: Update an existing prompt
+      tags:
+        - Prompts
+      parameters:
+        - name: prompt_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePromptRequest'
+      responses:
+        '200':
+          description: Prompt updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prompt'
+    delete:
+      summary: Delete prompt
+      description: Delete a prompt
+      tags:
+        - Prompts
+      parameters:
+        - name: prompt_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Prompt deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /prompts/{prompt_id}/execute:
+    post:
+      summary: Execute prompt
+      description: Execute a prompt with variables and optional RAG configuration
+      tags:
+        - Prompts
+      parameters:
+        - name: prompt_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecutePromptRequest'
+      responses:
+        '200':
+          description: Prompt execution result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /prompts/{prompt_id}/execute-stream:
+    post:
+      summary: Execute prompt with streaming
+      description: Execute a prompt with real-time streaming response
+      tags:
+        - Prompts
+      parameters:
+        - name: prompt_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecutePromptRequest'
+      responses:
+        '200':
+          description: Streaming response
+          content:
+            text/event-stream:
+              schema:
+                type: string
+
+  /documents:
+    get:
+      summary: List documents
+      description: Retrieve a paginated list of documents
+      tags:
+        - Documents
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: folder
+          in: query
+          schema:
+            type: string
+        - name: tags
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of documents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Document'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+    post:
+      summary: Upload document
+      description: Upload a document for processing
+      tags:
+        - Documents
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                description:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+                folder:
+                  type: string
+      responses:
+        '201':
+          description: Document uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+
+  /workspaces:
+    get:
+      summary: List workspaces
+      description: Retrieve all workspaces for the authenticated user
+      tags:
+        - Workspaces
+      responses:
+        '200':
+          description: List of workspaces
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  workspaces:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Workspace'
+    post:
+      summary: Create workspace
+      description: Create a new workspace
+      tags:
+        - Workspaces
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceRequest'
+      responses:
+        '201':
+          description: Workspace created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+
+  schemas:
+    Prompt:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "prompt_123"
+        title:
+          type: string
+          example: "Blog Post Generator"
+        content:
+          type: string
+          example: "Write a {{word_count}}-word blog post about {{topic}}"
+        category:
+          type: string
+          example: "content"
+        tags:
+          type: array
+          items:
+            type: string
+          example: ["blog", "content", "seo"]
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromptVariable'
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        workspace_id:
+          type: string
+          nullable: true
+
+    PromptVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "topic"
+        type:
+          type: string
+          enum: ["text", "textarea", "number", "select", "boolean"]
+          example: "text"
+        required:
+          type: boolean
+          example: true
+        description:
+          type: string
+          example: "Main topic of the blog post"
+        options:
+          type: array
+          items:
+            type: string
+          nullable: true
+
+    ModelConfig:
+      type: object
+      properties:
+        model:
+          type: string
+          example: "gpt-4"
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          example: 0.7
+        max_tokens:
+          type: integer
+          example: 1000
+        top_p:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 1
+
+    CreatePromptRequest:
+      type: object
+      required:
+        - title
+        - content
+        - category
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        category:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromptVariable'
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
+        workspace_id:
+          type: string
+          nullable: true
+
+    UpdatePromptRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        category:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromptVariable'
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
+
+    ExecutePromptRequest:
+      type: object
+      required:
+        - variables
+      properties:
+        variables:
+          type: object
+          additionalProperties: true
+          example:
+            topic: "AI technology"
+            word_count: 800
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
+        rag_config:
+          $ref: '#/components/schemas/RAGConfig'
+        stream:
+          type: boolean
+          default: false
+
+    RAGConfig:
+      type: object
+      properties:
+        document_ids:
+          type: array
+          items:
+            type: string
+        search_mode:
+          type: string
+          enum: ["semantic", "keyword", "hybrid"]
+          default: "hybrid"
+        max_chunks:
+          type: integer
+          default: 5
+        threshold:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.7
+
+    ExecutionResult:
+      type: object
+      properties:
+        execution_id:
+          type: string
+          example: "exec_123"
+        result:
+          type: string
+          example: "Generated content..."
+        usage:
+          $ref: '#/components/schemas/Usage'
+        cost:
+          type: number
+          example: 0.0025
+        execution_time:
+          type: number
+          example: 2.5
+        created_at:
+          type: string
+          format: date-time
+
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          example: 150
+        completion_tokens:
+          type: integer
+          example: 300
+        total_tokens:
+          type: integer
+          example: 450
+
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "doc_123"
+        name:
+          type: string
+          example: "Company Handbook"
+        filename:
+          type: string
+          example: "handbook.pdf"
+        size:
+          type: integer
+          example: 1024000
+        status:
+          type: string
+          enum: ["uploading", "processing", "ready", "failed"]
+          example: "ready"
+        chunks_created:
+          type: integer
+          example: 45
+        created_at:
+          type: string
+          format: date-time
+
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "ws_123"
+        name:
+          type: string
+          example: "Marketing Team"
+        description:
+          type: string
+          example: "Workspace for marketing content"
+        settings:
+          type: object
+          properties:
+            default_model:
+              type: string
+              example: "gpt-4"
+            allow_public_prompts:
+              type: boolean
+              example: false
+            require_approval:
+              type: boolean
+              example: true
+        created_at:
+          type: string
+          format: date-time
+
+    CreateWorkspaceRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        settings:
+          type: object
+          properties:
+            default_model:
+              type: string
+            allow_public_prompts:
+              type: boolean
+            require_approval:
+              type: boolean
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 20
+        total:
+          type: integer
+          example: 150
+        pages:
+          type: integer
+          example: 8
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: "VALIDATION_ERROR"
+            message:
+              type: string
+              example: "Invalid request parameters"
+            details:
+              type: object
+              nullable: true
+            request_id:
+              type: string
+              example: "req_123456789"
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

@@ -1,0 +1,20 @@
+{
+  "development": {
+    "firebase_project": "rag-prompt-library-dev",
+    "database_size": "small",
+    "monitoring": "basic",
+    "logging_level": "debug"
+  },
+  "staging": {
+    "firebase_project": "rag-prompt-library-staging",
+    "database_size": "medium",
+    "monitoring": "comprehensive",
+    "logging_level": "info"
+  },
+  "production": {
+    "firebase_project": "rag-prompt-library",
+    "database_size": "large",
+    "monitoring": "comprehensive",
+    "logging_level": "warn"
+  }
+}

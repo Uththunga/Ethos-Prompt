@@ -1,0 +1,553 @@
+/**
+ * Chat Forms CSS
+ * Clean, professional, minimal styling for inline chat forms
+ */
+
+/* =============================================================================
+   Form Container
+   ============================================================================= */
+
+.chat-form-container {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+
+.chat-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: transparent;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chat-form-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-form-header-icon {
+  font-size: 16px;
+}
+
+.chat-form-close-btn {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-form-close-btn:hover {
+  color: #111827;
+}
+
+.chat-form-close-btn:focus {
+  outline: 2px solid #9ca3af;
+  outline-offset: 2px;
+}
+
+.chat-form-content {
+  padding: 16px;
+}
+
+/* =============================================================================
+   Form Fields
+   ============================================================================= */
+
+.chat-form-field {
+  margin-bottom: 14px;
+}
+
+.chat-form-field:last-child {
+  margin-bottom: 0;
+}
+
+.chat-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.chat-form-label-required::after {
+  content: ' *';
+  color: #dc2626;
+}
+
+.chat-form-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.chat-form-input:focus {
+  outline: none;
+  border-color: #9ca3af;
+}
+
+.chat-form-input.error {
+  border-color: #dc2626;
+}
+
+.chat-form-textarea {
+  width: 100%;
+  min-height: 70px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  resize: vertical;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.chat-form-textarea:focus {
+  outline: none;
+  border-color: #9ca3af;
+}
+
+.chat-form-error {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #dc2626;
+}
+
+/* =============================================================================
+   Radio Group
+   ============================================================================= */
+
+.chat-form-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.chat-form-radio {
+  position: relative; /* Contains the absolutely positioned radio input */
+  flex: 1;
+  min-width: 70px;
+}
+
+.chat-form-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chat-form-radio label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.chat-form-radio input[type="radio"]:checked + label {
+  background: #f3f4f6;
+  border-color: #374151;
+  color: #111827;
+}
+
+.chat-form-radio input[type="radio"]:focus + label {
+  outline: 2px solid #9ca3af;
+  outline-offset: 1px;
+}
+
+/* =============================================================================
+   Buttons
+   ============================================================================= */
+
+.chat-form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.chat-form-btn {
+  flex: 1;
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.chat-form-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-form-btn-primary {
+  background: linear-gradient(135deg, #9C43FE 0%, #4CC2E9 100%);
+  color: #ffffff;
+  border: none;
+}
+
+.chat-form-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #8835E5 0%, #3AB5DC 100%);
+}
+
+.chat-form-btn-primary:focus {
+  outline: 2px solid #6b7280;
+  outline-offset: 2px;
+}
+
+.chat-form-btn-secondary {
+  background: #ffffff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.chat-form-btn-secondary:hover:not(:disabled) {
+  background: #f9fafb;
+}
+
+/* =============================================================================
+   Step Progress
+   ============================================================================= */
+
+.chat-form-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: transparent;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chat-form-step {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.chat-form-step.active {
+  background: linear-gradient(135deg, #9C43FE 0%, #4CC2E9 100%);
+  color: #ffffff;
+}
+
+.chat-form-step.completed {
+  background: linear-gradient(135deg, #9C43FE 0%, #4CC2E9 100%);
+  color: #ffffff;
+}
+
+.chat-form-step.inactive {
+  background: #e5e7eb;
+  color: #9ca3af;
+}
+
+.chat-form-step-connector {
+  width: 20px;
+  height: 2px;
+  background: #e5e7eb;
+  transition: background 0.2s;
+}
+
+.chat-form-step-connector.completed {
+  background: linear-gradient(90deg, #9C43FE 0%, #4CC2E9 100%);
+}
+
+/* =============================================================================
+   ROI Result Display
+   ============================================================================= */
+
+.roi-result {
+  padding: 14px;
+  background: transparent;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.roi-result-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.roi-result-header-icon {
+  font-size: 18px;
+}
+
+.roi-result-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.roi-result-item {
+  margin-bottom: 10px;
+}
+
+.roi-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.roi-result-label {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.roi-result-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.roi-result-value.highlight {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.roi-result-bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.roi-result-bar-fill {
+  height: 100%;
+  background: #374151;
+  border-radius: 3px;
+}
+
+/* =============================================================================
+   Success State
+   ============================================================================= */
+
+.chat-form-success {
+  text-align: center;
+  padding: 20px 16px;
+}
+
+.chat-form-success-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.chat-form-success h4 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.chat-form-success p {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.chat-form-reference {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  font-family: monospace;
+}
+
+/* =============================================================================
+   Loading State
+   ============================================================================= */
+
+.chat-form-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+.chat-form-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #374151;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============================================================================
+   Mobile Optimizations
+   ============================================================================= */
+
+@media (max-width: 480px) {
+  .chat-form-container {
+    margin: 4px 0;
+  }
+
+  .chat-form-header {
+    padding: 10px 12px;
+  }
+
+  .chat-form-content {
+    padding: 12px;
+  }
+
+  .chat-form-input,
+  .chat-form-textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .chat-form-radio-group {
+    flex-direction: column;
+  }
+
+  .chat-form-radio {
+    min-width: 100%;
+  }
+
+  .chat-form-actions {
+    flex-direction: column;
+  }
+
+  .roi-result-value.highlight {
+    font-size: 20px;
+  }
+
+  .service-selection-grid {
+    flex-direction: column;
+  }
+
+  .service-selection-card {
+    min-height: 70px;
+  }
+}
+
+/* =============================================================================
+   Service Selection (ROI Calculator Step 0)
+   ============================================================================= */
+
+.service-selection-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-selection-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.service-selection-card:hover {
+  border-color: #9C43FE;
+  background: linear-gradient(135deg, rgba(156, 67, 254, 0.03) 0%, rgba(76, 194, 233, 0.03) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(156, 67, 254, 0.1);
+}
+
+.service-selection-card:focus {
+  outline: 2px solid #9C43FE;
+  outline-offset: 2px;
+}
+
+.service-selection-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.service-selection-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.service-selection-desc {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* =============================================================================
+   Service Badge (shown during form steps)
+   ============================================================================= */
+
+.service-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: linear-gradient(135deg, rgba(156, 67, 254, 0.08) 0%, rgba(76, 194, 233, 0.08) 100%);
+  border: 1px solid rgba(156, 67, 254, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.service-badge span:first-child {
+  font-size: 14px;
+}

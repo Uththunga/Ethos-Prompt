@@ -1,0 +1,161 @@
+name: Performance & E2E Tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  bundle-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: cd frontend && npm ci
+
+      - name: Build and analyze bundle
+        run: cd frontend && ANALYZE=true npm run build
+
+      - name: Check bundle size
+        run: |
+          cd frontend
+          # Check total bundle size (should be < 1MB gzipped)
+          TOTAL_SIZE=$(du -sb dist/assets/js/*.js | awk '{sum+=$1} END {print sum}')
+          echo "Total bundle size: $TOTAL_SIZE bytes"
+
+          # Fail if total size exceeds 1MB (1048576 bytes)
+          if [ $TOTAL_SIZE -gt 1048576 ]; then
+            echo "❌ Bundle size exceeds 1MB limit!"
+            exit 1
+          fi
+
+          # Check for oversized chunks (>500KB)
+          LARGE_CHUNKS=$(find dist/assets/js -name "*.js" -size +500k | wc -l)
+          if [ $LARGE_CHUNKS -gt 0 ]; then
+            echo "❌ Found $LARGE_CHUNKS chunks larger than 500KB!"
+            find dist/assets/js -name "*.js" -size +500k -exec ls -lh {} \;
+            exit 1
+          fi
+
+          echo "✅ Bundle size within limits"
+
+      - name: Upload bundle stats
+        uses: actions/upload-artifact@v3
+        with:
+          name: bundle-stats
+          path: frontend/dist/stats.html
+          retention-days: 30
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: cd frontend && npm ci
+
+      - name: Build
+        run: cd frontend && npm run build
+
+      - name: Serve build
+        run: |
+          cd frontend
+          npx serve -s dist -l 8080 &
+          sleep 5
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            http://localhost:8080
+          budgetPath: ./frontend/lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+  load-time:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: cd frontend && npm ci
+
+      - name: Build
+        run: cd frontend && npm run build
+
+      - name: Measure load time
+        run: |
+          cd frontend
+          npx serve -s dist -l 8080 &
+          sleep 5
+
+          # Use curl to measure load time
+          LOAD_TIME=$(curl -o /dev/null -s -w '%{time_total}\n' http://localhost:8080)
+          echo "Load time: ${LOAD_TIME}s"
+
+          # Fail if load time > 2s
+          if (( $(echo "$LOAD_TIME > 2.0" | bc -l) )); then
+            echo "❌ Load time exceeds 2s target!"
+            exit 1
+          fi
+
+          echo "✅ Load time within target (<2s)"
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: cd frontend && npm ci
+
+      - name: Install Playwright
+        run: cd frontend && npx playwright install --with-deps
+
+      - name: Build
+        run: cd frontend && npm run build
+
+      - name: Run E2E tests
+        run: |
+          cd frontend
+          npx serve -s dist -l 5173 &
+          sleep 5
+          PLAYWRIGHT_BASE_URL=http://localhost:5173 npx playwright test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: frontend/playwright-report/
+          retention-days: 30

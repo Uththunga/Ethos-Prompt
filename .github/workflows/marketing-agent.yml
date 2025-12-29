@@ -1,0 +1,318 @@
+name: Marketing Agent CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'functions/src/ai_agent/marketing/**'
+      - 'functions/src/common/**'
+      - 'functions/src/api/cloud_run_main.py'
+      - 'functions/requirements.txt'
+      - '.github/workflows/marketing-agent.yml'
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'functions/src/ai_agent/marketing/**'
+      - 'functions/src/common/**'
+      - 'functions/src/api/cloud_run_main.py'
+      - 'functions/requirements.txt'
+  workflow_dispatch:  # Allow manual triggers
+
+env:
+  PYTHON_VERSION: '3.11'
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_REGION: 'us-central1'
+  SERVICE_NAME: 'marketing-agent-api'
+
+jobs:
+  # ============================================================================
+  # Job 1: Test
+  # ============================================================================
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'functions/requirements.txt'
+
+      - name: Install dependencies
+        run: |
+          cd functions
+          pip install -r requirements.txt
+          pip install pytest-cov
+
+      - name: Run tests with coverage
+        env:
+          USE_GRANITE_LLM: 'true'
+          OPENROUTER_USE_MOCK: 'true'
+          ENVIRONMENT: 'test'
+        run: |
+          cd functions
+          pytest tests/ai_agent/test_marketing_agent_e2e.py \
+                 tests/api/test_streaming_endpoint.py \
+                 tests/ai_agent/test_marketing_tools.py \
+                 --cov=src/ai_agent/marketing \
+                 --cov=src/common/monitoring \
+                 --cov-report=xml \
+                 --cov-report=term \
+                 -v
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./functions/coverage.xml
+          flags: marketing-agent
+          name: marketing-agent-coverage
+        continue-on-error: true
+
+      - name: Type Check with mypy
+        run: |
+          cd functions
+          pip install mypy types-requests
+          mypy src/ai_agent/marketing/ --config-file mypy.ini --no-error-summary
+        continue-on-error: false
+
+  # ============================================================================
+  # Job 2: Evaluate Agent Quality
+  # ============================================================================
+  evaluate-agent:
+    name: Evaluate Agent Quality
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'functions/requirements.txt'
+
+      - name: Install dependencies
+        run: |
+          cd functions
+          pip install -r requirements.txt
+          # Install NLTK data explicitly if needed, or let the script handle it
+          python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng maxent_ne_chunker_tab words
+
+      - name: Run Evaluation (Mock Mode)
+        env:
+          USE_GRANITE_LLM: 'true'
+          OPENROUTER_USE_MOCK: 'true'
+          # No API keys needed for mock mode
+        run: |
+          cd functions
+          # Run strict evaluation (fails if quality < threshold)
+          # Using limit=50 to run full dataset
+          python evaluation/evaluator.py --limit 50 --strict
+
+      - name: Upload Evaluation Report
+        if: always() # Upload even if failed
+        uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-report
+          path: |
+            functions/evaluation/results/evaluation_report.md
+            functions/evaluation/results/evaluation_results.json
+
+  # ============================================================================
+  # Job 3: Build & Deploy to Staging
+  # ============================================================================
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [test, evaluate-agent]
+    if: github.ref == 'refs/heads/develop' || github.event_name == 'pull_request'
+    environment:
+      name: staging
+      url: https://marketing-agent-api-staging-${{ secrets.GCP_PROJECT_ID }}.run.app
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for GCP
+        run: |
+          gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+
+      - name: Build Docker image
+        run: |
+          cd functions
+          docker build -t ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+                       -t ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:staging \
+                       -f Dockerfile .
+
+      - name: Push Docker image
+        run: |
+          docker push ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:${{ github.sha }}
+          docker push ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:staging
+
+      - name: Deploy to Cloud Run (Staging)
+        run: |
+          gcloud run deploy ${{ env.SERVICE_NAME }}-staging \
+            --image=${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+            --platform=managed \
+            --region=${{ env.GCP_REGION }} \
+            --allow-unauthenticated \
+            --set-env-vars="ENVIRONMENT=staging,USE_GRANITE_LLM=true" \
+            --set-secrets="WATSONX_API_KEY=WATSONX_API_KEY:latest,WATSONX_PROJECT_ID=WATSONX_PROJECT_ID:latest" \
+            --min-instances=0 \
+            --max-instances=10 \
+            --memory=2Gi \
+            --cpu=2 \
+            --timeout=300s \
+            --concurrency=80 \
+            --labels=environment=staging,service=marketing-agent,version=${{ github.sha }}
+
+      - name: Run smoke tests
+        run: |
+          STAGING_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }}-staging --region=${{ env.GCP_REGION }} --format='value(status.url)')
+
+          # Health check
+          curl -f "$STAGING_URL/health" || exit 1
+
+          # Metrics endpoint
+          curl -f "$STAGING_URL/metrics" | grep "marketing_agent" || exit 1
+
+          echo "✅ Staging deployment successful: $STAGING_URL"
+
+  # ============================================================================
+  # Job 3: Deploy to Production (Manual Approval Required)
+  # ============================================================================
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [test, evaluate-agent]
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: https://marketing-agent-api-${{ secrets.GCP_PROJECT_ID }}.run.app
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for GCP
+        run: |
+          gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+
+      - name: Build Docker image
+        run: |
+          cd functions
+          docker build -t ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+                       -t ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:production \
+                       -t ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:latest \
+                       -f Dockerfile .
+
+      - name: Push Docker image
+        run: |
+          docker push ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:${{ github.sha }}
+          docker push ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:production
+          docker push ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:latest
+
+      - name: Deploy to Cloud Run (Production)
+        run: |
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
+            --image=${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/marketing-agent/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+            --platform=managed \
+            --region=${{ env.GCP_REGION }} \
+            --allow-unauthenticated \
+            --set-env-vars="ENVIRONMENT=production,USE_GRANITE_LLM=true" \
+            --set-secrets="WATSONX_API_KEY=WATSONX_API_KEY:latest,WATSONX_PROJECT_ID=WATSONX_PROJECT_ID:latest" \
+            --min-instances=1 \
+            --max-instances=50 \
+            --memory=2Gi \
+            --cpu=2 \
+            --timeout=300s \
+            --concurrency=80 \
+            --labels=environment=production,service=marketing-agent,version=${{ github.sha }}
+
+      - name: Run production smoke tests
+        run: |
+          PROD_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} --region=${{ env.GCP_REGION }} --format='value(status.url)')
+
+          # Health check
+          curl -f "$PROD_URL/health" || exit 1
+
+          # Metrics endpoint
+          curl -f "$PROD_URL/metrics" | grep "marketing_agent" || exit 1
+
+          echo "✅ Production deployment successful: $PROD_URL"
+
+      - name: Create deployment tag
+        run: |
+          git tag -a "deploy-$(date +%Y%m%d-%H%M%S)" -m "Production deployment: ${{ github.sha }}"
+          git push origin --tags
+        continue-on-error: true
+
+      - name: Notify deployment success
+        run: |
+          echo "🚀 Marketing Agent deployed to production!"
+          echo "Version: ${{ github.sha }}"
+          echo "URL: https://marketing-agent-api-${{ secrets.GCP_PROJECT_ID }}.run.app"
+
+  # ============================================================================
+  # Job 4: Rollback (Manual Trigger Only)
+  # ============================================================================
+  rollback:
+    name: Rollback Production
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    environment:
+      name: production-rollback
+
+    steps:
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Rollback to previous revision
+        run: |
+          # Get previous revision
+          PREVIOUS_REVISION=$(gcloud run revisions list \
+            --service=${{ env.SERVICE_NAME }} \
+            --region=${{ env.GCP_REGION }} \
+            --format='value(name)' \
+            --limit=2 | tail -n 1)
+
+          # Route 100% traffic to previous revision
+          gcloud run services update-traffic ${{ env.SERVICE_NAME }} \
+            --region=${{ env.GCP_REGION }} \
+            --to-revisions=$PREVIOUS_REVISION=100
+
+          echo "⏪ Rolled back to revision: $PREVIOUS_REVISION"

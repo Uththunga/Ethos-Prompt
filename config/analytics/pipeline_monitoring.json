@@ -1,0 +1,20 @@
+{
+  "health_checks": {
+    "pipeline_status": true,
+    "data_freshness": true,
+    "processing_latency": true,
+    "error_tracking": true
+  },
+  "performance_metrics": {
+    "throughput_monitoring": true,
+    "resource_utilization": true,
+    "cost_tracking": true,
+    "sla_monitoring": true
+  },
+  "alerting": {
+    "pipeline_failures": true,
+    "data_quality_issues": true,
+    "performance_degradation": true,
+    "capacity_warnings": true
+  }
+}

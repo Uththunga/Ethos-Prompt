@@ -1,0 +1,26 @@
+{
+  "workspace_creation": {
+    "name_validation": true,
+    "plan_selection": true,
+    "settings_configuration": true,
+    "owner_assignment": true
+  },
+  "workspace_settings": {
+    "privacy_controls": true,
+    "member_permissions": true,
+    "content_policies": true,
+    "integration_settings": true
+  },
+  "workspace_billing": {
+    "plan_management": true,
+    "usage_tracking": true,
+    "billing_alerts": true,
+    "upgrade_downgrade": true
+  },
+  "workspace_analytics": {
+    "usage_metrics": true,
+    "member_activity": true,
+    "content_statistics": true,
+    "performance_metrics": true
+  }
+}

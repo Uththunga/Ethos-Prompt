@@ -1,0 +1,20 @@
+{
+  "preparation": {
+    "provision_green_environment": true,
+    "deploy_application": true,
+    "run_smoke_tests": true,
+    "validate_configuration": true
+  },
+  "canary_deployment": {
+    "route_10_percent_traffic": true,
+    "monitor_metrics": true,
+    "validate_performance": true,
+    "collect_feedback": true
+  },
+  "full_deployment": {
+    "route_100_percent_traffic": true,
+    "monitor_system_health": true,
+    "validate_functionality": true,
+    "decommission_blue": true
+  }
+}

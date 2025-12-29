@@ -1,0 +1,62 @@
+firebase-functions>=0.1.0
+firebase-admin>=6.0.0
+
+# HTTP client for OpenRouter API
+aiohttp>=3.9.0
+
+# Text processing and search
+nltk>=3.8.0
+pyspellchecker>=0.8.0
+
+# Embeddings and vector operations
+numpy>=1.24.0
+requests>=2.31.0
+openai>=1.0.0
+ibm-watsonx-ai>=1.4.0
+google-cloud-secret-manager>=2.16.0
+
+# In-memory caching (zero cost)
+cachetools>=5.3.0
+
+# Optional: Redis for distributed caching (if multiple instances need shared cache)
+# redis>=5.0.0
+
+# Error tracking
+sentry-sdk>=1.40.0
+
+# Monitoring and metrics
+prometheus-client>=0.19.0
+
+
+# Optional advanced OCR/table extraction
+pdfplumber>=0.11.0
+pytesseract>=0.3.10
+pillow>=10.0.0
+
+# LangGraph and LangChain for AI Agents (October 2025)
+langgraph>=0.3.0
+# Install the meta 'langchain' package to provide langchain.tools and re-exported APIs used by our tools
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+langchain-anthropic>=0.2.0
+pydantic>=2.6.0
+pydantic-settings>=2.3.0
+
+
+
+# FastAPI app for Cloud Run
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+uvloop>=0.19.0
+gunicorn>=21.2.0  # Phase 2: Multi-worker support
+slowapi>=0.1.9  # Rate limiting
+
+# PII Detection (Phase 3)
+presidio-analyzer==2.2.354
+presidio-anonymizer==2.2.354
+scipy==1.11.4
+
+# Semantic search and re-ranking (Phase 2)
+sentence-transformers>=2.2.0
+rank-bm25>=0.2.2

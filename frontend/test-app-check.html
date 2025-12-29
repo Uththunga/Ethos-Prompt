@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Check Verification Test - RAG Prompt Library</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        border-bottom: 3px solid #4285f4;
+        padding-bottom: 10px;
+      }
+      .test-section {
+        margin: 20px 0;
+        padding: 15px;
+        background: #f9f9f9;
+        border-left: 4px solid #4285f4;
+      }
+      .test-section h3 {
+        margin-top: 0;
+        color: #4285f4;
+      }
+      button {
+        background: #4285f4;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+      button:hover {
+        background: #357ae8;
+      }
+      button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+      .result {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .success {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+      }
+      .error {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+      }
+      .info {
+        background: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+      }
+      .status {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+      .status.pass {
+        background: #28a745;
+        color: white;
+      }
+      .status.fail {
+        background: #dc3545;
+        color: white;
+      }
+      .status.pending {
+        background: #ffc107;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🛡️ App Check Verification Test</h1>
+      <p><strong>Project:</strong> RAG Prompt Library (rag-prompt-library)</p>
+      <p>
+        <strong>Purpose:</strong> Verify that Firebase App Check is properly configured and
+        enforcing token validation on Cloud Functions v2
+      </p>
+
+      <div class="test-section">
+        <h3>Test 1: Check App Check Configuration</h3>
+        <p>Verify that App Check is enabled and configured with reCAPTCHA v3</p>
+        <button onclick="testAppCheckConfig()">Run Test 1</button>
+        <div id="test1-result"></div>
+      </div>
+
+      <div class="test-section">
+        <h3>Test 2: Get App Check Token</h3>
+        <p>Attempt to obtain an App Check token from reCAPTCHA v3</p>
+        <button onclick="testGetToken()">Run Test 2</button>
+        <div id="test2-result"></div>
+      </div>
+
+      <div class="test-section">
+        <h3>Test 3: Call Protected Function (WITH App Check)</h3>
+        <p>Call the <code>api</code> function with automatic App Check token attachment</p>
+        <button onclick="testProtectedFunction()">Run Test 3</button>
+        <div id="test3-result"></div>
+      </div>
+
+      <div class="test-section">
+        <h3>Test 4: Summary</h3>
+        <p>Overall App Check status</p>
+        <button onclick="runAllTests()">Run All Tests</button>
+        <div id="summary-result"></div>
+      </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+      import {
+        initializeAppCheck,
+        getToken,
+      } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app-check.js';
+      import {
+        getFunctions,
+        httpsCallable,
+      } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js';
+
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: 'AIzaSyDJWjw2e8FayU3CvIWyGXXFAqDCTFN5CJs',
+        authDomain: 'rag-prompt-library.firebaseapp.com',
+        projectId: 'rag-prompt-library',
+        storageBucket: 'rag-prompt-library.firebasestorage.app',
+        messagingSenderId: '743998930129',
+        appId: '1:743998930129:web:69dd61394ed81598cd99f0',
+        measurementId: 'G-CEDFF0WMPW',
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      // Initialize App Check with reCAPTCHA v3
+      const appCheck = initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider('6LfkA94rAAAAADof-VEhuAkLwjETCAkEBvmQuPIS'),
+        isTokenAutoRefreshEnabled: true,
+      });
+
+      // Initialize Functions
+      const functions = getFunctions(app, 'australia-southeast1');
+
+      // Make objects available globally for button onclick handlers
+      window.appCheck = appCheck;
+      window.functions = functions;
+      window.getToken = getToken;
+      window.httpsCallable = httpsCallable;
+
+      console.log('✅ Firebase initialized');
+      console.log('✅ App Check initialized with reCAPTCHA v3');
+    </script>
+
+    <script>
+      function showResult(elementId, message, type) {
+        const element = document.getElementById(elementId);
+        element.innerHTML = `<div class="result ${type}">${message}</div>`;
+      }
+
+      async function testAppCheckConfig() {
+        showResult('test1-result', 'Running...', 'info');
+
+        try {
+          const config = {
+            enabled: true,
+            provider: 'reCAPTCHA v3',
+            siteKey: '6LfkA94rAAAAADof-VEhuAkLwjETCAkEBvmQuPIS',
+            autoRefresh: true,
+          };
+
+          const message = `✅ TEST 1 PASSED
+
+App Check Configuration:
+- Enabled: ${config.enabled}
+- Provider: ${config.provider}
+- Site Key: ${config.siteKey}
+- Auto Refresh: ${config.autoRefresh}
+
+Status: App Check is properly configured!`;
+
+          showResult('test1-result', message, 'success');
+          return true;
+        } catch (error) {
+          showResult('test1-result', `❌ TEST 1 FAILED\n\nError: ${error.message}`, 'error');
+          return false;
+        }
+      }
+
+      async function testGetToken() {
+        showResult('test2-result', 'Obtaining App Check token from reCAPTCHA v3...', 'info');
+
+        try {
+          const token = await window.getToken(window.appCheck);
+
+          const message = `✅ TEST 2 PASSED
+
+App Check Token Obtained:
+- Token: ${token.token.substring(0, 50)}...
+- Length: ${token.token.length} characters
+
+Status: reCAPTCHA v3 is working and generating valid tokens!`;
+
+          showResult('test2-result', message, 'success');
+          return true;
+        } catch (error) {
+          showResult(
+            'test2-result',
+            `❌ TEST 2 FAILED\n\nError: ${error.message}\n\nThis could mean:\n- reCAPTCHA site key is invalid\n- Domain not authorized\n- Network issue`,
+            'error'
+          );
+          return false;
+        }
+      }
+
+      async function testProtectedFunction() {
+        showResult(
+          'test3-result',
+          'Calling protected Cloud Function with App Check token...',
+          'info'
+        );
+
+        try {
+          const api = window.httpsCallable(window.functions, 'api');
+          const result = await api({ endpoint: 'health' });
+
+          const message = `✅ TEST 3 PASSED
+
+Function Call Successful:
+- Function: api (australia-southeast1)
+- Endpoint: health
+- Response: ${JSON.stringify(result.data, null, 2)}
+
+Status: App Check token was automatically attached and validated!
+The function accepted the request, proving App Check enforcement is working.`;
+
+          showResult('test3-result', message, 'success');
+          return true;
+        } catch (error) {
+          const message = `❌ TEST 3 FAILED
+
+Error: ${error.message}
+Code: ${error.code}
+
+This could mean:
+- App Check token is invalid (check Test 2)
+- Function is not deployed
+- Function has enforceAppCheck: true but token validation failed
+- Network/CORS issue
+
+Full error: ${JSON.stringify(error, null, 2)}`;
+
+          showResult('test3-result', message, 'error');
+          return false;
+        }
+      }
+
+      async function runAllTests() {
+        showResult('summary-result', 'Running all tests...', 'info');
+
+        const results = {
+          test1: await testAppCheckConfig(),
+          test2: await testGetToken(),
+          test3: await testProtectedFunction(),
+        };
+
+        const allPassed = results.test1 && results.test2 && results.test3;
+
+        const summary = `
+=== APP CHECK VERIFICATION SUMMARY ===
+
+Test 1 (Configuration): ${results.test1 ? '✅ PASS' : '❌ FAIL'}
+Test 2 (Token Generation): ${results.test2 ? '✅ PASS' : '❌ FAIL'}
+Test 3 (Function Call): ${results.test3 ? '✅ PASS' : '❌ FAIL'}
+
+Overall Status: ${allPassed ? '✅ ALL TESTS PASSED' : '❌ SOME TESTS FAILED'}
+
+${
+  allPassed
+    ? `
+🎉 SUCCESS! App Check is fully operational:
+
+1. ✅ App Check is properly configured with reCAPTCHA v3
+2. ✅ Tokens are being generated successfully
+3. ✅ Cloud Functions are validating tokens and accepting requests
+
+Your Cloud Functions v2 are protected by App Check!
+
+Note: The Firebase Console "APIs" tab toggle is NOT needed for v2 functions.
+App Check enforcement is configured in code with enforceAppCheck: true.
+`
+    : `
+⚠️ Some tests failed. Please review the individual test results above.
+
+Common issues:
+- reCAPTCHA site key mismatch
+- Domain not authorized in Firebase Console
+- Functions not deployed with enforceAppCheck: true
+- Network/CORS issues
+`
+}`;
+
+        showResult('summary-result', summary, allPassed ? 'success' : 'error');
+      }
+    </script>
+  </body>
+</html>

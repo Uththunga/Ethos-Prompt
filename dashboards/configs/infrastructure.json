@@ -1,0 +1,53 @@
+{
+  "id": "infrastructure",
+  "name": "Infrastructure Monitoring",
+  "description": "Firebase services, database, and storage metrics",
+  "created": "2025-07-22T19:16:02.532Z",
+  "refreshInterval": 30,
+  "widgets": [
+    {
+      "id": "infrastructure_firestore_operations",
+      "type": "metric",
+      "title": "Firestore Operations",
+      "query": "firestore_operations",
+      "visualization": "stacked_area",
+      "breakdown": [
+        "reads",
+        "writes",
+        "deletes"
+      ],
+      "refreshInterval": 30
+    },
+    {
+      "id": "infrastructure_storage_usage",
+      "type": "metric",
+      "title": "Storage Usage",
+      "query": "storage_usage_gb",
+      "visualization": "gauge",
+      "target": 100,
+      "refreshInterval": 30
+    },
+    {
+      "id": "infrastructure_bandwidth_usage",
+      "type": "metric",
+      "title": "Bandwidth Usage",
+      "query": "bandwidth_usage_gb",
+      "visualization": "line_chart",
+      "timeframe": "30d",
+      "refreshInterval": 30
+    },
+    {
+      "id": "infrastructure_function_memory",
+      "type": "metric",
+      "title": "Function Memory Usage",
+      "query": "function_memory_usage",
+      "visualization": "heatmap",
+      "breakdown": [
+        "generate_prompt",
+        "execute_prompt",
+        "test_cors"
+      ],
+      "refreshInterval": 30
+    }
+  ]
+}

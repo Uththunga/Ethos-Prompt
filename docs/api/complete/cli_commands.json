@@ -1,0 +1,23 @@
+{
+  "authentication": {
+    "rag auth login": "Authenticate with API key or interactive login",
+    "rag auth logout": "Logout and clear authentication",
+    "rag auth status": "Check authentication status"
+  },
+  "prompts": {
+    "rag prompts list": "List all prompts",
+    "rag prompts get <id>": "Get specific prompt details",
+    "rag prompts create": "Create new prompt interactively",
+    "rag prompts execute <id>": "Execute prompt with parameters"
+  },
+  "documents": {
+    "rag documents upload <file>": "Upload document for RAG processing",
+    "rag documents list": "List uploaded documents",
+    "rag documents delete <id>": "Delete document"
+  },
+  "workspaces": {
+    "rag workspaces list": "List available workspaces",
+    "rag workspaces create": "Create new workspace",
+    "rag workspaces switch <id>": "Switch to workspace"
+  }
+}

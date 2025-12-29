@@ -1,0 +1,32 @@
+{
+  "user_profiling": {
+    "usage_patterns": true,
+    "preference_learning": true,
+    "skill_level_detection": true,
+    "industry_focus": true
+  },
+  "recommendation_engines": {
+    "collaborative_filtering": {
+      "user_based": true,
+      "item_based": true,
+      "matrix_factorization": true
+    },
+    "content_based": {
+      "feature_similarity": true,
+      "tag_matching": true,
+      "category_preferences": true
+    },
+    "hybrid_recommendations": {
+      "ensemble_method": true,
+      "context_aware": true,
+      "real_time_updates": true
+    }
+  },
+  "discovery_features": {
+    "trending_templates": true,
+    "similar_templates": true,
+    "author_recommendations": true,
+    "category_exploration": true,
+    "serendipity_factor": 0.1
+  }
+}

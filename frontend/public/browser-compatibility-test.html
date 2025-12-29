@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Compatibility Test</title>
+    <!-- Adaptive favicon for light/dark mode -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .browser-info {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .feature-test {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        .feature-name {
+            font-weight: bold;
+        }
+        .feature-status {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .supported {
+            background: #d4edda;
+            color: #155724;
+        }
+        .not-supported {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .partial {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .responsive-test {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+        }
+        .breakpoint {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .breakpoint:hover {
+            background: #0056b3;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌐 Browser Compatibility Test</h1>
+    <p>Comprehensive browser and device compatibility testing for the zen-home marketing integration.</p>
+    
+    <div class="test-container">
+        <h2>🔍 Browser Detection</h2>
+        <div id="browser-info" class="browser-info"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>✅ Feature Support Testing</h2>
+        <div id="feature-tests"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>📱 Responsive Design Testing</h2>
+        <p>Test different viewport sizes to ensure responsive design works correctly:</p>
+        <div>
+            <button class="breakpoint" onclick="testBreakpoint(320, 568)">📱 iPhone SE (320px)</button>
+            <button class="breakpoint" onclick="testBreakpoint(375, 667)">📱 iPhone 8 (375px)</button>
+            <button class="breakpoint" onclick="testBreakpoint(414, 896)">📱 iPhone 11 (414px)</button>
+            <button class="breakpoint" onclick="testBreakpoint(768, 1024)">📱 iPad (768px)</button>
+            <button class="breakpoint" onclick="testBreakpoint(1024, 768)">💻 iPad Pro (1024px)</button>
+            <button class="breakpoint" onclick="testBreakpoint(1440, 900)">🖥️ Desktop (1440px)</button>
+            <button class="breakpoint" onclick="testBreakpoint(1920, 1080)">🖥️ Full HD (1920px)</button>
+        </div>
+        <div id="responsive-results"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>🎨 CSS Feature Testing</h2>
+        <div id="css-tests"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>📊 Compatibility Report</h2>
+        <div id="compatibility-report"></div>
+    </div>
+
+    <script>
+        // Browser detection
+        function detectBrowser() {
+            const userAgent = navigator.userAgent;
+            const browserInfo = document.getElementById('browser-info');
+            
+            let browserName = 'Unknown';
+            let browserVersion = 'Unknown';
+            
+            if (userAgent.includes('Chrome') && !userAgent.includes('Edg')) {
+                browserName = 'Chrome';
+                browserVersion = userAgent.match(/Chrome\/([0-9.]+)/)?.[1] || 'Unknown';
+            } else if (userAgent.includes('Firefox')) {
+                browserName = 'Firefox';
+                browserVersion = userAgent.match(/Firefox\/([0-9.]+)/)?.[1] || 'Unknown';
+            } else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) {
+                browserName = 'Safari';
+                browserVersion = userAgent.match(/Version\/([0-9.]+)/)?.[1] || 'Unknown';
+            } else if (userAgent.includes('Edg')) {
+                browserName = 'Edge';
+                browserVersion = userAgent.match(/Edg\/([0-9.]+)/)?.[1] || 'Unknown';
+            }
+            
+            browserInfo.innerHTML = `
+                <h4>Current Browser</h4>
+                <p><strong>Browser:</strong> ${browserName} ${browserVersion}</p>
+                <p><strong>User Agent:</strong> ${userAgent}</p>
+                <p><strong>Platform:</strong> ${navigator.platform}</p>
+                <p><strong>Screen Resolution:</strong> ${screen.width}x${screen.height}</p>
+                <p><strong>Viewport:</strong> ${window.innerWidth}x${window.innerHeight}</p>
+            `;
+        }
+
+        // Feature support tests
+        function testFeatureSupport() {
+            const featureTests = document.getElementById('feature-tests');
+            
+            const features = [
+                {
+                    name: 'ES6 Modules',
+                    test: () => typeof import !== 'undefined'
+                },
+                {
+                    name: 'Fetch API',
+                    test: () => typeof fetch === 'function'
+                },
+                {
+                    name: 'Local Storage',
+                    test: () => {
+                        try {
+                            localStorage.setItem('test', 'test');
+                            localStorage.removeItem('test');
+                            return true;
+                        } catch (e) {
+                            return false;
+                        }
+                    }
+                },
+                {
+                    name: 'Service Workers',
+                    test: () => 'serviceWorker' in navigator
+                },
+                {
+                    name: 'Web Workers',
+                    test: () => typeof Worker !== 'undefined'
+                },
+                {
+                    name: 'WebGL',
+                    test: () => {
+                        try {
+                            const canvas = document.createElement('canvas');
+                            return !!(canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+                        } catch (e) {
+                            return false;
+                        }
+                    }
+                },
+                {
+                    name: 'CSS Grid',
+                    test: () => CSS.supports('display', 'grid')
+                },
+                {
+                    name: 'CSS Flexbox',
+                    test: () => CSS.supports('display', 'flex')
+                },
+                {
+                    name: 'CSS Custom Properties',
+                    test: () => CSS.supports('--test', 'value')
+                },
+                {
+                    name: 'Intersection Observer',
+                    test: () => 'IntersectionObserver' in window
+                },
+                {
+                    name: 'Performance Observer',
+                    test: () => 'PerformanceObserver' in window
+                },
+                {
+                    name: 'Async/Await',
+                    test: () => {
+                        try {
+                            eval('(async () => {})');
+                            return true;
+                        } catch (e) {
+                            return false;
+                        }
+                    }
+                }
+            ];
+
+            let supportedCount = 0;
+            let totalCount = features.length;
+
+            features.forEach(feature => {
+                const isSupported = feature.test();
+                if (isSupported) supportedCount++;
+                
+                const div = document.createElement('div');
+                div.className = 'feature-test';
+                div.innerHTML = `
+                    <span class="feature-name">${feature.name}</span>
+                    <span class="feature-status ${isSupported ? 'supported' : 'not-supported'}">
+                        ${isSupported ? 'Supported' : 'Not Supported'}
+                    </span>
+                `;
+                featureTests.appendChild(div);
+            });
+
+            // Add summary
+            const summary = document.createElement('div');
+            summary.className = 'test-result ' + (supportedCount === totalCount ? 'success' : supportedCount > totalCount * 0.8 ? 'warning' : 'error');
+            summary.textContent = `Feature Support: ${supportedCount}/${totalCount} (${Math.round(supportedCount/totalCount*100)}%)`;
+            featureTests.appendChild(summary);
+        }
+
+        // CSS feature tests
+        function testCSSFeatures() {
+            const cssTests = document.getElementById('css-tests');
+            
+            const cssFeatures = [
+                { name: 'CSS Grid', property: 'display', value: 'grid' },
+                { name: 'CSS Flexbox', property: 'display', value: 'flex' },
+                { name: 'CSS Custom Properties', property: '--test', value: 'value' },
+                { name: 'CSS Transforms', property: 'transform', value: 'rotate(45deg)' },
+                { name: 'CSS Transitions', property: 'transition', value: 'all 0.3s ease' },
+                { name: 'CSS Animations', property: 'animation', value: 'test 1s ease' },
+                { name: 'CSS Backdrop Filter', property: 'backdrop-filter', value: 'blur(10px)' },
+                { name: 'CSS Clip Path', property: 'clip-path', value: 'circle(50%)' }
+            ];
+
+            let supportedCount = 0;
+            let totalCount = cssFeatures.length;
+
+            cssFeatures.forEach(feature => {
+                const isSupported = CSS.supports(feature.property, feature.value);
+                if (isSupported) supportedCount++;
+                
+                const div = document.createElement('div');
+                div.className = 'feature-test';
+                div.innerHTML = `
+                    <span class="feature-name">${feature.name}</span>
+                    <span class="feature-status ${isSupported ? 'supported' : 'not-supported'}">
+                        ${isSupported ? 'Supported' : 'Not Supported'}
+                    </span>
+                `;
+                cssTests.appendChild(div);
+            });
+
+            // Add summary
+            const summary = document.createElement('div');
+            summary.className = 'test-result ' + (supportedCount === totalCount ? 'success' : supportedCount > totalCount * 0.8 ? 'warning' : 'error');
+            summary.textContent = `CSS Features: ${supportedCount}/${totalCount} (${Math.round(supportedCount/totalCount*100)}%)`;
+            cssTests.appendChild(summary);
+        }
+
+        // Responsive design testing
+        function testBreakpoint(width, height) {
+            const responsiveResults = document.getElementById('responsive-results');
+            
+            // Create a test iframe to simulate the viewport
+            const iframe = document.createElement('iframe');
+            iframe.src = 'http://localhost:3000/';
+            iframe.style.width = width + 'px';
+            iframe.style.height = height + 'px';
+            iframe.style.border = '1px solid #ddd';
+            iframe.style.borderRadius = '8px';
+            iframe.style.margin = '10px 0';
+            
+            const testDiv = document.createElement('div');
+            testDiv.className = 'responsive-test';
+            testDiv.innerHTML = `
+                <h4>Testing ${width}x${height} viewport</h4>
+                <p>Simulating device viewport. Check for:</p>
+                <ul>
+                    <li>Navigation menu adapts correctly</li>
+                    <li>Content remains readable</li>
+                    <li>Images scale properly</li>
+                    <li>Touch targets are adequate (44px minimum)</li>
+                </ul>
+            `;
+            testDiv.appendChild(iframe);
+            
+            // Clear previous results and add new test
+            responsiveResults.innerHTML = '';
+            responsiveResults.appendChild(testDiv);
+        }
+
+        // Generate compatibility report
+        function generateCompatibilityReport() {
+            const report = document.getElementById('compatibility-report');
+            
+            const userAgent = navigator.userAgent;
+            let browserGrade = 'A'; // Default to A grade
+            let recommendations = [];
+            
+            // Check for older browsers
+            if (userAgent.includes('MSIE') || userAgent.includes('Trident')) {
+                browserGrade = 'F';
+                recommendations.push('Internet Explorer is not supported. Please upgrade to a modern browser.');
+            } else if (userAgent.includes('Chrome') && parseInt(userAgent.match(/Chrome\/([0-9]+)/)?.[1]) < 80) {
+                browserGrade = 'C';
+                recommendations.push('Chrome version is outdated. Please update for best experience.');
+            } else if (userAgent.includes('Firefox') && parseInt(userAgent.match(/Firefox\/([0-9]+)/)?.[1]) < 75) {
+                browserGrade = 'C';
+                recommendations.push('Firefox version is outdated. Please update for best experience.');
+            } else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) {
+                const version = userAgent.match(/Version\/([0-9]+)/)?.[1];
+                if (version && parseInt(version) < 13) {
+                    browserGrade = 'C';
+                    recommendations.push('Safari version is outdated. Please update for best experience.');
+                }
+            }
+            
+            // Check screen size
+            if (screen.width < 768) {
+                recommendations.push('Small screen detected. Ensure mobile navigation is working correctly.');
+            }
+            
+            // Check for touch device
+            if ('ontouchstart' in window) {
+                recommendations.push('Touch device detected. Verify touch interactions work properly.');
+            }
+            
+            const gradeColor = {
+                'A': '#28a745',
+                'B': '#6f42c1',
+                'C': '#ffc107',
+                'D': '#fd7e14',
+                'F': '#dc3545'
+            };
+            
+            report.innerHTML = `
+                <div style="background: ${gradeColor[browserGrade]}; color: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h3 style="margin: 0;">Compatibility Grade: ${browserGrade}</h3>
+                </div>
+                <div class="test-result ${browserGrade === 'A' ? 'success' : browserGrade === 'F' ? 'error' : 'warning'}">
+                    Browser compatibility assessment completed
+                </div>
+                ${recommendations.length > 0 ? `
+                    <h4>Recommendations:</h4>
+                    <ul>
+                        ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                    </ul>
+                ` : '<p>✅ No compatibility issues detected!</p>'}
+                <h4>Testing Instructions:</h4>
+                <ol>
+                    <li>Test all marketing pages in this browser</li>
+                    <li>Verify dashboard functionality works correctly</li>
+                    <li>Check responsive design at different screen sizes</li>
+                    <li>Test interactive elements (forms, buttons, animations)</li>
+                    <li>Verify performance is acceptable</li>
+                </ol>
+            `;
+        }
+
+        // Initialize tests
+        document.addEventListener('DOMContentLoaded', () => {
+            detectBrowser();
+            testFeatureSupport();
+            testCSSFeatures();
+            generateCompatibilityReport();
+        });
+    </script>
+</body>
+</html>

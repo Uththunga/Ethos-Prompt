@@ -1,0 +1,40 @@
+{
+  "environments": {
+    "development": {
+      "auto_deploy": true,
+      "approval_required": false,
+      "rollback_enabled": true,
+      "monitoring_level": "basic"
+    },
+    "staging": {
+      "auto_deploy": true,
+      "approval_required": false,
+      "rollback_enabled": true,
+      "monitoring_level": "comprehensive",
+      "smoke_tests": true
+    },
+    "production": {
+      "auto_deploy": false,
+      "approval_required": true,
+      "rollback_enabled": true,
+      "monitoring_level": "comprehensive",
+      "smoke_tests": true,
+      "canary_deployment": true
+    }
+  },
+  "promotion_criteria": {
+    "staging_to_production": {
+      "manual_approval": true,
+      "staging_tests_passed": true,
+      "performance_benchmarks_met": true,
+      "security_scan_passed": true,
+      "business_approval": true
+    }
+  },
+  "approval_workflow": {
+    "required_approvers": 2,
+    "approval_timeout": "24 hours",
+    "emergency_override": true,
+    "approval_notifications": true
+  }
+}

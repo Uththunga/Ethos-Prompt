@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive System Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .test-section { background: white; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .loading { background-color: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; }
+        button { padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #6c757d; cursor: not-allowed; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; font-size: 12px; }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .progress { width: 100%; height: 20px; background: #e9ecef; border-radius: 10px; overflow: hidden; }
+        .progress-bar { height: 100%; background: #007bff; transition: width 0.3s ease; }
+        .status-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+        .status-success { background: #28a745; }
+        .status-error { background: #dc3545; }
+        .status-warning { background: #ffc107; }
+        .status-loading { background: #6c757d; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Comprehensive System Test</h1>
+        <p>Testing all components of the RAG Prompt Library system</p>
+        
+        <div class="test-section">
+            <h2>🎯 Test Progress</h2>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            </div>
+            <p id="progressText">Ready to start testing...</p>
+        </div>
+
+        <div class="test-grid">
+            <div class="test-section">
+                <h3>🔧 System Configuration</h3>
+                <button onclick="testSystemConfig()">Test Configuration</button>
+                <div id="configResults"></div>
+            </div>
+
+            <div class="test-section">
+                <h3>🔥 Firebase Functions</h3>
+                <button onclick="testFirebaseFunctions()">Test Functions</button>
+                <div id="functionsResults"></div>
+            </div>
+
+            <div class="test-section">
+                <h3>🗄️ Firestore Database</h3>
+                <button onclick="testFirestore()">Test Database</button>
+                <div id="firestoreResults"></div>
+            </div>
+
+            <div class="test-section">
+                <h3>🔐 Authentication</h3>
+                <button onclick="testAuthentication()">Test Auth</button>
+                <div id="authResults"></div>
+            </div>
+
+            <div class="test-section">
+                <h3>⚡ Performance</h3>
+                <button onclick="testPerformance()">Test Performance</button>
+                <div id="performanceResults"></div>
+            </div>
+
+            <div class="test-section">
+                <h3>🌐 Network & CORS</h3>
+                <button onclick="testNetwork()">Test Network</button>
+                <div id="networkResults"></div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🚀 Run All Tests</h2>
+            <button onclick="runAllTests()" id="runAllBtn">Run Complete Test Suite</button>
+            <div id="allTestsResults"></div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+        import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+        import { getFirestore, doc, setDoc, getDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+        import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-functions.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJWjw2e8FayU3CvIWyGXXFAqDCTFN5CJs",
+            authDomain: "rag-prompt-library.firebaseapp.com",
+            projectId: "rag-prompt-library",
+            storageBucket: "rag-prompt-library.firebasestorage.app",
+            messagingSenderId: "743998930129",
+            appId: "1:743998930129:web:69dd61394ed81598cd99f0",
+            measurementId: "G-CEDFF0WMPW"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const functions = getFunctions(app, 'australia-southeast1');
+
+        // Global variables
+        window.app = app;
+        window.auth = auth;
+        window.db = db;
+        window.functions = functions;
+        window.testResults = {};
+        window.totalTests = 6;
+        window.completedTests = 0;
+
+        // Utility functions
+        function addResult(containerId, message, type, data = null) {
+            const container = document.getElementById(containerId);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            
+            const statusClass = type === 'success' ? 'status-success' : 
+                               type === 'error' ? 'status-error' : 
+                               type === 'warning' ? 'status-warning' : 'status-loading';
+            
+            let content = `<span class="status-indicator ${statusClass}"></span><strong>${message}</strong>`;
+            if (data) {
+                content += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            }
+            
+            resultDiv.innerHTML = content;
+            container.appendChild(resultDiv);
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateProgress() {
+            window.completedTests++;
+            const percentage = (window.completedTests / window.totalTests) * 100;
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = 
+                `Completed ${window.completedTests}/${window.totalTests} tests (${Math.round(percentage)}%)`;
+        }
+
+        // Test functions
+        window.testSystemConfig = async function() {
+            addResult('configResults', 'Testing system configuration...', 'loading');
+            try {
+                const config = {
+                    firebaseProject: firebaseConfig.projectId,
+                    authDomain: firebaseConfig.authDomain,
+                    functionsRegion: 'australia-southeast1',
+                    environment: window.location.hostname === 'localhost' ? 'development' : 'production',
+                    userAgent: navigator.userAgent,
+                    timestamp: new Date().toISOString()
+                };
+                
+                addResult('configResults', 'System configuration loaded successfully!', 'success', config);
+                window.testResults.config = { success: true, data: config };
+            } catch (error) {
+                addResult('configResults', 'System configuration test failed!', 'error', error);
+                window.testResults.config = { success: false, error: error.message };
+            }
+            updateProgress();
+        };
+
+        window.testFirebaseFunctions = async function() {
+            addResult('functionsResults', 'Testing Firebase Functions...', 'loading');
+            try {
+                const apiFunction = httpsCallable(functions, 'api');
+
+                // Test health endpoint with timeout
+                const healthPromise = apiFunction({ endpoint: 'health' });
+                const timeoutPromise = new Promise((_, reject) =>
+                    setTimeout(() => reject(new Error('Function call timeout')), 10000)
+                );
+
+                const healthResult = await Promise.race([healthPromise, timeoutPromise]);
+                addResult('functionsResults', 'Health endpoint working!', 'success', healthResult.data);
+
+                // Test execute prompt endpoint
+                const executeResult = await Promise.race([
+                    apiFunction({ endpoint: 'execute_prompt' }),
+                    new Promise((_, reject) => setTimeout(() => reject(new Error('Function call timeout')), 10000))
+                ]);
+                addResult('functionsResults', 'Execute prompt endpoint working!', 'success', executeResult.data);
+
+                window.testResults.functions = { success: true, health: healthResult.data, execute: executeResult.data };
+            } catch (error) {
+                let errorMessage = error.message || 'Unknown error';
+                let errorType = 'error';
+
+                if (error.code === 'functions/internal') {
+                    errorMessage = 'Function internal error - this may indicate the function is still deploying or has deployment issues';
+                    errorType = 'warning';
+                } else if (error.message === 'Function call timeout') {
+                    errorMessage = 'Function call timed out - this may indicate slow cold start or deployment issues';
+                    errorType = 'warning';
+                }
+
+                addResult('functionsResults', `Firebase Functions test failed: ${errorMessage}`, errorType, {
+                    code: error.code,
+                    message: error.message,
+                    note: 'Functions may still be deploying or experiencing cold start delays'
+                });
+                window.testResults.functions = { success: false, error: errorMessage, code: error.code };
+            }
+            updateProgress();
+        };
+
+        window.testFirestore = async function() {
+            addResult('firestoreResults', 'Testing Firestore database...', 'loading');
+            try {
+                const user = auth.currentUser;
+                if (!user) {
+                    throw new Error('Authentication required for Firestore access');
+                }
+
+                // Test document write to user's collection (allowed by security rules)
+                const testDocRef = doc(db, 'users', user.uid, 'prompts', 'system-test-' + Date.now());
+                await setDoc(testDocRef, {
+                    title: 'System Test Prompt',
+                    content: 'This is a test prompt for system verification',
+                    timestamp: new Date(),
+                    testId: 'comprehensive-test',
+                    category: 'test'
+                });
+                addResult('firestoreResults', 'Document write successful!', 'success');
+
+                // Test document read
+                const docSnap = await getDoc(testDocRef);
+                if (docSnap.exists()) {
+                    addResult('firestoreResults', 'Document read successful!', 'success', docSnap.data());
+                } else {
+                    throw new Error('Document not found after write');
+                }
+
+                // Clean up test document
+                await deleteDoc(testDocRef);
+                addResult('firestoreResults', 'Test document cleaned up!', 'info');
+
+                window.testResults.firestore = { success: true };
+            } catch (error) {
+                if (error.message.includes('Authentication required')) {
+                    addResult('firestoreResults', 'Firestore test skipped - authentication required', 'warning', {
+                        error: error.message,
+                        note: 'Please sign in to the main application to test Firestore functionality'
+                    });
+                    window.testResults.firestore = { success: false, error: error.message, skipped: true };
+                } else {
+                    addResult('firestoreResults', 'Firestore test failed!', 'error', error);
+                    window.testResults.firestore = { success: false, error: error.message };
+                }
+            }
+            updateProgress();
+        };
+
+        window.testAuthentication = async function() {
+            addResult('authResults', 'Testing authentication...', 'loading');
+            try {
+                // Check if user is already authenticated
+                const user = auth.currentUser;
+                if (user) {
+                    addResult('authResults', 'User already authenticated!', 'success', {
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName,
+                        isAnonymous: user.isAnonymous,
+                        providerData: user.providerData
+                    });
+                    window.testResults.auth = { success: true, uid: user.uid };
+                } else {
+                    // Wait for auth state change
+                    const authPromise = new Promise((resolve, reject) => {
+                        const unsubscribe = onAuthStateChanged(auth, (user) => {
+                            unsubscribe();
+                            if (user) {
+                                resolve(user);
+                            } else {
+                                reject(new Error('No user authenticated. Please sign in to the main application first.'));
+                            }
+                        });
+                        // Timeout after 3 seconds
+                        setTimeout(() => {
+                            unsubscribe();
+                            reject(new Error('Authentication check timeout. Please sign in to the main application.'));
+                        }, 3000);
+                    });
+
+                    const user = await authPromise;
+                    addResult('authResults', 'Authentication verified!', 'success', {
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName,
+                        isAnonymous: user.isAnonymous
+                    });
+                    window.testResults.auth = { success: true, uid: user.uid };
+                }
+            } catch (error) {
+                addResult('authResults', 'Authentication test failed!', 'warning', {
+                    error: error.message,
+                    note: 'This is expected if not signed in. Please sign in to the main application first.'
+                });
+                window.testResults.auth = { success: false, error: error.message };
+            }
+            updateProgress();
+        };
+
+        window.testPerformance = async function() {
+            addResult('performanceResults', 'Testing performance metrics...', 'loading');
+            try {
+                const startTime = performance.now();
+                
+                // Test page load performance
+                const navigation = performance.getEntriesByType('navigation')[0];
+                const loadTime = navigation.loadEventEnd - navigation.loadEventStart;
+                
+                // Test resource loading
+                const resources = performance.getEntriesByType('resource');
+                const slowResources = resources.filter(r => r.duration > 1000);
+                
+                const endTime = performance.now();
+                const testDuration = endTime - startTime;
+                
+                const performanceData = {
+                    pageLoadTime: Math.round(loadTime),
+                    totalResources: resources.length,
+                    slowResources: slowResources.length,
+                    testDuration: Math.round(testDuration),
+                    memoryUsage: performance.memory ? {
+                        used: Math.round(performance.memory.usedJSHeapSize / 1024 / 1024),
+                        total: Math.round(performance.memory.totalJSHeapSize / 1024 / 1024)
+                    } : 'Not available'
+                };
+                
+                addResult('performanceResults', 'Performance test completed!', 'success', performanceData);
+                window.testResults.performance = { success: true, data: performanceData };
+            } catch (error) {
+                addResult('performanceResults', 'Performance test failed!', 'error', error);
+                window.testResults.performance = { success: false, error: error.message };
+            }
+            updateProgress();
+        };
+
+        window.testNetwork = async function() {
+            addResult('networkResults', 'Testing network connectivity...', 'loading');
+            try {
+                // Test main application
+                const appResponse = await fetch(window.location.origin);
+                addResult('networkResults', `Main app accessible (${appResponse.status})`, 'success');
+                
+                // Test CORS and connectivity
+                const corsTest = {
+                    origin: window.location.origin,
+                    userAgent: navigator.userAgent,
+                    online: navigator.onLine,
+                    connection: navigator.connection ? {
+                        effectiveType: navigator.connection.effectiveType,
+                        downlink: navigator.connection.downlink
+                    } : 'Not available'
+                };
+                
+                addResult('networkResults', 'Network test completed!', 'success', corsTest);
+                window.testResults.network = { success: true, data: corsTest };
+            } catch (error) {
+                addResult('networkResults', 'Network test failed!', 'error', error);
+                window.testResults.network = { success: false, error: error.message };
+            }
+            updateProgress();
+        };
+
+        window.runAllTests = async function() {
+            const button = document.getElementById('runAllBtn');
+            button.disabled = true;
+            button.textContent = 'Running Tests...';
+            
+            window.completedTests = 0;
+            window.testResults = {};
+            
+            // Clear all previous results
+            ['configResults', 'functionsResults', 'firestoreResults', 'authResults', 'performanceResults', 'networkResults'].forEach(id => {
+                document.getElementById(id).innerHTML = '';
+            });
+            
+            addResult('allTestsResults', 'Starting comprehensive test suite...', 'info');
+            
+            try {
+                await testSystemConfig();
+                await testFirebaseFunctions();
+                await testFirestore();
+                await testAuthentication();
+                await testPerformance();
+                await testNetwork();
+                
+                // Generate summary
+                const successCount = Object.values(window.testResults).filter(r => r.success).length;
+                const totalCount = Object.keys(window.testResults).length;
+                
+                if (successCount === totalCount) {
+                    addResult('allTestsResults', `🎉 All tests passed! (${successCount}/${totalCount})`, 'success', window.testResults);
+                } else {
+                    addResult('allTestsResults', `⚠️ Some tests failed (${successCount}/${totalCount})`, 'warning', window.testResults);
+                }
+                
+            } catch (error) {
+                addResult('allTestsResults', 'Test suite failed!', 'error', error);
+            }
+            
+            button.disabled = false;
+            button.textContent = 'Run Complete Test Suite';
+        };
+
+        // Auto-run basic tests on load
+        console.log('Comprehensive Test System Loaded');
+        console.log('Firebase App:', app);
+        console.log('Functions Region:', functions.region);
+    </script>
+</body>
+</html>

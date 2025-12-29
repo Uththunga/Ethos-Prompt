@@ -1,0 +1,62 @@
+firebase-functions>=0.1.0
+firebase-admin>=6.0.0
+
+# HTTP client for OpenRouter API
+aiohttp>=3.9.0
+# Week 5 Performance Optimization (Task 1.4.1): HTTP session reuse with connection pooling
+httpx>=0.27.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+pytest-cov>=4.1.0
+
+# RAG Pipeline Dependencies
+# Document extraction
+PyPDF2>=3.0.0
+python-docx>=1.1.0
+markdown>=3.5
+beautifulsoup4>=4.12.0
+chardet>=5.0.0
+
+# Text processing and search
+nltk>=3.8.0
+pyspellchecker>=0.8.0
+
+# Embeddings and vector operations
+numpy>=1.24.0
+requests>=2.31.0
+openai>=1.0.0
+
+# Optional: Redis for caching
+redis>=5.0.0
+
+# Error tracking
+sentry-sdk>=1.40.0
+
+
+# Optional advanced OCR/table extraction
+pdfplumber>=0.11.0
+pytesseract>=0.3.10
+pillow>=10.0.0
+
+# LangGraph and LangChain for AI Agents (October 2025)
+langgraph>=0.3.0
+# Install the meta 'langchain' package to provide langchain.tools and re-exported APIs used by our tools
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+langchain-anthropic>=0.2.0
+pydantic>=2.6.0
+pydantic-settings>=2.3.0
+
+
+
+# FastAPI app for Cloud Run
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+slowapi>=0.1.9  # Rate limiting

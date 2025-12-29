@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure Monitoring - RAG Prompt Library</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .dashboard { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .widgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .widget { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .widget h3 { margin: 0 0 15px 0; color: #333; }
+        .metric-value { font-size: 2em; font-weight: bold; color: #2196F3; }
+        .metric-target { font-size: 0.9em; color: #666; margin-top: 5px; }
+        .status-good { color: #4CAF50; }
+        .status-warning { color: #FF9800; }
+        .status-error { color: #F44336; }
+        .refresh-info { text-align: right; color: #666; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>Infrastructure Monitoring</h1>
+            <p>Firebase services, database, and storage metrics</p>
+            <div class="refresh-info">Auto-refresh: 30s | Last updated: <span id="lastUpdate">Loading...</span></div>
+        </div>
+        <div class="widgets" id="widgets">
+            
+                <div class="widget" id="widget-infrastructure_firestore_operations">
+                    <h3>Firestore Operations</h3>
+                    <div id="content-infrastructure_firestore_operations">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-infrastructure_storage_usage">
+                    <h3>Storage Usage</h3>
+                    <div id="content-infrastructure_storage_usage">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-infrastructure_bandwidth_usage">
+                    <h3>Bandwidth Usage</h3>
+                    <div id="content-infrastructure_bandwidth_usage">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-infrastructure_function_memory">
+                    <h3>Function Memory Usage</h3>
+                    <div id="content-infrastructure_function_memory">Loading...</div>
+                </div>
+            
+        </div>
+    </div>
+    <script src="scripts/infrastructure.js"></script>
+</body>
+</html>

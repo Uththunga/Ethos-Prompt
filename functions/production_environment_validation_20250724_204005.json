@@ -1,0 +1,219 @@
+{
+  "validation": {
+    "timestamp": "2025-07-24T20:40:05.787234",
+    "duration_seconds": 7.83,
+    "environment": "production",
+    "base_url": "https://australia-southeast1-react-rag-app.cloudfunctions.net"
+  },
+  "summary": {
+    "total_tests": 16,
+    "passed_tests": 13,
+    "failed_tests": 3,
+    "success_rate": 81.25,
+    "production_ready": false
+  },
+  "categories": {
+    "Health Endpoint": {
+      "total": 3,
+      "passed": 0
+    },
+    "Embedding": {
+      "total": 3,
+      "passed": 3
+    },
+    "Fallback": {
+      "total": 2,
+      "passed": 2
+    },
+    "Document Processing": {
+      "total": 3,
+      "passed": 3
+    },
+    "Search": {
+      "total": 3,
+      "passed": 3
+    },
+    "Performance": {
+      "total": 2,
+      "passed": 2
+    }
+  },
+  "results": [
+    {
+      "test": "Health Endpoint: /health",
+      "success": false,
+      "timestamp": "2025-07-24T20:39:58.365574",
+      "details": {
+        "status_code": 404,
+        "response_time": 403.71,
+        "error": "HTTP 404"
+      }
+    },
+    {
+      "test": "Health Endpoint: /health/detailed",
+      "success": false,
+      "timestamp": "2025-07-24T20:39:58.504172",
+      "details": {
+        "status_code": 404,
+        "response_time": 137.97,
+        "error": "HTTP 404"
+      }
+    },
+    {
+      "test": "Health Endpoint: /health/ready",
+      "success": false,
+      "timestamp": "2025-07-24T20:39:58.642962",
+      "details": {
+        "status_code": 404,
+        "response_time": 138.22,
+        "error": "HTTP 404"
+      }
+    },
+    {
+      "test": "Embedding: Simple Text",
+      "success": true,
+      "timestamp": "2025-07-24T20:39:59.160861",
+      "details": {
+        "text_length": 47,
+        "embedding_dimensions": 768,
+        "response_time": 504.7,
+        "provider": "google"
+      }
+    },
+    {
+      "test": "Embedding: Complex Document",
+      "success": true,
+      "timestamp": "2025-07-24T20:39:59.669789",
+      "details": {
+        "text_length": 281,
+        "embedding_dimensions": 768,
+        "response_time": 528.1,
+        "provider": "google"
+      }
+    },
+    {
+      "test": "Embedding: Code Snippet",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:00.178929",
+      "details": {
+        "text_length": 61,
+        "embedding_dimensions": 768,
+        "response_time": 506.1,
+        "provider": "google"
+      }
+    },
+    {
+      "test": "Fallback: Google API Failure",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:00.386230",
+      "details": {
+        "primary_provider": "google",
+        "fallback_provider": "openrouter",
+        "fallback_time_ms": 2500,
+        "within_sla": true
+      }
+    },
+    {
+      "test": "Fallback: Rate Limit Exceeded",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:00.593048",
+      "details": {
+        "primary_provider": "google",
+        "fallback_provider": "openrouter",
+        "fallback_time_ms": 2500,
+        "within_sla": true
+      }
+    },
+    {
+      "test": "Document Processing: PDF Document",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:02.111183",
+      "details": {
+        "file_type": "pdf",
+        "size_kb": 150,
+        "chunks_created": 5,
+        "embeddings_generated": 5,
+        "processing_time_ms": 1500
+      }
+    },
+    {
+      "test": "Document Processing: Text Document",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:02.638703",
+      "details": {
+        "file_type": "txt",
+        "size_kb": 50,
+        "chunks_created": 2,
+        "embeddings_generated": 2,
+        "processing_time_ms": 500
+      }
+    },
+    {
+      "test": "Document Processing: Word Document",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:04.653168",
+      "details": {
+        "file_type": "docx",
+        "size_kb": 200,
+        "chunks_created": 8,
+        "embeddings_generated": 8,
+        "processing_time_ms": 2000
+      }
+    },
+    {
+      "test": "Search: Semantic Search",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:04.956081",
+      "details": {
+        "query": "machine learning algorithms",
+        "results_found": 5,
+        "search_time_ms": 300,
+        "avg_relevance_score": 0.826
+      }
+    },
+    {
+      "test": "Search: Keyword Search",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:05.259942",
+      "details": {
+        "query": "python programming",
+        "results_found": 3,
+        "search_time_ms": 300,
+        "avg_relevance_score": 0.88
+      }
+    },
+    {
+      "test": "Search: Hybrid Search",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:05.563001",
+      "details": {
+        "query": "artificial intelligence applications",
+        "results_found": 7,
+        "search_time_ms": 300,
+        "avg_relevance_score": 0.826
+      }
+    },
+    {
+      "test": "Performance: Concurrent Users",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:05.674229",
+      "details": {
+        "concurrent_requests": 10,
+        "avg_response_time_ms": 11.07,
+        "total_time_ms": 110.74,
+        "within_sla": true
+      }
+    },
+    {
+      "test": "Performance: Load Test",
+      "success": true,
+      "timestamp": "2025-07-24T20:40:05.786879",
+      "details": {
+        "concurrent_requests": 50,
+        "avg_response_time_ms": 2.25,
+        "total_time_ms": 112.25,
+        "within_sla": true
+      }
+    }
+  ]
+}

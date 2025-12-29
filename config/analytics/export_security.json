@@ -1,0 +1,20 @@
+{
+  "access_control": {
+    "role_based_permissions": true,
+    "data_filtering": true,
+    "audit_logging": true,
+    "encryption": true
+  },
+  "compliance_features": {
+    "gdpr_compliance": true,
+    "data_anonymization": true,
+    "retention_policies": true,
+    "access_logs": true
+  },
+  "rate_limiting": {
+    "exports_per_hour": 10,
+    "exports_per_day": 50,
+    "max_file_size_mb": 500,
+    "concurrent_exports": 3
+  }
+}

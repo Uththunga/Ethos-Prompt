@@ -1,0 +1,339 @@
+{
+  "test_prompts": [
+    {
+      "id": "factual_001",
+      "category": "factual",
+      "title": "What is Machine Learning?",
+      "prompt": "What is Machine Learning and what are its main types?",
+      "expected_context": "technical_doc_ai.txt",
+      "evaluation_criteria": [
+        "Mentions supervised, unsupervised, and reinforcement learning",
+        "Defines ML as subset of AI",
+        "Explains learning from data"
+      ]
+    },
+    {
+      "id": "factual_002",
+      "category": "factual",
+      "title": "Q4 Revenue",
+      "prompt": "What was the total revenue in Q4 2024?",
+      "expected_context": "business_report_q4.txt",
+      "evaluation_criteria": [
+        "States $45.2 million",
+        "Mentions year-over-year growth percentage",
+        "Provides context about performance"
+      ]
+    },
+    {
+      "id": "factual_003",
+      "category": "factual",
+      "title": "Python Installation",
+      "prompt": "How do I install Python on Ubuntu?",
+      "expected_context": "python_guide.md",
+      "evaluation_criteria": [
+        "Mentions apt-get commands",
+        "Includes update and install steps",
+        "Provides correct syntax"
+      ]
+    },
+    {
+      "id": "factual_004",
+      "category": "factual",
+      "title": "Transformer Architecture",
+      "prompt": "What are the key components of the Transformer architecture?",
+      "expected_context": "technical_doc_ai.txt",
+      "evaluation_criteria": [
+        "Mentions self-attention mechanism",
+        "Includes multi-head attention",
+        "References positional encoding"
+      ]
+    },
+    {
+      "id": "factual_005",
+      "category": "factual",
+      "title": "Customer Metrics",
+      "prompt": "What was the Net Promoter Score in Q4 2024?",
+      "expected_context": "business_report_q4.txt",
+      "evaluation_criteria": [
+        "States NPS of 67",
+        "Mentions industry average comparison",
+        "Provides context about customer satisfaction"
+      ]
+    },
+    {
+      "id": "factual_006",
+      "category": "factual",
+      "title": "RAG Features",
+      "prompt": "What file formats does EthosPrompt support for document upload?",
+      "expected_context": "product_documentation.txt",
+      "evaluation_criteria": [
+        "Lists PDF, DOCX, TXT, MD",
+        "Mentions automatic text extraction",
+        "References document processing"
+      ]
+    },
+    {
+      "id": "factual_007",
+      "category": "factual",
+      "title": "Python Data Types",
+      "prompt": "What are the basic data types in Python?",
+      "expected_context": "python_guide.md",
+      "evaluation_criteria": [
+        "Mentions integers, floats, strings",
+        "Includes lists, tuples, dictionaries",
+        "References boolean and None types"
+      ]
+    },
+    {
+      "id": "factual_008",
+      "category": "factual",
+      "title": "Deep Learning Frameworks",
+      "prompt": "What are the popular deep learning frameworks mentioned?",
+      "expected_context": "technical_doc_ai.txt",
+      "evaluation_criteria": [
+        "Lists TensorFlow, PyTorch, Keras, JAX",
+        "Mentions developers (Google, Facebook)",
+        "Provides context about usage"
+      ]
+    },
+    {
+      "id": "analytical_001",
+      "category": "analytical",
+      "title": "Revenue Growth Analysis",
+      "prompt": "Analyze the revenue growth trends and identify the key drivers of success in Q4 2024.",
+      "expected_context": "business_report_q4.txt",
+      "evaluation_criteria": [
+        "Discusses 23% YoY growth",
+        "Identifies enterprise solutions as main driver",
+        "Analyzes segment performance",
+        "Mentions customer acquisition success"
+      ]
+    },
+    {
+      "id": "analytical_002",
+      "category": "analytical",
+      "title": "AI Ethics Challenges",
+      "prompt": "What are the main ethical challenges in AI and how can they be addressed?",
+      "expected_context": "technical_doc_ai.txt",
+      "evaluation_criteria": [
+        "Discusses bias and fairness",
+        "Mentions privacy concerns",
+        "Addresses transparency and accountability",
+        "Suggests mitigation approaches"
+      ]
+    },
+    {
+      "id": "analytical_003",
+      "category": "analytical",
+      "title": "Python OOP Benefits",
+      "prompt": "Explain the benefits of object-oriented programming in Python with examples.",
+      "expected_context": "python_guide.md",
+      "evaluation_criteria": [
+        "Discusses classes and objects",
+        "Mentions inheritance and code reuse",
+        "Provides relevant examples",
+        "Explains encapsulation benefits"
+      ]
+    },
+    {
+      "id": "analytical_004",
+      "category": "analytical",
+      "title": "RAG Optimization Strategy",
+      "prompt": "What strategies should be used to optimize RAG performance and cost?",
+      "expected_context": "product_documentation.txt",
+      "evaluation_criteria": [
+        "Discusses chunking strategies",
+        "Mentions retrieval parameters",
+        "Addresses cost management",
+        "Suggests best practices"
+      ]
+    },
+    {
+      "id": "analytical_005",
+      "category": "analytical",
+      "title": "Customer Retention Analysis",
+      "prompt": "Analyze the customer retention metrics and explain what contributed to the improvement.",
+      "expected_context": "business_report_q4.txt",
+      "evaluation_criteria": [
+        "Discusses churn rate improvement",
+        "Mentions 118% net revenue retention",
+        "Analyzes contributing factors",
+        "References customer satisfaction scores"
+      ]
+    },
+    {
+      "id": "synthesis_001",
+      "category": "synthesis",
+      "title": "AI and Business Integration",
+      "prompt": "How can the AI technologies described be applied to improve business performance metrics?",
+      "expected_context": "technical_doc_ai.txt,business_report_q4.txt",
+      "evaluation_criteria": [
+        "Connects AI capabilities to business needs",
+        "Suggests specific applications",
+        "References relevant metrics",
+        "Provides actionable insights"
+      ]
+    },
+    {
+      "id": "synthesis_002",
+      "category": "synthesis",
+      "title": "Python for AI Development",
+      "prompt": "Explain how Python's features make it suitable for AI and machine learning development.",
+      "expected_context": "python_guide.md,technical_doc_ai.txt",
+      "evaluation_criteria": [
+        "Connects Python features to AI needs",
+        "Mentions relevant libraries (NumPy, Pandas)",
+        "Discusses ease of use and ecosystem",
+        "Provides concrete examples"
+      ]
+    },
+    {
+      "id": "synthesis_003",
+      "category": "synthesis",
+      "title": "RAG Implementation Guide",
+      "prompt": "Create a step-by-step guide for implementing RAG using Python and the RAG Prompt Library.",
+      "expected_context": "python_guide.md,product_documentation.txt",
+      "evaluation_criteria": [
+        "Combines Python knowledge with RAG concepts",
+        "Provides clear implementation steps",
+        "Includes code examples",
+        "References API integration"
+      ]
+    },
+    {
+      "id": "comparison_001",
+      "category": "comparison",
+      "title": "ML Types Comparison",
+      "prompt": "Compare and contrast supervised, unsupervised, and reinforcement learning.",
+      "expected_context": "technical_doc_ai.txt",
+      "evaluation_criteria": [
+        "Clearly distinguishes three types",
+        "Explains key differences",
+        "Provides use cases for each",
+        "Discusses advantages and limitations"
+      ]
+    },
+    {
+      "id": "comparison_002",
+      "category": "comparison",
+      "title": "Revenue Segment Comparison",
+      "prompt": "Compare the performance of different revenue segments in Q4 2024.",
+      "expected_context": "business_report_q4.txt",
+      "evaluation_criteria": [
+        "Compares enterprise, SMB, and professional services",
+        "Discusses growth rates",
+        "Analyzes revenue contribution",
+        "Identifies trends"
+      ]
+    },
+    {
+      "id": "comparison_003",
+      "category": "comparison",
+      "title": "Python Data Structures",
+      "prompt": "Compare lists, tuples, and dictionaries in Python. When should each be used?",
+      "expected_context": "python_guide.md",
+      "evaluation_criteria": [
+        "Explains mutability differences",
+        "Discusses use cases",
+        "Provides performance considerations",
+        "Includes examples"
+      ]
+    },
+    {
+      "id": "edge_case_001",
+      "category": "edge_case",
+      "title": "Ambiguous Query",
+      "prompt": "What is the best approach?",
+      "expected_context": "any",
+      "evaluation_criteria": [
+        "Acknowledges ambiguity",
+        "Requests clarification",
+        "Provides multiple interpretations",
+        "Handles gracefully"
+      ]
+    },
+    {
+      "id": "edge_case_002",
+      "category": "edge_case",
+      "title": "Out of Context Query",
+      "prompt": "What is the capital of France?",
+      "expected_context": "none",
+      "evaluation_criteria": [
+        "Acknowledges lack of relevant context",
+        "Provides general knowledge answer",
+        "Indicates source of information",
+        "Handles appropriately"
+      ]
+    },
+    {
+      "id": "edge_case_003",
+      "category": "edge_case",
+      "title": "Multi-Document Query",
+      "prompt": "Summarize all the key information across all documents.",
+      "expected_context": "all",
+      "evaluation_criteria": [
+        "Synthesizes information from multiple sources",
+        "Organizes information logically",
+        "Attributes sources appropriately",
+        "Provides comprehensive summary"
+      ]
+    },
+    {
+      "id": "specific_001",
+      "category": "specific",
+      "title": "Specific Code Example",
+      "prompt": "Show me the Python code example for reading a file line by line.",
+      "expected_context": "python_guide.md",
+      "evaluation_criteria": [
+        "Provides exact code from document",
+        "Includes proper syntax",
+        "Explains the code",
+        "Mentions context manager usage"
+      ]
+    },
+    {
+      "id": "specific_002",
+      "category": "specific",
+      "title": "Specific Metric",
+      "prompt": "What was the exact Customer Acquisition Cost in Q4 2024?",
+      "expected_context": "business_report_q4.txt",
+      "evaluation_criteria": [
+        "States $8,200",
+        "Mentions comparison to Q3",
+        "Provides context",
+        "Accurate and precise"
+      ]
+    },
+    {
+      "id": "specific_003",
+      "category": "specific",
+      "title": "Specific Feature",
+      "prompt": "What are the exact retrieval parameters available in RAG configuration?",
+      "expected_context": "product_documentation.txt",
+      "evaluation_criteria": [
+        "Lists Top K, Similarity Threshold, Max Context Tokens, Reranking",
+        "Provides default values",
+        "Explains each parameter",
+        "Accurate and complete"
+      ]
+    }
+  ],
+  "metadata": {
+    "total_prompts": 25,
+    "categories": {
+      "factual": 8,
+      "analytical": 5,
+      "synthesis": 3,
+      "comparison": 3,
+      "edge_case": 3,
+      "specific": 3
+    },
+    "expected_documents": [
+      "technical_doc_ai.txt",
+      "business_report_q4.txt",
+      "python_guide.md",
+      "product_documentation.txt"
+    ],
+    "evaluation_approach": "Compare RAG-enabled vs non-RAG responses for accuracy, relevance, and specificity"
+  }
+}

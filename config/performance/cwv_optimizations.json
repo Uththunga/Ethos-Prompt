@@ -1,0 +1,32 @@
+{
+  "largest_contentful_paint": {
+    "target": "<2.5s",
+    "optimizations": {
+      "image_optimization": true,
+      "font_loading_optimization": true,
+      "critical_css_inlining": true,
+      "preload_critical_resources": true,
+      "server_response_optimization": true
+    }
+  },
+  "first_input_delay": {
+    "target": "<100ms",
+    "optimizations": {
+      "javascript_optimization": true,
+      "main_thread_work_reduction": true,
+      "code_splitting": true,
+      "third_party_script_optimization": true,
+      "web_worker_implementation": true
+    }
+  },
+  "cumulative_layout_shift": {
+    "target": "<0.1",
+    "optimizations": {
+      "image_dimensions_specification": true,
+      "font_display_optimization": true,
+      "dynamic_content_handling": true,
+      "ad_space_reservation": true,
+      "animation_optimization": true
+    }
+  }
+}

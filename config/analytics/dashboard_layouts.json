@@ -1,0 +1,115 @@
+{
+  "executive_dashboard": {
+    "layout": "grid_4x3",
+    "widgets": [
+      {
+        "type": "kpi_card",
+        "position": [
+          0,
+          0
+        ],
+        "size": [
+          1,
+          1
+        ]
+      },
+      {
+        "type": "trend_chart",
+        "position": [
+          1,
+          0
+        ],
+        "size": [
+          2,
+          1
+        ]
+      },
+      {
+        "type": "comparison_chart",
+        "position": [
+          3,
+          0
+        ],
+        "size": [
+          1,
+          1
+        ]
+      },
+      {
+        "type": "activity_timeline",
+        "position": [
+          0,
+          1
+        ],
+        "size": [
+          4,
+          2
+        ]
+      }
+    ],
+    "responsive": true,
+    "auto_layout": true
+  },
+  "operational_dashboard": {
+    "layout": "grid_6x4",
+    "widgets": [
+      {
+        "type": "system_health",
+        "position": [
+          0,
+          0
+        ],
+        "size": [
+          2,
+          2
+        ]
+      },
+      {
+        "type": "performance_metrics",
+        "position": [
+          2,
+          0
+        ],
+        "size": [
+          2,
+          2
+        ]
+      },
+      {
+        "type": "error_tracking",
+        "position": [
+          4,
+          0
+        ],
+        "size": [
+          2,
+          2
+        ]
+      },
+      {
+        "type": "user_activity",
+        "position": [
+          0,
+          2
+        ],
+        "size": [
+          3,
+          2
+        ]
+      },
+      {
+        "type": "resource_usage",
+        "position": [
+          3,
+          2
+        ],
+        "size": [
+          3,
+          2
+        ]
+      }
+    ],
+    "responsive": true,
+    "real_time": true
+  }
+}

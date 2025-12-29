@@ -1,0 +1,134 @@
+{
+  "timestamp": "2025-12-21T13:11:01.169073+00:00",
+  "total_tests": 135,
+  "passed": 135,
+  "failed": 0,
+  "success_rate": 100.0,
+  "models_tested": [],
+  "model_results": {
+    "basic": [
+      {
+        "model": "z-ai/glm-4.5-air:free",
+        "display_name": "GLM 4.5 Air (Free) \u26a1 DEFAULT",
+        "success_rate": 100.0,
+        "tests": 5,
+        "passed": 5,
+        "failed": 0
+      },
+      {
+        "model": "x-ai/grok-4-fast:free",
+        "display_name": "Grok 4 Fast (Free)",
+        "success_rate": 100.0,
+        "tests": 5,
+        "passed": 5,
+        "failed": 0
+      },
+      {
+        "model": "microsoft/mai-ds-r1:free",
+        "display_name": "Microsoft MAI-DS-R1 (Free) \u2b50 AGENT OPTIMIZED",
+        "success_rate": 100.0,
+        "tests": 5,
+        "passed": 5,
+        "failed": 0
+      },
+      {
+        "model": "mistralai/mistral-7b-instruct:free",
+        "display_name": "Mistral 7B Instruct (Free) \u26a1\u26a1 ULTRA-FAST",
+        "success_rate": 100.0,
+        "tests": 5,
+        "passed": 5,
+        "failed": 0
+      },
+      {
+        "model": "meta-llama/llama-3.1-8b-instruct:free",
+        "display_name": "Llama 3.1 8B Instruct (Free)",
+        "success_rate": 100.0,
+        "tests": 5,
+        "passed": 5,
+        "failed": 0
+      },
+      {
+        "model": "tngtech/deepseek-r1t-chimera:free",
+        "display_name": "DeepSeek R1T2 Chimera (Free)",
+        "success_rate": 100.0,
+        "tests": 5,
+        "passed": 5,
+        "failed": 0
+      }
+    ],
+    "comprehensive": [
+      {
+        "model": "z-ai/glm-4.5-air:free",
+        "display_name": "GLM 4.5 Air (Free) \u26a1 DEFAULT",
+        "success_rate": 100.0,
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "avg_response_time": 0.0,
+        "total_cost": 0.0
+      },
+      {
+        "model": "x-ai/grok-4-fast:free",
+        "display_name": "Grok 4 Fast (Free)",
+        "success_rate": 100.0,
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "avg_response_time": 0.0,
+        "total_cost": 0.0
+      },
+      {
+        "model": "microsoft/mai-ds-r1:free",
+        "display_name": "Microsoft MAI-DS-R1 (Free) \u2b50 AGENT OPTIMIZED",
+        "success_rate": 100.0,
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "avg_response_time": 0.0,
+        "total_cost": 0.0
+      },
+      {
+        "model": "mistralai/mistral-7b-instruct:free",
+        "display_name": "Mistral 7B Instruct (Free) \u26a1\u26a1 ULTRA-FAST",
+        "success_rate": 100.0,
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "avg_response_time": 0.0,
+        "total_cost": 0.0
+      },
+      {
+        "model": "google/gemma-2-27b-it:free",
+        "display_name": "Gemma 2 27B (Free) [DEPRECATED]",
+        "success_rate": 100.0,
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "avg_response_time": 3.372828165690104e-05,
+        "total_cost": 0.0
+      },
+      {
+        "model": "qwen/qwen3-coder-480b-a35b-instruct:free",
+        "display_name": "Qwen3 Coder 480B (Free) [DEPRECATED]",
+        "success_rate": 100.0,
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "avg_response_time": 0.0,
+        "total_cost": 0.0
+      },
+      {
+        "model": "deepseek/deepseek-v3:free",
+        "display_name": "DeepSeek V3 (Free) [DEPRECATED]",
+        "success_rate": 100.0,
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "avg_response_time": 3.371238708496094e-05,
+        "total_cost": 0.0
+      }
+    ]
+  },
+  "prompt_results": [],
+  "errors": []
+}

@@ -1,0 +1,61 @@
+{
+  "search_algorithms": {
+    "full_text_search": {
+      "fields": [
+        "title",
+        "description",
+        "content",
+        "tags"
+      ],
+      "weights": {
+        "title": 3.0,
+        "description": 2.0,
+        "tags": 1.5,
+        "content": 1.0
+      },
+      "fuzzy_matching": true,
+      "stemming": true
+    },
+    "semantic_search": {
+      "embedding_model": "sentence-transformers",
+      "similarity_threshold": 0.7,
+      "context_aware": true,
+      "intent_recognition": true
+    },
+    "hybrid_search": {
+      "text_weight": 0.6,
+      "semantic_weight": 0.4,
+      "popularity_boost": 0.1,
+      "recency_boost": 0.05
+    }
+  },
+  "search_features": {
+    "autocomplete": {
+      "suggestions": true,
+      "popular_searches": true,
+      "personalized_suggestions": true,
+      "typo_correction": true
+    },
+    "faceted_search": {
+      "categories": true,
+      "tags": true,
+      "authors": true,
+      "ratings": true,
+      "price_ranges": true,
+      "difficulty_levels": true
+    },
+    "advanced_filters": {
+      "date_ranges": true,
+      "usage_statistics": true,
+      "template_complexity": true,
+      "language_support": true
+    }
+  },
+  "ranking_factors": {
+    "relevance_score": 0.4,
+    "quality_score": 0.25,
+    "popularity_score": 0.15,
+    "recency_score": 0.1,
+    "author_reputation": 0.1
+  }
+}

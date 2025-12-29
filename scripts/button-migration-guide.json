@@ -1,0 +1,1290 @@
+{
+  "overview": {
+    "totalButtons": 198,
+    "compliance": 74,
+    "migrationsNeeded": 52
+  },
+  "priorities": {
+    "high": 48,
+    "medium": 4,
+    "low": 0
+  },
+  "instructions": [
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 38,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 43,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 59,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 62,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 65,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 68,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 71,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 113,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 135,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 186,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\HeaderCTA.tsx",
+      "lineNumber": 95,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\Hero.tsx",
+      "lineNumber": 300,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\PromptManagementBanner.tsx",
+      "lineNumber": 57,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\ServiceFailuresSection.tsx",
+      "lineNumber": 145,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\Testimonials.tsx",
+      "lineNumber": 305,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\WaysWeCanHelp.tsx",
+      "lineNumber": 283,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\SectionTemplates.tsx",
+      "lineNumber": 290,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\SectionTemplates.tsx",
+      "lineNumber": 294,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\ServicePageTemplate.tsx",
+      "lineNumber": 119,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Basics.tsx",
+      "lineNumber": 199,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\NotFound.tsx",
+      "lineNumber": 37,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Solutions.tsx",
+      "lineNumber": 309,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Solutions.tsx",
+      "lineNumber": 396,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 38,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 43,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 59,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 62,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 65,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 68,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 71,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 113,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 135,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 186,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\HeaderCTA.tsx",
+      "lineNumber": 102,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\Hero.tsx",
+      "lineNumber": 258,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\PromptManagementBanner.tsx",
+      "lineNumber": 47,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\ServiceFailuresSection.tsx",
+      "lineNumber": 140,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\SectionTemplates.tsx",
+      "lineNumber": 290,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\SectionTemplates.tsx",
+      "lineNumber": 294,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\ServicePageTemplate.tsx",
+      "lineNumber": 119,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\Testimonials.tsx",
+      "lineNumber": 279,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\WaysWeCanHelp.tsx",
+      "lineNumber": 249,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Basics.tsx",
+      "lineNumber": 198,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\NotFound.tsx",
+      "lineNumber": 36,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Solutions.tsx",
+      "lineNumber": 309,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Solutions.tsx",
+      "lineNumber": 396,
+      "instructions": [
+        {
+          "type": "size-and-variant",
+          "current": "size=\"cta\"",
+          "replacement": "size=\"lg\" variant=\"cta\"",
+          "reason": "Convert deprecated cta size to lg size with cta variant"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Unknown size \"cta\""
+          ],
+          "suggestions": [
+            "Use a standard size: sm, default, lg, or icon"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Contact.tsx",
+      "lineNumber": 361,
+      "instructions": [
+        {
+          "type": "remove-custom-styling",
+          "current": "className containing [h-12]",
+          "replacement": "size=\"lg\"",
+          "reason": "Mapped custom heights [h-12] to lg based on largest (h-12)"
+        }
+      ],
+      "priority": "medium"
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Techniques.tsx",
+      "lineNumber": 54,
+      "instructions": [
+        {
+          "type": "remove-custom-styling",
+          "current": "className containing [h-16, h-14, h-12, h-10]",
+          "replacement": "size=\"lg\"",
+          "reason": "Mapped custom heights [h-16, h-14, h-12, h-10] to lg based on largest (h-16)"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Custom height classes [h-10] create buttons smaller than 44px"
+          ],
+          "suggestions": [
+            "Remove custom height classes and use standard sizes"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Techniques.tsx",
+      "lineNumber": 360,
+      "instructions": [
+        {
+          "type": "remove-custom-styling",
+          "current": "className containing [h-18, h-16, h-14, h-12]",
+          "replacement": "size=\"lg\"",
+          "reason": "Mapped custom heights [h-18, h-16, h-14, h-12] to lg based on largest (h-18)"
+        }
+      ],
+      "priority": "medium"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Contact.tsx",
+      "lineNumber": 360,
+      "instructions": [
+        {
+          "type": "remove-custom-styling",
+          "current": "className containing [h-12]",
+          "replacement": "size=\"lg\"",
+          "reason": "Mapped custom heights [h-12] to lg based on largest (h-12)"
+        }
+      ],
+      "priority": "medium"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Techniques.tsx",
+      "lineNumber": 53,
+      "instructions": [
+        {
+          "type": "remove-custom-styling",
+          "current": "className containing [h-16, h-14, h-12, h-10]",
+          "replacement": "size=\"lg\"",
+          "reason": "Mapped custom heights [h-16, h-14, h-12, h-10] to lg based on largest (h-16)"
+        },
+        {
+          "type": "accessibility",
+          "issues": [
+            "Custom height classes [h-10] create buttons smaller than 44px"
+          ],
+          "suggestions": [
+            "Remove custom height classes and use standard sizes"
+          ],
+          "reason": "Ensure WCAG 2.1 AA compliance"
+        }
+      ],
+      "priority": "high"
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Techniques.tsx",
+      "lineNumber": 359,
+      "instructions": [
+        {
+          "type": "remove-custom-styling",
+          "current": "className containing [h-18, h-16, h-14, h-12]",
+          "replacement": "size=\"lg\"",
+          "reason": "Mapped custom heights [h-18, h-16, h-14, h-12] to lg based on largest (h-18)"
+        }
+      ],
+      "priority": "medium"
+    }
+  ],
+  "quickReference": {
+    "sizeMapping": {
+      "sm": "sm",
+      "default": "default",
+      "lg": "lg",
+      "icon": "icon",
+      "xl": "lg",
+      "cta": "lg",
+      "h-8": "sm",
+      "h-9": "sm",
+      "h-10": "default",
+      "h-11": "default",
+      "h-12": "lg",
+      "h-13": "lg",
+      "h-14": "lg",
+      "h-15": "lg",
+      "h-16": "lg",
+      "h-17": "lg",
+      "h-18": "lg"
+    },
+    "standardSizes": {
+      "sm": {
+        "height": 36,
+        "minHeight": 36,
+        "padding": "8px 12px",
+        "fontSize": 14,
+        "description": "Small buttons for secondary actions and compact interfaces"
+      },
+      "default": {
+        "height": 44,
+        "minHeight": 44,
+        "padding": "12px 16px",
+        "fontSize": 16,
+        "description": "Standard buttons for most common actions"
+      },
+      "lg": {
+        "height": 52,
+        "minHeight": 52,
+        "padding": "16px 24px",
+        "fontSize": 16,
+        "minWidth": 120,
+        "description": "Large buttons for primary actions and CTAs"
+      },
+      "icon": {
+        "height": 44,
+        "width": 44,
+        "minHeight": 44,
+        "minWidth": 44,
+        "padding": "0",
+        "fontSize": 16,
+        "description": "Square buttons for icon-only actions"
+      }
+    },
+    "contextRecommendations": {
+      "primary-action": {
+        "recommendedSize": "lg",
+        "variants": [
+          "default",
+          "cta"
+        ],
+        "description": "Main call-to-action buttons that drive user engagement"
+      },
+      "secondary-action": {
+        "recommendedSize": "default",
+        "variants": [
+          "outline",
+          "secondary"
+        ],
+        "description": "Supporting actions like Cancel, Back, Edit"
+      },
+      "tertiary-action": {
+        "recommendedSize": "sm",
+        "variants": [
+          "ghost",
+          "link"
+        ],
+        "description": "Minor actions like Show More, Collapse, Skip"
+      },
+      "icon-action": {
+        "recommendedSize": "icon",
+        "variants": [
+          "ghost",
+          "outline"
+        ],
+        "description": "Icon-only buttons for actions like Close, Menu, Settings"
+      },
+      "form-submit": {
+        "recommendedSize": "lg",
+        "variants": [
+          "default",
+          "cta"
+        ],
+        "description": "Form submission buttons"
+      },
+      "form-cancel": {
+        "recommendedSize": "default",
+        "variants": [
+          "outline",
+          "secondary"
+        ],
+        "description": "Form cancellation buttons"
+      },
+      "navigation": {
+        "recommendedSize": "default",
+        "variants": [
+          "ghost",
+          "outline"
+        ],
+        "description": "Navigation buttons and links"
+      },
+      "table-action": {
+        "recommendedSize": "sm",
+        "variants": [
+          "ghost",
+          "outline"
+        ],
+        "description": "Actions within tables or lists"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "usage_analytics": {
+    "prompt_creation_trends": true,
+    "execution_patterns": true,
+    "collaboration_metrics": true,
+    "storage_utilization": true
+  },
+  "member_analytics": {
+    "activity_heatmaps": true,
+    "contribution_rankings": true,
+    "engagement_trends": true,
+    "productivity_metrics": true
+  },
+  "performance_analytics": {
+    "response_times": true,
+    "success_rates": true,
+    "error_tracking": true,
+    "optimization_suggestions": true
+  },
+  "business_analytics": {
+    "roi_calculations": true,
+    "cost_analysis": true,
+    "efficiency_metrics": true,
+    "growth_projections": true
+  }
+}

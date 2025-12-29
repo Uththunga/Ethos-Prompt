@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^24.0.14",
+    "firebase": "^11.10.0",
+    "firebase-tools": "^14.16.0",
+    "lucide-react": "^0.525.0",
+    "react-router-dom": "^7.6.3"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.0",
+    "@playwright/test": "^1.57.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "autoprefixer": "^10.4.21",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3",
+    "vite-plugin-compression": "^0.5.1",
+    "vitest": "^3.2.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "emulators": "firebase emulators:start --only auth,firestore,functions,storage",
+    "emulators:ui": "firebase emulators:start --only auth,firestore,functions,storage",
+    "setup-auth": "node setup-local-auth.js",
+    "dev:full": "concurrently \"npm run emulators\" \"cd frontend && npm run dev\""
+  }
+}

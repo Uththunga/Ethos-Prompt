@@ -1,0 +1,9 @@
+{
+  "global_distribution": true,
+  "edge_locations": true,
+  "cache_optimization": true,
+  "compression": true,
+  "image_optimization": true,
+  "http2_support": true,
+  "brotli_compression": true
+}

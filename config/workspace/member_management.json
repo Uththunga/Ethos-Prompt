@@ -1,0 +1,26 @@
+{
+  "invitation_system": {
+    "email_invitations": true,
+    "link_invitations": true,
+    "bulk_invitations": true,
+    "invitation_expiry": true
+  },
+  "member_onboarding": {
+    "welcome_flow": true,
+    "role_assignment": true,
+    "permissions_explanation": true,
+    "workspace_tour": true
+  },
+  "member_administration": {
+    "role_changes": true,
+    "permission_updates": true,
+    "member_removal": true,
+    "activity_monitoring": true
+  },
+  "member_analytics": {
+    "activity_tracking": true,
+    "contribution_metrics": true,
+    "engagement_scores": true,
+    "performance_insights": true
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "timestamp": "2025-09-27T08:06:56.834Z",
+  "totalSize": 2595368,
+  "totalKB": 2535,
+  "jsSize": 2357831,
+  "cssSize": 237537,
+  "targetKB": 500,
+  "withinTarget": false,
+  "files": [
+    {
+      "name": "js/Analytics-BQTBcHPm.js",
+      "size": 10754,
+      "type": "javascript"
+    },
+    {
+      "name": "js/analyticsService-Bkyl4egD.js",
+      "size": 3058,
+      "type": "javascript"
+    },
+    {
+      "name": "js/arrow-left-D8v1c4gk.js",
+      "size": 335,
+      "type": "javascript"
+    },
+    {
+      "name": "js/arrow-right-DO2IeKk8.js",
+      "size": 335,
+      "type": "javascript"
+    },
+    {
+      "name": "js/badge-JOaLyzTn.js",
+      "size": 1245,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Basics-B8cIW61C.js",
+      "size": 19880,
+      "type": "javascript"
+    },
+    {
+      "name": "js/BetaProgram-BD9tu5mD.js",
+      "size": 19711,
+      "type": "javascript"
+    },
+    {
+      "name": "js/BetaSignup-7EVzBm2N.js",
+      "size": 31042,
+      "type": "javascript"
+    },
+    {
+      "name": "js/book-open-BHmc2MwK.js",
+      "size": 449,
+      "type": "javascript"
+    },
+    {
+      "name": "js/calendar-BuqRMg2g.js",
+      "size": 427,
+      "type": "javascript"
+    },
+    {
+      "name": "js/CheckIcon-4GRNTHlq.js",
+      "size": 477,
+      "type": "javascript"
+    },
+    {
+      "name": "js/chevron-up-DFG1kRCf.js",
+      "size": 368,
+      "type": "javascript"
+    },
+    {
+      "name": "js/clock-D4Kr6K7V.js",
+      "size": 339,
+      "type": "javascript"
+    },
+    {
+      "name": "js/ClockIcon-BHQk5PC3.js",
+      "size": 1359,
+      "type": "javascript"
+    },
+    {
+      "name": "js/code-5Ms4DP5i.js",
+      "size": 332,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Contact-DPvAj4_o.js",
+      "size": 97446,
+      "type": "javascript"
+    },
+    {
+      "name": "js/CookiePolicy-DOmiz0b5.js",
+      "size": 20120,
+      "type": "javascript"
+    },
+    {
+      "name": "js/cross-service-navigation-Oklhoxyr.js",
+      "size": 14191,
+      "type": "javascript"
+    },
+    {
+      "name": "js/CurrencyDollarIcon-OcsGBv_N.js",
+      "size": 690,
+      "type": "javascript"
+    },
+    {
+      "name": "js/CustomAISolutions-Bp8V7fZe.js",
+      "size": 71654,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Dashboard-Bi2fWryO.js",
+      "size": 21557,
+      "type": "javascript"
+    },
+    {
+      "name": "js/DigitalTransformation-pDocpBKt.js",
+      "size": 38503,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Documents-C43Th3kC.js",
+      "size": 34333,
+      "type": "javascript"
+    },
+    {
+      "name": "js/documentService-BkrJIaNA.js",
+      "size": 7452,
+      "type": "javascript"
+    },
+    {
+      "name": "js/dollar-sign-qEuxjriL.js",
+      "size": 389,
+      "type": "javascript"
+    },
+    {
+      "name": "js/download-DXCA6NQG.js",
+      "size": 402,
+      "type": "javascript"
+    },
+    {
+      "name": "js/ExclamationTriangleIcon-DCPxp2Vp.js",
+      "size": 632,
+      "type": "javascript"
+    },
+    {
+      "name": "js/ExecutePrompt-DLiuQ5aU.js",
+      "size": 56975,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Executions-wNfTyCaL.js",
+      "size": 14494,
+      "type": "javascript"
+    },
+    {
+      "name": "js/FAQ-CawhDqbq.js",
+      "size": 14749,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Footer-GKk_ysbz.js",
+      "size": 26390,
+      "type": "javascript"
+    },
+    {
+      "name": "js/HelpCenter-CZ-p8-SN.js",
+      "size": 16275,
+      "type": "javascript"
+    },
+    {
+      "name": "js/index-5nWNMPuv.js",
+      "size": 6778,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Index-bAkR2xIS.js",
+      "size": 54841,
+      "type": "javascript"
+    },
+    {
+      "name": "js/index-DbyFCowi.js",
+      "size": 1024297,
+      "type": "javascript"
+    },
+    {
+      "name": "js/IntelligentApplications-CYvjHamu.js",
+      "size": 42057,
+      "type": "javascript"
+    },
+    {
+      "name": "js/LearningMaterialSection-DfDoZ1vn.js",
+      "size": 2838,
+      "type": "javascript"
+    },
+    {
+      "name": "js/MagnifyingGlassIcon-CtHGy20O.js",
+      "size": 1941,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Marketplace-BUKPDkwM.js",
+      "size": 21168,
+      "type": "javascript"
+    },
+    {
+      "name": "js/message-square-B3BPEDbu.js",
+      "size": 349,
+      "type": "javascript"
+    },
+    {
+      "name": "js/PlayIcon-B6iw7uwy.js",
+      "size": 582,
+      "type": "javascript"
+    },
+    {
+      "name": "js/PrivacyPolicy-Clgnudf6.js",
+      "size": 15984,
+      "type": "javascript"
+    },
+    {
+      "name": "js/PromptingGuide-DYVNaDnD.js",
+      "size": 28599,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Prompts-KETiWHuA.js",
+      "size": 155153,
+      "type": "javascript"
+    },
+    {
+      "name": "js/proxy-BPSK3cFK.js",
+      "size": 111783,
+      "type": "javascript"
+    },
+    {
+      "name": "js/search-CwKogRTM.js",
+      "size": 344,
+      "type": "javascript"
+    },
+    {
+      "name": "js/server-BA4lH76J.js",
+      "size": 1092,
+      "type": "javascript"
+    },
+    {
+      "name": "js/service-layout-components-DKEy97qw.js",
+      "size": 63879,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Settings-CISyNugv.js",
+      "size": 40058,
+      "type": "javascript"
+    },
+    {
+      "name": "js/shield-BUhZ49Mf.js",
+      "size": 706,
+      "type": "javascript"
+    },
+    {
+      "name": "js/ShieldCheckIcon-Cl2Faoai.js",
+      "size": 1716,
+      "type": "javascript"
+    },
+    {
+      "name": "js/ShinyText-B57HAqWn.js",
+      "size": 706,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Solutions-Y-e71mlX.js",
+      "size": 20800,
+      "type": "javascript"
+    },
+    {
+      "name": "js/SparklesIcon-BghwH-y1.js",
+      "size": 1631,
+      "type": "javascript"
+    },
+    {
+      "name": "js/star-C4Fngrti.js",
+      "size": 642,
+      "type": "javascript"
+    },
+    {
+      "name": "js/StarIcon-C5be5yI-.js",
+      "size": 823,
+      "type": "javascript"
+    },
+    {
+      "name": "js/SystemIntegration-BmoiBw3r.js",
+      "size": 28350,
+      "type": "javascript"
+    },
+    {
+      "name": "js/target-BVF_N4PW.js",
+      "size": 396,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Techniques-B_sGfY3e.js",
+      "size": 46620,
+      "type": "javascript"
+    },
+    {
+      "name": "js/TermsOfService-CZesEgk-.js",
+      "size": 18295,
+      "type": "javascript"
+    },
+    {
+      "name": "js/trending-up-CDuDUHRH.js",
+      "size": 345,
+      "type": "javascript"
+    },
+    {
+      "name": "js/UserGroupIcon-BGc7jktZ.js",
+      "size": 2215,
+      "type": "javascript"
+    },
+    {
+      "name": "js/UserIcon-CX0XNw8-.js",
+      "size": 607,
+      "type": "javascript"
+    },
+    {
+      "name": "js/VirtualizedList-CVaIlaz_.js",
+      "size": 11639,
+      "type": "javascript"
+    },
+    {
+      "name": "js/web-vitals-Acvw_0ge.js",
+      "size": 7094,
+      "type": "javascript"
+    },
+    {
+      "name": "js/Workspaces-Dbmk6zrY.js",
+      "size": 116183,
+      "type": "javascript"
+    },
+    {
+      "name": "js/XCircleIcon-Bi9iKWDy.js",
+      "size": 525,
+      "type": "javascript"
+    },
+    {
+      "name": "js/zap-DNd3hdAB.js",
+      "size": 432,
+      "type": "javascript"
+    },
+    {
+      "name": "index-C-lt_7TN.css",
+      "size": 237537,
+      "type": "css"
+    }
+  ]
+}

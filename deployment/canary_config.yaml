@@ -1,0 +1,237 @@
+# Canary Deployment Configuration
+# EthosPrompt Marketing Agent - Intelligent Caching Rollout
+
+# Deployment Strategy: Gradual traffic shift with automated rollback
+# Total Duration: ~3.5 hours (excluding monitoring)
+
+canary_stages:
+  # Stage 1: Initial Validation (5% traffic)
+  - name: "initial_validation"
+    traffic_percent: 5
+    duration_minutes: 30
+    rollback_on_error_rate: 2.0  # 2% error rate triggers rollback
+    rollback_on_latency_p95_ms: 10000  # P95 > 10s triggers rollback
+    monitoring:
+      - error_rate
+      - latency_p95
+      - cache_hit_rate
+      - pii_detection_rate
+    success_criteria:
+      error_rate_max: 1.0  # < 1%
+      latency_p95_max: 5000  # < 5s
+      cache_hit_rate_min: 20.0  # > 20%
+    alerts:
+      slack_channel: "#marketing-agent-deploys"
+      email: "devops@example.com"
+
+  # Stage 2: Expanded Testing (25% traffic)
+  - name: "expanded_testing"
+    traffic_percent: 25
+    duration_minutes: 60
+    rollback_on_error_rate: 2.0
+    rollback_on_latency_p95_ms: 8000  # Stricter threshold
+    monitoring:
+      - error_rate
+      - latency_p95
+      - cache_hit_rate
+      - pii_detection_rate
+      - firestore_writes
+      - cost_per_query
+    success_criteria:
+      error_rate_max: 0.8
+      latency_p95_max: 4000  # < 4s
+      cache_hit_rate_min: 30.0  # > 30%
+      pii_leaks: 0  # Zero tolerance
+    alerts:
+      slack_channel: "#marketing-agent-deploys"
+      email: "devops@example.com"
+
+  # Stage 3: Majority Traffic (50% traffic)
+  - name: "majority_traffic"
+    traffic_percent: 50
+    duration_minutes: 120  # 2 hours for statistical significance
+    rollback_on_error_rate: 1.5
+    rollback_on_latency_p95_ms: 6000
+    monitoring:
+      - error_rate
+      - latency_p95
+      - latency_p50
+      - cache_hit_rate
+      - pii_detection_rate
+      - firestore_writes
+      - firestore_reads
+      - cost_per_query
+      - user_satisfaction
+    success_criteria:
+      error_rate_max: 0.5
+      latency_p95_max: 3000  # < 3s
+      latency_p50_max: 1000  # < 1s
+      cache_hit_rate_min: 50.0  # > 50%
+      pii_leaks: 0
+      cost_reduction_min: 40.0  # > 40% cost reduction
+    alerts:
+      slack_channel: "#marketing-agent-deploys"
+      email: "devops@example.com"
+      pagerduty_on_failure: true
+
+  # Stage 4: Full Rollout (100% traffic)
+  - name: "full_rollout"
+    traffic_percent: 100
+    duration_minutes: null  # Permanent
+    rollback_on_error_rate: 1.0
+    rollback_on_latency_p95_ms: 5000
+    monitoring:
+      - all_metrics
+    success_criteria:
+      error_rate_max: 0.3
+      latency_p95_max: 2000  # < 2s
+      cache_hit_rate_min: 60.0  # > 60%
+      pii_leaks: 0
+      cost_reduction_min: 60.0  # > 60% cost reduction
+    alerts:
+      slack_channel: "#marketing-agent-deploys"
+      email: "devops@example.com"
+      pagerduty_on_failure: true
+
+# Automated Rollback Configuration
+rollback:
+  enabled: true
+  auto_rollback: true  # Automatically rollback on failure
+  rollback_revision: "marketing-api-blue"  # Blue = stable version
+  notification:
+    slack: true
+    email: true
+    pagerduty: true
+  post_rollback_actions:
+    - clear_cache  # Clear potentially corrupted cache
+    - incident_report  # Auto-create incident ticket
+
+# Monitoring Configuration
+monitoring:
+  platform: "google_cloud_monitoring"
+  dashboard_url: "https://console.cloud.google.com/monitoring/dashboards/custom/..."
+  metrics:
+    - name: "error_rate"
+      query: "resource.type=cloud_run_revision AND severity>=ERROR"
+      threshold: 1.0  # 1%
+      window: "5m"
+
+    - name: "latency_p95"
+      query: "metric.type='run.googleapis.com/request_latencies' AND metric.label.response_code_class='2xx'"
+      percentile: 95
+      threshold_ms: 5000
+      window: "5m"
+
+    - name: "cache_hit_rate"
+      query: "resource.type=cloud_run_revision AND jsonPayload.message=~'Cache hit|Cache miss'"
+      calculation: "hits / (hits + misses) * 100"
+      threshold_min: 50.0
+      window: "15m"
+
+    - name: "pii_detection_rate"
+      query: "resource.type=cloud_run_revision AND jsonPayload.message=~'PII detected'"
+      threshold_max: 0  # Should NEVER cache PII
+      window: "1m"
+      alert_severity: "critical"
+
+# Traffic Split Configuration (for Google Cloud Run)
+traffic_split:
+  method: "revision_based"  # vs tag_based
+  green_revision: "marketing-api-green"
+  blue_revision: "marketing-api-blue"
+  gradual_rollout_enabled: true
+
+#Deployment Commands (Google Cloud Run)
+deployment_commands:
+  # Stage 1: 5%
+  stage_1:
+    command: |
+      gcloud run services update-traffic marketing-api \
+        --to-revisions=marketing-api-blue=95,marketing-api-green=5 \
+        --region=australia-southeast1
+
+  # Stage 2: 25%
+  stage_2:
+    command: |
+      gcloud run services update-traffic marketing-api \
+        --to-revisions=marketing-api-blue=75,marketing-api-green=25 \
+        --region=australia-southeast1
+
+  # Stage 3: 50%
+  stage_3:
+    command: |
+      gcloud run services update-traffic marketing-api \
+        --to-revisions=marketing-api-blue=50,marketing-api-green=50 \
+        --region=australia-southeast1
+
+  # Stage 4: 100%
+  stage_4:
+    command: |
+      gcloud run services update-traffic marketing-api \
+        --to-revisions=marketing-api-green=100 \
+        --region=australia-southeast1
+
+  # Rollback
+  rollback:
+    command: |
+      gcloud run services update-traffic marketing-api \
+        --to-revisions=marketing-api-blue=100 \
+        --region=australia-southeast1
+
+# Environment Variables (Green Deployment)
+environment_variables:
+  CACHE_ENABLED: "true"
+  CACHE_TTL: "2592000"  # 30 days in seconds
+  SIMILARITY_THRESHOLD: "0.85"
+  QUALITY_THRESHOLD: "0.7"
+  EMBEDDING_MODEL: "all-MiniLM-L6-v2"
+  PII_DETECTION_THRESHOLD: "0.5"
+  MIN_INSTANCES: "1"  # Keep warm
+  MAX_INSTANCES: "10"
+
+# Test Queries for Validation
+test_queries:
+  - "What are your pricing plans?"
+  - "Tell me about your services"
+  - "How can I contact support?"
+  - "What industries do you serve?"
+  - "Do you offer enterprise plans?"
+
+# Expected Results
+expected_results:
+  first_query_ttft_ms: 4000  # Cold cache
+  repeat_query_ttft_ms: 200  # Cached
+  cache_hit_rate_week_1: 40
+  cache_hit_rate_week_4: 70
+  cost_reduction_week_1: 40
+  cost_reduction_week_4: 70
+
+# Deployment Schedule
+schedule:
+  timezone: "Australia/Sydney"
+  preferred_day: "Tuesday"  # Mid-week, not Monday (fresh week) or Friday (weekend risk)
+  preferred_time: "10:00 AM"  # Low traffic period
+  avoid_days:
+    - "Monday"  # Start of week, too risky
+    - "Friday"  # Weekend coverage limited
+    - "Public Holidays"
+  duration_hours: 4  # Total canary duration
+
+# Team Roles
+team:
+  deployment_lead: "DevOps Engineer"
+  monitoring_lead: "SRE"
+  rollback_authority: "Engineering Manager"
+  communication_lead: "Product Manager"
+  on_call: "SRE + Backend Engineer"
+
+# Post-Deployment Review
+post_deployment:
+  review_within_hours: 24
+  metrics_to_analyze:
+    - cache_hit_rate
+    - latency_improvement
+    - cost_reduction
+    - error_rate
+    - user_satisfaction
+  document: "deployment/deployment_report_YYYY-MM-DD.md"

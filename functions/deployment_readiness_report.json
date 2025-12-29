@@ -1,0 +1,361 @@
+{
+  "timestamp": "2025-07-24T20:37:15.150574",
+  "summary": {
+    "total_tests": 57,
+    "passed_tests": 57,
+    "failed_tests": 0,
+    "success_rate": 100.0,
+    "deployment_ready": true
+  },
+  "results": [
+    {
+      "test": "Working Directory",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.434241",
+      "details": {
+        "directory": "functions"
+      }
+    },
+    {
+      "test": "Python Version",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.434413",
+      "details": {
+        "version": "3.13.5"
+      }
+    },
+    {
+      "test": "Required File: main.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.434797",
+      "details": {}
+    },
+    {
+      "test": "Required File: requirements.txt",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.435039",
+      "details": {}
+    },
+    {
+      "test": "Required File: ../firebase.json",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.435374",
+      "details": {}
+    },
+    {
+      "test": "Optional File: src/__init__.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.435495",
+      "details": {}
+    },
+    {
+      "test": "Optional File: src/ai_service.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.435708",
+      "details": {}
+    },
+    {
+      "test": "Optional File: src/rag/__init__.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.435821",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: main.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.452631",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\ai_service.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.462525",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\config.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.466599",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\__init__.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.468354",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\api\\ai_endpoints.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.480254",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\api\\exceptions.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.489291",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\api\\main.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.498968",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\api\\middleware.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.505190",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\api\\redis_manager.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.515159",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\auth\\auth_middleware.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.519790",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\cache\\firebase_cache.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.528695",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\cache\\__init__.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.534357",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\llm\\cost_tracker.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.545017",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\llm\\llm_manager.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.562144",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\llm\\provider_config.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.572843",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\llm\\provider_manager.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.583112",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\llm\\rate_limiter.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.592044",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\llm\\template_engine.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.599855",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\llm\\__init__.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.601515",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\performance\\optimization.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.610737",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\cache_manager.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.617246",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\chunking_strategies.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.628134",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\context_retriever.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.636262",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\conversation_memory.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.648590",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\document_extractors.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.660344",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\document_processor.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.668114",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\embedding_service.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.680181",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\hybrid_search.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.691173",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\query_expansion.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.701733",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\rag_pipeline.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.709012",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\response_synthesis.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.717672",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\response_validator.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.729448",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\search_analytics.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.743424",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\semantic_search.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.751586",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\vector_store.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.760490",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\rag\\__init__.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.762315",
+      "details": {}
+    },
+    {
+      "test": "Syntax Check: src\\security\\security_config.py",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.769164",
+      "details": {}
+    },
+    {
+      "test": "Import: firebase_functions",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:13.771547",
+      "details": {}
+    },
+    {
+      "test": "Import: firebase_admin",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:14.876540",
+      "details": {}
+    },
+    {
+      "test": "Import: flask",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.145960",
+      "details": {}
+    },
+    {
+      "test": "Package: firebase-functions",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.147338",
+      "details": {}
+    },
+    {
+      "test": "Package: firebase-admin",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.147983",
+      "details": {}
+    },
+    {
+      "test": "Package: flask",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.148176",
+      "details": {}
+    },
+    {
+      "test": "Package: google-generativeai",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.148247",
+      "details": {}
+    },
+    {
+      "test": "Package: openai",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.148332",
+      "details": {}
+    },
+    {
+      "test": "Requirements File",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.148412",
+      "details": {
+        "total_packages": 37,
+        "essential_found": true
+      }
+    },
+    {
+      "test": "Firebase Functions Source",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.150297",
+      "details": {}
+    },
+    {
+      "test": "Firebase Functions Runtime",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.150407",
+      "details": {}
+    },
+    {
+      "test": "Firebase Hosting Config",
+      "success": true,
+      "timestamp": "2025-07-24T20:37:15.150457",
+      "details": {}
+    }
+  ]
+}

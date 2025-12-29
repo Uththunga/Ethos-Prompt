@@ -1,0 +1,364 @@
+import { ServiceCTA } from '@/components/marketing/services/ServiceCTA';
+import { ConsolidatedFAQ } from '@/components/marketing/digital-solutions';
+import { ServicePageTemplate } from '@/components/marketing/templates/ServicePageTemplate';
+import { ExitIntentPopup } from '@/components/marketing/ui/exit-intent-popup';
+import { TrustSignals } from '@/components/marketing/ui/service-enhancements';
+import { InvestmentSection } from '@/components/marketing/ui/service-layout-components';
+import { useServiceExitIntent } from '@/hooks/useServiceExitIntent';
+import {
+    AlertTriangle,
+    CheckCircle,
+    Clock,
+    DollarSign,
+    RefreshCw,
+    Rocket,
+    Shield,
+    Smartphone,
+    Sparkles,
+    Target,
+    TrendingUp,
+    Users,
+    Zap,
+} from 'lucide-react';
+import React from 'react';
+
+export default function DigitalSolutions() {
+  // Exit intent popup functionality
+  const { isPopupOpen, handleClosePopup, handleEmailSubmit, service } = useServiceExitIntent({
+    service: 'digital-solutions',
+    onEmailCapture: async (email: string, name?: string) => {
+      console.log('Capturing lead for Digital Solutions:', { email, name });
+      // TODO: Integrate with actual lead capture API
+    },
+  });
+
+  // Pricing data - Three tiers for consolidated offering
+  const pricingPlans = [
+    {
+      title: 'Essential Modernization',
+      startingPrice: '$7,997',
+      description:
+        'Perfect for small businesses migrating from WordPress or building their first modern web presence',
+      features: [
+        'WordPress to React migration',
+        'Mobile-responsive design',
+        'Up to 10 pages',
+        'Basic SEO optimization',
+        'Content migration',
+        '3 months support',
+        'Performance optimization',
+        'Security hardening',
+      ],
+      popular: false,
+    },
+    {
+      title: 'Professional Transformation',
+      startingPrice: '$19,997',
+      description: 'Comprehensive digital transformation for growing businesses with complex needs',
+      features: [
+        'Everything in Essential, plus:',
+        'Custom React application',
+        'Progressive Web App (PWA)',
+        'AI-powered features',
+        'Advanced integrations',
+        'Custom CMS/admin panel',
+        '12 months support',
+        'Performance monitoring',
+        'Priority support',
+      ],
+      popular: true,
+    },
+    {
+      title: 'Enterprise Innovation',
+      startingPrice: 'Custom',
+      description:
+        'Full-scale digital transformation for enterprises with mission-critical systems',
+      features: [
+        'Everything in Professional, plus:',
+        'Multi-platform development',
+        'Enterprise integrations',
+        'Advanced AI/ML features',
+        'Custom architecture',
+        'Dedicated team',
+        'Ongoing optimization',
+        '24/7 support',
+        'SLA guarantees',
+      ],
+      popular: false,
+    },
+  ];
+
+  return (
+    <ServicePageTemplate
+      // Hero Section
+      heroTitle={
+        <span
+          style={{
+            fontFamily: 'Poppins',
+            background:
+              'linear-gradient(to right, var(--ethos-navy-light), var(--ethos-gray-light))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            display: 'inline-block',
+          }}
+        >
+          Modern Web Solutions
+        </span>
+      }
+      heroSubtitle="Mobile-first development & legacy system modernization"
+      heroDescription={
+        <div>
+          <p className="text-body-large text-gray-700 mb-4">
+            Build intelligent, mobile-first web applications or modernize your outdated systems. We
+            help Australian businesses reduce costs by 60% and boost performance by 3x with modern
+            technology.
+          </p>
+          <ul className="text-left text-gray-700 mb-4">
+            <li className="flex items-start mb-2">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Mobile-first web apps with AI-powered features</span>
+            </li>
+            <li className="flex items-start mb-2">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Seamless migration from WordPress and legacy platforms</span>
+            </li>
+            <li className="flex items-start mb-2">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <span>60% cost reduction with 3x performance improvement</span>
+            </li>
+            <li className="flex items-start mb-2">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Zero downtime migrations with 100% data integrity</span>
+            </li>
+          </ul>
+        </div>
+      }
+      heroImage="/assets/marketing/images/integrationapp.png"
+      heroImageAlt="Modern web development and digital transformation"
+      heroCTA={{
+        text: 'Get Your Free Assessment',
+        link: '/contact?source=digital-solutions-hero',
+      }}
+      // Problem Section
+      problemTitle={
+        <>
+          <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6">
+            <span className="text-ethos-navy">Is Your Business </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+            >
+              Falling Behind?
+            </span>
+          </h2>
+        </>
+      }
+      problemDescription="Australian businesses are losing money and customers due to outdated technology. According to KPMG's 2025 CEO Outlook, 53% of business leaders cite digital transformation as their #1 challenge."
+      problemPoints={[
+        {
+          icon: <AlertTriangle className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+          text: 'Losing $2,500+ monthly on WordPress maintenance, security patches, and plugin updates',
+        },
+        {
+          icon: <Clock className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+          text: 'Slow page loads (3-5 seconds) causing 40% of visitors to abandon your site',
+        },
+        {
+          icon: <Smartphone className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+          text: 'Missing 72.9% of e-commerce sales due to poor mobile experience',
+        },
+        {
+          icon: <DollarSign className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+          text: 'Competitors with modern sites converting 3.5x more visitors into customers',
+        },
+      ]}
+      // Solution Section
+      solutionTitle={
+        <>
+          <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6">
+            <span className="text-ethos-navy">Two Ways We Help Your Business </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+            >
+              Grow
+            </span>
+          </h2>
+        </>
+      }
+      solutionDescription="Whether you need a brand new mobile-first application or want to modernize your existing systems, we deliver solutions that reduce costs and drive growth."
+      solutionFeatures={[
+        {
+          icon: <Rocket className="w-6 h-6 text-ethos-purple" />,
+          title: 'New Mobile-First Web Applications',
+          description:
+            'Build modern, intelligent web apps with AI-powered features. Perfect for businesses launching new products or expanding their digital presence. Get mobile-responsive design, lightning-fast performance, and smart automation that converts visitors into customers.',
+          gradient: 'from-blue-50 to-purple-50',
+        },
+        {
+          icon: <RefreshCw className="w-6 h-6 text-ethos-purple" />,
+          title: 'Legacy System Modernization',
+          description:
+            'Migrate from WordPress, outdated platforms, or aging systems to modern technology. We handle everything—content migration, SEO preservation, zero-downtime transitions—while cutting your costs by 60% and boosting performance by 3x.',
+          gradient: 'from-purple-50 to-pink-50',
+        },
+        {
+          icon: <Smartphone className="w-6 h-6 text-ethos-purple" />,
+          title: 'Mobile-First Design',
+          description:
+            'Every solution we build works flawlessly on mobile devices. With 72.9% of e-commerce happening on mobile, we ensure your site loads in under 2 seconds and delivers a perfect experience on every screen size.',
+          gradient: 'from-blue-50 to-indigo-50',
+        },
+        {
+          icon: <Sparkles className="w-6 h-6 text-ethos-purple" />,
+          title: 'AI-Powered Intelligence',
+          description:
+            'Add smart features like personalized recommendations, automated customer support, predictive analytics, and intelligent search. Give your business a competitive edge with AI that actually works.',
+          gradient: 'from-purple-50 to-pink-50',
+        },
+        {
+          icon: <Zap className="w-6 h-6 text-ethos-purple" />,
+          title: 'Lightning-Fast Performance',
+          description:
+            'Modern architecture means 3x faster page loads, better SEO rankings, and happier customers. We optimize every aspect—from code to hosting—to deliver the speed your business needs.',
+          gradient: 'from-orange-50 to-red-50',
+        },
+        {
+          icon: <Shield className="w-6 h-6 text-ethos-purple" />,
+          title: 'Enterprise-Grade Security',
+          description:
+            'Built-in security from day one. Modern authentication, encrypted data, automatic backups, and compliance with Australian privacy standards. Sleep easy knowing your business is protected.',
+          gradient: 'from-green-50 to-teal-50',
+        },
+      ]}
+      // Proof Section
+      proofTitle={
+        <>
+          <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6">
+            <span className="text-ethos-navy">Real Results from Real </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+            >
+              Businesses
+            </span>
+          </h2>
+        </>
+      }
+      proofDescription="Australian businesses using our solutions see dramatic improvements in costs, performance, and revenue. Here's what you can expect:"
+      proofItems={[
+        {
+          title: 'Massive Cost Savings',
+          description:
+            'Cut your technology costs by 60% or more. Eliminate expensive WordPress maintenance, security patches, and plugin fees. Modern systems cost less to run and maintain.',
+          icon: <TrendingUp className="w-8 h-8 text-ethos-purple" />,
+          metric: '60%',
+          metricLabel: 'cost reduction',
+          gradient: 'from-green-500 to-emerald-600',
+          stats: [
+            { label: 'Annual savings', value: '$120K+' },
+            { label: 'ROI timeline', value: '12 months' },
+          ],
+        },
+        {
+          title: 'Lightning-Fast Speed',
+          description:
+            'Your site loads 3x faster with modern technology. Faster sites rank higher on Google, convert more visitors, and keep customers happy. Every second counts.',
+          icon: <Zap className="w-8 h-8 text-ethos-purple" />,
+          metric: '3x',
+          metricLabel: 'faster',
+          gradient: 'from-purple-500 to-pink-600',
+          stats: [
+            { label: 'Load time', value: '<1s' },
+            { label: 'Performance score', value: '95+' },
+          ],
+        },
+        {
+          title: 'Higher Engagement',
+          description:
+            'Mobile-first design and AI-powered features keep visitors engaged 150% longer. More engagement means more sales, more leads, and more growth for your business.',
+          icon: <Users className="w-8 h-8 text-ethos-purple" />,
+          metric: '150%',
+          metricLabel: 'engagement',
+          gradient: 'from-blue-500 to-indigo-600',
+          stats: [
+            { label: 'Return visitors', value: '74%' },
+            { label: 'Session duration', value: '+3.2 min' },
+          ],
+        },
+        {
+          title: 'More Conversions',
+          description:
+            'Convert 3.5x more visitors into paying customers with optimized mobile experiences. Better design, faster speeds, and smarter features mean more revenue for your business.',
+          icon: <Target className="w-8 h-8 text-ethos-purple" />,
+          metric: '3.5x',
+          metricLabel: 'conversions',
+          gradient: 'from-orange-500 to-amber-600',
+          stats: [
+            { label: 'Mobile conversions', value: '+62%' },
+            { label: 'Cart abandonment', value: '-45%' },
+          ],
+        },
+      ]}
+      // CTA Section
+      ctaSection={
+        <ServiceCTA
+          titlePart1="Ready to Transform Your"
+          titlePart2="Digital Future?"
+          description="Join 53% of Australian business leaders making digital transformation their #1 priority in 2025. Get your free digital transformation assessment, custom roadmap, and ROI analysis—see exactly how much you could save and earn in the next 12 months."
+          buttonText="Get Your Free Digital Transformation Assessment"
+          buttonLink="/contact?source=digital-solutions"
+        />
+      }
+      // Additional Content
+      additionalContent={
+        <>
+          {/* Trust Signals */}
+          <TrustSignals
+            signals={[
+              {
+                icon: <Shield className="w-8 h-8 text-ethos-purple" />,
+                title: 'Australian-Based Team',
+                description:
+                  'Local expertise with deep understanding of Australian business needs and market dynamics.',
+              },
+              {
+                icon: <Zap className="w-8 h-8 text-ethos-purple" />,
+                title: 'Modern Tech Expertise',
+                description:
+                  'Specialists in React, TypeScript, Firebase, and AI integration—the technologies that power tomorrow.',
+              },
+              {
+                icon: <CheckCircle className="w-8 h-8 text-ethos-purple" />,
+                title: 'Proven Track Record',
+                description:
+                  '98% on-time delivery rate with 100% zero-downtime migrations. Real results for real businesses.',
+              },
+              {
+                icon: <TrendingUp className="w-8 h-8 text-ethos-purple" />,
+                title: 'Transparent Pricing',
+                description:
+                  'Clear, upfront pricing with no hidden fees. Flexible payment plans to fit your budget.',
+              },
+            ]}
+          />
+
+          {/* Investment Section */}
+          <InvestmentSection pricing={pricingPlans} />
+
+          {/* FAQ Section */}
+          <ConsolidatedFAQ />
+
+          {/* Exit Intent Popup */}
+          <ExitIntentPopup
+            isOpen={isPopupOpen}
+            onClose={handleClosePopup}
+            onSubmit={handleEmailSubmit}
+            service={service}
+          />
+        </>
+      }
+    />
+  );
+}

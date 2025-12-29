@@ -1,0 +1,230 @@
+{
+  "displayName": "EthosPrompt Marketing API",
+  "gridLayout": {
+    "columns": 12,
+    "widgets": [
+      {
+        "title": "Requests per second",
+        "xyChart": {
+          "dataSets": [
+            {
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/request_count\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_RATE",
+                    "alignmentPeriod": "60s",
+                    "crossSeriesReducer": "REDUCE_SUM",
+                    "groupByFields": []
+                  }
+                }
+              },
+              "plotType": "LINE"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Latency p50/p95/p99 (ms)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/request_latencies\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_PERCENTILE_50",
+                    "alignmentPeriod": "60s"
+                  }
+                }
+              }
+            },
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/request_latencies\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_PERCENTILE_95",
+                    "alignmentPeriod": "60s"
+                  }
+                }
+              }
+            },
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/request_latencies\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_PERCENTILE_99",
+                    "alignmentPeriod": "60s"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Error count (5xx)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/request_count\" AND metric.labels.response_code_class=\"5xx\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_RATE",
+                    "alignmentPeriod": "60s",
+                    "crossSeriesReducer": "REDUCE_SUM"
+                  }
+                }
+              },
+              "plotType": "LINE"
+            }
+          ]
+        }
+      },
+      {
+        "title": "CPU utilization p95",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/container/cpu/utilizations\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_PERCENTILE_95",
+                    "alignmentPeriod": "60s"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Memory utilization p95",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/container/memory/utilizations\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_PERCENTILE_95",
+                    "alignmentPeriod": "60s"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Total Tokens (per minute)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "metric.type=\"logging.googleapis.com/user/marketing_api_total_tokens\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_DELTA",
+                    "alignmentPeriod": "60s",
+                    "crossSeriesReducer": "REDUCE_SUM"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Estimated API Cost (USD per minute)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "metric.type=\"logging.googleapis.com/user/marketing_api_estimated_cost\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_DELTA",
+                    "alignmentPeriod": "60s",
+                    "crossSeriesReducer": "REDUCE_SUM"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Tool Calls (per minute)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "metric.type=\"logging.googleapis.com/user/marketing_api_tool_calls\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_DELTA",
+                    "alignmentPeriod": "60s",
+                    "crossSeriesReducer": "REDUCE_SUM"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Conversations (per minute)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "metric.type=\"logging.googleapis.com/user/marketing_api_conversations\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_RATE",
+                    "alignmentPeriod": "60s",
+                    "crossSeriesReducer": "REDUCE_SUM"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Messages (per minute)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "plotType": "LINE",
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "metric.type=\"logging.googleapis.com/user/marketing_api_messages\"",
+                  "aggregation": {
+                    "perSeriesAligner": "ALIGN_RATE",
+                    "alignmentPeriod": "60s",
+                    "crossSeriesReducer": "REDUCE_SUM"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

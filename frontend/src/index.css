@@ -1,0 +1,1829 @@
+/* eslint-disable no-unknown-at-rules, css/no-unknown-at-rules */
+/* This file contains Tailwind CSS directives that may not be recognized by all CSS parsers */
+/* These are valid Tailwind CSS syntax and will be processed correctly by the Tailwind compiler */
+
+@import 'tailwindcss';
+/* Font loaded via index.html with preconnect for optimal performance */
+/* All styles consolidated into this single file for simplicity */
+
+/* shadcn/ui CSS Variables */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Dark mode removed - using light mode only */
+}
+
+/* Custom Animations for Prompt Generation Wizard */
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Modern Design System Custom Properties */
+:root {
+  /* Animation durations */
+  --animation-duration-fast: 150ms;
+  --animation-duration-normal: 200ms;
+  --animation-duration-slow: 300ms;
+  --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Ethos Purple Color System - Primary Brand Colors */
+  --ethos-purple: #7409c5;
+  --ethos-purple-light: #8235f4;
+  --ethos-purple-dark: #5a0794;
+  --ethos-purple-50: #f8f4ff;
+  --ethos-purple-100: #e8d5ff;
+  --ethos-purple-200: #d1abff;
+  --ethos-purple-gradient-start: #7471e0;
+  --ethos-purple-gradient-end: #ea73d4;
+
+  /* Ethos Navy and Gray System */
+  --ethos-navy: #030823;
+  --ethos-navy-light: #0d1144;
+  --ethos-gray: #484848;
+  --ethos-gray-light: #717493;
+  --ethos-gray-lighter: #9e9898;
+
+  /* Modern Neutral Gray Scale - 10-step system */
+  --gray-50: #fafbfc;
+  --gray-100: #f4f6f8;
+  --gray-200: #e4e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* Semantic Colors */
+  --success: #10b981;
+  --success-light: #d1fae5;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --error: #ef4444;
+  --error-light: #fee2e2;
+  --info: #3b82f6;
+  --info-light: #dbeafe;
+
+  /* Background System */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafbfc;
+  --bg-tertiary: #f4f6f8;
+  --bg-accent: #f8f4ff;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+
+  /* Legacy backgrounds for compatibility */
+  --bg-gray-section: #f2f2f2;
+  --bg-gradient-ways: linear-gradient(180deg, #fff 37.11%, #e8e8e8 100%);
+  --bg-gradient-testimonials: linear-gradient(180deg, #fff 60.69%, #ddd 100%);
+
+  /* Modern Shadow System */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-purple: 0 4px 12px rgba(116, 9, 197, 0.15);
+  --shadow-purple-lg: 0 10px 25px rgba(116, 9, 197, 0.2);
+
+  /* Legacy shadows for compatibility */
+  --shadow-neumorphic: 0 4px 4px rgba(0, 0, 0, 0.25),
+    inset -30px -30px 50px rgba(255, 255, 255, 0.7), inset 30px 30px 50px rgba(0, 39, 80, 0.05);
+  --shadow-glass: 0 8px 32px rgba(116, 113, 224, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* Layout System */
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 64px;
+  --header-height: 64px;
+
+  /* Spacing System - 8px base unit */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+}
+
+/* Base styles */
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  /* Override Tailwind's default font-sans to use Poppins */
+  html,
+  body,
+  .font-sans {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+/* Modern Utility Classes - Using CSS Variables */
+/* Background Colors */
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+.bg-tertiary {
+  background-color: var(--bg-tertiary);
+}
+.bg-accent {
+  background-color: var(--bg-accent);
+}
+
+/* Ethos Brand Colors */
+.bg-ethos-purple {
+  background-color: var(--ethos-purple);
+}
+.bg-ethos-purple-light {
+  background-color: var(--ethos-purple-light);
+}
+.bg-ethos-purple-dark {
+  background-color: var(--ethos-purple-dark);
+}
+.bg-ethos-purple-50 {
+  background-color: var(--ethos-purple-50);
+}
+
+/* Gray Scale */
+.bg-gray-50 {
+  background-color: var(--gray-50);
+}
+.bg-gray-100 {
+  background-color: var(--gray-100);
+}
+.bg-gray-200 {
+  background-color: var(--gray-200);
+}
+.bg-gray-300 {
+  background-color: var(--gray-300);
+}
+.bg-gray-800 {
+  background-color: var(--gray-800);
+}
+.bg-gray-900 {
+  background-color: var(--gray-900);
+}
+
+/* Semantic Colors */
+.bg-success {
+  background-color: var(--success);
+}
+.bg-success-light {
+  background-color: var(--success-light);
+}
+.bg-warning {
+  background-color: var(--warning);
+}
+.bg-warning-light {
+  background-color: var(--warning-light);
+}
+.bg-error {
+  background-color: var(--error);
+}
+.bg-error-light {
+  background-color: var(--error-light);
+}
+
+/* Legacy compatibility - redirect blue to purple */
+.bg-blue-500 {
+  background-color: var(--ethos-purple);
+}
+.bg-blue-600 {
+  background-color: var(--ethos-purple-dark);
+}
+
+/* Gradient backgrounds */
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+.from-gray-900 {
+  --tw-gradient-from: #111827;
+  --tw-gradient-to: rgba(17, 24, 39, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-gray-800 {
+  --tw-gradient-to: #1f2937;
+}
+/* Light theme gradient helpers */
+.from-ethos-purple-50 {
+  --tw-gradient-from: var(--ethos-purple-50);
+  --tw-gradient-to: rgba(248, 244, 255, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-white {
+  --tw-gradient-from: #ffffff;
+  --tw-gradient-to: rgba(255, 255, 255, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-white {
+  --tw-gradient-to: #ffffff;
+}
+.to-ethos-purple-50 {
+  --tw-gradient-to: var(--ethos-purple-50);
+}
+
+/* Text Colors - Using CSS Variables */
+.text-white {
+  color: #ffffff;
+}
+
+/* Ethos Brand Text Colors */
+.text-ethos-purple {
+  color: var(--ethos-purple);
+}
+.text-ethos-purple-light {
+  color: var(--ethos-purple-light);
+}
+.text-ethos-navy {
+  color: var(--ethos-navy);
+}
+.text-ethos-gray {
+  color: var(--ethos-gray);
+}
+.text-ethos-gray-light {
+  color: var(--ethos-gray-light);
+}
+.text-ethos-gray-lighter {
+  color: var(--ethos-gray-lighter);
+}
+
+/* Modern Gray Scale Text */
+.text-gray-100 {
+  color: var(--gray-100);
+}
+.text-gray-200 {
+  color: var(--gray-200);
+}
+.text-gray-300 {
+  color: var(--gray-300);
+}
+.text-gray-400 {
+  color: var(--gray-400);
+}
+.text-gray-500 {
+  color: var(--gray-500);
+}
+.text-gray-600 {
+  color: var(--gray-600);
+}
+.text-gray-700 {
+  color: var(--gray-700);
+}
+.text-gray-800 {
+  color: var(--gray-800);
+}
+.text-gray-900 {
+  color: var(--gray-900);
+}
+
+/* Semantic Text Colors */
+.text-success {
+  color: var(--success);
+}
+.text-warning {
+  color: var(--warning);
+}
+.text-error {
+  color: var(--error);
+}
+.text-info {
+  color: var(--info);
+}
+
+/* Legacy compatibility - redirect blue to purple */
+.text-blue-400 {
+  color: var(--ethos-purple-light);
+}
+.text-blue-500 {
+  color: var(--ethos-purple);
+}
+.text-blue-600 {
+  color: var(--ethos-purple-dark);
+}
+
+/* =================================================================
+   GRADIENT TEXT UTILITIES
+   Reusable gradient text classes to replace inline styles
+   ================================================================= */
+
+/* Purple gradient - for primary emphasis */
+.text-gradient-purple {
+  background: linear-gradient(to right, var(--ethos-purple), var(--ethos-purple-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Purple to Navy gradient - for headings */
+.text-gradient-purple-navy {
+  background: linear-gradient(to right, var(--ethos-purple), #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navy gradient - for secondary emphasis */
+.text-gradient-navy {
+  background: linear-gradient(to right, var(--ethos-navy-light), var(--ethos-gray-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shine/animated gradient - for hero text */
+.text-gradient-shine {
+  background: linear-gradient(90deg, var(--ethos-purple), #000, var(--ethos-purple));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shine 10s linear infinite;
+}
+
+@keyframes gradient-shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Modern Spacing System - 8px base unit */
+/* Semantic Padding Classes */
+.padding-xs {
+  padding: var(--space-2);
+} /* 8px */
+.padding-sm {
+  padding: var(--space-3);
+} /* 12px */
+.padding-md {
+  padding: var(--space-4);
+} /* 16px */
+.padding-lg {
+  padding: var(--space-6);
+} /* 24px */
+.padding-xl {
+  padding: var(--space-8);
+} /* 32px */
+
+/* Semantic Margin Classes */
+.margin-xs {
+  margin: var(--space-2);
+} /* 8px */
+.margin-sm {
+  margin: var(--space-4);
+} /* 16px */
+.margin-md {
+  margin: var(--space-6);
+} /* 24px */
+.margin-lg {
+  margin: var(--space-8);
+} /* 32px */
+.margin-xl {
+  margin: var(--space-12);
+} /* 48px */
+
+/* Legacy spacing block removed to avoid conflicts with Tailwind utilities in production builds.
+   Rely on Tailwind's core spacing utilities (p-*, m-*, px-*, py-*). */
+
+.rounded {
+  border-radius: 0.25rem;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+/* Modern Shadow System */
+.shadow-xs {
+  box-shadow: var(--shadow-xs);
+}
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+.shadow {
+  box-shadow: var(--shadow-sm);
+} /* Default shadow */
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+.shadow-purple {
+  box-shadow: var(--shadow-purple);
+}
+.shadow-purple-lg {
+  box-shadow: var(--shadow-purple-lg);
+}
+
+.border {
+  border-width: 1px;
+  border-color: #d1d5db;
+}
+.border-gray-300 {
+  border-color: #d1d5db;
+}
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+
+.w-full {
+  width: 100%;
+}
+.max-w-md {
+  max-width: 28rem;
+}
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.h-screen {
+  height: 100vh;
+}
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+.text-2xl {
+  font-size: 1.5rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.font-bold {
+  font-weight: 700;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* WCAG AA Compliant Placeholder Colors (DD-003)
+   Default placeholder is ~3.5:1 contrast, this fix ensures 5.3:1 ratio */
+.marketing-chat-input::placeholder {
+  color: #6b7280; /* gray-500 - 5.3:1 contrast ratio */
+}
+
+/* Global placeholder contrast improvement for forms */
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280; /* gray-500 */
+}
+
+/* Modern Hover States */
+.hover\:bg-ethos-purple:hover {
+  background-color: var(--ethos-purple);
+}
+.hover\:bg-ethos-purple-light:hover {
+  background-color: var(--ethos-purple-light);
+}
+.hover\:bg-ethos-purple-dark:hover {
+  background-color: var(--ethos-purple-dark);
+}
+.hover\:bg-gray-50:hover {
+  background-color: var(--gray-50);
+}
+.hover\:bg-gray-100:hover {
+  background-color: var(--gray-100);
+}
+
+/* Legacy compatibility - redirect blue to purple */
+.hover\:bg-blue-700:hover {
+  background-color: var(--ethos-purple-dark);
+}
+
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+}
+.duration-200 {
+  transition-duration: 200ms;
+}
+
+/* zen-home Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-1mm);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+@keyframes floatMole {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1mm);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 1s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.animate-float-slow {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-mole {
+  animation: floatMole 4s ease-in-out infinite;
+}
+
+/* ===================================
+   MARQUEE ANIMATIONS
+   Infinite scroll for integration logos
+   =================================== */
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  animation: marquee-right linear infinite;
+  will-change: transform;
+}
+
+/* Pause marquee on hover for better interaction */
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+    transform: translateX(0) !important;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* zen-home Design system utility classes - removed duplicates */
+
+/* Force white text utility - solves button color inheritance issues */
+.text-white-force {
+  color: #ffffff !important;
+}
+
+/* Standardized Container System - moved to components layer so Tailwind utilities can override when both are present */
+@layer components {
+  .container-standard {
+    max-width: 80rem; /* 1280px - max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-standard {
+      padding-left: 1.5rem; /* sm:px-6 */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-standard {
+      padding-left: 2rem; /* lg:px-8 */
+      padding-right: 2rem;
+    }
+  }
+
+  .container-narrow {
+    max-width: 64rem; /* 1024px - max-w-5xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-narrow {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-narrow {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .container-wide {
+    max-width: 96rem; /* 1536px - max-w-8xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-wide {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-wide {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+/* ShinyText Animation - Optimized for Performance */
+@keyframes shiny-text-animation {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.shiny-text {
+  /* Enable hardware acceleration for better performance */
+  will-change: background-position;
+  transform: translateZ(0);
+}
+
+/* Pause animation on hover if enabled */
+.shiny-text.hover\:animation-paused:hover {
+  animation-play-state: paused;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text.motion-reduce\:animate-none {
+    animation: none !important;
+  }
+}
+
+/* Accessibility Enhancements */
+/* Enhanced focus styles for better visibility */
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+}
+
+.focus-ring-inset {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-purple-600;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  @apply absolute -top-10 left-4 z-50 bg-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium;
+  @apply focus:top-4 transition-all duration-200;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-ethos-gray {
+    color: #000000 !important;
+  }
+
+  .text-ethos-gray-light {
+    color: #333333 !important;
+  }
+
+  .border-gray-300 {
+    border-color: #000000 !important;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ensure minimum touch target size (44px) */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Shadow utilities - removed duplicates */
+
+/* ========================================
+   GRADIENT TEXT FIX - PREVENT INVISIBLE TEXT
+   ======================================== */
+/* CRITICAL FIX: Always ensure gradient text has a fallback color */
+.bg-clip-text.text-transparent {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-ethos-navy.bg-clip-text.text-transparent {
+  color: #030823; /* fallback only for non-supporting browsers */
+}
+
+.text-ethos-gray.bg-clip-text.text-transparent {
+  color: #484848; /* fallback only for non-supporting browsers */
+}
+
+/* ========================================
+   BUTTON ENHANCEMENTS - ESSENTIAL STYLES
+   ======================================== */
+/* Base button enhancement classes */
+.button-enhanced {
+  /* GPU acceleration for smooth animations */
+  transform: translateZ(0);
+  will-change: transform, box-shadow, filter;
+  backface-visibility: hidden;
+
+  /* Optimized transitions */
+  transition-property: transform, box-shadow, filter, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .button-enhanced,
+  .button-enhanced * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  .button-enhanced:hover,
+  .button-enhanced:focus,
+  .button-enhanced:active {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* eslint-disable no-unknown-at-rules */
+/* Modern Typography System - Poppins Font Family */
+@layer utilities {
+  /* Display Typography - Large hero sections */
+  .text-display-2xl {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+    font-weight: 500;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+  }
+
+  .text-display-xl {
+    font-size: clamp(2rem, 4vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+  }
+
+  .text-display-lg {
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+  }
+
+  /* Heading Typography - Content hierarchy */
+  .text-h1 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  .text-h2 {
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  .text-h3 {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  .text-h4 {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  /* Body Typography - Optimized for readability */
+  .text-body-xl {
+    font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #484848; /* ethos-gray */
+  }
+
+  .text-body-lg {
+    font-size: clamp(1rem, 1.25vw, 1.125rem);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #484848; /* ethos-gray */
+  }
+
+  .text-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #484848; /* ethos-gray */
+  }
+
+  .text-body-sm {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #717493; /* ethos-gray-light */
+  }
+
+  .text-caption {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+    font-weight: 400;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #9e9898; /* ethos-gray-lighter */
+  }
+
+  /* Legacy heading classes for backward compatibility */
+  .heading-hero {
+    font-size: clamp(2rem, 4vw, 3.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  .heading-section {
+    font-size: clamp(2rem, 4vw, 3.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  .heading-subsection {
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  .heading-card {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica', sans-serif;
+    color: #030823; /* ethos-navy */
+  }
+
+  /* Body Text Classes */
+  .text-body-large {
+    @apply text-lg md:text-xl font-normal leading-relaxed;
+    color: #484848; /* ethos-gray */
+  }
+
+  .text-body-default {
+    @apply text-base md:text-lg font-normal leading-relaxed;
+    color: #484848; /* ethos-gray */
+  }
+
+  .text-body-small {
+    @apply text-sm md:text-base font-normal leading-relaxed;
+    color: #717493; /* ethos-gray-light */
+  }
+
+  /* text-caption - removed duplicate */
+
+  /* Display Typography - For large numbers, hero displays, and prominent text */
+  .heading-display {
+    @apply text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tight;
+    color: #0f1345; /* ethos-navy */
+  }
+
+  /* Interactive Element Typography */
+  .text-button-large {
+    @apply text-lg font-medium leading-none tracking-tight;
+  }
+
+  .text-button-default {
+    @apply text-base font-medium leading-none tracking-tight;
+  }
+
+  .text-button-small {
+    @apply text-sm font-medium leading-none;
+  }
+
+  .text-nav-primary {
+    @apply text-base md:text-lg font-medium leading-none tracking-tight;
+  }
+
+  .text-nav-secondary {
+    @apply text-sm md:text-base font-normal leading-none;
+  }
+
+  /* Layout Utilities */
+  .progressive-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .progressive-section-padding {
+    @apply py-16 md:py-20 lg:py-24 xl:py-28;
+  }
+
+  .standard-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card-border-radius {
+    @apply rounded-2xl;
+  }
+
+  .card-padding {
+    @apply p-4 sm:p-6 lg:p-8 xl:p-10;
+  }
+
+  /* Marketing Chat Message Text Colors - Bulletproof Override */
+  /* CRITICAL: These MUST be inside @layer utilities to override .text-body-sm */
+  .chat-message-user-text {
+    color: #ffffff !important;
+  }
+
+  .chat-message-assistant-text {
+    color: #111827 !important;
+  }
+
+  .chat-message-user-text * {
+    color: #ffffff !important;
+  }
+
+  .chat-message-assistant-text * {
+    color: #111827 !important;
+  }
+
+  /* Focus management for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    --tw-ring-color: #7409c5;
+  }
+
+  /* Interaction states */
+  .hover-lift {
+    @apply hover:scale-[1.02] transition-transform duration-300;
+  }
+
+  .hover-shadow {
+    @apply hover:shadow-xl transition-shadow duration-300;
+  }
+}
+
+/* zen-home Grid utilities */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* zen-home Scrollbar utilities */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom Scrollbar Styling - Neutral Gray Palette (Lighter Shade) */
+/* Apply to html and body for global scrollbar styling */
+html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-300) var(--gray-50);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+div::-webkit-scrollbar,
+section::-webkit-scrollbar,
+main::-webkit-scrollbar,
+aside::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track,
+section::-webkit-scrollbar-track,
+main::-webkit-scrollbar-track,
+aside::-webkit-scrollbar-track {
+  background: var(--gray-50);
+  border-radius: 6px;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb,
+section::-webkit-scrollbar-thumb,
+main::-webkit-scrollbar-thumb,
+aside::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 6px;
+  border: 2px solid var(--gray-50);
+  transition: background-color 0.2s ease;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+div::-webkit-scrollbar-thumb:hover,
+section::-webkit-scrollbar-thumb:hover,
+main::-webkit-scrollbar-thumb:hover,
+aside::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+html::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active,
+div::-webkit-scrollbar-thumb:active,
+section::-webkit-scrollbar-thumb:active,
+main::-webkit-scrollbar-thumb:active,
+aside::-webkit-scrollbar-thumb:active {
+  background: var(--gray-500);
+}
+
+/* Scrollbar corner (when both scrollbars are visible) */
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+div::-webkit-scrollbar-corner,
+section::-webkit-scrollbar-corner,
+main::-webkit-scrollbar-corner,
+aside::-webkit-scrollbar-corner {
+  background: var(--gray-50);
+}
+
+/* zen-home Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile for better performance */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize touch interactions */
+  button,
+  [role='button'],
+  input[type='submit'],
+  a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(116, 9, 197, 0.1);
+  }
+
+  /* Prevent horizontal scrolling on mobile */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Improve text readability on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Ensure minimum touch target sizes - ONLY for elements with .touch-target class */
+  /* Removed global button/a/input targeting to prevent oversizing slideshow controls */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Optimize form inputs for mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Hardware acceleration utilities */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+
+  will-change: transform;
+}
+
+/* Hardening: ensure Tailwind v4 spacing base is consistent across environments */
+html {
+  /* Tailwind v4 uses --spacing for all spacing utilities (p-*, m-*, gap-*, space-*) */
+  --spacing: 0.25rem;
+}
+
+/* zen-home Reduced Motion Support for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-float-slow,
+  .animate-float-mole {
+    animation: none !important;
+  }
+}
+
+/* Marketing Chat Panel - Push Layout on Desktop */
+@media (min-width: 768px) {
+  /* When chat is open, adjust the main content width to make room for the panel */
+  body.marketing-chat-open {
+    margin-right: 384px; /* w-96 = 384px */
+  }
+
+  /* Smooth transition for the body margin */
+  body {
+    transition: margin-right 300ms ease-in-out;
+  }
+
+  /* Disable transition for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      transition: none !important;
+    }
+  }
+}
+
+/* ========================================
+   CENTER MODAL DISPLAY MODE ANIMATIONS
+   ======================================== */
+@keyframes center-modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.center-modal-enter {
+  animation: center-modal-enter 200ms ease-out forwards;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .center-modal-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Override push-layout for center-modal mode */
+@media (min-width: 768px) {
+  /* Only push content for side-panel mode */
+  body.marketing-chat-open:has([data-display-mode="center-modal"]) {
+    margin-right: 0;
+  }
+}
+/* Mobile Chat Full-Screen Optimizations */
+@media (max-width: 767px) {
+  /* Prevent body scroll when chat is open on mobile */
+  body.marketing-chat-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Ensure chat modal uses full viewport - use dvh for better mobile support */
+  [role='dialog'][aria-modal='true'] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* Modern browsers with dvh support */
+  @supports (height: 100dvh) {
+    [role='dialog'][aria-modal='true'] {
+      height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    }
+  }
+}
+
+/* ========================================
+   MOBILE TRANSPARENCY ISSUE FIX
+   ======================================== */
+
+/* Fix for dashboard menu (sidebar) transparency on mobile */
+@media (max-width: 1024px) {
+  #main-sidebar {
+    background-color: #fafbfc !important; /* light off-white theme color */
+    background: #fafbfc !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Ensure sidebar navigation items maintain proper backgrounds */
+  #main-sidebar nav a:hover {
+    background: linear-gradient(to right, #f3f3f3, rgba(116, 9, 197, 0.05)) !important;
+  }
+
+  #main-sidebar nav a[aria-current='page'] {
+    background-color: #7409c5 !important; /* ethos-purple */
+  }
+}
+
+/* Fix for chart models/marketing section (analytics dashboard) transparency on mobile */
+@media (max-width: 1024px) {
+  /* Analytics dashboard cards */
+  [class*='AnalyticsDashboard'] [class*='Card'],
+  [class*='analytics'] [class*='Card'],
+  .analytics-dashboard .bg-white,
+  [data-radix-collection-item] {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Fix for prompt library section (dashboard chat panel) transparency on mobile */
+@media (max-width: 1024px) {
+  /* Dashboard chat panel containers */
+  [class*='DashboardChatPanel'],
+  .dashboard-chat-panel {
+    background-color: #fafbfc !important; /* light off-white theme color */
+    background: #fafbfc !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Chat panel header sections */
+  [class*='DashboardChatPanel'] .bg-white,
+  .dashboard-chat-panel .bg-white {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+  }
+}
+
+/* General mobile background fixes */
+@media (max-width: 1024px) {
+  .bg-ethos-offwhite {
+    background-color: #fafbfc !important;
+    background: #fafbfc !important;
+  }
+
+  .bg-white {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+  }
+
+  .bg-ethos-purple {
+    background-color: #7409c5 !important;
+    background: #7409c5 !important;
+  }
+}
+
+/* ===================================
+   Marketing Chat Panel - Enhanced Animations
+   Claude-inspired professional UX
+   =================================== */
+
+/* Chat message text styling */
+.chat-message-user-text {
+  color: #ffffff;
+}
+
+.chat-message-assistant-text {
+  color: #1f2937; /* gray-800 */
+}
+
+/* Smooth hover transitions for messages */
+.chat-message-user-text,
+.chat-message-assistant-text {
+  transition: box-shadow 0.2s ease-out, transform 0.15s ease-out;
+}
+
+/* Message appearance animation */
+@keyframes message-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Apply to new messages */
+[data-message-new='true'] {
+  animation: message-appear 0.3s ease-out forwards;
+}
+
+/* Scroll button pulse animation */
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  50% {
+    box-shadow: 0 10px 15px -3px rgba(116, 9, 197, 0.2), 0 4px 6px -2px rgba(116, 9, 197, 0.1);
+  }
+}
+
+/* Enhanced focus states for chat elements */
+.chat-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(116, 9, 197, 0.5);
+}
+
+/* Touch-friendly targets */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Typing indicator pulse animation */
+@keyframes typing-pulse {
+  0%,
+  60%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Cursor blink animation for streaming message */
+@keyframes cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Typing indicator dot bounce animation */
+@keyframes typing-dot-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* Typing indicator dot styling */
+.typing-dot {
+  animation: typing-pulse 1.4s ease-in-out infinite;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .chat-message-user-text,
+  .chat-message-assistant-text,
+  [data-message-new='true'],
+  .typing-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ========================================
+   MARKETING CHAT MARKDOWN STYLING
+   ======================================== */
+/* Markdown content container */
+.markdown-content {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+  line-height: 1.6;
+  color: #374151;
+}
+
+/* Headings in markdown */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  font-weight: 600;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #111827;
+}
+
+.markdown-content h1 {
+  font-size: 1.5em;
+}
+.markdown-content h2 {
+  font-size: 1.25em;
+}
+.markdown-content h3 {
+  font-size: 1.1em;
+}
+
+/* Paragraphs */
+.markdown-content p {
+  margin-bottom: 1em;
+}
+
+/* Lists */
+.markdown-content ul,
+.markdown-content ol {
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.markdown-content li {
+  margin-bottom: 0.25em;
+}
+
+/* Bold and italic */
+.markdown-content strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+/* Links */
+.markdown-link {
+  color: var(--ethos-purple);
+  text-decoration: underline;
+  text-decoration-color: var(--ethos-purple-light);
+  transition: all 0.2s;
+}
+
+.markdown-link:hover {
+  color: var(--ethos-purple-dark);
+  text-decoration-color: var(--ethos-purple);
+}
+
+/* Inline code */
+.markdown-content .inline-code {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.875em;
+  color: #7c2d12;
+}
+
+/* Code block wrapper */
+.code-block-wrapper {
+  margin: 0.75em 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #1f2937;
+}
+
+/* Code block */
+.code-block {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+}
+
+.code-block code {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #e5e7eb;
+  display: block;
+}
+
+/* Syntax highlighting (highlight.js default theme) */
+.code-block .hljs-keyword {
+  color: #c678dd;
+}
+.code-block .hljs-string {
+  color: #98c379;
+}
+.code-block .hljs-number {
+  color: #d19a66;
+}
+.code-block .hljs-comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.code-block .hljs-function {
+  color: #61afef;
+}
+.code-block .hljs-title {
+  color: #e5c07b;
+}
+
+/* Blockquotes */
+.markdown-content blockquote {
+  border-left: 4px solid var(--ethos-purple-light);
+  padding-left: 1rem;
+  margin: 1em 0;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Horizontal rules */
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 1.5em 0;
+}
+
+/* Tables */
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-content th,
+.markdown-content td {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.markdown-content th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+/* Task lists (GFM) */
+.markdown-content input[type='checkbox'] {
+  margin-right: 0.5rem;
+}
+
+/* ========================================
+   DETAILS/SUMMARY EXPANDABLE CARDS
+   ======================================== */
+/* Remove default summary marker */
+details summary::-webkit-details-marker,
+details summary::marker {
+  display: none;
+}
+
+/* Hide content when closed */
+details > div {
+  display: none;
+}
+
+/* Show content when open */
+details[open] > div {
+  display: block;
+}
+
+/* Toggle indicator visibility */
+details .group-open\:hidden {
+  display: inline;
+}
+details[open] .group-open\:hidden {
+  display: none !important;
+}
+
+details .hidden.group-open\:inline {
+  display: none;
+}
+details[open] .hidden.group-open\:inline {
+  display: inline !important;
+}

@@ -1,0 +1,26 @@
+{
+  "data_ingestion": {
+    "real_time_streaming": true,
+    "batch_processing": true,
+    "api_integrations": true,
+    "file_uploads": true
+  },
+  "data_processing": {
+    "etl_workflows": true,
+    "data_validation": true,
+    "data_transformation": true,
+    "data_enrichment": true
+  },
+  "data_storage": {
+    "time_series_db": true,
+    "analytical_db": true,
+    "data_lake": true,
+    "caching_layer": true
+  },
+  "data_quality": {
+    "validation_rules": true,
+    "data_profiling": true,
+    "anomaly_detection": true,
+    "data_lineage": true
+  }
+}

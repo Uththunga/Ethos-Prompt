@@ -1,0 +1,922 @@
+﻿src\ai_agent\marketing\marketing_kb_content_backup.py:720:12: error:
+Incompatible return value type (got "KbEntry | None", expected
+"dict[str, Any] | None")  [return-value]
+        return MARKETING_KB_CONTENT.get(doc_id)
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\result_fusion.py:21:29: error: Incompatible types in assignment
+(expression has type "None", variable has type "list[str]")  [assignment]
+        highlights: List[str] = None
+                                ^~~~
+src\rag\result_fusion.py:71:68: error: Incompatible default for argument
+"query_metadata" (default has type "None", argument has type "dict[str, Any]") 
+[assignment]
+    ...                query_metadata: Dict[str, Any] = None) -> Tuple[float,...
+                                                        ^~~~
+src\rag\result_fusion.py:71:68: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\result_fusion.py:71:68: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\result_fusion.py:205:60: error: Incompatible default for argument
+"query_metadata" (default has type "None", argument has type "dict[str, Any]") 
+[assignment]
+                              query_metadata: Dict[str, Any] = None,
+                                                               ^~~~
+src\rag\result_fusion.py:205:60: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\result_fusion.py:205:60: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\result_fusion.py:316:9: error: Incompatible types in assignment
+(expression has type "FusionResult", variable has type "SearchResult") 
+[assignment]
+            for i, result in enumerate(fused_results):
+            ^
+src\ai_agent\marketing\prompt_versioning.py:126:13: error: Returning Any from
+function declared to return "dict[str, Any] | None"  [no-any-return]
+                return doc.to_dict()
+                ^~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\prompt_versioning.py:142:13: error: Returning Any from
+function declared to return "dict[str, Any] | None"  [no-any-return]
+                return doc.to_dict()
+                ^~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\prompt_versioning.py:164:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def log_performance(self, version_id: str, metrics: Dict[str, floa...
+        ^
+src\ai_agent\marketing\prompt_versioning.py:180:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def deprecate_version(self, version_id: str, reason: str):
+        ^
+src\ai_agent\marketing\prompt_versioning.py:217:9: error: Function is missing a
+type annotation  [no-untyped-def]
+            def avg_metric(metrics_dict, key):
+            ^
+src\ai_agent\marketing\prompt_versioning.py:239:1: error: Function is missing a
+type annotation  [no-untyped-def]
+    def get_version_manager(db):
+    ^
+src\ai_agent\marketing\metrics_tracker.py:28:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\ai_agent\marketing\metrics_tracker.py:28:5: note: Use "-> None" if function does not return a value
+src\ai_agent\marketing\metrics_tracker.py:32:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def record_latency(self, endpoint: str, latency_ms: float):
+        ^
+src\ai_agent\marketing\metrics_tracker.py:36:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def record_token_usage(self, input_tokens: int, output_tokens: int...
+        ^
+src\ai_agent\marketing\metrics_tracker.py:43:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def record_validation(self, passed: bool, word_count: int, questio...
+        ^
+src\ai_agent\marketing\metrics_tracker.py:51:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def record_tool_call(self, tool_name: str, success: bool):
+        ^
+src\ai_agent\marketing\metrics_tracker.py:57:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def record_kb_category(self, category: str):
+        ^
+src\ai_agent\marketing\metrics_tracker.py:61:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def record_consultation_request(self):
+        ^
+src\ai_agent\marketing\metrics_tracker.py:61:5: note: Use "-> None" if function does not return a value
+src\ai_agent\marketing\metrics_tracker.py:72:9: error: Returning Any from
+function declared to return "float | None"  [no-any-return]
+            return sorted_values[min(index, len(sorted_values) - 1)]
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\metrics_tracker.py:80:9: error: Returning Any from
+function declared to return "float"  [no-any-return]
+            return (passed / total) * 100.0
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\metrics_tracker.py:116:9: error: Returning Any from
+function declared to return "float"  [no-any-return]
+            return (consultations / total_requests) * 100.0
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\metrics_tracker.py:141:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def log_summary(self):
+        ^
+src\ai_agent\marketing\metrics_tracker.py:141:5: note: Use "-> None" if function does not return a value
+src\ai_agent\marketing\marketing_kb_content.py:674:1: error: Function is
+missing a type annotation  [no-untyped-def]
+    async def get_all_kb_documents(db=None):
+    ^
+src\ai_agent\marketing\marketing_kb_content.py:710:1: error: Function is
+missing a return type annotation  [no-untyped-def]
+    def get_kb_documents_by_category(category: str):
+    ^
+src\ai_agent\marketing\marketing_kb_content.py:718:12: error: "Collection[str]"
+has no attribute "get"  [attr-defined]
+            if doc.get("metadata", {}).get("category") == category
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\error_handling.py:57:5: error: Function is missing a
+type annotation for one or more arguments  [no-untyped-def]
+        def call(self, func: Callable, *args, **kwargs) -> Any:
+        ^
+src\ai_agent\marketing\error_handling.py:82:16: error: Exception type must be
+derived from BaseException (or be a tuple of exception classes)  [misc]
+            except self.expected_exception as e:
+                   ^~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\error_handling.py:92:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def _on_success(self):
+        ^
+src\ai_agent\marketing\error_handling.py:92:5: note: Use "-> None" if function does not return a value
+src\ai_agent\marketing\error_handling.py:99:5: error: Function is missing a
+return type annotation  [no-untyped-def]
+        def _on_failure(self):
+        ^
+src\ai_agent\marketing\error_handling.py:99:5: note: Use "-> None" if function does not return a value
+src\ai_agent\marketing\error_handling.py:102:34: error: Incompatible types in
+assignment (expression has type "float", variable has type "None")  [assignment]
+            self.last_failure_time = time.time()
+                                     ^~~~~~~~~~~
+src\ai_agent\marketing\error_handling.py:112:1: error: Function is missing a
+return type annotation  [no-untyped-def]
+    def with_exponential_backoff(
+    ^
+src\ai_agent\marketing\error_handling.py:133:5: error: Function is missing a
+type annotation  [no-untyped-def]
+        def decorator(func):
+        ^
+src\ai_agent\marketing\error_handling.py:135:9: error: Function is missing a
+type annotation  [no-untyped-def]
+            async def wrapper(*args, **kwargs):
+            ^
+src\ai_agent\marketing\error_handling.py:156:31: error: Name "asyncio" is not
+defined  [name-defined]
+                            await asyncio.sleep(delay)
+                                  ^~~~~~~
+src\ai_agent\marketing\error_handling.py:164:13: error: Exception must be
+derived from BaseException  [misc]
+                raise last_exception
+                ^~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\ab_testing.py:143:5: error: Function is missing a return
+type annotation  [no-untyped-def]
+        def log_variant_assignment(self, user_id: str, variant: Variant, c...
+        ^
+src\ai_agent\marketing\ab_testing.py:159:5: error: Function is missing a return
+type annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\ai_agent\marketing\ab_testing.py:159:5: note: Use "-> None" if function does not return a value
+src\ai_agent\marketing\ab_testing.py:160:35: error: Need type annotation for
+"metrics_by_variant"  [var-annotated]
+            self.metrics_by_variant = {variant: [] for variant in Variant}
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\ab_testing.py:162:5: error: Function is missing a return
+type annotation  [no-untyped-def]
+        def record_interaction(
+        ^
+src\ai_agent\marketing\ab_testing.py:244:1: error: Function is missing a return
+type annotation  [no-untyped-def]
+    def enable_ab_testing(
+    ^
+src\rag\fusion_algorithms.py:19:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\rag\fusion_algorithms.py:19:5: note: Use "-> None" if function does not return a value
+src\rag\fusion_algorithms.py:129:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\rag\fusion_algorithms.py:129:5: note: Use "-> None" if function does not return a value
+src\rag\fusion_algorithms.py:207:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\rag\fusion_algorithms.py:207:5: note: Use "-> None" if function does not return a value
+src\rag\fusion_algorithms.py:262:60: error: Incompatible default for argument
+"query_metadata" (default has type "None", argument has type "dict[str, Any]") 
+[assignment]
+                              query_metadata: Dict[str, Any] = None,
+                                                               ^~~~
+src\rag\fusion_algorithms.py:262:60: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\fusion_algorithms.py:262:60: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\ai_agent\marketing\fine_tuning_data_generator.py:152:1: error: Function is
+missing a return type annotation  [no-untyped-def]
+    def save_training_data(
+    ^
+src\ai_agent\marketing\prompts\marketing_prompts.py:86:1: error: Function is
+missing a type annotation for one or more arguments  [no-untyped-def]
+    async def get_system_prompt_versioned(db=None) -> str:
+    ^
+src\ai_agent\marketing\prompts\marketing_prompts.py:105:17: error: Returning
+Any from function declared to return "str"  [no-any-return]
+                    return active_version["prompt_template"]
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\bm25_search_engine.py:13:1: error: Skipping analyzing "nltk": module is
+installed, but missing library stubs or py.typed marker  [import-untyped]
+    import nltk
+    ^
+src\rag\bm25_search_engine.py:14:1: error: Skipping analyzing "nltk.corpus":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.corpus import stopwords
+    ^
+src\rag\bm25_search_engine.py:15:1: error: Skipping analyzing "nltk.stem":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.stem import PorterStemmer
+    ^
+src\rag\bm25_search_engine.py:16:1: error: Skipping analyzing "nltk.tokenize":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.tokenize import word_tokenize
+    ^
+src\rag\bm25_search_engine.py:40:29: error: Incompatible types in assignment
+(expression has type "None", variable has type "list[str]")  [assignment]
+        highlights: List[str] = None
+                                ^~~~
+src\rag\bm25_search_engine.py:48:25: error: Incompatible types in assignment
+(expression has type "None", variable has type "list[str]")  [assignment]
+        tokens: List[str] = None
+                            ^~~~
+src\ai_agent\marketing\kb_migration.py:16:1: error: Function is missing a type
+annotation  [no-untyped-def]
+    async def migrate_kb_content(db):
+    ^
+src\ai_agent\marketing\kb_indexer.py:12:1: error: Cannot find implementation or
+library stub for module named "rag.chunking_strategies"  [import-not-found]
+    from rag.chunking_strategies import SemanticChunking
+    ^
+src\ai_agent\marketing\kb_indexer.py:12:1: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+src\ai_agent\marketing\kb_indexer.py:13:1: error: Cannot find implementation or
+library stub for module named "rag.embedding_service"  [import-not-found]
+    from rag.embedding_service import embedding_service
+    ^
+src\ai_agent\marketing\kb_indexer.py:14:1: error: Cannot find implementation or
+library stub for module named "rag.vector_store"  [import-not-found]
+    from rag.vector_store import get_vector_store
+    ^
+src\ai_agent\marketing\kb_indexer.py:28:5: error: Function is missing a type
+annotation  [no-untyped-def]
+        def __init__(self, db=None):
+        ^
+src\ai_agent\marketing\kb_indexer.py:73:21: error: Unsupported operand types
+for + ("object" and "int")  [operator]
+                        results["skipped_documents"] += 1
+                        ^
+src\ai_agent\marketing\kb_indexer.py:79:17: error: Unsupported operand types
+for + ("object" and "int")  [operator]
+                    results["indexed_documents"] += 1
+                    ^
+src\ai_agent\marketing\kb_indexer.py:80:17: error: Unsupported operand types
+for + ("object" and "int")  [operator]
+                    results["total_chunks"] += doc_results["chunks"]
+                    ^
+src\ai_agent\marketing\kb_indexer.py:81:17: error: Unsupported operand types
+for + ("object" and "int")  [operator]
+                    results["total_vectors"] += doc_results["vectors"]
+                    ^
+src\ai_agent\marketing\kb_indexer.py:90:17: error: "object" has no attribute
+"append"  [attr-defined]
+                    results["errors"].append({
+                    ^~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\kb_indexer.py:191:13: error: Returning Any from function
+declared to return "bool"  [no-any-return]
+                return doc_snapshot.exists
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\kb_indexer.py:196:5: error: Function is missing a return
+type annotation  [no-untyped-def]
+        async def _mark_indexed(self, doc_id: str, chunks: int, vectors: i...
+        ^
+src\ai_agent\marketing\kb_indexer.py:270:5: error: Function is missing a return
+type annotation  [no-untyped-def]
+        async def clear_index(self):
+        ^
+src\ai_agent\marketing\kb_indexer.py:270:5: note: Use "-> None" if function does not return a value
+src\ai_agent\marketing\kb_indexer.py:289:1: error: Function is missing a return
+type annotation  [no-untyped-def]
+    async def initialize_marketing_kb(db=None, force_reindex: bool = False...
+    ^
+src\ai_agent\marketing\kb_indexer.py:289:1: error: Function is missing a type
+annotation for one or more arguments  [no-untyped-def]
+    async def initialize_marketing_kb(db=None, force_reindex: bool = False...
+    ^
+src\ai_agent\marketing\kb_admin.py:15:5: error: Function is missing a type
+annotation  [no-untyped-def]
+        def __init__(self, db):
+        ^
+src\ai_agent\marketing\kb_admin.py:19:100: error: Incompatible default for
+argument "metadata" (default has type "None", argument has type
+"dict[str, Any]")  [assignment]
+    ...r, title: str, content: str, metadata: Dict[str, Any] = None) -> bool:
+                                                               ^~~~
+src\ai_agent\marketing\kb_admin.py:19:100: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\ai_agent\marketing\kb_admin.py:19:100: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\ai_agent\marketing\kb_admin.py:110:17: error: Returning Any from function
+declared to return "dict[str, Any] | None"  [no-any-return]
+                    return doc.to_dict()
+                    ^~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\scripts\register_prompt_v1.py:26:1: error: Function is
+missing a return type annotation  [no-untyped-def]
+    def register_current_prompt():
+    ^
+src\rag\text_preprocessing.py:7:1: error: Skipping analyzing "nltk": module is
+installed, but missing library stubs or py.typed marker  [import-untyped]
+    import nltk
+    ^
+src\rag\text_preprocessing.py:8:1: error: Skipping analyzing "nltk.corpus":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.corpus import stopwords
+    ^
+src\rag\text_preprocessing.py:9:1: error: Skipping analyzing "nltk.stem":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.stem import PorterStemmer, WordNetLemmatizer
+    ^
+src\rag\text_preprocessing.py:10:1: error: Skipping analyzing "nltk.tokenize":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.tokenize import word_tokenize, sent_tokenize
+    ^
+src\rag\text_preprocessing.py:11:1: error: Skipping analyzing "nltk.chunk":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.chunk import ne_chunk
+    ^
+src\rag\text_preprocessing.py:12:1: error: Skipping analyzing "nltk.tag":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.tag import pos_tag
+    ^
+src\rag\text_preprocessing.py:96:13: error: Returning Any from function
+declared to return "list[str]"  [no-any-return]
+                return word_tokenize(text)
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\text_preprocessing.py:98:13: error: Returning Any from function
+declared to return "list[str]"  [no-any-return]
+                return sent_tokenize(text)
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\text_preprocessing.py:328:13: error: Returning Any from function
+declared to return "str | None"  [no-any-return]
+                return _langdetect_detect(t)
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\text_preprocessing.py:353:25: error: Incompatible types in assignment
+(expression has type "None", variable has type "TextPreprocessor")  [assignment]
+        text_preprocessor = None
+                            ^~~~
+src\rag\text_preprocessing.py:311: error: Unused "type: ignore" comment 
+[unused-ignore]
+            from bs4 import BeautifulSoup  # type: ignore
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\init_marketing_kb.py:17:1: error: Function is missing a
+return type annotation  [no-untyped-def]
+    async def main(force_reindex: bool = False):
+    ^
+src\rag\query_preprocessor.py:11:1: error: Skipping analyzing "nltk": module is
+installed, but missing library stubs or py.typed marker  [import-untyped]
+    import nltk
+    ^
+src\rag\query_preprocessor.py:12:1: error: Skipping analyzing "nltk.corpus":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.corpus import wordnet
+    ^
+src\rag\query_preprocessor.py:13:1: error: Skipping analyzing "nltk.tokenize":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.tokenize import word_tokenize
+    ^
+src\rag\query_preprocessor.py:41:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\rag\query_preprocessor.py:41:5: note: Use "-> None" if function does not return a value
+src\rag\query_preprocessor.py:176:24: error: Incompatible types in assignment
+(expression has type "set[Never]", variable has type "list[str]")  [assignment]
+                synonyms = set()
+                           ^~~~~
+src\rag\query_preprocessor.py:181:25: error: "list[str]" has no attribute
+"add"; maybe "append" or "extend"?  [attr-defined]
+                            synonyms.add(synonym)
+                            ^~~~~~~~~~~~
+src\rag\query_enhancement.py:12:1: error: Skipping analyzing "nltk": module is
+installed, but missing library stubs or py.typed marker  [import-untyped]
+    import nltk
+    ^
+src\rag\query_enhancement.py:13:1: error: Skipping analyzing "nltk.corpus":
+module is installed, but missing library stubs or py.typed marker 
+[import-untyped]
+    from nltk.corpus import wordnet
+    ^
+src\rag\query_enhancement.py:54:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\rag\query_enhancement.py:54:5: note: Use "-> None" if function does not return a value
+src\rag\query_enhancement.py:238:21: error: Incompatible types in assignment
+(expression has type "float", variable has type "int")  [assignment]
+                        score += overlap * 0.1
+                        ^~~~~~~~~~~~~~~~~~~~~~
+src\rag\query_enhancement.py:336:28: error: "object" has no attribute
+"__iter__"; maybe "__dir__" or "__str__"? (not iterable)  [attr-defined]
+                for pattern in config['patterns']:
+                               ^~~~~~~~~~~~~~~~~~
+src\rag\query_enhancement.py:342:28: error: "object" has no attribute
+"__iter__"; maybe "__dir__" or "__str__"? (not iterable)  [attr-defined]
+                for keyword in config['keywords']:
+                               ^~~~~~~~~~~~~~~~~~
+src\rag\query_enhancement.py:344:21: error: Incompatible types in assignment
+(expression has type "float", variable has type "int")  [assignment]
+                        score += 0.5
+                        ^~~~~~~~~~~~
+src\rag\query_enhancement.py:348:26: error: Unsupported operand types for +
+("int" and "object")  [operator]
+                    score += config['confidence_boost']
+                             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\query_enhancement.py:366:34: error: Argument 1 to "len" has
+incompatible type "object"; expected "Sized"  [arg-type]
+            max_possible_score = len(self.intent_patterns[intent_name]['pa...
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\query_enhancement.py:367:32: error: Argument 1 to "len" has
+incompatible type "object"; expected "Sized"  [arg-type]
+                               len(self.intent_patterns[intent_name]['keyw...
+                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\query_enhancement.py:368:28: error: Unsupported operand types for +
+("float" and "object")  [operator]
+                               self.intent_patterns[intent_name]['confiden...
+                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\embedding_service.py:22:5: error: Module "google.cloud" has no
+attribute "aiplatform"  [attr-defined]
+        from google.cloud import aiplatform
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\embedding_service.py:63:65: error: Incompatible default for argument
+"api_key" (default has type "None", argument has type "str")  [assignment]
+    ..._(self, provider: str = 'openai', api_key: str = None, redis_url: str ...
+                                                        ^~~~
+src\rag\embedding_service.py:63:65: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:63:65: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:63:88: error: Incompatible default for argument
+"redis_url" (default has type "None", argument has type "str")  [assignment]
+    ... provider: str = 'openai', api_key: str = None, redis_url: str = None,
+                                                                        ^~~~
+src\rag\embedding_service.py:64:43: error: Incompatible default for argument
+"google_project_id" (default has type "None", argument has type "str") 
+[assignment]
+                     google_project_id: str = None, google_location: str =...
+                                              ^~~~
+src\rag\embedding_service.py:64:43: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:64:43: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:184:17: error: Returning Any from function
+declared to return "list[float] | None"  [no-any-return]
+                    return embedding
+                    ^~~~~~~~~~~~~~~~
+src\rag\embedding_service.py:191:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def _cache_embedding(self, text: str, model: str, embedding: List[...
+        ^
+src\rag\embedding_service.py:210:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        async def _acquire_rate_limit(self):
+        ^
+src\rag\embedding_service.py:210:5: note: Use "-> None" if function does not return a value
+src\rag\embedding_service.py:222:71: error: Incompatible default for argument
+"model" (default has type "None", argument has type "str")  [assignment]
+    ...dding(self, embedding: List[float], model: str = None) -> Dict[str, An...
+                                                        ^~~~
+src\rag\embedding_service.py:222:71: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:222:71: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:236:66: error: Incompatible default for argument
+"model" (default has type "None", argument has type "str")  [assignment]
+    ...timate_cost_for_tokens(self, tokens: int, model: str = None) -> float:
+                                                              ^~~~
+src\rag\embedding_service.py:236:66: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:236:66: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:240:36: error: Unsupported operand types for *
+("float" and "object")  [operator]
+            return (tokens / 1000.0) * cfg.get('cost_per_1k_tokens', 0.0)
+                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\embedding_service.py:242:70: error: Incompatible default for argument
+"model" (default has type "None", argument has type "str")  [assignment]
+    ...te_cost_for_texts(self, texts: List[str], model: str = None) -> float:
+                                                              ^~~~
+src\rag\embedding_service.py:242:70: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:242:70: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:248:66: error: Incompatible default for argument
+"model" (default has type "None", argument has type "str")  [assignment]
+    ...timate_batch_cost(self, texts: List[str], model: str = None) -> float:
+                                                              ^~~~
+src\rag\embedding_service.py:248:66: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:248:66: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:252:5: error: Function is missing a type
+annotation  [no-untyped-def]
+        def set_cost_handler(self, handler):
+        ^
+src\rag\embedding_service.py:256:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def _emit_cost_event(self, event_type: str, data: Dict[str, Any]):
+        ^
+src\rag\embedding_service.py:281:31: error: Unsupported operand types for >
+("int" and "object")  [operator]
+            if estimated_tokens > model_config['max_tokens']:
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\embedding_service.py:289:22: error: Incompatible default for argument
+"model" (default has type "None", argument has type "str")  [assignment]
+            model: str = None
+                         ^~~~
+src\rag\embedding_service.py:289:22: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:289:22: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:367:5: error: Missing return statement  [return]
+        async def _generate_openai_embedding(self, text: str, model: str) ...
+        ^
+src\rag\embedding_service.py:409:5: error: Missing return statement  [return]
+        async def _generate_google_embedding(self, text: str, model: str) ...
+        ^
+src\rag\embedding_service.py:477:13: error: Returning Any from function
+declared to return "list[float]"  [no-any-return]
+                return (vec / norm).tolist()
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\embedding_service.py:486:22: error: Incompatible default for argument
+"model" (default has type "None", argument has type "str")  [assignment]
+            model: str = None
+                         ^~~~
+src\rag\embedding_service.py:486:22: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:486:22: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\embedding_service.py:546:89: error: Argument "dimensions" to
+"_generate_local_embedding" of "EmbeddingService" has incompatible type
+"object"; expected "int"  [arg-type]
+    ...     embedding = self._generate_local_embedding(text, dimensions=dims)
+                                                                        ^~~~
+src\rag\embedding_service.py:590:49: error: Incompatible types in assignment
+(expression has type "Any | None", variable has type "list[float]") 
+[assignment]
+                                        embedding = getattr(embedding_data...
+                                                    ^~~~~~~~~~~~~~~~~~~~~~...
+src\rag\embedding_service.py:679:43: error: Incompatible default for argument
+"model" (default has type "None", argument has type "str")  [assignment]
+        def get_model_info(self, model: str = None) -> Dict[str, Any]:
+                                              ^~~~
+src\rag\embedding_service.py:679:43: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\embedding_service.py:679:43: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\llm\watsonx_client.py:159:27: error: Incompatible types in assignment
+(expression has type "str | list[str | dict[Any, Any]]", variable has type
+"str")  [assignment]
+                    content = msg.content
+                              ^~~~~~~~~~~
+src\llm\watsonx_client.py:196:5: error: Function is missing a type annotation
+for one or more arguments  [no-untyped-def]
+        async def generate(
+        ^
+src\llm\watsonx_client.py:236:48: error: Argument 1 to
+"_build_url_with_version" of "WatsonxGraniteClient" has incompatible type
+"str | None"; expected "str"  [arg-type]
+                url = self._build_url_with_version(self.api_url)
+                                                   ^~~~~~~~~~~~
+src\llm\watsonx_client.py:288:5: error: Function is missing a type annotation
+for one or more arguments  [no-untyped-def]
+        async def generate_batch(
+        ^
+src\llm\watsonx_client.py:332:42: error: Argument 1 to "append" of "list" has
+incompatible type "dict[str, Any] | BaseException"; expected
+"dict[str, dict[str, int] | str | None]"  [arg-type]
+                    processed_results.append(result)
+                                             ^~~~~~
+src\llm\watsonx_client.py:336:5: error: Function is missing a type annotation
+for one or more arguments  [no-untyped-def]
+        async def generate_stream(
+        ^
+src\llm\watsonx_client.py:368:26: error: Item "None" of "str | None" has no
+attribute "replace"  [union-attr]
+                stream_url = self.api_url.replace("/generation", "/generat...
+                             ^~~~~~~~~~~~~~~~~~~~
+src\llm\watsonx_client.py:405:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        async def close(self):
+        ^
+src\llm\watsonx_client.py:405:5: note: Use "-> None" if function does not return a value
+src\llm\watsonx_client.py:456:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def invoke(self, input: Any, config: Optional[Dict[str, Any]] = No...
+        ^
+src\llm\watsonx_client.py:456:5: error: Function is missing a type annotation
+for one or more arguments  [no-untyped-def]
+        def invoke(self, input: Any, config: Optional[Dict[str, Any]] = No...
+        ^
+src\llm\watsonx_client.py:456:34: error: Argument 2 of "invoke" is incompatible
+with supertype "langchain_core.runnables.base.Runnable"; supertype defines the
+argument type as "RunnableConfig | None"  [override]
+        def invoke(self, input: Any, config: Optional[Dict[str, Any]] = No...
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\llm\watsonx_client.py:456:34: note: This violates the Liskov substitution principle
+src\llm\watsonx_client.py:456:34: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+src\llm\watsonx_client.py:486:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        async def ainvoke(self, messages: Any, config: Optional[Dict[str, ...
+        ^
+src\llm\watsonx_client.py:486:5: error: Function is missing a type annotation
+for one or more arguments  [no-untyped-def]
+        async def ainvoke(self, messages: Any, config: Optional[Dict[str, ...
+        ^
+src\llm\watsonx_client.py:486:44: error: Argument 2 of "ainvoke" is
+incompatible with supertype "langchain_core.runnables.base.Runnable"; supertype
+defines the argument type as "RunnableConfig | None"  [override]
+        async def ainvoke(self, messages: Any, config: Optional[Dict[str, ...
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\llm\watsonx_client.py:486:44: note: This violates the Liskov substitution principle
+src\llm\watsonx_client.py:486:44: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+src\llm\watsonx_client.py:523:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        async def astream(self, messages: List[Dict[str, str]], **kwargs):
+        ^
+src\llm\watsonx_client.py:523:5: error: Function is missing a type annotation
+for one or more arguments  [no-untyped-def]
+        async def astream(self, messages: List[Dict[str, str]], **kwargs):
+        ^
+src\llm\watsonx_client.py:523:5: error: Signature of "astream" incompatible
+with supertype "langchain_core.runnables.base.Runnable"  [override]
+        async def astream(self, messages: List[Dict[str, str]], **kwargs):
+        ^
+src\llm\watsonx_client.py:523:5: note:      Superclass:
+src\llm\watsonx_client.py:523:5: note:          def astream(self, input: Any, config: RunnableConfig | None = ..., **kwargs: Any | None) -> AsyncIterator[Any]
+src\llm\watsonx_client.py:523:5: note:      Subclass:
+src\llm\watsonx_client.py:523:5: note:          def astream(self, messages: list[dict[str, str]], **kwargs: Any) -> Any
+src\llm\watsonx_client.py:541:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def bind_tools(self, tools: List[Any], **kwargs):
+        ^
+src\llm\watsonx_client.py:541:5: error: Function is missing a type annotation
+for one or more arguments  [no-untyped-def]
+        def bind_tools(self, tools: List[Any], **kwargs):
+        ^
+src\rag\vector_store.py:54:5: error: Function is missing a type annotation for
+one or more arguments  [no-untyped-def]
+        def __init__(self, firestore_client=None, project_id: str = None, ...
+        ^
+src\rag\vector_store.py:54:65: error: Incompatible default for argument
+"project_id" (default has type "None", argument has type "str")  [assignment]
+    ..._(self, firestore_client=None, project_id: str = None, region: str = N...
+                                                        ^~~~
+src\rag\vector_store.py:54:65: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:54:65: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:54:85: error: Incompatible default for argument
+"region" (default has type "None", argument has type "str")  [assignment]
+    ...f, firestore_client=None, project_id: str = None, region: str = None):
+                                                                       ^~~~
+src\rag\vector_store.py:94:27: error: Incompatible default for argument
+"index_name" (default has type "None", argument has type "str")  [assignment]
+            index_name: str = None,
+                              ^~~~
+src\rag\vector_store.py:94:27: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:94:27: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:95:27: error: Incompatible default for argument
+"dimensions" (default has type "None", argument has type "int")  [assignment]
+            dimensions: int = None,
+                              ^~~~
+src\rag\vector_store.py:95:27: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:95:27: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:96:23: error: Incompatible default for argument
+"metric" (default has type "None", argument has type "str")  [assignment]
+            metric: str = None,
+                          ^~~~
+src\rag\vector_store.py:96:23: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:96:23: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:141:50: error: Incompatible default for argument
+"index_name" (default has type "None", argument has type "str")  [assignment]
+        def connect_to_index(self, index_name: str = None) -> bool:
+                                                     ^~~~
+src\rag\vector_store.py:141:50: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:141:50: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:211:26: error: Incompatible default for argument
+"namespace" (default has type "None", argument has type "str")  [assignment]
+            namespace: str = None,
+                             ^~~~
+src\rag\vector_store.py:211:26: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:211:26: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:281:26: error: Incompatible default for argument
+"namespace" (default has type "None", argument has type "str")  [assignment]
+            namespace: str = None,
+                             ^~~~
+src\rag\vector_store.py:281:26: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:281:26: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:282:39: error: Incompatible default for argument
+"filter_dict" (default has type "None", argument has type "dict[str, Any]") 
+[assignment]
+            filter_dict: Dict[str, Any] = None,
+                                          ^~~~
+src\rag\vector_store.py:282:39: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:282:39: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:392:26: error: Incompatible default for argument
+"namespace" (default has type "None", argument has type "str")  [assignment]
+            namespace: str = None
+                             ^~~~
+src\rag\vector_store.py:392:26: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:392:26: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:476:48: error: Incompatible default for argument
+"namespace" (default has type "None", argument has type "str")  [assignment]
+        def get_index_stats(self, namespace: str = None) -> Optional[Vecto...
+                                                   ^~~~
+src\rag\vector_store.py:476:48: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:476:48: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:503:13: error: Need type annotation for
+"namespace_counts" (hint: "namespace_counts: dict[<type>, <type>] = ...") 
+[var-annotated]
+                namespace_counts = {}
+                ^~~~~~~~~~~~~~~~
+src\rag\vector_store.py:559:46: error: Incompatible default for argument
+"index_name" (default has type "None", argument has type "str")  [assignment]
+        def delete_index(self, index_name: str = None) -> bool:
+                                                 ^~~~
+src\rag\vector_store.py:559:46: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\vector_store.py:559:46: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\vector_store.py:622:1: error: Function is missing a type annotation for
+one or more arguments  [no-untyped-def]
+    def get_vector_store(firestore_client=None) -> VectorStore:
+    ^
+src\ai_agent\marketing\scripts\setup_firestore_collection.py:11:1: error:
+Module "google.cloud" has no attribute "firestore"  [attr-defined]
+    from google.cloud import firestore
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\ai_agent\marketing\scripts\setup_firestore_collection.py:18:1: error:
+Function is missing a return type annotation  [no-untyped-def]
+    def setup_agent_checkpoints_collection():
+    ^
+src\ai_agent\marketing\scripts\setup_firestore_collection.py:99:1: error:
+Function is missing a return type annotation  [no-untyped-def]
+    def verify_collection_access():
+    ^
+src\rag\semantic_search.py:19:31: error: Incompatible types in assignment
+(expression has type "None", variable has type "dict[str, Any]")  [assignment]
+        filters: Dict[str, Any] = None
+                                  ^~~~
+src\rag\semantic_search.py:21:22: error: Incompatible types in assignment
+(expression has type "None", variable has type "str")  [assignment]
+        namespace: str = None
+                         ^~~~
+src\rag\semantic_search.py:52:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\rag\semantic_search.py:52:5: note: Use "-> None" if function does not return a value
+src\rag\semantic_search.py:111:44: error: Unsupported operand types for <
+("int" and "object")  [operator]
+            if query.rerank and search_top_k < self.config['rerank_top_k']...
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\semantic_search.py:112:28: error: No overload variant of "min" matches
+argument types "object", "object"  [call-overload]
+                search_top_k = min(self.config['rerank_top_k'], self.confi...
+                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\semantic_search.py:112:28: note: Possible overload variants:
+src\rag\semantic_search.py:112:28: note:     def [SupportsRichComparisonT: SupportsDunderLT[Any] | SupportsDunderGT[Any]] min(SupportsRichComparisonT, SupportsRichComparisonT, /, *_args: SupportsRichComparisonT, key: None = ...) -> SupportsRichComparisonT
+src\rag\semantic_search.py:112:28: note:     def [_T] min(_T, _T, /, *_args: _T, key: Callable[[_T], SupportsDunderLT[Any] | SupportsDunderGT[Any]]) -> _T
+src\rag\semantic_search.py:112:28: note:     def [SupportsRichComparisonT: SupportsDunderLT[Any] | SupportsDunderGT[Any]] min(Iterable[SupportsRichComparisonT], /, *, key: None = ...) -> SupportsRichComparisonT
+src\rag\semantic_search.py:112:28: note:     def [_T] min(Iterable[_T], /, *, key: Callable[[_T], SupportsDunderLT[Any] | SupportsDunderGT[Any]]) -> _T
+src\rag\semantic_search.py:112:28: note:     def [SupportsRichComparisonT: SupportsDunderLT[Any] | SupportsDunderGT[Any], _T] min(Iterable[SupportsRichComparisonT], /, *, key: None = ..., default: _T) -> SupportsRichComparisonT | _T
+src\rag\semantic_search.py:112:28: note:     def [_T1, _T2] min(Iterable[_T1], /, *, key: Callable[[_T1], SupportsDunderLT[Any] | SupportsDunderGT[Any]], default: _T2) -> _T1 | _T2
+src\rag\semantic_search.py:114:26: error: Item "None" of "Any | None" has no
+attribute "search"  [union-attr]
+            vector_results = self.vector_store.search(
+                             ^~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\semantic_search.py:191:41: error: Value of type "object" is not
+indexable  [index]
+                            boost_factor *= self.config['boost_factors']['...
+                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\semantic_search.py:198:37: error: Value of type "object" is not
+indexable  [index]
+                        boost_factor *= self.config['boost_factors']['user...
+                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\semantic_search.py:205:41: error: Value of type "object" is not
+indexable  [index]
+                            boost_factor *= self.config['boost_factors']['...
+                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\semantic_search.py:221:65: error: Unsupported operand types for >=
+("float" and "object")  [operator]
+    ...    return [result for result in results if result.score >= threshold]
+                                                                   ^~~~~~~~~
+src\rag\semantic_search.py:296:33: error: Unsupported operand types for >
+("float" and "object")  [operator]
+                    if similarity > self.config['diversity_threshold']:
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\semantic_search.py:337:51: error: Incompatible default for argument
+"user_id" (default has type "None", argument has type "str")  [assignment]
+    ...   def get_search_analytics(self, user_id: str = None, days: int = 30)...
+                                                        ^~~~
+src\rag\semantic_search.py:337:51: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\semantic_search.py:337:51: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\hybrid_search_engine.py:74:5: error: Function is missing a return type
+annotation  [no-untyped-def]
+        def __init__(self):
+        ^
+src\rag\hybrid_search_engine.py:74:5: note: Use "-> None" if function does not return a value
+src\rag\hybrid_search_engine.py:124:75: error: Incompatible default for
+argument "namespace" (default has type "None", argument has type "str") 
+[assignment]
+    ...mantic_search(self, query: str, namespace: str = None, filters: Dict[s...
+                                                        ^~~~
+src\rag\hybrid_search_engine.py:124:75: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\hybrid_search_engine.py:124:75: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\hybrid_search_engine.py:124:107: error: Incompatible default for
+argument "filters" (default has type "None", argument has type "dict[str, Any]")
+ [assignment]
+    ...namespace: str = None, filters: Dict[str, Any] = None, top_k: int = 10...
+                                                        ^~~~
+src\rag\hybrid_search_engine.py:156:27: error: Unexpected keyword argument
+"rank" for "SearchResult"  [call-arg]
+                bm25_result = BM25SearchResult(
+                              ^
+src\rag\hybrid_search_engine.py:203:53: error: Incompatible default for
+argument "config" (default has type "None", argument has type "dict[str, Any]") 
+[assignment]
+    ...                        config: Dict[str, Any] = None) -> Tuple[List[F...
+                                                        ^~~~
+src\rag\hybrid_search_engine.py:203:53: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\hybrid_search_engine.py:203:53: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\hybrid_search_engine.py:236:34: error: Argument "semantic_results" to
+"fuse_results" of "AdaptiveFusion" has incompatible type
+"list[src.rag.bm25_search_engine.SearchResult]"; expected
+"list[src.rag.result_fusion.SearchResult]"  [arg-type]
+                    semantic_results=semantic_results,
+                                     ^~~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:237:33: error: Argument "keyword_results" to
+"fuse_results" of "AdaptiveFusion" has incompatible type
+"list[src.rag.bm25_search_engine.SearchResult]"; expected
+"list[src.rag.result_fusion.SearchResult]"  [arg-type]
+                    keyword_results=keyword_results,
+                                    ^~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:239:23: error: Argument "top_k" to
+"fuse_results" of "AdaptiveFusion" has incompatible type "object | Any";
+expected "int"  [arg-type]
+                    top_k=config.get("max_results", 10)
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:246:34: error: Argument "semantic_results" to
+"fuse_results" of "ReciprocalRankFusion" has incompatible type
+"list[src.rag.bm25_search_engine.SearchResult]"; expected
+"list[src.rag.result_fusion.SearchResult]"  [arg-type]
+                    semantic_results=semantic_results,
+                                     ^~~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:247:33: error: Argument "keyword_results" to
+"fuse_results" of "ReciprocalRankFusion" has incompatible type
+"list[src.rag.bm25_search_engine.SearchResult]"; expected
+"list[src.rag.result_fusion.SearchResult]"  [arg-type]
+                    keyword_results=keyword_results,
+                                    ^~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:248:23: error: Argument "alpha" to
+"fuse_results" of "ReciprocalRankFusion" has incompatible type "object | Any";
+expected "float | None"  [arg-type]
+                    alpha=alpha,
+                          ^~~~~
+src\rag\hybrid_search_engine.py:250:23: error: Argument "top_k" to
+"fuse_results" of "ReciprocalRankFusion" has incompatible type "object | Any";
+expected "int"  [arg-type]
+                    top_k=config.get("max_results", 10)
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:257:73: error: Incompatible default for
+argument "config" (default has type "None", argument has type "dict[str, Any]") 
+[assignment]
+    ...query(self, query: str, config: Dict[str, Any] = None) -> Tuple[Option...
+                                                        ^~~~
+src\rag\hybrid_search_engine.py:257:73: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+src\rag\hybrid_search_engine.py:257:73: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+src\rag\hybrid_search_engine.py:337:9: error: Need type annotation for
+"semantic_results" (hint: "semantic_results: list[<type>] = ...") 
+[var-annotated]
+            semantic_results = []
+            ^~~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:338:9: error: Need type annotation for
+"keyword_results" (hint: "keyword_results: list[<type>] = ...")  [var-annotated]
+            keyword_results = []
+            ^~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:344:24: error: Argument 2 to
+"_perform_semantic_search" of "HybridSearchEngine" has incompatible type
+"object | Any"; expected "str"  [arg-type]
+                    query, config.get("max_results", 10)
+                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:350:40: error: Argument 3 to
+"_perform_keyword_search" of "HybridSearchEngine" has incompatible type
+"object | Any"; expected "int"  [arg-type]
+                    query, enhanced_query, config.get("max_results", 10)
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src\rag\hybrid_search_engine.py:436:17: error: Dict entry 2 has incompatible
+type "str": "float"; expected "str": "bool | str"  [dict-item]
+                    "intent_confidence": enhanced_query.intent_classificat...
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\rag\hybrid_search_engine.py:437:17: error: Dict entry 3 has incompatible
+type "str": "float"; expected "str": "bool | str"  [dict-item]
+                    "expansion_score": enhanced_query.expansion.expansion_...
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...
+src\ai_agent\marketing\marketing_retriever.py:60:5: error: Function is missing
+a type annotation  [no-untyped-def]
+        def __init__(self, db=None):
+        ^
+src\ai_agent\marketing\marketing_retriever.py:240:36: error: Unexpected keyword
+argument "top_k" for "search" of "HybridSearchEngine"  [call-arg]
+                hybrid_results = await hybrid_search_engine.search(
+                                       ^
+src\rag\hybrid_search_engine.py:312:5: note: "search" of "HybridSearchEngine" defined here
+src\ai_agent\marketing\marketing_retriever.py:240:36: error: Unexpected keyword
+argument "search_mode" for "search" of "HybridSearchEngine"  [call-arg]
+                hybrid_results = await hybrid_search_engine.search(
+                                       ^
+src\ai_agent\marketing\marketing_retriever.py:240:36: error: Unexpected keyword
+argument "adaptive_weights" for "search" of "HybridSearchEngine"  [call-arg]
+                hybrid_results = await hybrid_search_engine.search(
+                                       ^
+src\ai_agent\marketing\marketing_retriever.py:258:26: error:
+"HybridSearchResponse" has no attribute "__iter__" (not iterable) 
+[attr-defined]
+                    for r in hybrid_results
+                             ^~~~~~~~~~~~~~
+Found 197 errors in 26 files (checked 22 source files)

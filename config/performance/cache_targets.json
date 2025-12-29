@@ -1,0 +1,6 @@
+{
+  "cache_hit_ratio": ">90%",
+  "cache_response_time": "<10ms",
+  "cache_invalidation_time": "<1s",
+  "offline_availability": ">95%"
+}

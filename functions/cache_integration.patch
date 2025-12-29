@@ -1,0 +1,89 @@
+diff --git a/functions/src/api/cloud_run_main.py b/functions/src/api/cloud_run_main.py
+index 1234567..abcdefg 100644
+--- a/functions/src/api/cloud_run_main.py
++++ b/functions/src/api/cloud_run_main.py
+@@ -50,6 +50,15 @@ logging.basicConfig(
+ )
+ logger = logging.getLogger(__name__)
+ START_TIME = datetime.now(timezone.utc)
++
++# Initialize intelligent response cache
++try:
++    from rag.cache_manager import intelligent_response_cache
++    logger.info("Intelligent response cache initialized")
++except Exception as cache_init_err:
++    logger.warning(f"Failed to initialize cache: {cache_init_err}")
++    intelligent_response_cache = None
++
+ # Optional: Initialize Sentry if DSN provided
+ try:
+     import sentry_sdk
+@@ -644,7 +653,29 @@ async def marketing_chat_stream_endpoint(request: Request, chat_request: Market
+                 yield "data: [DONE]\\n\\n"
+                 return
+
+-            # Real mode: stream from agent with coalesced flush cadence
++            # Real mode: Intelligent caching + agent streaming
++
++            # 1. CHECK CACHE FIRST (with semantic similarity)
++            if intelligent_response_cache:
++                try:
++                    cached_data = intelligent_response_cache.get_similar_cached_response(
++                        query=chat_request.message,
++                        page_context=chat_request.page_context or "unknown"
++                    )
++                    if cached_data:
++                        logger.info(f"✓ Cache HIT for: {chat_request.message[:50]}...")
++                        # Serve cached response instantly
++                        cached_response_text = cached_data['response']
++                        yield f"data: {json.dumps({'type': 'content', 'chunk': cached_response_text})}\\n\\n"
++                        yield "data: [DONE]\\n\\n"
++                        return
++                    else:
++                        logger.info(f"Cache MISS for: {chat_request.message[:50]}...")
++                except Exception as cache_err:
++                    logger.warning(f"Cache check failed: {cache_err}")
++
++            # 2. No cache hit - generate from agent
+             try:
+                 from ai_agent.marketing.marketing_agent import get_marketing_agent
+             except Exception as e:
+@@ -662,6 +693,7 @@ async def marketing_chat_stream_endpoint(request: Request, chat_request: Market
+             buffer = ""
+             last_flush = datetime.now(timezone.utc)
+             total_content_length = 0  # Track total content sent for verification
++            full_response_text = ""  # Collect full response for caching
+
+             async for chunk in agent.chat_stream(chat_request.message, context):
+                 text = _extract_text_from_chunk(chunk)
+@@ -683,6 +715,7 @@ async def marketing_chat_stream_endpoint(request: Request, chat_request: Market
+
+                     normalized = _normalize_text(text)
+                     buffer += normalized
++                    full_response_text += normalized
+                     total_content_length += len(normalized)
+
+                 now = datetime.now(timezone.utc)
+@@ -704,6 +737,22 @@ async def marketing_chat_stream_endpoint(request: Request, chat_request: Market
+                     f"Query: '{chat_request.message[:50]}...'"
+                 )
+
++            # 3. Save to cache after generation (if valid)
++            if intelligent_response_cache and full_response_text and total_content_length >= MIN_EXPECTED_LENGTH:
++                try:
++                    cache_success = intelligent_response_cache.cache_response_safe(
++                        query=chat_request.message,
++                        response=full_response_text,
++                        page_context=chat_request.page_context or "unknown",
++                        metadata={'model': 'granite-3.0-8b', 'conversation_id': conversation_id}
++                    )
++                    if cache_success:
++                        logger.info(f"✓ Cached response for: {chat_request.message[:50]}...")
++                    else:
++                        logger.warning(f"✗ Failed to cache (PII/Quality): {chat_request.message[:50]}...")
++                except Exception as cache_save_err:
++                    logger.warning(f"Cache save failed: {cache_save_err}")
++
+             yield "data: [DONE]\\n\\n"
+         except Exception as e:
+             logger.exception("Streaming error: %s", e)

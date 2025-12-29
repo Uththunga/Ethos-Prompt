@@ -1,0 +1,15 @@
+# robots.txt for EthosPrompt
+User-agent: *
+Allow: /
+
+# Disallow admin/private routes
+Disallow: /admin
+Disallow: /api/
+Disallow: /__/
+
+# Sitemap locations
+Sitemap: https://ethosprompt.com.au/sitemap.xml
+Sitemap: https://ethosprompt.com/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1

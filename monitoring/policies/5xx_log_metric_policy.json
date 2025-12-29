@@ -1,0 +1,26 @@
+{
+  "displayName": "Marketing API 5xx errors > 5 in 5 min",
+  "combiner": "OR",
+  "enabled": true,
+  "alertStrategy": { "autoClose": "3600s" },
+  "conditions": [
+    {
+      "displayName": "5xx log metric count (sum over 5m)",
+      "conditionThreshold": {
+        "filter": "resource.type=\"global\" AND metric.type=\"logging.googleapis.com/user/marketing_api_5xx_errors\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "300s",
+            "perSeriesAligner": "ALIGN_DELTA",
+            "crossSeriesReducer": "REDUCE_SUM"
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 5,
+        "duration": "0s",
+        "trigger": { "count": 1 }
+      }
+    }
+  ],
+  "notificationChannels": ["projects/rag-prompt-library/notificationChannels/12278298556073926358"]
+}

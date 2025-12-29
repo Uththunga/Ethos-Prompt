@@ -1,0 +1,17 @@
+{
+  "name": "marketing_api_estimated_cost",
+  "description": "Estimated API cost in USD for marketing API",
+  "filter": "resource.type=\"cloud_run_revision\"\nresource.labels.service_name=\"marketing-api\"\njsonPayload.monitoring.event=\"business_metrics\"\njsonPayload.monitoring.estimated_cost_usd>=0",
+  "metricDescriptor": {
+    "metricKind": "DELTA",
+    "valueType": "DISTRIBUTION"
+  },
+  "valueExtractor": "EXTRACT(jsonPayload.monitoring.estimated_cost_usd)",
+  "bucketOptions": {
+    "exponentialBuckets": {
+      "numFiniteBuckets": 64,
+      "growthFactor": 2.0,
+      "scale": 0.0001
+    }
+  }
+}

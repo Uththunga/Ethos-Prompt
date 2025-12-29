@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography System Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        
+        /* Test our new semantic classes */
+        .heading-hero {
+            font-size: 3rem;
+            line-height: 1.1;
+            letter-spacing: -0.035em;
+            font-weight: 500;
+            color: #030823;
+        }
+        
+        .heading-section {
+            font-size: 1.875rem;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+            font-weight: 500;
+            color: #030823;
+        }
+        
+        .text-body-default {
+            font-size: 1rem;
+            line-height: 1.6;
+            letter-spacing: 0;
+            font-weight: 400;
+            color: #484848;
+        }
+        
+        .text-button-default {
+            font-size: 1rem;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+            font-weight: 500;
+        }
+        
+        @media (min-width: 768px) {
+            .heading-hero {
+                font-size: 3.75rem;
+                line-height: 1.1;
+                letter-spacing: -0.04em;
+            }
+            
+            .heading-section {
+                font-size: 2.25rem;
+                line-height: 1.2;
+                letter-spacing: -0.03em;
+            }
+            
+            .text-body-default {
+                font-size: 1.125rem;
+                line-height: 1.6;
+                letter-spacing: -0.01em;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .heading-hero {
+                font-size: 4.5rem;
+                line-height: 1.05;
+                letter-spacing: -0.045em;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white p-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+        <!-- Hero Section Test -->
+        <section class="text-center space-y-6">
+            <h1 class="heading-hero">
+                Enhanced Typography System
+            </h1>
+            <p class="text-body-default max-w-2xl mx-auto">
+                Testing the new typography system inspired by Augment Code's design. This system provides better semantic meaning and responsive scaling.
+            </p>
+            <!-- Enhanced Button Component Example (CTA Variant) -->
+            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-ethos-purple text-white shadow-button hover:bg-ethos-purple-light hover:shadow-button-hover hover:-translate-y-0.5 hover:brightness-110 active:scale-[0.98] active:brightness-95 active:shadow-button h-13 px-8 py-3 button-enhanced">
+                Get Started
+            </button>
+        </section>
+
+        <!-- Section Headers Test -->
+        <section class="space-y-8">
+            <h2 class="heading-section">
+                Typography Hierarchy
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-medium text-gray-900">
+                        Display Sizes
+                    </h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="text-6xl font-medium text-gray-900">Display 2XL</div>
+                        <div class="text-5xl font-medium text-gray-900">Display XL</div>
+                        <div class="text-4xl font-medium text-gray-900">Display LG</div>
+                        <div class="text-3xl font-medium text-gray-900">Display MD</div>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-medium text-gray-900">
+                        Semantic Sizes
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="text-4xl font-medium text-gray-900">H1 Heading</div>
+                        <div class="text-3xl font-medium text-gray-900">H2 Heading</div>
+                        <div class="text-2xl font-medium text-gray-900">H3 Heading</div>
+                        <div class="text-xl font-medium text-gray-900">H4 Heading</div>
+                        <div class="text-lg font-medium text-gray-900">H5 Heading</div>
+                        <div class="text-base font-medium text-gray-900">H6 Heading</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Body Text Test -->
+        <section class="space-y-6">
+            <h2 class="heading-section">
+                Body Text Variations
+            </h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 mb-2">Large Body Text</h4>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        This is large body text (18px) used for emphasis and important content. It provides better readability for key messages and introductory paragraphs.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 mb-2">Default Body Text</h4>
+                    <p class="text-body-default">
+                        This is the default body text (16px) used for most content. It maintains excellent readability while being efficient for longer passages of text.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 mb-2">Small Body Text</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        This is small body text (14px) used for secondary information, captions, and metadata. It's still highly readable while being more compact.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Button System Test -->
+        <section class="space-y-6">
+            <h2 class="heading-section">
+                Enhanced Button System
+            </h2>
+            <p class="text-body-default">
+                Testing the enhanced button component system with modern hover effects, GPU acceleration, and WCAG 2.1 AA compliance.
+            </p>
+            
+            <div class="space-y-4">
+                <div class="flex flex-wrap gap-4">
+                    <!-- Enhanced Button Examples -->
+                    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-ethos-purple text-white shadow-button hover:bg-ethos-purple-light hover:shadow-button-hover hover:-translate-y-0.5 hover:brightness-110 active:scale-[0.98] active:brightness-95 active:shadow-button h-11 px-6 py-3 button-enhanced">
+                        Primary Button (Default)
+                    </button>
+                    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:shadow-button-outline hover:-translate-y-0.5 h-11 px-4 py-2 button-enhanced">
+                        Secondary Button (Outline)
+                    </button>
+                    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-ethos-purple text-white shadow-button hover:bg-ethos-purple-light hover:shadow-button-hover hover:-translate-y-0.5 hover:brightness-110 active:scale-[0.98] active:brightness-95 active:shadow-button h-9 px-3 py-1.5 button-enhanced">
+                        Small Button (sm)
+                    </button>
+                </div>
+                
+                <nav class="flex space-x-6">
+                    <a href="#" class="text-base font-medium text-gray-900 hover:text-purple-600 transition-colors">
+                        Primary Nav
+                    </a>
+                    <a href="#" class="text-base font-medium text-gray-900 hover:text-purple-600 transition-colors">
+                        Secondary Nav
+                    </a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-purple-600 transition-colors">
+                        Tertiary Nav
+                    </a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Responsive Test -->
+        <section class="space-y-6">
+            <h2 class="heading-section">
+                Responsive Behavior
+            </h2>
+            <p class="text-body-default">
+                Resize your browser window to see how the typography scales across different breakpoints. The system automatically adjusts font sizes for optimal readability on all devices.
+            </p>
+            
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-medium text-gray-900 mb-4">Breakpoint Information</h3>
+                <ul class="space-y-2 text-sm text-gray-600">
+                    <li><strong>Mobile (&lt;768px):</strong> Base font sizes</li>
+                    <li><strong>Tablet (768px+):</strong> Medium font sizes</li>
+                    <li><strong>Desktop (1024px+):</strong> Large font sizes</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

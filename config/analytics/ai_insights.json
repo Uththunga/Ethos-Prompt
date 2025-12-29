@@ -1,0 +1,20 @@
+{
+  "automated_insights": {
+    "trend_detection": true,
+    "anomaly_alerts": true,
+    "performance_recommendations": true,
+    "optimization_suggestions": true
+  },
+  "natural_language": {
+    "query_interface": true,
+    "insight_summaries": true,
+    "automated_reporting": true,
+    "conversational_analytics": true
+  },
+  "smart_alerts": {
+    "threshold_monitoring": true,
+    "pattern_based_alerts": true,
+    "predictive_alerts": true,
+    "contextual_notifications": true
+  }
+}

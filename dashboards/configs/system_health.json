@@ -1,0 +1,45 @@
+{
+  "id": "system_health",
+  "name": "System Health Overview",
+  "description": "High-level system health and performance metrics",
+  "created": "2025-07-22T19:16:02.521Z",
+  "refreshInterval": 30,
+  "widgets": [
+    {
+      "id": "system_health_uptime_widget",
+      "type": "metric",
+      "title": "System Uptime",
+      "query": "uptime_percentage",
+      "visualization": "gauge",
+      "target": 99.9,
+      "refreshInterval": 30
+    },
+    {
+      "id": "system_health_response_time_widget",
+      "type": "metric",
+      "title": "Average Response Time",
+      "query": "avg_response_time",
+      "visualization": "line_chart",
+      "target": 200,
+      "refreshInterval": 30
+    },
+    {
+      "id": "system_health_error_rate_widget",
+      "type": "metric",
+      "title": "Error Rate",
+      "query": "error_rate_percentage",
+      "visualization": "area_chart",
+      "target": 1,
+      "refreshInterval": 30
+    },
+    {
+      "id": "system_health_active_users_widget",
+      "type": "metric",
+      "title": "Active Users",
+      "query": "active_users_count",
+      "visualization": "counter",
+      "target": null,
+      "refreshInterval": 30
+    }
+  ]
+}

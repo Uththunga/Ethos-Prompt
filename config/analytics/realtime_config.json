@@ -1,0 +1,60 @@
+{
+  "metrics_collection": {
+    "user_activity": {
+      "update_interval": 5,
+      "metrics": [
+        "active_users",
+        "current_sessions",
+        "page_views"
+      ],
+      "aggregation": "real_time"
+    },
+    "system_performance": {
+      "update_interval": 10,
+      "metrics": [
+        "response_time",
+        "error_rate",
+        "throughput"
+      ],
+      "aggregation": "sliding_window"
+    },
+    "business_metrics": {
+      "update_interval": 60,
+      "metrics": [
+        "revenue",
+        "conversions",
+        "usage_costs"
+      ],
+      "aggregation": "cumulative"
+    }
+  },
+  "real_time_dashboards": {
+    "operations_dashboard": {
+      "refresh_rate": 5,
+      "widgets": [
+        "system_health",
+        "active_users",
+        "error_alerts"
+      ],
+      "auto_refresh": true
+    },
+    "business_dashboard": {
+      "refresh_rate": 30,
+      "widgets": [
+        "revenue_trends",
+        "user_growth",
+        "feature_adoption"
+      ],
+      "auto_refresh": true
+    },
+    "technical_dashboard": {
+      "refresh_rate": 10,
+      "widgets": [
+        "performance_metrics",
+        "infrastructure_status",
+        "api_health"
+      ],
+      "auto_refresh": true
+    }
+  }
+}

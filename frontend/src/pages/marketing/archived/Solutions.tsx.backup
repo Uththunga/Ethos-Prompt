@@ -1,0 +1,487 @@
+import React, { memo } from 'react';
+import { Navigation } from '@/components/marketing/layout/Navigation';
+import { Footer } from '@/components/marketing/layout/Footer';
+import { Button } from '@/components/marketing/ui/button';
+import ServiceCard from '@/components/marketing/ui/service-card';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useScrollRestoration } from '@/hooks/useScrollRestoration';
+import { setServiceReferrer } from '@/utils/navigationUtils';
+const mainServices = [
+  {
+    title: 'Web & Mobile Applications',
+    description:
+      '• Build custom web and mobile applications from scratch\n• E-commerce platforms, customer portals, mobile apps\n• Professional development with modern technology',
+    href: '/intelligent-applications',
+  },
+  {
+    title: 'Smart Business Assistant',
+    description:
+      '• 24/7 AI chatbots for customer support and lead qualification\n• Automates routine business tasks and operations\n• Continuously learns and adapts to help your business grow',
+    href: '/smart-business-assistant',
+  },
+  {
+    title: 'System Integration',
+    description:
+      '• Connect 600+ apps and automate workflows\n• Eliminate manual data entry between systems\n• Seamless integration of all your business tools',
+    href: '/system-integration',
+  },
+];
+
+export const Solutions = memo(function Solutions() {
+  // Handle scroll restoration when navigating back to sections
+  useScrollRestoration();
+
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const animationStyle = `
+    @keyframes float {
+      0% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-1mm); }
+      100% { transform: translate(-50%, -50%) translateY(0); }
+    }
+    .animate-float-slow {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes hero-star-border {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Sequential animation with staggered delays */
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.2; }
+      25% { opacity: 0.8; }
+      50% { opacity: 0.2; }
+    }
+
+    [role="list"][aria-label="Our Core Services"] > div:nth-child(1) .animate-star-border::before {
+      animation:
+        hero-star-border 4s linear 0s infinite,
+        fadeInOut 12s ease-in-out 0s infinite;
+    }
+
+    [role="list"][aria-label="Our Core Services"] > div:nth-child(2) .animate-star-border::before {
+      animation:
+        hero-star-border 4s linear 0s infinite,
+        fadeInOut 12s ease-in-out -3s infinite;
+    }
+
+    [role="list"][aria-label="Our Core Services"] > div:nth-child(3) .animate-star-border::before {
+      animation:
+        hero-star-border 4s linear 0s infinite,
+        fadeInOut 12s ease-in-out -6s infinite;
+    }
+
+    [role="list"][aria-label="Our Core Services"] > div:nth-child(4) .animate-star-border::before {
+      animation:
+        hero-star-border 4s linear 0s infinite,
+        fadeInOut 12s ease-in-out -9s infinite;
+    }
+
+    /* Specific to Hero section cards */
+    .animate-star-border {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    [role="list"][aria-label="Business results statistics"] .animate-star-border::before, [role="list"][aria-label="Our Core Services"] .animate-star-border::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: -10px;
+      background: conic-gradient(
+        from 0deg,
+        rgba(139, 92, 246, 0.1),
+        rgba(139, 92, 246, 0.4),
+        rgba(168, 85, 247, 0.6),
+        rgba(192, 132, 252, 0.7),
+        rgba(216, 180, 254, 0.6),
+        rgba(139, 92, 246, 0.1) 180deg,
+        rgba(139, 92, 246, 0.4),
+        rgba(168, 85, 247, 0.6),
+        rgba(192, 132, 252, 0.7),
+        rgba(216, 180, 254, 0.6),
+        rgba(139, 92, 246, 0.1) 360deg
+      );
+      border-radius: inherit;
+      opacity: 0.2;
+      filter: blur(2.5px);
+    }
+
+    [role="list"][aria-label="Business results statistics"] .animate-star-border.animate::before, [role="list"][aria-label="Our Core Services"] .animate-star-border.animate::before {
+      opacity: 0.8;
+    }
+    [role="list"][aria-label="Business results statistics"] .animate-star-border::after, [role="list"][aria-label="Our Core Services"] .animate-star-border::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 1.5px;
+      background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
+      border-radius: inherit;
+      box-shadow: inset 0 0 25px rgba(139, 92, 246, 0.08);
+    }
+  `;
+  const withBase = (path: string) => {
+    // Remove leading slashes and ensure proper path construction
+    const cleanPath = path.replace(/^\/+/, '');
+    return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      <style dangerouslySetInnerHTML={{ __html: animationStyle }} />
+      <Navigation />
+      <main role="main" id="main-content" className="font-sans antialiased">
+        {/* Hero Section */}
+        <section
+          className="bg-gradient-to-b from-[#FEFEFE] to-[#FEFEFE] py-16 md:py-20 lg:py-24 xl:py-28"
+          aria-labelledby="solutions-heading"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Main Heading */}
+            <header className="text-center">
+              <h1 id="solutions-heading" className="text-display-xl font-semibold font-poppins">
+                <span
+                  style={{
+                    fontFamily: 'Poppins',
+                    background:
+                      'linear-gradient(to right, var(--ethos-navy-light), var(--ethos-gray-light))',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    display: 'inline-block',
+                  }}
+                >
+                  Enterprise AI Solutions for
+                </span>
+                <br />
+                <span
+                  style={{
+                    fontFamily: 'Poppins',
+                    wordWrap: 'break-word',
+                    display: 'inline-block',
+                    background:
+                      'linear-gradient(90deg, var(--ethos-purple), #000, var(--ethos-purple))',
+                    backgroundSize: '200% auto',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    paddingBottom: '0.1em',
+                    lineHeight: '1.2',
+                    animation: 'shine 10s linear infinite',
+                  }}
+                >
+                  Strategic Growth
+                </span>
+              </h1>
+            </header>
+
+            {/* Combined Image and Text Container */}
+            <div className="relative -mt-0.5">
+              {/* AI Workflow Illustration */}
+              <div className="relative">
+                <img
+                  src={withBase('assets/marketing/images/ai-workflow-illustration.jpg')}
+                  alt="AI Workflow Illustration showing various AI tools and integrations"
+                  className="w-full max-w-5xl h-auto mx-auto"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Bottom Text */}
+              <div className="relative mt-0.5">
+                <p className="text-ethos-gray text-body-large font-light leading-relaxed tracking-normal max-w-3xl mx-auto">
+                  Transform your organization with intelligent AI systems designed to drive
+                  operational excellence, reduce costs, and accelerate business growth through
+                  strategic automation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="w-full pt-0 -mt-12 sm:-mt-16 md:-mt-20 lg:-mt-24 pb-4 sm:pb-6 md:pb-10 lg:pb-12"
+          style={{ background: 'linear-gradient(180deg, #FFF 37.11%, #E8E8E8 100%)' }}
+          aria-labelledby="ethosprompt-help-heading"
+        >
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            {/* Main Content Area */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-10 sm:mb-14 md:mb-16 lg:mb-20">
+              {/* Left Side - Content */}
+              <div className="flex flex-col justify-center w-full order-2 lg:order-1">
+                <header className="mb-3 sm:mb-4 lg:mb-5">
+                  <h2
+                    id="ethosprompt-help-heading"
+                    className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6"
+                  >
+                    <span className="text-ethos-navy">The Risks of Sticking with </span>
+                    <span
+                      className="bg-clip-text text-transparent"
+                      style={{
+                        backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)',
+                      }}
+                    >
+                      Outdated Technology
+                    </span>
+                  </h2>
+                </header>
+                <p className="text-ethos-gray text-body-large font-light leading-relaxed tracking-normal">
+                  We build AI systems that help businesses work smarter. Our solutions automate
+                  daily tasks, cut costs, and accelerate growth—freeing your team to focus on what
+                  matters most.
+                </p>
+                <p className="text-ethos-gray text-body-large font-light leading-relaxed tracking-normal mt-4">
+                  Connect your tools seamlessly. EthosPrompt integrates with over 600 business
+                  applications—from CRMs to communication platforms—creating a unified workflow that
+                  grows with your business. No disruption, just results.
+                </p>
+                <p className="text-ethos-gray text-body-large font-light leading-relaxed tracking-normal mt-4">
+                  Stay ahead of the curve. Technology evolves rapidly, and so do we. We continuously
+                  update our platform with the latest secure technologies, ensuring your business is
+                  future-ready. AI isn't just a trend—it's a powerful tool that makes your
+                  operations more effective and your team more productive.
+                </p>
+              </div>
+
+              {/* Right Side - AI Workflow Diagram */}
+              <div className="relative flex justify-center items-center w-full max-w-4xl mx-auto -mt-8 sm:mt-0 pt-0 pb-1 sm:py-10 md:py-12 lg:py-16 order-1 lg:order-2">
+                <img
+                  src={withBase('assets/marketing/images/botsolution.png')}
+                  alt="AI Agent workflow diagram showing connections and integrations with productivity, financial, and communication tools"
+                  className="w-full h-auto max-h-[400px] md:max-h-[500px] lg:max-h-[600px] object-contain transition-all duration-300"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            {/* Services Section */}
+            <section
+              id="core-services"
+              className="mb-12 sm:mb-16 md:mb-20 lg:mb-24 px-2 sm:px-4 relative"
+              aria-labelledby="services-heading"
+            >
+              {/* Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-transparent pointer-events-none" />
+
+              <motion.header
+                className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+              >
+                <h3 id="services-heading" className="heading-section">
+                  <span className="text-ethos-navy">Our Core </span>
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)',
+                    }}
+                  >
+                    Services
+                  </span>
+                </h3>
+              </motion.header>
+
+              {/* Main Services Grid */}
+              <div
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-6xl mx-auto relative mb-12 sm:mb-16 justify-items-center"
+                role="list"
+                aria-label="Our Core Services"
+              >
+                {mainServices.map((service, index) => (
+                  <motion.div
+                    key={index}
+                    className="w-full rounded-2xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.1 * index,
+                      ease: 'easeOut',
+                    }}
+                  >
+                    <div className="group h-full">
+                      <ServiceCard
+                        {...service}
+                        onClick={() => setServiceReferrer('/solutions')}
+                        className="transition-all duration-300 hover:scale-[1.02] hover:shadow-lg h-full animate-star-border [&_h3]:text-2xl [&_h3]:sm:text-3xl [&_h3]:font-bold [&_h3]:text-ethos-navy [&_h3]:mb-4"
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </section>
+
+        {/* AI Consultation Section */}
+        <section
+          className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden"
+          aria-labelledby="consultation-heading"
+        >
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src={withBase('assets/marketing/images/integration-background.png')}
+              alt=""
+              className="w-full h-full object-cover opacity-10"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+            <div className="p-6 sm:p-8 lg:p-10">
+              {/* Section Heading - Spans Full Width */}
+              <header className="text-center mb-8 sm:mb-10 md:mb-12">
+                <h2
+                  id="consultation-heading"
+                  className="heading-section font-medium leading-tight tracking-[-0.02em] mb-4"
+                >
+                  <span className="text-ethos-navy">Navigate AI Implementation with </span>
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)',
+                    }}
+                  >
+                    Confidence
+                  </span>
+                </h2>
+                <p className="text-xl font-light text-ethos-purple">
+                  Safe, Secure & Ethical AI Solutions
+                </p>
+              </header>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+                {/* Left Column - Image */}
+                <div className="flex justify-center items-center px-4 sm:px-6 md:px-8 lg:px-0">
+                  <img
+                    src={withBase('assets/marketing/images/App Logos.png')}
+                    alt="AI consultation and expert guidance"
+                    className="w-full h-auto max-w-[500px] lg:max-w-none"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                {/* Right Column - Content */}
+                <div className="px-4 sm:px-6 md:px-8 lg:pl-8 xl:pl-12">
+                  <p className="text-gray-800 text-body-large font-light leading-relaxed mb-4 sm:mb-5">
+                    Our subject matter experts guide you through AI implementation with a focus on
+                    <strong className="font-semibold text-ethos-navy">
+                      {' '}
+                      safety, security, and ethics
+                    </strong>
+                    . We help you harness AI's power while maintaining human oversight and
+                    responsible practices.
+                  </p>
+
+                  <div className="mb-4 sm:mb-5">
+                    <h3 className="font-semibold text-ethos-navy text-lg mb-3">
+                      Free Consultation Includes:
+                    </h3>
+                    <ul className="text-gray-700 mb-3">
+                      <li className="flex items-start gap-2 mb-2">
+                        <svg
+                          className="w-5 h-5 text-ethos-purple mt-0.5 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>Risk assessment and security evaluation</span>
+                      </li>
+                      <li className="flex items-start gap-2 mb-2">
+                        <svg
+                          className="w-5 h-5 text-ethos-purple mt-0.5 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>Custom implementation roadmap with human oversight</span>
+                      </li>
+                      <li className="flex items-start gap-2 mb-2 last:mb-0">
+                        <svg
+                          className="w-5 h-5 text-ethos-purple mt-0.5 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>Compliance guidance and ethical AI practices</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <svg
+                          className="w-5 h-5 text-ethos-purple mt-0.5 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>ROI projection and cost-benefit analysis</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-ethos-purple/5 rounded-lg p-4 border-l-4 border-ethos-purple">
+                    <p className="text-sm text-gray-600">
+                      <strong className="text-ethos-navy">
+                        Completely free • No obligation • No sales pressure
+                      </strong>
+                    </p>
+                  </div>
+
+                  <div className="pt-2">
+                    <Link to="/contact" className="inline-block">
+                      <Button
+                        variant="default"
+                        size="lg"
+                        aria-label="Request your free AI consultation"
+                      >
+                        Request Free Consultation
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+});

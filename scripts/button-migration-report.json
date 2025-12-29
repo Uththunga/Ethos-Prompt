@@ -1,0 +1,1183 @@
+{
+  "totalFiles": 417,
+  "filesWithButtons": 86,
+  "totalButtons": 198,
+  "buttonsBySize": {
+    "sm": 27,
+    "default": 71,
+    "md": 1,
+    "lg": 19,
+    "cta": 46,
+    "icon": 2
+  },
+  "buttonsByVariant": {
+    "outline": 30,
+    "secondary": 4,
+    "primary": 7,
+    "default": 57,
+    "cta": 56,
+    "ghost": 12
+  },
+  "deprecatedUsages": [
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 38,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 43,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 59,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 62,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 65,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 68,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 71,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 113,
+      "fullMatch": "<Button \r\n                  variant=\"cta\" \r\n                  size=\"cta\"\r\n                  className=\"w-full\"\r\n                >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "w-full",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \r\n                  size=\"cta\"\r\n                  className=\"w-full\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 135,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" className=\"w-full\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "w-full",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" className=\"w-full\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 186,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\HeaderCTA.tsx",
+      "lineNumber": 95,
+      "fullMatch": "<Button \n              variant=\"cta\" \n              size=\"cta\"\n              onClick={handleClick}\n              className=\"group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl\"\n              aria-label=\"Get started with AI workflow transformation\"\n            >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \n              size=\"cta\"\n              onClick={handleClick}\n              className=\"group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl\"\n              aria-label=\"Get started with AI workflow transformation\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\Hero.tsx",
+      "lineNumber": 300,
+      "fullMatch": "<Button \n                  variant=\"cta\" \n                  size=\"cta\"\n                  aria-label=\"Schedule consultation to discuss business results\"\n                >",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" \n                  size=\"cta\"\n                  aria-label=\"Schedule consultation to discuss business results\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\PromptManagementBanner.tsx",
+      "lineNumber": 57,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" aria-label=\"View Prompt Library\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" aria-label=\"View Prompt Library\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\ServiceFailuresSection.tsx",
+      "lineNumber": 145,
+      "fullMatch": "<Button\n              variant=\"cta\"\n              size=\"cta\"\n              aria-label=\"Schedule a demonstration of our AI agent services\"\n            >",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\"\n              size=\"cta\"\n              aria-label=\"Schedule a demonstration of our AI agent services\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\Testimonials.tsx",
+      "lineNumber": 305,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" aria-label=\"Send feedback about our service\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" aria-label=\"Send feedback about our service\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\WaysWeCanHelp.tsx",
+      "lineNumber": 283,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\SectionTemplates.tsx",
+      "lineNumber": 290,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" asChild>",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" asChild",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\SectionTemplates.tsx",
+      "lineNumber": 294,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" onClick={onButtonClick}>",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" onClick={onButtonClick}",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\ServicePageTemplate.tsx",
+      "lineNumber": 119,
+      "fullMatch": "<Button\r\n                      variant=\"cta\"\r\n                      size=\"cta\"\r\n                      className=\"group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation\"\r\n                    >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\"\r\n                      size=\"cta\"\r\n                      className=\"group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Basics.tsx",
+      "lineNumber": 199,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\NotFound.tsx",
+      "lineNumber": 37,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Solutions.tsx",
+      "lineNumber": 309,
+      "fullMatch": "<Button \r\n                variant=\"cta\" \r\n                size=\"cta\" \r\n                type=\"button\" \r\n                className=\"group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl\"\r\n                aria-label=\"Start your transformation with EthosPrompt\"\r\n              >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \r\n                size=\"cta\" \r\n                type=\"button\" \r\n                className=\"group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl\"\r\n                aria-label=\"Start your transformation with EthosPrompt\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Solutions.tsx",
+      "lineNumber": 396,
+      "fullMatch": "<Button \r\n                    variant=\"cta\" \r\n                    size=\"cta\" \r\n                    type=\"button\" \r\n                    className=\"w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base\"\r\n                    aria-label=\"Begin integration with EthosPrompt\"\r\n                  >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \r\n                    size=\"cta\" \r\n                    type=\"button\" \r\n                    className=\"w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base\"\r\n                    aria-label=\"Begin integration with EthosPrompt\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 38,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 43,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 59,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 62,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 65,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 68,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 71,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 113,
+      "fullMatch": "<Button \r\n                  variant=\"cta\" \r\n                  size=\"cta\"\r\n                  className=\"w-full\"\r\n                >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "w-full",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \r\n                  size=\"cta\"\r\n                  className=\"w-full\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 135,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" className=\"w-full\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "w-full",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" className=\"w-full\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 186,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\HeaderCTA.tsx",
+      "lineNumber": 102,
+      "fullMatch": "<Button \n              variant=\"cta\" \n              size=\"cta\"\n              onClick={handleClick}\n              className=\"group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl\"\n              aria-label=\"Get started with AI workflow transformation\"\n            >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \n              size=\"cta\"\n              onClick={handleClick}\n              className=\"group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl\"\n              aria-label=\"Get started with AI workflow transformation\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\Hero.tsx",
+      "lineNumber": 258,
+      "fullMatch": "<Button \n                  variant=\"cta\" \n                  size=\"cta\"\n                  aria-label=\"Schedule consultation to discuss business results\"\n                >",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" \n                  size=\"cta\"\n                  aria-label=\"Schedule consultation to discuss business results\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\PromptManagementBanner.tsx",
+      "lineNumber": 47,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" aria-label=\"View Prompt Library\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" aria-label=\"View Prompt Library\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\ServiceFailuresSection.tsx",
+      "lineNumber": 140,
+      "fullMatch": "<Button\n              variant=\"cta\"\n              size=\"cta\"\n              aria-label=\"Schedule a demonstration of our AI agent services\"\n            >",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\"\n              size=\"cta\"\n              aria-label=\"Schedule a demonstration of our AI agent services\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\SectionTemplates.tsx",
+      "lineNumber": 290,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" asChild>",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" asChild",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\SectionTemplates.tsx",
+      "lineNumber": 294,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" onClick={onButtonClick}>",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" onClick={onButtonClick}",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\ServicePageTemplate.tsx",
+      "lineNumber": 119,
+      "fullMatch": "<Button\r\n                      variant=\"cta\"\r\n                      size=\"cta\"\r\n                      className=\"group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation\"\r\n                    >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\"\r\n                      size=\"cta\"\r\n                      className=\"group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\Testimonials.tsx",
+      "lineNumber": 279,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\" aria-label=\"Send feedback about our service\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\" aria-label=\"Send feedback about our service\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\WaysWeCanHelp.tsx",
+      "lineNumber": 249,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Basics.tsx",
+      "lineNumber": 198,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\NotFound.tsx",
+      "lineNumber": 36,
+      "fullMatch": "<Button variant=\"cta\" size=\"cta\">",
+      "props": {
+        "size": "cta",
+        "variant": "cta"
+      },
+      "rawProps": "variant=\"cta\" size=\"cta\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Solutions.tsx",
+      "lineNumber": 309,
+      "fullMatch": "<Button \r\n                variant=\"cta\" \r\n                size=\"cta\" \r\n                type=\"button\" \r\n                className=\"group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl\"\r\n                aria-label=\"Start your transformation with EthosPrompt\"\r\n              >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \r\n                size=\"cta\" \r\n                type=\"button\" \r\n                className=\"group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl\"\r\n                aria-label=\"Start your transformation with EthosPrompt\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Solutions.tsx",
+      "lineNumber": 396,
+      "fullMatch": "<Button \r\n                    variant=\"cta\" \r\n                    size=\"cta\" \r\n                    type=\"button\" \r\n                    className=\"w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base\"\r\n                    aria-label=\"Begin integration with EthosPrompt\"\r\n                  >",
+      "props": {
+        "size": "cta",
+        "variant": "cta",
+        "className": "w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base",
+        "customHeights": [],
+        "hasCustomStyling": false
+      },
+      "rawProps": "variant=\"cta\" \r\n                    size=\"cta\" \r\n                    type=\"button\" \r\n                    className=\"w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base\"\r\n                    aria-label=\"Begin integration with EthosPrompt\"",
+      "issue": "Deprecated size \"cta\" detected",
+      "suggestion": "lg with variant=\"cta\""
+    }
+  ],
+  "customStyling": [
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Contact.tsx",
+      "lineNumber": 361,
+      "fullMatch": "<Button \r\n                      type=\"submit\"\r\n                      className=\"bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple\"\r\n                      aria-label=\"Submit contact form to reach our sales team\"\r\n                    >",
+      "props": {
+        "className": "bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple",
+        "customHeights": [
+          "h-12"
+        ],
+        "hasCustomStyling": true
+      },
+      "rawProps": "type=\"submit\"\r\n                      className=\"bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple\"\r\n                      aria-label=\"Submit contact form to reach our sales team\"",
+      "customHeights": [
+        "h-12"
+      ],
+      "suggestion": "Replace h-12 with size=\"lg\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Techniques.tsx",
+      "lineNumber": 54,
+      "fullMatch": "<Button \r\n                    className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16\"\r\n                    aria-label=\"Download prompt engineering learning material\"\r\n                  >",
+      "props": {
+        "className": "bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16",
+        "customHeights": [
+          "h-10",
+          "h-12",
+          "h-14",
+          "h-16"
+        ],
+        "hasCustomStyling": true
+      },
+      "rawProps": "className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16\"\r\n                    aria-label=\"Download prompt engineering learning material\"",
+      "customHeights": [
+        "h-10",
+        "h-12",
+        "h-14",
+        "h-16"
+      ],
+      "suggestion": "Replace h-10 with size=\"default\", Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\""
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Techniques.tsx",
+      "lineNumber": 360,
+      "fullMatch": "<Button className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18\">",
+      "props": {
+        "className": "bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18",
+        "customHeights": [
+          "h-12",
+          "h-14",
+          "h-16",
+          "h-18"
+        ],
+        "hasCustomStyling": true
+      },
+      "rawProps": "className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18\"",
+      "customHeights": [
+        "h-12",
+        "h-14",
+        "h-16",
+        "h-18"
+      ],
+      "suggestion": "Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\", Replace h-18 with size=\"lg\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Contact.tsx",
+      "lineNumber": 360,
+      "fullMatch": "<Button \r\n                      type=\"submit\"\r\n                      className=\"bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple\"\r\n                      aria-label=\"Submit contact form to reach our sales team\"\r\n                    >",
+      "props": {
+        "className": "bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple",
+        "customHeights": [
+          "h-12"
+        ],
+        "hasCustomStyling": true
+      },
+      "rawProps": "type=\"submit\"\r\n                      className=\"bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple\"\r\n                      aria-label=\"Submit contact form to reach our sales team\"",
+      "customHeights": [
+        "h-12"
+      ],
+      "suggestion": "Replace h-12 with size=\"lg\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Techniques.tsx",
+      "lineNumber": 53,
+      "fullMatch": "<Button \r\n                    className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16\"\r\n                    aria-label=\"Download prompt engineering learning material\"\r\n                  >",
+      "props": {
+        "className": "bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16",
+        "customHeights": [
+          "h-10",
+          "h-12",
+          "h-14",
+          "h-16"
+        ],
+        "hasCustomStyling": true
+      },
+      "rawProps": "className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16\"\r\n                    aria-label=\"Download prompt engineering learning material\"",
+      "customHeights": [
+        "h-10",
+        "h-12",
+        "h-14",
+        "h-16"
+      ],
+      "suggestion": "Replace h-10 with size=\"default\", Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\""
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Techniques.tsx",
+      "lineNumber": 359,
+      "fullMatch": "<Button className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18\">",
+      "props": {
+        "className": "bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18",
+        "customHeights": [
+          "h-12",
+          "h-14",
+          "h-16",
+          "h-18"
+        ],
+        "hasCustomStyling": true
+      },
+      "rawProps": "className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18\"",
+      "customHeights": [
+        "h-12",
+        "h-14",
+        "h-16",
+        "h-18"
+      ],
+      "suggestion": "Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\", Replace h-18 with size=\"lg\""
+    }
+  ],
+  "accessibilityIssues": [],
+  "migrationSuggestions": [
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 38,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 43,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 59,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 62,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 65,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 68,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 71,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 113,
+      "currentUsage": "<Button \r\n                  variant=\"cta\" \r\n                  size=\"cta\"\r\n                  className=\"w-full\"\r\n                >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 135,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" className=\"w-full\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 186,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\HeaderCTA.tsx",
+      "lineNumber": 95,
+      "currentUsage": "<Button \n              variant=\"cta\" \n              size=\"cta\"\n              onClick={handleClick}\n              className=\"group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl\"\n              aria-label=\"Get started with AI workflow transformation\"\n            >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\Hero.tsx",
+      "lineNumber": 300,
+      "currentUsage": "<Button \n                  variant=\"cta\" \n                  size=\"cta\"\n                  aria-label=\"Schedule consultation to discuss business results\"\n                >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\PromptManagementBanner.tsx",
+      "lineNumber": 57,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" aria-label=\"View Prompt Library\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\ServiceFailuresSection.tsx",
+      "lineNumber": 145,
+      "currentUsage": "<Button\n              variant=\"cta\"\n              size=\"cta\"\n              aria-label=\"Schedule a demonstration of our AI agent services\"\n            >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\Testimonials.tsx",
+      "lineNumber": 305,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" aria-label=\"Send feedback about our service\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\sections\\WaysWeCanHelp.tsx",
+      "lineNumber": 283,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\SectionTemplates.tsx",
+      "lineNumber": 290,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" asChild>",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\SectionTemplates.tsx",
+      "lineNumber": 294,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" onClick={onButtonClick}>",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\components\\marketing\\templates\\ServicePageTemplate.tsx",
+      "lineNumber": 119,
+      "currentUsage": "<Button\r\n                      variant=\"cta\"\r\n                      size=\"cta\"\r\n                      className=\"group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation\"\r\n                    >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Basics.tsx",
+      "lineNumber": 199,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Contact.tsx",
+      "lineNumber": 361,
+      "currentUsage": "<Button \r\n                      type=\"submit\"\r\n                      className=\"bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple\"\r\n                      aria-label=\"Submit contact form to reach our sales team\"\r\n                    >",
+      "suggestions": [
+        "Remove custom height classes: h-12",
+        "Replace h-12 with size=\"lg\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\NotFound.tsx",
+      "lineNumber": 37,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Solutions.tsx",
+      "lineNumber": 309,
+      "currentUsage": "<Button \r\n                variant=\"cta\" \r\n                size=\"cta\" \r\n                type=\"button\" \r\n                className=\"group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl\"\r\n                aria-label=\"Start your transformation with EthosPrompt\"\r\n              >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Solutions.tsx",
+      "lineNumber": 396,
+      "currentUsage": "<Button \r\n                    variant=\"cta\" \r\n                    size=\"cta\" \r\n                    type=\"button\" \r\n                    className=\"w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base\"\r\n                    aria-label=\"Begin integration with EthosPrompt\"\r\n                  >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Techniques.tsx",
+      "lineNumber": 54,
+      "currentUsage": "<Button \r\n                    className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16\"\r\n                    aria-label=\"Download prompt engineering learning material\"\r\n                  >",
+      "suggestions": [
+        "Remove custom height classes: h-10, h-12, h-14, h-16",
+        "Replace h-10 with size=\"default\", Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\""
+      ]
+    },
+    {
+      "filePath": "..\\frontend\\src\\pages\\marketing\\Techniques.tsx",
+      "lineNumber": 360,
+      "currentUsage": "<Button className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18\">",
+      "suggestions": [
+        "Remove custom height classes: h-12, h-14, h-16, h-18",
+        "Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\", Replace h-18 with size=\"lg\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 38,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 43,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 59,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 62,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 65,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 68,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 71,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 113,
+      "currentUsage": "<Button \r\n                  variant=\"cta\" \r\n                  size=\"cta\"\r\n                  className=\"w-full\"\r\n                >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 135,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" className=\"w-full\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\examples\\CTAButtonExamples.tsx",
+      "lineNumber": 186,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\HeaderCTA.tsx",
+      "lineNumber": 102,
+      "currentUsage": "<Button \n              variant=\"cta\" \n              size=\"cta\"\n              onClick={handleClick}\n              className=\"group relative overflow-hidden px-8 py-6 text-lg font-medium tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl\"\n              aria-label=\"Get started with AI workflow transformation\"\n            >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\Hero.tsx",
+      "lineNumber": 258,
+      "currentUsage": "<Button \n                  variant=\"cta\" \n                  size=\"cta\"\n                  aria-label=\"Schedule consultation to discuss business results\"\n                >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\PromptManagementBanner.tsx",
+      "lineNumber": 47,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" aria-label=\"View Prompt Library\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\ServiceFailuresSection.tsx",
+      "lineNumber": 140,
+      "currentUsage": "<Button\n              variant=\"cta\"\n              size=\"cta\"\n              aria-label=\"Schedule a demonstration of our AI agent services\"\n            >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\SectionTemplates.tsx",
+      "lineNumber": 290,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" asChild>",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\SectionTemplates.tsx",
+      "lineNumber": 294,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" onClick={onButtonClick}>",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\templates\\ServicePageTemplate.tsx",
+      "lineNumber": 119,
+      "currentUsage": "<Button\r\n                      variant=\"cta\"\r\n                      size=\"cta\"\r\n                      className=\"group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-h-[48px] min-w-[200px] px-6 py-4 text-base sm:text-lg touch-manipulation\"\r\n                    >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\Testimonials.tsx",
+      "lineNumber": 279,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\" aria-label=\"Send feedback about our service\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\components\\WaysWeCanHelp.tsx",
+      "lineNumber": 249,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Basics.tsx",
+      "lineNumber": 198,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Contact.tsx",
+      "lineNumber": 360,
+      "currentUsage": "<Button \r\n                      type=\"submit\"\r\n                      className=\"bg-ethos-purple hover:bg-ethos-purple-dark text-white px-8 py-3 rounded-full text-base font-medium h-12 w-full sm:w-auto min-w-[200px] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-ethos-purple\"\r\n                      aria-label=\"Submit contact form to reach our sales team\"\r\n                    >",
+      "suggestions": [
+        "Remove custom height classes: h-12",
+        "Replace h-12 with size=\"lg\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\NotFound.tsx",
+      "lineNumber": 36,
+      "currentUsage": "<Button variant=\"cta\" size=\"cta\">",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Solutions.tsx",
+      "lineNumber": 309,
+      "currentUsage": "<Button \r\n                variant=\"cta\" \r\n                size=\"cta\" \r\n                type=\"button\" \r\n                className=\"group relative overflow-hidden w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl\"\r\n                aria-label=\"Start your transformation with EthosPrompt\"\r\n              >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Solutions.tsx",
+      "lineNumber": 396,
+      "currentUsage": "<Button \r\n                    variant=\"cta\" \r\n                    size=\"cta\" \r\n                    type=\"button\" \r\n                    className=\"w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base\"\r\n                    aria-label=\"Begin integration with EthosPrompt\"\r\n                  >",
+      "suggestions": [
+        "Change size=\"cta\" to lg with variant=\"cta\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Techniques.tsx",
+      "lineNumber": 53,
+      "currentUsage": "<Button \r\n                    className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-5 sm:px-6 md:px-8 lg:px-10 py-2.5 lg:py-3 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] text-xs sm:text-sm md:text-base lg:text-lg font-normal h-10 sm:h-12 md:h-14 lg:h-16\"\r\n                    aria-label=\"Download prompt engineering learning material\"\r\n                  >",
+      "suggestions": [
+        "Remove custom height classes: h-10, h-12, h-14, h-16",
+        "Replace h-10 with size=\"default\", Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\""
+      ]
+    },
+    {
+      "filePath": "..\\..\\zen-home\\client\\pages\\Techniques.tsx",
+      "lineNumber": 359,
+      "currentUsage": "<Button className=\"bg-ethos-purple-light hover:bg-ethos-purple text-white px-8 sm:px-10 md:px-12 lg:px-16 py-3 lg:py-4 rounded-[32px] sm:rounded-[40px] lg:rounded-[53px] text-sm sm:text-base md:text-lg lg:text-xl font-normal h-12 sm:h-14 md:h-16 lg:h-18\">",
+      "suggestions": [
+        "Remove custom height classes: h-12, h-14, h-16, h-18",
+        "Replace h-12 with size=\"lg\", Replace h-14 with size=\"lg\", Replace h-16 with size=\"lg\", Replace h-18 with size=\"lg\""
+      ]
+    }
+  ],
+  "summary": {
+    "scanComplete": true,
+    "totalFiles": 417,
+    "filesWithButtons": 86,
+    "totalButtons": 198,
+    "deprecatedUsagesCount": 46,
+    "customStylingCount": 6,
+    "accessibilityIssuesCount": 0,
+    "migrationSuggestionsCount": 52,
+    "mostUsedSize": [
+      "default",
+      71
+    ],
+    "mostUsedVariant": [
+      "default",
+      57
+    ],
+    "complianceScore": 74
+  }
+}

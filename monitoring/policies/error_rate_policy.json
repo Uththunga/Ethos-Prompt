@@ -1,0 +1,21 @@
+{
+  "displayName": "Marketing API Error Rate > 5%",
+  "combiner": "OR",
+  "enabled": true,
+  "notificationChannels": [
+    "projects/rag-prompt-library/notificationChannels/12278298556073926358"
+  ],
+  "conditions": [
+    {
+      "displayName": "5xx error ratio",
+      "conditionMonitoringQueryLanguage": {
+        "query": "five = fetch cloud_run_revision | metric 'run.googleapis.com/request_count' | filter resource.service_name == 'marketing-api' && metric.response_code_class == '5xx' | align rate(60s) | group_by [], sum(value.request_count); total = fetch cloud_run_revision | metric 'run.googleapis.com/request_count' | filter resource.service_name == 'marketing-api' | align rate(60s) | group_by [], sum(value.request_count); ratio = five / total; ratio | condition gt(0.05)",
+        "duration": "300s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ]
+}
+

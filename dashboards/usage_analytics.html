@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Application - Usage Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .metric-change {
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .metric-change.positive {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .metric-change.negative {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .provider-stats {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .provider-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .provider-item:last-child {
+            border-bottom: none;
+        }
+        
+        .provider-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .provider-metrics {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .provider-metric {
+            text-align: center;
+        }
+        
+        .provider-metric-value {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .provider-metric-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .refresh-info {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Usage Analytics Dashboard</h1>
+        <p>Real-time monitoring of RAG application usage and performance</p>
+    </div>
+    
+    <div class="container">
+        <div id="loading" class="loading">
+            <h3>Loading analytics data...</h3>
+        </div>
+        
+        <div id="error" class="error" style="display: none;">
+            <h3>Error loading data</h3>
+            <p id="error-message"></p>
+        </div>
+        
+        <div id="dashboard" style="display: none;">
+            <!-- Summary Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="total-embeddings">0</div>
+                    <div class="metric-label">Embeddings Generated</div>
+                    <div class="metric-change positive" id="embeddings-change">+0%</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="total-searches">0</div>
+                    <div class="metric-label">Search Queries</div>
+                    <div class="metric-change positive" id="searches-change">+0%</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="total-documents">0</div>
+                    <div class="metric-label">Documents Processed</div>
+                    <div class="metric-change positive" id="documents-change">+0%</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="total-cost">$0.00</div>
+                    <div class="metric-label">Total Cost (24h)</div>
+                    <div class="metric-change positive" id="cost-change">+0%</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="error-rate">0.0%</div>
+                    <div class="metric-label">Error Rate</div>
+                    <div class="metric-change positive" id="error-change">+0%</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="total-requests">0</div>
+                    <div class="metric-label">API Requests</div>
+                    <div class="metric-change positive" id="requests-change">+0%</div>
+                </div>
+            </div>
+            
+            <!-- Charts -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-title">📈 Hourly Usage Trends</div>
+                    <div class="chart-container">
+                        <canvas id="hourlyChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-title">🔄 Provider Usage Distribution</div>
+                    <div class="chart-container">
+                        <canvas id="providerChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-title">💰 Cost Breakdown</div>
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-title">⚡ Performance Metrics</div>
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Provider Statistics -->
+            <div class="provider-stats">
+                <div class="chart-title">🔧 Provider Performance Statistics</div>
+                <div id="provider-stats-content">
+                    <!-- Provider stats will be populated here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="refresh-info">
+            Dashboard updates every 30 seconds | Last updated: <span id="last-updated">Never</span>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables for charts
+        let hourlyChart, providerChart, costChart, performanceChart;
+        
+        // API endpoint for usage metrics
+        const API_BASE_URL = 'https://australia-southeast1-react-rag-app.cloudfunctions.net';
+        
+        // Initialize dashboard
+        async function initDashboard() {
+            try {
+                await loadUsageData();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                
+                // Set up auto-refresh
+                setInterval(loadUsageData, 30000); // Refresh every 30 seconds
+            } catch (error) {
+                showError('Failed to initialize dashboard: ' + error.message);
+            }
+        }
+        
+        // Load usage data from API
+        async function loadUsageData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/usage_metrics?hours=24&days=7`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                updateDashboard(data);
+                document.getElementById('last-updated').textContent = new Date().toLocaleTimeString();
+                
+            } catch (error) {
+                console.error('Error loading usage data:', error);
+                // Use mock data for demonstration
+                const mockData = generateMockData();
+                updateDashboard(mockData);
+                document.getElementById('last-updated').textContent = new Date().toLocaleTimeString() + ' (Mock Data)';
+            }
+        }
+        
+        // Update dashboard with data
+        function updateDashboard(data) {
+            updateSummaryMetrics(data.summary);
+            updateCharts(data);
+            updateProviderStats(data.provider_stats);
+        }
+        
+        // Update summary metrics
+        function updateSummaryMetrics(summary) {
+            document.getElementById('total-embeddings').textContent = summary.total_embeddings_generated.toLocaleString();
+            document.getElementById('total-searches').textContent = summary.total_search_queries.toLocaleString();
+            document.getElementById('total-documents').textContent = summary.total_documents_processed.toLocaleString();
+            document.getElementById('total-cost').textContent = '$' + summary.total_cost_usd.toFixed(2);
+            document.getElementById('error-rate').textContent = (summary.error_rate * 100).toFixed(1) + '%';
+            document.getElementById('total-requests').textContent = summary.total_api_requests.toLocaleString();
+        }
+        
+        // Update charts
+        function updateCharts(data) {
+            updateHourlyChart(data.hourly_metrics);
+            updateProviderChart(data.provider_stats);
+            updateCostChart(data.hourly_metrics);
+            updatePerformanceChart(data.hourly_metrics);
+        }
+        
+        // Update hourly usage chart
+        function updateHourlyChart(hourlyMetrics) {
+            const ctx = document.getElementById('hourlyChart').getContext('2d');
+            
+            const hours = Object.keys(hourlyMetrics).sort();
+            const embeddings = hours.map(hour => hourlyMetrics[hour].embeddings_generated || 0);
+            const searches = hours.map(hour => hourlyMetrics[hour].search_queries || 0);
+            
+            if (hourlyChart) {
+                hourlyChart.destroy();
+            }
+            
+            hourlyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: hours.map(hour => hour.split(' ')[1]),
+                    datasets: [{
+                        label: 'Embeddings',
+                        data: embeddings,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Searches',
+                        data: searches,
+                        borderColor: '#764ba2',
+                        backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update provider distribution chart
+        function updateProviderChart(providerStats) {
+            const ctx = document.getElementById('providerChart').getContext('2d');
+            
+            const providers = Object.keys(providerStats);
+            const requests = providers.map(provider => providerStats[provider].requests || 0);
+            
+            if (providerChart) {
+                providerChart.destroy();
+            }
+            
+            providerChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: providers,
+                    datasets: [{
+                        data: requests,
+                        backgroundColor: ['#667eea', '#764ba2', '#f093fb', '#f5576c']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+        
+        // Update cost chart
+        function updateCostChart(hourlyMetrics) {
+            const ctx = document.getElementById('costChart').getContext('2d');
+            
+            const hours = Object.keys(hourlyMetrics).sort();
+            const costs = hours.map(hour => hourlyMetrics[hour].total_cost || 0);
+            
+            if (costChart) {
+                costChart.destroy();
+            }
+            
+            costChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: hours.map(hour => hour.split(' ')[1]),
+                    datasets: [{
+                        label: 'Cost ($)',
+                        data: costs,
+                        backgroundColor: 'rgba(102, 126, 234, 0.6)',
+                        borderColor: '#667eea',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update performance chart
+        function updatePerformanceChart(hourlyMetrics) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            const hours = Object.keys(hourlyMetrics).sort();
+            const latencies = hours.map(hour => hourlyMetrics[hour].avg_latency || 0);
+            const errors = hours.map(hour => hourlyMetrics[hour].error_count || 0);
+            
+            if (performanceChart) {
+                performanceChart.destroy();
+            }
+            
+            performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: hours.map(hour => hour.split(' ')[1]),
+                    datasets: [{
+                        label: 'Avg Latency (ms)',
+                        data: latencies,
+                        borderColor: '#f5576c',
+                        backgroundColor: 'rgba(245, 87, 108, 0.1)',
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Errors',
+                        data: errors,
+                        borderColor: '#f093fb',
+                        backgroundColor: 'rgba(240, 147, 251, 0.1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update provider statistics
+        function updateProviderStats(providerStats) {
+            const container = document.getElementById('provider-stats-content');
+            container.innerHTML = '';
+            
+            Object.entries(providerStats).forEach(([provider, stats]) => {
+                const providerItem = document.createElement('div');
+                providerItem.className = 'provider-item';
+                
+                providerItem.innerHTML = `
+                    <div class="provider-name">${provider.toUpperCase()}</div>
+                    <div class="provider-metrics">
+                        <div class="provider-metric">
+                            <div class="provider-metric-value">${stats.requests.toLocaleString()}</div>
+                            <div class="provider-metric-label">Requests</div>
+                        </div>
+                        <div class="provider-metric">
+                            <div class="provider-metric-value">${(stats.success_rate * 100).toFixed(1)}%</div>
+                            <div class="provider-metric-label">Success Rate</div>
+                        </div>
+                        <div class="provider-metric">
+                            <div class="provider-metric-value">$${stats.total_cost.toFixed(4)}</div>
+                            <div class="provider-metric-label">Total Cost</div>
+                        </div>
+                        <div class="provider-metric">
+                            <div class="provider-metric-value">${stats.total_tokens.toLocaleString()}</div>
+                            <div class="provider-metric-label">Tokens</div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(providerItem);
+            });
+        }
+        
+        // Generate mock data for demonstration
+        function generateMockData() {
+            const now = new Date();
+            const hourlyMetrics = {};
+            
+            // Generate 24 hours of mock data
+            for (let i = 23; i >= 0; i--) {
+                const hour = new Date(now.getTime() - i * 60 * 60 * 1000);
+                const hourKey = hour.toISOString().substring(0, 13) + ':00';
+                
+                hourlyMetrics[hourKey] = {
+                    embeddings_generated: Math.floor(Math.random() * 100) + 20,
+                    search_queries: Math.floor(Math.random() * 50) + 10,
+                    documents_processed: Math.floor(Math.random() * 20) + 2,
+                    api_requests: Math.floor(Math.random() * 200) + 50,
+                    total_cost: Math.random() * 2 + 0.5,
+                    avg_latency: Math.random() * 1000 + 200,
+                    error_count: Math.floor(Math.random() * 5)
+                };
+            }
+            
+            return {
+                summary: {
+                    total_embeddings_generated: 1250,
+                    total_search_queries: 680,
+                    total_documents_processed: 145,
+                    total_api_requests: 2890,
+                    total_cost_usd: 25.67,
+                    error_rate: 0.012,
+                    total_errors: 35
+                },
+                hourly_metrics: hourlyMetrics,
+                provider_stats: {
+                    google: {
+                        requests: 1050,
+                        total_tokens: 125000,
+                        total_cost: 18.45,
+                        success_rate: 0.987,
+                        successful_requests: 1036
+                    },
+                    openrouter: {
+                        requests: 200,
+                        total_tokens: 24000,
+                        total_cost: 7.22,
+                        success_rate: 0.995,
+                        successful_requests: 199
+                    }
+                }
+            };
+        }
+        
+        // Show error message
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error-message').textContent = message;
+        }
+        
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>

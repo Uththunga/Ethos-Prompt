@@ -1,0 +1,32 @@
+{
+  "displayName": "Marketing API 5xx count > 5 in 5 min",
+  "combiner": "OR",
+  "enabled": true,
+  "alertStrategy": { "autoClose": "3600s" },
+  "conditions": [
+    {
+      "displayName": "Cloud Run 5xx count (sum over 5m)",
+      "conditionThreshold": {
+        "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"marketing-api\" AND metric.type=\"run.googleapis.com/request_count\" AND metric.label.response_code_class=\"5xx\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "300s",
+            "perSeriesAligner": "ALIGN_DELTA",
+            "crossSeriesReducer": "REDUCE_SUM",
+            "groupByFields": [
+              "resource.label.project_id"
+            ]
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 5,
+        "duration": "0s",
+        "trigger": { "count": 1 }
+      }
+    }
+  ],
+  "notificationChannels": [
+    "projects/rag-prompt-library/notificationChannels/12278298556073926358"
+  ]
+}
+

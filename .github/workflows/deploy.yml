@@ -1,0 +1,210 @@
+name: Deploy RAG Prompt Library to Firebase
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  frontend-tests:
+    runs-on: ubuntu-latest
+    name: Frontend Tests & Build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run frontend tests
+        run: |
+          cd frontend
+          npm run test -- --run --coverage
+        env:
+          VITE_FIREBASE_API_KEY: 'test-api-key'
+          VITE_FIREBASE_AUTH_DOMAIN: 'test.firebaseapp.com'
+          VITE_FIREBASE_PROJECT_ID: 'test-project'
+          VITE_FIREBASE_STORAGE_BUCKET: 'test.appspot.com'
+          VITE_FIREBASE_MESSAGING_SENDER_ID: '123456789'
+          VITE_FIREBASE_APP_ID: 'test-app-id'
+
+      - name: Run frontend linting
+        run: |
+          cd frontend
+          npm run lint
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+        env:
+          VITE_FIREBASE_API_KEY: 'test-api-key'
+          VITE_FIREBASE_AUTH_DOMAIN: 'test.firebaseapp.com'
+          VITE_FIREBASE_PROJECT_ID: 'test-project'
+          VITE_FIREBASE_STORAGE_BUCKET: 'test.appspot.com'
+          VITE_FIREBASE_MESSAGING_SENDER_ID: '123456789'
+          VITE_FIREBASE_APP_ID: 'test-app-id'
+
+  backend-tests:
+    runs-on: ubuntu-latest
+    name: Backend Tests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          cd functions
+          pip install -r requirements.txt
+
+      - name: Run Python tests
+        run: |
+          cd functions
+          python -m pytest tests/ --verbose
+        env:
+          OPENROUTER_API_KEY: 'test-key'
+          OPENROUTER_API_KEY_RAG: 'test-key-rag'
+
+  deploy-staging:
+    needs: [frontend-tests, backend-tests]
+    runs-on: ubuntu-latest
+    name: Deploy to Staging
+    if: github.ref == 'refs/heads/develop'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build frontend for staging
+        run: |
+          cd frontend
+          npm run build
+        env:
+          VITE_FIREBASE_API_KEY: '${{ secrets.VITE_FIREBASE_API_KEY }}'
+          VITE_FIREBASE_AUTH_DOMAIN: '${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}'
+          VITE_FIREBASE_PROJECT_ID: '${{ secrets.VITE_FIREBASE_PROJECT_ID }}'
+          VITE_FIREBASE_STORAGE_BUCKET: '${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}'
+          VITE_FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}'
+          VITE_FIREBASE_APP_ID: '${{ secrets.VITE_FIREBASE_APP_ID }}'
+
+      - name: Setup Python for Functions
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          cd functions
+          pip install -r requirements.txt
+
+      - name: Setup Firebase CLI and Authentication
+        run: |
+          npm install -g firebase-tools
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > $HOME/firebase-service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+          firebase use rag-prompt-library --token "${{ secrets.FIREBASE_TOKEN }}"
+
+      - name: Set Firebase Functions Environment Variables
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+          firebase functions:config:set \
+            openrouter.api_key="${{ secrets.OPENROUTER_API_KEY }}" \
+            openrouter.api_key_rag="${{ secrets.OPENROUTER_API_KEY_RAG }}" \
+            --token "${{ secrets.FIREBASE_TOKEN }}"
+
+      - name: Deploy to Firebase Staging
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+          firebase deploy --only hosting,functions --project rag-prompt-library --token "${{ secrets.FIREBASE_TOKEN }}"
+
+  deploy-production:
+    needs: [frontend-tests, backend-tests]
+    runs-on: ubuntu-latest
+    name: Deploy to Production
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build frontend for production
+        run: |
+          cd frontend
+          npm run build
+        env:
+          VITE_FIREBASE_API_KEY: '${{ secrets.VITE_FIREBASE_API_KEY }}'
+          VITE_FIREBASE_AUTH_DOMAIN: '${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}'
+          VITE_FIREBASE_PROJECT_ID: '${{ secrets.VITE_FIREBASE_PROJECT_ID }}'
+          VITE_FIREBASE_STORAGE_BUCKET: '${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}'
+          VITE_FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}'
+          VITE_FIREBASE_APP_ID: '${{ secrets.VITE_FIREBASE_APP_ID }}'
+
+      - name: Setup Python for Functions
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          cd functions
+          pip install -r requirements.txt
+
+      - name: Setup Firebase CLI and Authentication
+        run: |
+          npm install -g firebase-tools
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > $HOME/firebase-service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+
+      - name: Set Firebase Functions Environment Variables
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+          firebase functions:config:set \
+            openrouter.api_key="${{ secrets.OPENROUTER_API_KEY }}" \
+            openrouter.api_key_rag="${{ secrets.OPENROUTER_API_KEY_RAG }}" \
+            --project rag-prompt-library
+
+      - name: Deploy to Firebase Production
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+          firebase deploy --only hosting,functions --project rag-prompt-library

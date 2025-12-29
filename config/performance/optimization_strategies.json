@@ -1,0 +1,20 @@
+{
+  "react_optimizations": {
+    "react_production_build": true,
+    "react_profiler_removal": true,
+    "react_dev_tools_removal": true,
+    "react_strict_mode": true
+  },
+  "library_optimizations": {
+    "lodash_tree_shaking": true,
+    "moment_js_replacement": true,
+    "icon_library_optimization": true,
+    "chart_library_optimization": true
+  },
+  "asset_optimizations": {
+    "image_optimization": true,
+    "font_optimization": true,
+    "css_optimization": true,
+    "svg_optimization": true
+  }
+}

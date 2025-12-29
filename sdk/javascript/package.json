@@ -1,0 +1,81 @@
+{
+  "name": "@rag-prompt-library/sdk",
+  "version": "1.0.0",
+  "description": "Official JavaScript/TypeScript SDK for the RAG Prompt Library API",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "docs": "typedoc src/index.ts"
+  },
+  "keywords": [
+    "rag",
+    "prompt",
+    "library",
+    "ai",
+    "llm",
+    "api",
+    "sdk",
+    "typescript",
+    "javascript"
+  ],
+  "author": "RAG Prompt Library Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rag-prompt-library/sdk-javascript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rag-prompt-library/sdk-javascript/issues"
+  },
+  "homepage": "https://docs.rag-prompt-library.com/sdk/javascript",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.40.0",
+    "jest": "^29.5.0",
+    "rollup": "^3.20.0",
+    "rollup-plugin-dts": "^5.3.0",
+    "ts-jest": "^29.1.0",
+    "typedoc": "^0.24.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "cross-fetch": "^4.0.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.5.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

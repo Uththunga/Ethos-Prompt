@@ -1,0 +1,159 @@
+{
+  "alerts": [
+    {
+      "displayName": "Cloud Function Error Rate High",
+      "documentation": {
+        "content": "Cloud Function error rate exceeded 5% for 5 minutes.\n\nCheck logs: https://console.cloud.google.com/logs/query?project=rag-prompt-library\n\nPossible causes:\n- Invalid input data\n- API failures (OpenRouter, Firebase)\n- Code bugs\n- Resource exhaustion",
+        "mimeType": "text/markdown"
+      },
+      "conditions": [
+        {
+          "displayName": "Error rate > 5%",
+          "conditionThreshold": {
+            "filter": "resource.type=\"cloud_function\" AND metric.type=\"cloudfunctions.googleapis.com/function/execution_count\" AND metric.label.status!=\"ok\"",
+            "aggregations": [
+              {
+                "alignmentPeriod": "60s",
+                "perSeriesAligner": "ALIGN_RATE",
+                "crossSeriesReducer": "REDUCE_SUM",
+                "groupByFields": ["resource.function_name"]
+              }
+            ],
+            "comparison": "COMPARISON_GT",
+            "thresholdValue": 0.05,
+            "duration": "300s"
+          }
+        }
+      ],
+      "combiner": "OR",
+      "enabled": true,
+      "alertStrategy": {
+        "autoClose": "604800s"
+      }
+    },
+    {
+      "displayName": "Cloud Function Near Timeout",
+      "documentation": {
+        "content": "Function execution time approaching timeout limit (540s).\n\nActions:\n- Optimize function code\n- Increase timeout limit\n- Split into smaller functions\n- Use async processing",
+        "mimeType": "text/markdown"
+      },
+      "conditions": [
+        {
+          "displayName": "Execution time > 500s",
+          "conditionThreshold": {
+            "filter": "resource.type=\"cloud_function\" AND metric.type=\"cloudfunctions.googleapis.com/function/execution_times\"",
+            "aggregations": [
+              {
+                "alignmentPeriod": "60s",
+                "perSeriesAligner": "ALIGN_DELTA",
+                "crossSeriesReducer": "REDUCE_PERCENTILE_95",
+                "groupByFields": ["resource.function_name"]
+              }
+            ],
+            "comparison": "COMPARISON_GT",
+            "thresholdValue": 500000,
+            "duration": "60s"
+          }
+        }
+      ],
+      "combiner": "OR",
+      "enabled": true,
+      "alertStrategy": {
+        "autoClose": "604800s"
+      }
+    },
+    {
+      "displayName": "Cloud Function High Memory Usage",
+      "documentation": {
+        "content": "Function memory usage exceeded 90% of allocated memory.\n\nActions:\n- Increase memory allocation\n- Optimize memory usage\n- Check for memory leaks\n- Review large data structures",
+        "mimeType": "text/markdown"
+      },
+      "conditions": [
+        {
+          "displayName": "Memory usage > 90%",
+          "conditionThreshold": {
+            "filter": "resource.type=\"cloud_function\" AND metric.type=\"cloudfunctions.googleapis.com/function/user_memory_bytes\"",
+            "aggregations": [
+              {
+                "alignmentPeriod": "60s",
+                "perSeriesAligner": "ALIGN_MAX",
+                "crossSeriesReducer": "REDUCE_MAX",
+                "groupByFields": ["resource.function_name"]
+              }
+            ],
+            "comparison": "COMPARISON_GT",
+            "thresholdValue": 943718400,
+            "duration": "300s"
+          }
+        }
+      ],
+      "combiner": "OR",
+      "enabled": true,
+      "alertStrategy": {
+        "autoClose": "604800s"
+      }
+    },
+    {
+      "displayName": "Cloud Function Invocation Spike",
+      "documentation": {
+        "content": "Unusual spike in function invocations detected.\n\nPossible causes:\n- DDoS attack\n- Bot abuse\n- Viral traffic\n- Infinite loop in client code\n\nActions:\n- Check App Check metrics\n- Review recent deployments\n- Enable rate limiting\n- Contact Firebase support if needed",
+        "mimeType": "text/markdown"
+      },
+      "conditions": [
+        {
+          "displayName": "Invocations > 1000/min",
+          "conditionThreshold": {
+            "filter": "resource.type=\"cloud_function\" AND metric.type=\"cloudfunctions.googleapis.com/function/execution_count\"",
+            "aggregations": [
+              {
+                "alignmentPeriod": "60s",
+                "perSeriesAligner": "ALIGN_RATE",
+                "crossSeriesReducer": "REDUCE_SUM",
+                "groupByFields": ["resource.function_name"]
+              }
+            ],
+            "comparison": "COMPARISON_GT",
+            "thresholdValue": 1000,
+            "duration": "60s"
+          }
+        }
+      ],
+      "combiner": "OR",
+      "enabled": true,
+      "alertStrategy": {
+        "autoClose": "604800s"
+      }
+    },
+    {
+      "displayName": "Firestore Operation Spike",
+      "documentation": {
+        "content": "Unusual spike in Firestore operations detected.\n\nPossible causes:\n- N+1 query pattern\n- Missing indexes\n- Inefficient data access\n- Batch operation gone wrong\n\nActions:\n- Review recent code changes\n- Check for N+1 queries\n- Optimize data access patterns\n- Use batch operations",
+        "mimeType": "text/markdown"
+      },
+      "conditions": [
+        {
+          "displayName": "Document reads > 10000/min",
+          "conditionThreshold": {
+            "filter": "resource.type=\"firestore_instance\" AND metric.type=\"firestore.googleapis.com/document/read_count\"",
+            "aggregations": [
+              {
+                "alignmentPeriod": "60s",
+                "perSeriesAligner": "ALIGN_RATE",
+                "crossSeriesReducer": "REDUCE_SUM"
+              }
+            ],
+            "comparison": "COMPARISON_GT",
+            "thresholdValue": 10000,
+            "duration": "300s"
+          }
+        }
+      ],
+      "combiner": "OR",
+      "enabled": true,
+      "alertStrategy": {
+        "autoClose": "604800s"
+      }
+    }
+  ]
+}
+

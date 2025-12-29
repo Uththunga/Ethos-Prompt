@@ -1,0 +1,8 @@
+{
+  "api_response_time": "< 200ms",
+  "page_load_time": "< 2s",
+  "member_list_load": "< 500ms",
+  "workspace_switch": "< 300ms",
+  "search_response": "< 100ms",
+  "real_time_updates": "< 50ms"
+}

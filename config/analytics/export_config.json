@@ -1,0 +1,99 @@
+{
+  "supported_formats": {
+    "csv": {
+      "description": "Comma-separated values",
+      "use_cases": [
+        "data_analysis",
+        "spreadsheet_import"
+      ],
+      "max_rows": 1000000,
+      "compression": true
+    },
+    "excel": {
+      "description": "Microsoft Excel format",
+      "use_cases": [
+        "business_reporting",
+        "data_sharing"
+      ],
+      "max_rows": 1000000,
+      "multiple_sheets": true
+    },
+    "json": {
+      "description": "JavaScript Object Notation",
+      "use_cases": [
+        "api_integration",
+        "data_processing"
+      ],
+      "max_size_mb": 100,
+      "pretty_print": true
+    },
+    "pdf": {
+      "description": "Portable Document Format",
+      "use_cases": [
+        "reports",
+        "presentations"
+      ],
+      "templates": [
+        "executive_summary",
+        "detailed_report",
+        "dashboard_snapshot"
+      ],
+      "charts_included": true
+    }
+  },
+  "export_types": {
+    "dashboard_export": {
+      "includes": [
+        "charts",
+        "data",
+        "metadata"
+      ],
+      "formats": [
+        "pdf",
+        "excel",
+        "json"
+      ],
+      "scheduling": true
+    },
+    "data_export": {
+      "includes": [
+        "raw_data",
+        "filtered_data",
+        "aggregated_data"
+      ],
+      "formats": [
+        "csv",
+        "excel",
+        "json"
+      ],
+      "batch_processing": true
+    },
+    "report_export": {
+      "includes": [
+        "analysis",
+        "insights",
+        "recommendations"
+      ],
+      "formats": [
+        "pdf",
+        "excel"
+      ],
+      "templates": true
+    }
+  },
+  "scheduling_options": {
+    "frequencies": [
+      "daily",
+      "weekly",
+      "monthly",
+      "quarterly"
+    ],
+    "delivery_methods": [
+      "email",
+      "download_link",
+      "api_webhook"
+    ],
+    "retention_days": 30,
+    "max_scheduled_exports": 10
+  }
+}

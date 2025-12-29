@@ -1,0 +1,73 @@
+{
+  "functions": {
+    "generate_prompt": {
+      "memory": "1GiB",
+      "timeout": "300s",
+      "maxInstances": 100,
+      "minInstances": 0,
+      "concurrency": 80,
+      "cpu": 1,
+      "environmentVariables": {
+        "GOOGLE_API_KEY": "",
+        "OPENROUTER_API_KEY": "",
+        "OPENROUTER_API_KEY_RAG": "",
+        "OPENAI_API_KEY": "",
+        "PYTHON_ENV": "production",
+        "ENVIRONMENT_MODE": "production"
+      }
+    },
+    "execute_prompt": {
+      "memory": "2GiB",
+      "timeout": "540s",
+      "maxInstances": 50,
+      "minInstances": 1,
+      "concurrency": 40,
+      "cpu": 2,
+      "environmentVariables": {
+        "GOOGLE_API_KEY": "",
+        "OPENROUTER_API_KEY": "",
+        "OPENROUTER_API_KEY_RAG": "",
+        "OPENAI_API_KEY": "",
+        "PYTHON_ENV": "production",
+        "ENVIRONMENT_MODE": "production"
+      }
+    },
+    "process_document": {
+      "memory": "4GiB",
+      "timeout": "1800s",
+      "maxInstances": 10,
+      "minInstances": 0,
+      "concurrency": 10,
+      "cpu": 2,
+      "eventTrigger": {
+        "eventType": "providers/cloud.firestore/eventTypes/document.create",
+        "resource": "projects/{project}/databases/(default)/documents/rag_documents/{document}"
+      }
+    },
+    "generate_embeddings": {
+      "memory": "2GiB",
+      "timeout": "900s",
+      "maxInstances": 20,
+      "minInstances": 0,
+      "concurrency": 20,
+      "cpu": 1
+    },
+    "scheduled_cleanup": {
+      "memory": "512MiB",
+      "timeout": "300s",
+      "maxInstances": 1,
+      "minInstances": 0,
+      "concurrency": 1,
+      "cpu": 1,
+      "schedule": "0 2 * * *",
+      "timeZone": "UTC"
+    }
+  },
+  "globalSettings": {
+    "region": "australia-southeast1",
+    "vpcConnector": "",
+    "vpcConnectorEgressSettings": "PRIVATE_RANGES_ONLY",
+    "ingressSettings": "ALLOW_ALL",
+    "serviceAccount": ""
+  }
+}

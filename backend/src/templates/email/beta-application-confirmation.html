@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Application Received - RAG Prompt Library</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #1a202c;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .status-badge {
+            display: inline-block;
+            background-color: #fef3cd;
+            color: #856404;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 20px 0;
+        }
+        .content {
+            margin: 30px 0;
+        }
+        .highlight-box {
+            background-color: #f7fafc;
+            border-left: 4px solid #4299e1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .next-steps {
+            background-color: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .next-steps h3 {
+            color: #22543d;
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .next-steps ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .next-steps li {
+            margin: 8px 0;
+            color: #2d3748;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+        }
+        .social-links {
+            margin: 20px 0;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">RP</div>
+            <h1>Application Received!</h1>
+            <div class="status-badge">Under Review</div>
+        </div>
+
+        <div class="content">
+            <p>Hi {{name}},</p>
+            
+            <p>Thank you for your interest in the RAG Prompt Library Beta Program! We've successfully received your application and are excited to learn more about how you plan to use our platform.</p>
+
+            <div class="highlight-box">
+                <strong>Application ID:</strong> {{applicationId}}<br>
+                <strong>Submitted:</strong> {{submittedDate}}<br>
+                <strong>Status:</strong> Under Review
+            </div>
+
+            <div class="next-steps">
+                <h3>What happens next?</h3>
+                <ul>
+                    <li><strong>Review Process:</strong> Our team will carefully review your application within 3-5 business days</li>
+                    <li><strong>Evaluation Criteria:</strong> We consider your use case, experience, and how you plan to provide feedback</li>
+                    <li><strong>Decision Notification:</strong> You'll receive an email with our decision and next steps</li>
+                    <li><strong>Beta Access:</strong> If approved, you'll get immediate access to all beta features</li>
+                </ul>
+            </div>
+
+            <p>While you wait, feel free to:</p>
+            <ul>
+                <li>Explore our <a href="{{docsUrl}}" style="color: #4299e1;">documentation</a> to learn more about our features</li>
+                <li>Join our <a href="{{communityUrl}}" style="color: #4299e1;">community Discord</a> to connect with other users</li>
+                <li>Follow us on <a href="{{twitterUrl}}" style="color: #4299e1;">Twitter</a> for the latest updates</li>
+            </ul>
+
+            <p>We appreciate your patience and look forward to potentially welcoming you to our beta community!</p>
+
+            <a href="{{dashboardUrl}}" class="cta-button">Visit Dashboard</a>
+        </div>
+
+        <div class="footer">
+            <div class="social-links">
+                <a href="{{twitterUrl}}">Twitter</a>
+                <a href="{{linkedinUrl}}">LinkedIn</a>
+                <a href="{{githubUrl}}">GitHub</a>
+            </div>
+            
+            <p>
+                RAG Prompt Library<br>
+                <a href="{{unsubscribeUrl}}" style="color: #718096;">Unsubscribe</a> | 
+                <a href="{{supportUrl}}" style="color: #718096;">Support</a>
+            </p>
+            
+            <p style="font-size: 12px; color: #a0aec0;">
+                This email was sent to {{email}}. If you have any questions, please contact our support team.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

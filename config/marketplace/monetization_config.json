@@ -1,0 +1,58 @@
+{
+  "pricing_models": {
+    "free_templates": {
+      "attribution_required": true,
+      "usage_tracking": true,
+      "promotional_value": true
+    },
+    "premium_templates": {
+      "one_time_purchase": true,
+      "subscription_access": true,
+      "usage_based_pricing": true,
+      "enterprise_licensing": true
+    },
+    "freemium_model": {
+      "basic_version_free": true,
+      "advanced_features_paid": true,
+      "usage_limits": true,
+      "upgrade_incentives": true
+    }
+  },
+  "revenue_sharing": {
+    "author_percentage": {
+      "basic_authors": 70,
+      "verified_authors": 75,
+      "expert_authors": 80,
+      "exclusive_authors": 85
+    },
+    "platform_percentage": {
+      "basic_templates": 30,
+      "promoted_templates": 25,
+      "exclusive_templates": 15
+    },
+    "payment_processing": {
+      "minimum_payout": 50,
+      "payment_schedule": "monthly",
+      "payment_methods": [
+        "paypal",
+        "stripe",
+        "bank_transfer"
+      ],
+      "tax_handling": true
+    }
+  },
+  "marketplace_features": {
+    "promotional_tools": {
+      "featured_listings": true,
+      "discount_campaigns": true,
+      "bundle_offers": true,
+      "seasonal_promotions": true
+    },
+    "analytics_for_authors": {
+      "sales_analytics": true,
+      "usage_statistics": true,
+      "revenue_tracking": true,
+      "performance_insights": true
+    }
+  }
+}

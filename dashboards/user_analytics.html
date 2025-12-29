@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Analytics Dashboard - RAG Prompt Library</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .dashboard { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .widgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .widget { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .widget h3 { margin: 0 0 15px 0; color: #333; }
+        .metric-value { font-size: 2em; font-weight: bold; color: #2196F3; }
+        .metric-target { font-size: 0.9em; color: #666; margin-top: 5px; }
+        .status-good { color: #4CAF50; }
+        .status-warning { color: #FF9800; }
+        .status-error { color: #F44336; }
+        .refresh-info { text-align: right; color: #666; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>User Analytics Dashboard</h1>
+            <p>User behavior, engagement, and authentication metrics</p>
+            <div class="refresh-info">Auto-refresh: 30s | Last updated: <span id="lastUpdate">Loading...</span></div>
+        </div>
+        <div class="widgets" id="widgets">
+            
+                <div class="widget" id="widget-user_analytics_user_registrations">
+                    <h3>New User Registrations</h3>
+                    <div id="content-user_analytics_user_registrations">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-user_analytics_authentication_success">
+                    <h3>Authentication Success Rate</h3>
+                    <div id="content-user_analytics_authentication_success">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-user_analytics_user_sessions">
+                    <h3>User Sessions</h3>
+                    <div id="content-user_analytics_user_sessions">Loading...</div>
+                </div>
+            
+                <div class="widget" id="widget-user_analytics_feature_usage">
+                    <h3>Feature Usage</h3>
+                    <div id="content-user_analytics_feature_usage">Loading...</div>
+                </div>
+            
+        </div>
+    </div>
+    <script src="scripts/user_analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "localId": "test-user-1",
+      "email": "admin@test.com",
+      "emailVerified": true,
+      "displayName": "Admin User",
+      "passwordHash": "UkVEQUNURUQ=",
+      "salt": "fakeSalt",
+      "lastSignedInAt": "1758554720327",
+      "createdAt": "1758554720327",
+      "providerUserInfo": []
+    },
+    {
+      "localId": "test-user-2",
+      "email": "user@test.com",
+      "emailVerified": true,
+      "displayName": "Test User",
+      "passwordHash": "UkVEQUNURUQ=",
+      "salt": "fakeSalt",
+      "lastSignedInAt": "1758554720327",
+      "createdAt": "1758554720327",
+      "providerUserInfo": []
+    },
+    {
+      "localId": "test-user-3",
+      "email": "developer@test.com",
+      "emailVerified": true,
+      "displayName": "Developer",
+      "passwordHash": "UkVEQUNURUQ=",
+      "salt": "fakeSalt",
+      "lastSignedInAt": "1758554720327",
+      "createdAt": "1758554720327",
+      "providerUserInfo": []
+    }
+  ]
+}

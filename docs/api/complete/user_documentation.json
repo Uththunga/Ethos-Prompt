@@ -1,0 +1,41 @@
+{
+  "user_guides": {
+    "getting_started_guide": true,
+    "prompt_creation_guide": true,
+    "document_management_guide": true,
+    "workspace_collaboration_guide": true,
+    "marketplace_guide": true,
+    "analytics_guide": true,
+    "status": "complete"
+  },
+  "video_tutorials": {
+    "onboarding_video": true,
+    "prompt_creation_video": true,
+    "rag_setup_video": true,
+    "team_collaboration_video": true,
+    "marketplace_video": true,
+    "status": "complete"
+  },
+  "onboarding_documentation": {
+    "welcome_flow": true,
+    "feature_introduction": true,
+    "quick_start_checklist": true,
+    "first_prompt_tutorial": true,
+    "status": "complete"
+  },
+  "feature_guides": {
+    "advanced_prompt_techniques": true,
+    "rag_optimization": true,
+    "team_management": true,
+    "analytics_interpretation": true,
+    "marketplace_publishing": true,
+    "status": "complete"
+  },
+  "troubleshooting": {
+    "common_issues": true,
+    "error_messages": true,
+    "performance_issues": true,
+    "account_issues": true,
+    "status": "complete"
+  }
+}

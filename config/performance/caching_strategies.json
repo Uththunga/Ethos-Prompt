@@ -1,0 +1,51 @@
+{
+  "browser_caching": {
+    "static_assets": {
+      "cache_control": "max-age=31536000",
+      "etag_support": true,
+      "last_modified": true,
+      "immutable_assets": true
+    },
+    "dynamic_content": {
+      "cache_control": "max-age=300",
+      "stale_while_revalidate": true,
+      "conditional_requests": true,
+      "cache_invalidation": true
+    }
+  },
+  "cdn_caching": {
+    "edge_caching": {
+      "global_distribution": true,
+      "cache_warming": true,
+      "cache_purging": true,
+      "origin_shield": true
+    },
+    "cache_policies": {
+      "static_content": "1 year",
+      "api_responses": "5 minutes",
+      "user_content": "1 hour",
+      "search_results": "15 minutes"
+    }
+  },
+  "application_caching": {
+    "memory_caching": {
+      "in_memory_cache": true,
+      "lru_eviction": true,
+      "cache_size_limits": true,
+      "cache_hit_ratio_monitoring": true
+    },
+    "database_caching": {
+      "query_result_caching": true,
+      "redis_implementation": true,
+      "cache_invalidation_strategies": true,
+      "distributed_caching": true
+    }
+  },
+  "service_worker_caching": {
+    "offline_support": true,
+    "cache_first_strategy": true,
+    "network_first_strategy": true,
+    "stale_while_revalidate": true,
+    "background_sync": true
+  }
+}

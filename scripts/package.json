@@ -1,0 +1,24 @@
+{
+  "name": "button-migration-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for button size migration and validation",
+  "main": "button-migration-utils.js",
+  "scripts": {
+    "detect": "node button-migration-utils.js",
+    "validate": "node button-validation-utils.js",
+    "cli": "node button-migration-cli.js",
+    "scan": "node button-migration-cli.js scan",
+    "map": "node button-migration-cli.js map",
+    "suggest": "node button-migration-cli.js suggest",
+    "check": "node button-migration-cli.js check",
+    "sizes": "node button-migration-cli.js sizes",
+    "contexts": "node button-migration-cli.js contexts"
+  },
+  "dependencies": {
+    "glob": "^8.1.0"
+  },
+  "devDependencies": {},
+  "keywords": ["button", "migration", "validation", "ui"],
+  "author": "",
+  "license": "MIT"
+}

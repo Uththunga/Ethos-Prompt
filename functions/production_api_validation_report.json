@@ -1,0 +1,114 @@
+{
+  "timestamp": "2025-07-24T20:34:14.965434",
+  "duration_seconds": 2.43,
+  "summary": {
+    "total_tests": 11,
+    "passed_tests": 9,
+    "failed_tests": 2,
+    "success_rate": 81.82
+  },
+  "results": [
+    {
+      "test": "Environment Variable: GOOGLE_API_KEY",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.539921",
+      "details": {
+        "length": 45,
+        "prefix": "AIzaSyDemo..."
+      }
+    },
+    {
+      "test": "Environment Variable: OPENROUTER_API_KEY",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.540153",
+      "details": {
+        "length": 49,
+        "prefix": "sk-or-v1-d..."
+      }
+    },
+    {
+      "test": "Optional Variable: OPENAI_API_KEY",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.540233",
+      "details": {
+        "configured": true,
+        "value": "sk-demo123456789_Pro..."
+      }
+    },
+    {
+      "test": "Optional Variable: PRODUCTION_SITE_URL",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.540444",
+      "details": {
+        "configured": true,
+        "value": "https://react-rag-ap..."
+      }
+    },
+    {
+      "test": "Optional Variable: ENVIRONMENT_MODE",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.540582",
+      "details": {
+        "configured": true,
+        "value": "production"
+      }
+    },
+    {
+      "test": "Firebase Config File",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.541129",
+      "details": {
+        "file": "firebase.json found"
+      }
+    },
+    {
+      "test": "Functions Directory",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.541255",
+      "details": {
+        "path": "functions/"
+      }
+    },
+    {
+      "test": "Requirements File",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:12.541900",
+      "details": {
+        "file": "requirements.txt found",
+        "lines": 40
+      }
+    },
+    {
+      "test": "Google API Test",
+      "success": false,
+      "timestamp": "2025-07-24T20:34:13.842745",
+      "details": {
+        "status_code": 400,
+        "error": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key not valid. Please pass a valid API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"service\": \"generativelanguage.googleapis.com\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.LocalizedMessage\",\n        \"locale\": \"en-US\",\n        \"message\": \"API key not valid. Please pass a valid API key.\"\n      }\n    ]\n  }\n}\n",
+        "latency_ms": 1300.31
+      }
+    },
+    {
+      "test": "OpenRouter API Test",
+      "success": true,
+      "timestamp": "2025-07-24T20:34:14.143240",
+      "details": {
+        "status_code": 200,
+        "latency_ms": 181.38,
+        "available_models": 320,
+        "api_accessible": true
+      }
+    },
+    {
+      "test": "OpenAI API Test",
+      "success": false,
+      "timestamp": "2025-07-24T20:34:14.960800",
+      "details": {
+        "status_code": 401,
+        "error": "{\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-demo1***************************IKey. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"invalid_api_key\"\n  }\n}",
+        "latency_ms": 813.58
+      }
+    }
+  ],
+  "production_ready": false
+}

@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "total_tests": 10,
+    "passed": 0,
+    "failed": 10,
+    "pass_rate": 0.0,
+    "overall_quality_score": 0.38
+  },
+  "metrics": {
+    "avg_content_coverage": 0.17,
+    "avg_followup_score": 0.0,
+    "avg_hallucination_prevention": 1.0
+  },
+  "category_breakdown": {
+    "pricing": {
+      "total": 5,
+      "passed": 0,
+      "avg_score": 0.35,
+      "pass_rate": 0.0
+    },
+    "services": {
+      "total": 5,
+      "passed": 0,
+      "avg_score": 0.41,
+      "pass_rate": 0.0
+    }
+  },
+  "failed_tests": [
+    "pricing_001",
+    "pricing_002",
+    "pricing_003",
+    "pricing_004",
+    "pricing_005",
+    "services_001",
+    "services_002",
+    "services_003",
+    "services_004",
+    "services_005"
+  ],
+  "timestamp": "2025-11-27T09:34:33.790897+00:00",
+  "reflection_metrics": {
+    "reflection_rate": 0.0,
+    "total_reflections": 0,
+    "avg_iterations": 0.0
+  }
+}

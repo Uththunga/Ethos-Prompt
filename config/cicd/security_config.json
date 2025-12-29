@@ -1,0 +1,20 @@
+{
+  "static_analysis": {
+    "code_scanning": true,
+    "dependency_scanning": true,
+    "secret_detection": true,
+    "license_compliance": true
+  },
+  "dynamic_analysis": {
+    "penetration_testing": true,
+    "vulnerability_scanning": true,
+    "security_benchmarks": true,
+    "compliance_checks": true
+  },
+  "security_gates": {
+    "critical_vulnerabilities": 0,
+    "high_vulnerabilities": 2,
+    "medium_vulnerabilities": 10,
+    "license_violations": 0
+  }
+}

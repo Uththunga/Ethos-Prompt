@@ -1,0 +1,10 @@
+{
+  "name": "marketing_api_messages",
+  "description": "Total messages processed by marketing API",
+  "filter": "resource.type=\"cloud_run_revision\"\nresource.labels.service_name=\"marketing-api\"\njsonPayload.monitoring.event=\"business_metrics\"",
+  "metricDescriptor": {
+    "metricKind": "DELTA",
+    "valueType": "INT64"
+  }
+}
+

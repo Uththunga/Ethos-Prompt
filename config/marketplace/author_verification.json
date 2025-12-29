@@ -1,0 +1,47 @@
+{
+  "verification_levels": {
+    "basic": {
+      "requirements": [
+        "email_verified",
+        "profile_complete"
+      ],
+      "benefits": [
+        "publish_templates",
+        "basic_analytics"
+      ],
+      "template_limit": 10
+    },
+    "verified": {
+      "requirements": [
+        "identity_verified",
+        "quality_score_80+",
+        "5_approved_templates"
+      ],
+      "benefits": [
+        "priority_review",
+        "advanced_analytics",
+        "revenue_sharing"
+      ],
+      "template_limit": 50
+    },
+    "expert": {
+      "requirements": [
+        "industry_recognition",
+        "quality_score_95+",
+        "20_approved_templates"
+      ],
+      "benefits": [
+        "instant_approval",
+        "featured_placement",
+        "premium_revenue"
+      ],
+      "template_limit": "unlimited"
+    }
+  },
+  "verification_process": {
+    "identity_verification": true,
+    "portfolio_review": true,
+    "community_endorsement": true,
+    "expert_interview": true
+  }
+}

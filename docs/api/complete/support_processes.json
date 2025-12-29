@@ -1,0 +1,17 @@
+{
+  "tier_1_support": {
+    "response_time": "< 2 hours",
+    "resolution_time": "< 24 hours",
+    "coverage": "General questions and basic issues"
+  },
+  "tier_2_support": {
+    "response_time": "< 4 hours",
+    "resolution_time": "< 48 hours",
+    "coverage": "Technical issues and integrations"
+  },
+  "tier_3_support": {
+    "response_time": "< 8 hours",
+    "resolution_time": "< 72 hours",
+    "coverage": "Complex technical issues and escalations"
+  }
+}

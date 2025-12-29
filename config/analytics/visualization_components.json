@@ -1,0 +1,60 @@
+{
+  "chart_types": {
+    "time_series": [
+      "line_chart",
+      "area_chart",
+      "multi_line_chart"
+    ],
+    "categorical": [
+      "bar_chart",
+      "column_chart",
+      "pie_chart",
+      "donut_chart"
+    ],
+    "comparison": [
+      "comparison_chart",
+      "waterfall_chart",
+      "bullet_chart"
+    ],
+    "distribution": [
+      "histogram",
+      "box_plot",
+      "scatter_plot"
+    ],
+    "geographic": [
+      "heat_map",
+      "choropleth_map",
+      "bubble_map"
+    ],
+    "hierarchical": [
+      "treemap",
+      "sunburst_chart",
+      "sankey_diagram"
+    ]
+  },
+  "interactive_features": {
+    "zoom_and_pan": true,
+    "drill_down": true,
+    "cross_filtering": true,
+    "tooltip_details": true,
+    "legend_interaction": true,
+    "data_brushing": true
+  },
+  "customization_options": {
+    "color_themes": [
+      "default",
+      "dark",
+      "high_contrast",
+      "custom"
+    ],
+    "chart_styling": true,
+    "axis_configuration": true,
+    "annotation_support": true,
+    "export_options": [
+      "png",
+      "svg",
+      "pdf",
+      "data"
+    ]
+  }
+}

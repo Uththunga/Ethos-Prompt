@@ -1,0 +1,292 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build application
+        working-directory: frontend
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.12.x
+
+      - name: Run Lighthouse CI
+        working-directory: frontend
+        run: lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-results
+          path: frontend/.lighthouseci/
+          retention-days: 30
+
+      - name: Comment PR with Lighthouse results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Read Lighthouse results
+            const resultsDir = 'frontend/.lighthouseci';
+            if (!fs.existsSync(resultsDir)) {
+              console.log('No Lighthouse results found');
+              return;
+            }
+            
+            const manifestPath = path.join(resultsDir, 'manifest.json');
+            if (!fs.existsSync(manifestPath)) {
+              console.log('No manifest.json found');
+              return;
+            }
+            
+            const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+            const results = manifest.map(entry => {
+              const reportPath = path.join(resultsDir, entry.jsonPath);
+              return JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+            });
+            
+            // Generate comment
+            let comment = '## 🔍 Lighthouse CI Results\n\n';
+            
+            results.forEach((result, index) => {
+              const url = result.finalUrl;
+              const categories = result.categories;
+              
+              comment += `### ${url}\n\n`;
+              comment += '| Category | Score | Status |\n';
+              comment += '|----------|-------|--------|\n';
+              
+              Object.entries(categories).forEach(([key, category]) => {
+                const score = Math.round(category.score * 100);
+                const status = score >= 90 ? '✅' : score >= 75 ? '⚠️' : '❌';
+                comment += `| ${category.title} | ${score}% | ${status} |\n`;
+              });
+              
+              comment += '\n';
+              
+              // Add Core Web Vitals
+              const audits = result.audits;
+              if (audits['largest-contentful-paint'] || audits['first-input-delay'] || audits['cumulative-layout-shift']) {
+                comment += '#### Core Web Vitals\n\n';
+                comment += '| Metric | Value | Status |\n';
+                comment += '|--------|-------|--------|\n';
+                
+                if (audits['largest-contentful-paint']) {
+                  const lcp = audits['largest-contentful-paint'];
+                  const value = `${(lcp.numericValue / 1000).toFixed(2)}s`;
+                  const status = lcp.score >= 0.9 ? '✅' : lcp.score >= 0.5 ? '⚠️' : '❌';
+                  comment += `| LCP | ${value} | ${status} |\n`;
+                }
+                
+                if (audits['first-input-delay']) {
+                  const fid = audits['first-input-delay'];
+                  const value = `${fid.numericValue.toFixed(0)}ms`;
+                  const status = fid.score >= 0.9 ? '✅' : fid.score >= 0.5 ? '⚠️' : '❌';
+                  comment += `| FID | ${value} | ${status} |\n`;
+                }
+                
+                if (audits['cumulative-layout-shift']) {
+                  const cls = audits['cumulative-layout-shift'];
+                  const value = cls.numericValue.toFixed(3);
+                  const status = cls.score >= 0.9 ? '✅' : cls.score >= 0.5 ? '⚠️' : '❌';
+                  comment += `| CLS | ${value} | ${status} |\n`;
+                }
+                
+                comment += '\n';
+              }
+            });
+            
+            comment += `\n📊 [View detailed report](${context.payload.pull_request.html_url}/checks)\n`;
+            comment += `🔗 [Lighthouse CI Documentation](https://github.com/GoogleChrome/lighthouse-ci)\n`;
+            
+            // Post comment
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  performance-regression:
+    runs-on: ubuntu-latest
+    needs: lighthouse
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Download Lighthouse results
+        uses: actions/download-artifact@v4
+        with:
+          name: lighthouse-results
+          path: frontend/.lighthouseci/
+
+      - name: Check for performance regression
+        working-directory: frontend
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Performance thresholds
+          const thresholds = {
+            performance: 90,
+            'first-contentful-paint': 1800,
+            'largest-contentful-paint': 2500,
+            'cumulative-layout-shift': 0.1,
+            'total-blocking-time': 200
+          };
+          
+          // Read current results
+          const manifestPath = '.lighthouseci/manifest.json';
+          if (!fs.existsSync(manifestPath)) {
+            console.log('No results to check');
+            process.exit(0);
+          }
+          
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+          const results = manifest.map(entry => {
+            const reportPath = path.join('.lighthouseci', entry.jsonPath);
+            return JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+          });
+          
+          let hasRegression = false;
+          const regressions = [];
+          
+          results.forEach(result => {
+            const url = result.finalUrl;
+            const categories = result.categories;
+            const audits = result.audits;
+            
+            // Check performance score
+            const perfScore = Math.round(categories.performance.score * 100);
+            if (perfScore < thresholds.performance) {
+              hasRegression = true;
+              regressions.push(\`Performance score: \${perfScore}% < \${thresholds.performance}% for \${url}\`);
+            }
+            
+            // Check Core Web Vitals
+            if (audits['first-contentful-paint']) {
+              const fcp = audits['first-contentful-paint'].numericValue;
+              if (fcp > thresholds['first-contentful-paint']) {
+                hasRegression = true;
+                regressions.push(\`FCP: \${fcp}ms > \${thresholds['first-contentful-paint']}ms for \${url}\`);
+              }
+            }
+            
+            if (audits['largest-contentful-paint']) {
+              const lcp = audits['largest-contentful-paint'].numericValue;
+              if (lcp > thresholds['largest-contentful-paint']) {
+                hasRegression = true;
+                regressions.push(\`LCP: \${lcp}ms > \${thresholds['largest-contentful-paint']}ms for \${url}\`);
+              }
+            }
+            
+            if (audits['cumulative-layout-shift']) {
+              const cls = audits['cumulative-layout-shift'].numericValue;
+              if (cls > thresholds['cumulative-layout-shift']) {
+                hasRegression = true;
+                regressions.push(\`CLS: \${cls} > \${thresholds['cumulative-layout-shift']} for \${url}\`);
+              }
+            }
+            
+            if (audits['total-blocking-time']) {
+              const tbt = audits['total-blocking-time'].numericValue;
+              if (tbt > thresholds['total-blocking-time']) {
+                hasRegression = true;
+                regressions.push(\`TBT: \${tbt}ms > \${thresholds['total-blocking-time']}ms for \${url}\`);
+              }
+            }
+          });
+          
+          if (hasRegression) {
+            console.log('❌ Performance regression detected:');
+            regressions.forEach(regression => console.log(\`  - \${regression}\`));
+            process.exit(1);
+          } else {
+            console.log('✅ No performance regression detected');
+          }
+          "
+
+      - name: Notify on regression
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚨 **Performance Regression Detected** 🚨\n\nThis PR introduces performance regressions that exceed the defined thresholds. Please review the Lighthouse CI results and optimize the changes before merging.\n\n[View detailed results in the Actions tab](' + context.payload.pull_request.html_url + '/checks)'
+            });
+
+  lighthouse-server:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: lighthouse
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install LHCI Server
+        run: npm install -g @lhci/cli@0.12.x @lhci/server@0.12.x
+
+      - name: Upload to LHCI Server
+        working-directory: frontend
+        run: lhci upload --serverBaseUrl=${{ secrets.LHCI_SERVER_URL }} --token=${{ secrets.LHCI_BUILD_TOKEN }}
+        if: env.LHCI_SERVER_URL != ''
+        env:
+          LHCI_SERVER_URL: ${{ secrets.LHCI_SERVER_URL }}
+          LHCI_BUILD_TOKEN: ${{ secrets.LHCI_BUILD_TOKEN }}

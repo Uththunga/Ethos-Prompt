@@ -1,0 +1,23 @@
+{
+  "new_user_journey": [
+    "Account creation and verification",
+    "Onboarding tutorial completion",
+    "First prompt creation",
+    "Document upload and RAG setup",
+    "Prompt execution and refinement"
+  ],
+  "team_leader_journey": [
+    "Workspace creation",
+    "Team member invitation",
+    "Permission management",
+    "Collaboration workflow setup",
+    "Analytics and reporting"
+  ],
+  "power_user_journey": [
+    "Advanced prompt techniques",
+    "Custom integrations",
+    "Marketplace participation",
+    "Performance optimization",
+    "Community contribution"
+  ]
+}

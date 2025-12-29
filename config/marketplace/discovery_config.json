@@ -1,0 +1,20 @@
+{
+  "curation": {
+    "editorial_picks": true,
+    "community_favorites": true,
+    "trending_templates": true,
+    "seasonal_collections": true
+  },
+  "personalization": {
+    "recommended_for_you": true,
+    "based_on_usage": true,
+    "similar_users": true,
+    "industry_specific": true
+  },
+  "social_features": {
+    "template_sharing": true,
+    "author_following": true,
+    "community_discussions": true,
+    "user_collections": true
+  }
+}

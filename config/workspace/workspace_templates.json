@@ -1,0 +1,35 @@
+{
+  "startup_team": {
+    "name": "Startup Team",
+    "description": "Perfect for small teams getting started",
+    "max_members": 10,
+    "features": [
+      "basic_collaboration",
+      "prompt_sharing",
+      "basic_analytics"
+    ],
+    "plan": "free"
+  },
+  "growing_company": {
+    "name": "Growing Company",
+    "description": "For expanding teams with advanced needs",
+    "max_members": 50,
+    "features": [
+      "advanced_collaboration",
+      "team_analytics",
+      "integrations"
+    ],
+    "plan": "pro"
+  },
+  "enterprise": {
+    "name": "Enterprise",
+    "description": "For large organizations with complex requirements",
+    "max_members": 500,
+    "features": [
+      "enterprise_security",
+      "advanced_analytics",
+      "custom_integrations"
+    ],
+    "plan": "enterprise"
+  }
+}

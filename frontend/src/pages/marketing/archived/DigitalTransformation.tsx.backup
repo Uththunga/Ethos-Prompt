@@ -1,0 +1,630 @@
+import { ServiceCTA } from '@/components/marketing/services/ServiceCTA';
+import { ExitIntentPopup } from '@/components/marketing/ui/exit-intent-popup';
+import { GatedROICalculator } from '@/components/marketing/ui/gated-roi-calculator';
+import { InteractiveFAQ } from '@/components/marketing/ui/interactive-faq';
+import { SecurityScanner } from '@/components/marketing/ui/security-scanner';
+import { TrustSignals } from '@/components/marketing/ui/service-enhancements';
+import { InvestmentSection } from '@/components/marketing/ui/service-layout-components';
+import { useServiceExitIntent } from '@/hooks/useServiceExitIntent';
+import {
+    AlertTriangle,
+    Calendar,
+    CheckCircle,
+    Clock,
+    Cloud,
+    Cpu,
+    DollarSign,
+    RefreshCw,
+    Shield,
+    TrendingUp,
+    Users,
+    Zap,
+} from 'lucide-react';
+import React from 'react';
+import { ServicePageTemplate } from '@/components/marketing/templates/ServicePageTemplate';
+
+// Extend the problem point type to include icon
+type ProblemPoint = {
+  icon: React.ReactNode;
+  text: string;
+};
+
+// Extend the solution feature type to include gradient
+type SolutionFeature = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  gradient?: string;
+};
+
+// Proof item type matches Smart Business Assistant standard
+type ProofItem = {
+  title: string;
+  metric: string;
+  metricLabel: string;
+  description: string;
+  icon: React.ReactNode;
+  gradient: string;
+  stats: Array<{ label: string; value: string }>;
+};
+
+export default function DigitalTransformation() {
+  // Exit intent popup functionality
+  const { isPopupOpen, handleClosePopup, handleEmailSubmit, service } = useServiceExitIntent({
+    service: 'digital-transformation',
+    onEmailCapture: async (email: string, name?: string) => {
+      console.log('Capturing lead for Digital Transformation:', { email, name });
+    },
+  });
+
+  // ROI Calculator configuration
+  const roiCalculatorInputs = [
+    {
+      label: 'Current Monthly IT/Maintenance Costs',
+      key: 'currentCosts',
+      type: 'number' as const,
+      defaultValue: 2500,
+      prefix: '$',
+    },
+    {
+      label: 'Hours Lost to Technical Issues (per month)',
+      key: 'lostHours',
+      type: 'number' as const,
+      defaultValue: 40,
+      suffix: 'hours',
+    },
+    {
+      label: 'Average Hourly Rate of Affected Staff',
+      key: 'hourlyRate',
+      type: 'number' as const,
+      defaultValue: 50,
+      prefix: '$',
+    },
+    {
+      label: 'Current Platform',
+      key: 'platform',
+      type: 'select' as const,
+      options: [
+        'WordPress',
+        'Legacy Custom System',
+        'Outdated CMS',
+        'Multiple Disconnected Systems',
+        'Other',
+      ],
+      defaultValue: 'WordPress',
+    },
+  ];
+
+  const calculateROI = (inputs: {
+    currentCosts?: number;
+    lostHours?: number;
+    hourlyRate?: number;
+  }) => {
+    const currentCosts = inputs.currentCosts ?? 0;
+    const lostHours = inputs.lostHours ?? 0;
+    const hourlyRate = inputs.hourlyRate ?? 0;
+
+    // Calculate current waste
+    const monthlyProductivityLoss = lostHours * hourlyRate;
+    const totalMonthlyCost = currentCosts + monthlyProductivityLoss;
+
+    // Modern platforms typically reduce costs by 60-80% and productivity loss by 90%
+    const costReduction = 0.7; // 70% cost reduction
+    const productivityImprovement = 0.9; // 90% reduction in lost time
+
+    const newMonthlyCosts = currentCosts * (1 - costReduction);
+    const newProductivityLoss = monthlyProductivityLoss * (1 - productivityImprovement);
+    const newTotalMonthlyCost = newMonthlyCosts + newProductivityLoss;
+
+    const monthlySavings = totalMonthlyCost - newTotalMonthlyCost;
+    const annualSavings = monthlySavings * 12;
+
+    // Assume $8,000 one-time migration cost
+    const migrationCost = 8000;
+    const roi = ((annualSavings - migrationCost) / migrationCost) * 100;
+    const paybackPeriod = migrationCost / Math.max(monthlySavings, 1);
+
+    return {
+      monthlySavings: Math.round(monthlySavings),
+      annualSavings: Math.round(annualSavings),
+      roi: Math.round(roi),
+      paybackPeriod: Math.round(paybackPeriod),
+    };
+  };
+
+  // Pricing data
+  const pricingPlans = [
+    {
+      title: 'Platform Migration',
+      description: 'Perfect for businesses moving from WordPress or legacy systems',
+      startingPrice: '$7,997',
+      features: [
+        'Complete data migration',
+        'Modern platform setup',
+        'Security hardening',
+        'Performance optimization',
+        '3 months support included',
+      ],
+    },
+    {
+      title: 'Digital Transformation',
+      description: 'Comprehensive modernization for growing businesses',
+      startingPrice: '$19,997',
+      features: [
+        'Full system modernization',
+        'Cloud infrastructure setup',
+        'Advanced integrations',
+        'Staff training included',
+        '6 months support included',
+        'Ongoing optimization',
+      ],
+      popular: true,
+    },
+    {
+      title: 'Enterprise Modernization',
+      description: 'Complete transformation for large organizations',
+      startingPrice: 'Custom',
+      features: [
+        'Multi-system integration',
+        'Enterprise security implementation',
+        'Custom workflow development',
+        'Dedicated project manager',
+        '12 months support included',
+        'Change management support',
+      ],
+    },
+  ];
+  // Problem points with specific cost data
+  const problemPoints: ProblemPoint[] = [
+    {
+      icon: <DollarSign className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+      text: 'Legacy WordPress sites cost businesses $2,500+ monthly in maintenance, security patches, and downtime (WP Engine Study 2024)',
+    },
+    {
+      icon: <AlertTriangle className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+      text: '43% of cyberattacks target small businesses using outdated CMS platforms, with average breach costs of $4.45M (IBM Security)',
+    },
+    {
+      icon: <Clock className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+      text: 'Legacy systems cause 67% more downtime than modern platforms, costing $5,600 per minute for mid-size businesses (Gartner)',
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+      text: 'Businesses using outdated technology grow 40% slower than competitors with modern systems (McKinsey Digital)',
+    },
+    {
+      icon: <Users className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+      text: 'Technical debt reduces developer productivity by 42%, costing enterprises $85 billion annually (Stripe Developer Survey)',
+    },
+    {
+      icon: <Shield className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />,
+      text: 'Delayed modernization increases total transformation costs by 200-300% when businesses are forced to upgrade (Forrester)',
+    },
+  ];
+
+  // Solution features with icons and gradients
+  const solutionFeatures: SolutionFeature[] = [
+    {
+      title: 'Legacy to React Migration',
+      description:
+        'Seamless transition from WordPress and other legacy systems to modern React architectures, preserving content while improving performance by 3-5x.',
+      icon: <RefreshCw className="w-6 h-6 text-ethos-purple" />,
+      gradient: 'from-blue-50 to-purple-50',
+    },
+    {
+      title: 'Headless CMS Integration',
+      description:
+        'Decouple your frontend from the backend with headless CMS solutions, enabling faster content updates and omnichannel publishing.',
+      icon: <Cpu className="w-6 h-6 text-ethos-purple" />,
+      gradient: 'from-purple-50 to-pink-50',
+    },
+    {
+      title: 'Incremental Migration',
+      description:
+        'Adopt a phased migration approach, allowing business continuity while gradually replacing legacy components with modern alternatives.',
+      icon: <TrendingUp className="w-6 h-6 text-ethos-purple" />,
+      gradient: 'from-pink-50 to-blue-50',
+    },
+    {
+      title: 'Performance Optimization',
+      description:
+        'Achieve 2-3x faster page loads by optimizing and modernizing your technology stack with the latest web performance techniques.',
+      icon: <Zap className="w-6 h-6 text-ethos-purple" />,
+      gradient: 'from-blue-50 to-indigo-50',
+    },
+    {
+      title: 'Content Migration',
+      description:
+        'Automated tools and strategies to migrate content from legacy systems while maintaining SEO value and URL structures.',
+      icon: <Cloud className="w-6 h-6 text-ethos-purple" />,
+      gradient: 'from-indigo-50 to-purple-50',
+    },
+    {
+      title: 'Training & Documentation',
+      description:
+        'Comprehensive training programs to ensure your team is proficient with the new technology stack post-migration.',
+      icon: <Users className="w-6 h-6 text-ethos-purple" />,
+      gradient: 'from-purple-50 to-pink-50',
+    },
+  ];
+
+  // Proof points with metrics - Enhanced with full detail structure
+  const proofItems: ProofItem[] = [
+    {
+      title: 'Rapid Migration Timeline',
+      description:
+        'Complete your digital transformation in months, not years. Our proven framework accelerates migration while minimizing risk and disruption.',
+      icon: <Calendar className="w-8 h-8 text-ethos-purple" />,
+      metric: '6-9',
+      metricLabel: 'months',
+      gradient: 'from-blue-500 to-indigo-600',
+      stats: [
+        { label: 'Planning phase', value: '2-3 weeks' },
+        { label: 'Success rate', value: '98%' },
+      ],
+    },
+    {
+      title: 'Massive Cost Savings',
+      description:
+        'Slash maintenance costs by 60% with modern architecture. Eliminate expensive legacy system support and reduce technical debt.',
+      icon: <TrendingUp className="w-8 h-8 text-ethos-purple" />,
+      metric: '60%',
+      metricLabel: 'cost reduction',
+      gradient: 'from-green-500 to-emerald-600',
+      stats: [
+        { label: 'Annual savings', value: '$120K+' },
+        { label: 'Return on Investment timeline', value: '12 months' },
+      ],
+    },
+    {
+      title: 'Lightning Performance',
+      description:
+        'Boost page load speeds by 3x with modern React architecture. Faster sites mean better SEO, higher conversions, and happier users.',
+      icon: <Zap className="w-8 h-8 text-ethos-purple" />,
+      metric: '3x',
+      metricLabel: 'faster',
+      gradient: 'from-purple-500 to-pink-600',
+      stats: [
+        { label: 'Load time', value: '<1s' },
+        { label: 'Performance score', value: '95+' },
+      ],
+    },
+    {
+      title: 'Zero Downtime',
+      description:
+        'Migrate without disrupting your business. Our phased approach ensures continuous operation throughout the entire transformation process.',
+      icon: <Shield className="w-8 h-8 text-ethos-purple" />,
+      metric: '100%',
+      metricLabel: 'uptime',
+      gradient: 'from-orange-500 to-amber-600',
+      stats: [
+        { label: 'Availability', value: '99.9%' },
+        { label: 'Data integrity', value: '100%' },
+      ],
+    },
+  ];
+
+  return (
+    <ServicePageTemplate
+      // Hero Section
+      heroTitle={
+        <span
+          style={{
+            fontFamily: 'Poppins',
+            background:
+              'linear-gradient(to right, var(--ethos-navy-light), var(--ethos-gray-light))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            display: 'inline-block',
+          }}
+        >
+          Technology Migration
+        </span>
+      }
+      heroSubtitle="Seamless transition to future-proof technology"
+      heroDescription={
+        <div>
+          <p className="text-body-large text-gray-700 mb-4">
+            Cut maintenance costs by 60% and boost performance by 3x. Our proven migration framework
+            transforms legacy systems into modern, scalable solutions—with zero downtime.
+          </p>
+          <ul className="text-left text-gray-700 mb-4">
+            <li className="flex items-start mb-2">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Reduce maintenance costs by 60% with modern architecture</span>
+            </li>
+            <li className="flex items-start mb-2">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Boost performance by 3x with optimized infrastructure</span>
+            </li>
+            <li className="flex items-start mb-2 last:mb-0">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Zero downtime migration with our proven framework</span>
+            </li>
+          </ul>
+        </div>
+      }
+      heroImage="/assets/marketing/images/digitaltransformation.png"
+      heroImageAlt="Digital transformation and technology modernization journey from legacy WordPress systems to modern cloud-based platforms, featuring secure migration processes, performance optimization, enterprise-grade security implementation, and seamless business continuity during platform upgrades"
+      // Problem Statement Section
+      problemTitle={
+        <>
+          <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6">
+            <span className="text-ethos-navy">The Risks of Sticking with </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+            >
+              Outdated Technology
+            </span>
+          </h2>
+        </>
+      }
+      problemDescription="Maintaining legacy systems comes with hidden costs and risks that can hinder your business growth. Modernization isn't just an option—it's a necessity for staying competitive in today's digital landscape."
+      problemPoints={problemPoints}
+      // Solution Section
+      solutionTitle={
+        <>
+          <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6">
+            <span className="text-ethos-navy">Proven Migration </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+            >
+              Strategies
+            </span>
+          </h2>
+        </>
+      }
+      solutionDescription="Our comprehensive approach to technology migration ensures a smooth transition with minimal business disruption while maximizing the benefits of modern web technologies."
+      solutionFeatures={solutionFeatures}
+      // Proof/Evidence Section
+      proofTitle={
+        <>
+          <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6">
+            <span className="text-ethos-navy">Migration Success </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+            >
+              By The Numbers
+            </span>
+          </h2>
+        </>
+      }
+      proofDescription="Real results from our migration projects show the tangible benefits of modernizing your technology stack."
+      proofItems={proofItems}
+      // CTA Section
+      ctaSection={
+        <ServiceCTA
+          titlePart1="Start Your Digital"
+          titlePart2="Migration Journey"
+          description="Stop paying $2,500+ monthly for WordPress maintenance and security patches. Our migration experts will modernize your digital presence, reduce costs by 60%, and eliminate 67% of downtime—all within 6 weeks. Get your free security assessment and migration roadmap today."
+          buttonText="Get Your Free Migration Assessment"
+          buttonLink="/contact?source=digital-transformation"
+        />
+      }
+      additionalContent={
+        <>
+          {/* Enhanced Sections */}
+
+          {/* Trust Signals - Establish credibility early */}
+          <TrustSignals />
+
+          {/* Testimonials and Pricing Tabbed Section */}
+          <InvestmentSection pricing={pricingPlans} />
+
+          {/* ROI Calculator */}
+          <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6">
+                  <span className="text-ethos-navy">Calculate Your </span>
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+                  >
+                    Transformation Return on Investment
+                  </span>
+                </h2>
+                <p className="text-body-large text-ethos-gray">
+                  See how much you could save by modernizing your legacy systems
+                </p>
+              </div>
+              <GatedROICalculator
+                title="Digital Transformation Return on Investment Calculator"
+                description="Enter your current technology costs to see your potential savings from modernization."
+                service="digital-transformation"
+                leadMagnet="Free Security Assessment + Migration Roadmap + Cost Savings Analysis"
+                showHeader={false}
+                onEmailCapture={async (email: string, name?: string, calculatorData?: unknown) => {
+                  console.log('Digital Transformation ROI Calculator lead captured:', {
+                    email,
+                    name,
+                    calculatorData,
+                  });
+                }}
+                inputs={roiCalculatorInputs}
+                calculation={calculateROI}
+              />
+            </div>
+          </section>
+
+          {/* Migration Process */}
+          <section className="py-16 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="heading-section font-medium leading-tight tracking-[-0.02em] mb-6 text-center">
+                <span className="text-ethos-navy">Our </span>
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+                >
+                  Proven Migration Process
+                </span>
+              </h2>
+                <p className="text-xl text-ethos-gray">
+                  A systematic approach that minimizes risk and ensures business continuity
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-ethos-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">1</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-ethos-navy mb-2">Assessment</h3>
+                  <p className="text-ethos-gray">
+                    Comprehensive audit of your current systems, identifying risks and opportunities
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-ethos-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">2</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-ethos-navy mb-2">Planning</h3>
+                  <p className="text-ethos-gray">
+                    Detailed migration strategy with timelines, milestones, and risk mitigation
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-ethos-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">3</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-ethos-navy mb-2">Migration</h3>
+                  <p className="text-ethos-gray">
+                    Phased implementation with continuous testing and zero-downtime deployment
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-ethos-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">4</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-ethos-navy mb-2">Optimization</h3>
+                  <p className="text-ethos-gray">
+                    Performance tuning, staff training, and ongoing support for maximum Return on Investment
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Security Scanner Tool */}
+          <SecurityScanner
+            title={
+              <span className="heading-section font-medium leading-tight tracking-[-0.02em]">
+                <span className="text-ethos-navy">Free </span>
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+                >
+                  Security Assessment
+                </span>
+              </span>
+            }
+            description="Get a comprehensive security scan of your current digital infrastructure before transformation"
+            onScanComplete={(result: { overallScore: number }) => {
+              console.log('Security scan completed:', result);
+              // Track security scan completion
+              if (typeof window !== 'undefined') {
+                const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+                if (typeof gtag === 'function') {
+                  gtag('event', 'security_scan_complete', {
+                    event_category: 'Digital Transformation',
+                    event_label: 'Security Assessment',
+                    value: result.overallScore,
+                  });
+                }
+              }
+            }}
+            onEmailCapture={(email: string, result: { overallScore: number }) => {
+              console.log('Security report email captured:', { email, score: result.overallScore });
+              // Here you would integrate with your CRM or email service
+            }}
+          />
+
+          {/* Interactive FAQ Section */}
+          <InteractiveFAQ
+            title={
+              <span className="heading-section font-medium leading-tight tracking-[-0.02em]">
+                <span className="text-ethos-navy">Transformation </span>
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{ backgroundImage: 'linear-gradient(to right, var(--ethos-purple), #000000)' }}
+                >
+                  Questions Answered
+                </span>
+              </span>
+            }
+            description="Find answers to common questions about digital transformation and migration"
+            faqs={[
+              {
+                id: '1',
+                question: 'How long does a typical migration take?',
+                answer:
+                  'Simple WordPress migrations take 2-4 weeks, while complex enterprise transformations take 8-16 weeks. We provide detailed timelines during your free assessment.',
+                category: 'Timeline',
+                tags: ['migration', 'timeline', 'duration'],
+              },
+              {
+                id: '2',
+                question: 'Will there be any downtime during migration?',
+                answer:
+                  'We guarantee zero downtime for most migrations using our parallel deployment strategy. Your current site remains live until the new platform is fully tested and ready.',
+                category: 'Process',
+                tags: ['downtime', 'deployment', 'migration'],
+              },
+              {
+                id: '3',
+                question: 'What happens to our SEO rankings?',
+                answer:
+                  'We preserve and often improve SEO rankings through proper URL mapping, meta data migration, and performance optimization. Most clients see SEO improvements within 3 months.',
+                category: 'SEO',
+                tags: ['seo', 'rankings', 'optimization'],
+              },
+              {
+                id: '4',
+                question: 'Do you provide training for our team?',
+                answer:
+                  'Yes! All transformation projects include comprehensive training for your team, documentation, and ongoing support to ensure you can manage the new platform effectively.',
+                category: 'Support',
+                tags: ['training', 'support', 'documentation'],
+              },
+              {
+                id: '5',
+                question: 'Can you migrate our custom functionality?',
+                answer:
+                  'Absolutely. We analyze all custom features and either migrate them directly or rebuild them with modern, maintainable code. We ensure no functionality is lost in the transition.',
+                category: 'Technical',
+                tags: ['custom', 'functionality', 'features'],
+              },
+              {
+                id: '6',
+                question: 'What is the cost of digital transformation?',
+                answer:
+                  'Costs vary based on complexity, but most mid-sized business migrations range from $25K-$75K. We provide detailed quotes after a free assessment of your current system.',
+                category: 'Pricing',
+                tags: ['cost', 'pricing', 'investment'],
+              },
+            ]}
+            categories={['Timeline', 'Process', 'SEO', 'Support', 'Technical', 'Pricing']}
+            showSearch={true}
+            showCategories={true}
+            contactCTA={{
+              text: 'Get Free Migration Assessment',
+              link: '/contact?source=digital-transformation-faq',
+            }}
+          />
+
+          {/* Exit Intent Popup */}
+          <ExitIntentPopup
+            isOpen={isPopupOpen}
+            onClose={handleClosePopup}
+            onSubmit={handleEmailSubmit}
+            service={service}
+          />
+        </>
+      }
+    />
+  );
+}

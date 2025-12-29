@@ -1,0 +1,223 @@
+# Enhanced Production Alert Rules Configuration
+# Comprehensive alerting for RAG application production environment
+
+groups:
+  - name: health_check_alerts
+    rules:
+      # Health endpoint failures
+      - alert: HealthCheckFailure
+        expr: health_check_success == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: rag-app
+        annotations:
+          summary: "Health check endpoint failing"
+          description: "Health check has been failing for more than 1 minute"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/health-check-failure"
+
+      # Service degraded (fallback active)
+      - alert: ServiceDegraded
+        expr: health_check_degraded == 1
+        for: 5m
+        labels:
+          severity: warning
+          service: rag-app
+        annotations:
+          summary: "Service is degraded"
+          description: "Primary embedding provider unavailable, running on fallback"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/service-degraded"
+
+  - name: ai_service_alerts
+    rules:
+      # High error rate
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          service: rag-app
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }} for 5 minutes"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/high-error-rate"
+
+      # Critical error rate
+      - alert: CriticalErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.15
+        for: 2m
+        labels:
+          severity: critical
+          service: rag-app
+        annotations:
+          summary: "Critical error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }} for 2 minutes"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/critical-error-rate"
+
+      # High response time
+      - alert: HighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 5
+        for: 10m
+        labels:
+          severity: warning
+          service: rag-app
+        annotations:
+          summary: "High response time detected"
+          description: "95th percentile response time is {{ $value }}s for 10 minutes"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/high-response-time"
+
+      # Very high response time
+      - alert: VeryHighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 10
+        for: 5m
+        labels:
+          severity: critical
+          service: rag-app
+        annotations:
+          summary: "Very high response time detected"
+          description: "95th percentile response time is {{ $value }}s for 5 minutes"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/very-high-response-time"
+
+      # High memory usage
+      - alert: HighMemoryUsage
+        expr: (process_resident_memory_bytes / 1024 / 1024) > 1500
+        for: 10m
+        labels:
+          severity: warning
+          service: rag-app
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value }}MB for 10 minutes"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/high-memory-usage"
+
+      # Critical memory usage
+      - alert: CriticalMemoryUsage
+        expr: (process_resident_memory_bytes / 1024 / 1024) > 2000
+        for: 5m
+        labels:
+          severity: critical
+          service: rag-app
+        annotations:
+          summary: "Critical memory usage"
+          description: "Memory usage is {{ $value }}MB for 5 minutes"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/critical-memory-usage"
+
+      # Service down
+      - alert: ServiceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: rag-app
+        annotations:
+          summary: "Service is down"
+          description: "{{ $labels.job }} service has been down for 1 minute"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/service-down"
+
+  - name: embedding_provider_alerts
+    rules:
+      # Google API quota exhausted
+      - alert: GoogleAPIQuotaHigh
+        expr: google_api_quota_usage > 0.9
+        for: 1m
+        labels:
+          severity: warning
+          service: rag-app
+        annotations:
+          summary: "Google API quota nearly exhausted"
+          description: "Google API quota usage is {{ $value | humanizePercentage }}"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/google-api-quota"
+
+      # OpenRouter fallback activated
+      - alert: OpenRouterFallbackActive
+        expr: openrouter_fallback_active == 1
+        for: 1m
+        labels:
+          severity: info
+          service: rag-app
+        annotations:
+          summary: "OpenRouter fallback activated"
+          description: "Primary Google API unavailable, using OpenRouter fallback"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/fallback-active"
+
+      # All embedding providers down
+      - alert: AllEmbeddingProvidersDown
+        expr: google_api_available == 0 AND openrouter_api_available == 0
+        for: 2m
+        labels:
+          severity: critical
+          service: rag-app
+        annotations:
+          summary: "All embedding providers unavailable"
+          description: "Both Google API and OpenRouter are unavailable"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/all-providers-down"
+
+  - name: cost_alerts
+    rules:
+      # High hourly API costs
+      - alert: HighHourlyCosts
+        expr: increase(api_cost_total[1h]) > 5
+        for: 0m
+        labels:
+          severity: warning
+          service: rag-app
+        annotations:
+          summary: "High hourly API costs detected"
+          description: "API costs in the last hour: ${{ $value }}"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/high-hourly-costs"
+
+      # High daily API costs
+      - alert: HighDailyCosts
+        expr: increase(api_cost_total[24h]) > 50
+        for: 0m
+        labels:
+          severity: warning
+          service: rag-app
+        annotations:
+          summary: "High daily API costs detected"
+          description: "Daily API costs: ${{ $value }}"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/high-daily-costs"
+
+      # Daily cost limit exceeded
+      - alert: DailyCostLimitExceeded
+        expr: increase(api_cost_total[24h]) > 100
+        for: 0m
+        labels:
+          severity: critical
+          service: rag-app
+        annotations:
+          summary: "Daily cost limit exceeded"
+          description: "Daily API costs: ${{ $value }} - immediate action required"
+          runbook_url: "https://docs.react-rag-app.com/runbooks/cost-limit-exceeded"
+
+  - name: rag_alerts
+    rules:
+      # Vector store connection issues
+      - alert: VectorStoreDown
+        expr: vector_store_connection_status == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Vector store connection failed"
+          description: "Cannot connect to vector store"
+
+      # Low search quality
+      - alert: LowSearchQuality
+        expr: avg_over_time(search_relevance_score[10m]) < 0.6
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Search quality degraded"
+          description: "Average search relevance score: {{ $value }}"
+
+      # Document processing failures
+      - alert: DocumentProcessingFailures
+        expr: rate(document_processing_failures_total[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High document processing failure rate"
+          description: "Document processing failure rate: {{ $value }} per second"

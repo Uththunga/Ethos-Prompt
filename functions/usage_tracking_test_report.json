@@ -1,0 +1,461 @@
+{
+  "timestamp": "2025-07-24T20:53:13.840204",
+  "summary": {
+    "total_tests": 74,
+    "passed_tests": 73,
+    "failed_tests": 1,
+    "success_rate": 98.65,
+    "implementation_complete": false
+  },
+  "results": [
+    {
+      "test": "UsageTracker Class Definition",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.769329",
+      "details": {}
+    },
+    {
+      "test": "Method: track_embedding_generation",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.769477",
+      "details": {}
+    },
+    {
+      "test": "Method: track_search_query",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.769633",
+      "details": {}
+    },
+    {
+      "test": "Method: track_document_processing",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.769698",
+      "details": {}
+    },
+    {
+      "test": "Method: track_api_request",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.769855",
+      "details": {}
+    },
+    {
+      "test": "Method: get_hourly_metrics",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.769926",
+      "details": {}
+    },
+    {
+      "test": "Method: get_provider_usage_stats",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.770061",
+      "details": {}
+    },
+    {
+      "test": "UsageTracker Methods",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.770164",
+      "details": {
+        "methods_found": 6,
+        "methods_required": 6
+      }
+    },
+    {
+      "test": "Usage Metrics Endpoint",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.771072",
+      "details": {}
+    },
+    {
+      "test": "Component: @https_fn.on_request",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.771218",
+      "details": {}
+    },
+    {
+      "test": "Component: usage_tracker.get_hourly_metrics",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.771346",
+      "details": {}
+    },
+    {
+      "test": "Component: usage_tracker.get_provider_usage_stats",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.771490",
+      "details": {}
+    },
+    {
+      "test": "Component: total_embeddings",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.771562",
+      "details": {}
+    },
+    {
+      "test": "Component: total_searches",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.771720",
+      "details": {}
+    },
+    {
+      "test": "Component: total_cost",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.771840",
+      "details": {}
+    },
+    {
+      "test": "Component: error_rate",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.772020",
+      "details": {}
+    },
+    {
+      "test": "Embedding Param: provider: str",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.772917",
+      "details": {}
+    },
+    {
+      "test": "Embedding Param: model: str",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.773045",
+      "details": {}
+    },
+    {
+      "test": "Embedding Param: tokens: int",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.773568",
+      "details": {}
+    },
+    {
+      "test": "Embedding Param: latency: float",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.773816",
+      "details": {}
+    },
+    {
+      "test": "Embedding Param: success: bool",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774190",
+      "details": {}
+    },
+    {
+      "test": "Embedding Param: cost: float",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774269",
+      "details": {}
+    },
+    {
+      "test": "Search Param: query_type: str",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774328",
+      "details": {}
+    },
+    {
+      "test": "Search Param: query_length: int",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774443",
+      "details": {}
+    },
+    {
+      "test": "Search Param: results_count: int",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774631",
+      "details": {}
+    },
+    {
+      "test": "Search Param: relevance_score: float",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774703",
+      "details": {}
+    },
+    {
+      "test": "Document Param: file_type: str",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774865",
+      "details": {}
+    },
+    {
+      "test": "Document Param: file_size_kb: int",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.774935",
+      "details": {}
+    },
+    {
+      "test": "Document Param: chunks_created: int",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.775082",
+      "details": {}
+    },
+    {
+      "test": "Document Param: processing_time: float",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.775151",
+      "details": {}
+    },
+    {
+      "test": "DB Operation: self.metrics_collection",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.776003",
+      "details": {}
+    },
+    {
+      "test": "DB Operation: self.daily_stats_collection",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.776232",
+      "details": {}
+    },
+    {
+      "test": "DB Operation: metrics_collection.add",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.776333",
+      "details": {}
+    },
+    {
+      "test": "DB Operation: metrics_collection.where",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.777959",
+      "details": {}
+    },
+    {
+      "test": "DB Operation: timestamp",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.780426",
+      "details": {}
+    },
+    {
+      "test": "DB Operation: date",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.786186",
+      "details": {}
+    },
+    {
+      "test": "DB Operation: hour",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.787551",
+      "details": {}
+    },
+    {
+      "test": "Error Handling: try:",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.788645",
+      "details": {}
+    },
+    {
+      "test": "Error Handling: except Exception as e:",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.788735",
+      "details": {}
+    },
+    {
+      "test": "Error Handling: logger.error",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.788779",
+      "details": {}
+    },
+    {
+      "test": "Error Handling: Error tracking",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.788985",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: hourly_data",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790114",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: provider_stats",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790280",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: total_embeddings",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790432",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: total_searches",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790519",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: total_cost",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790654",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: error_rate",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790734",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: success_rate",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790904",
+      "details": {}
+    },
+    {
+      "test": "Aggregation: avg_latency",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.790977",
+      "details": {}
+    },
+    {
+      "test": "Time Filter: timedelta",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.791094",
+      "details": {}
+    },
+    {
+      "test": "Time Filter: start_time",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.791243",
+      "details": {}
+    },
+    {
+      "test": "Time Filter: end_time",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.791319",
+      "details": {}
+    },
+    {
+      "test": "Time Filter: hours=",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.791526",
+      "details": {}
+    },
+    {
+      "test": "Time Filter: days=",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.791600",
+      "details": {}
+    },
+    {
+      "test": "Dashboard File Exists",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.792283",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: Usage Analytics Dashboard",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.793350",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: total-embeddings",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.800014",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: total-searches",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.806406",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: total-cost",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.811564",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: error-rate",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.822689",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: hourlyChart",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.827603",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: providerChart",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.828384",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: usage_metrics",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.828590",
+      "details": {}
+    },
+    {
+      "test": "Dashboard Component: Chart.js",
+      "success": false,
+      "timestamp": "2025-07-24T20:53:13.828724",
+      "details": {
+        "error": "Dashboard component not found: Chart.js"
+      }
+    },
+    {
+      "test": "CORS: cors=options.CorsOptions",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.829870",
+      "details": {}
+    },
+    {
+      "test": "CORS: cors_origins=[\"*\"]",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.830073",
+      "details": {}
+    },
+    {
+      "test": "CORS: cors_methods=[\"GET\", \"POST\", \"OPTIONS\"]",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.830330",
+      "details": {}
+    },
+    {
+      "test": "CORS: _cors_enabled_response",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.830546",
+      "details": {}
+    },
+    {
+      "test": "API Response: response_data",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.830722",
+      "details": {}
+    },
+    {
+      "test": "API Response: timestamp",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.836403",
+      "details": {}
+    },
+    {
+      "test": "API Response: summary",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.838999",
+      "details": {}
+    },
+    {
+      "test": "API Response: hourly_metrics",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.839588",
+      "details": {}
+    },
+    {
+      "test": "API Response: provider_stats",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.839808",
+      "details": {}
+    },
+    {
+      "test": "API Response: error_response",
+      "success": true,
+      "timestamp": "2025-07-24T20:53:13.839992",
+      "details": {}
+    }
+  ]
+}

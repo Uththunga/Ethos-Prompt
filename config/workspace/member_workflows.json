@@ -1,0 +1,23 @@
+{
+  "invitation_workflow": [
+    "send_invitation",
+    "track_delivery",
+    "handle_acceptance",
+    "complete_onboarding",
+    "assign_initial_permissions"
+  ],
+  "role_change_workflow": [
+    "validate_permissions",
+    "update_role",
+    "notify_member",
+    "log_change",
+    "update_access_controls"
+  ],
+  "removal_workflow": [
+    "validate_removal_permissions",
+    "backup_member_data",
+    "revoke_access",
+    "notify_stakeholders",
+    "cleanup_references"
+  ]
+}

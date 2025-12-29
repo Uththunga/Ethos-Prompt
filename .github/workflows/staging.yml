@@ -1,0 +1,66 @@
+name: Staging Deploy
+
+on:
+  push:
+    branches: [develop, staging]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy-staging:
+    name: Build and Deploy to Firebase Staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Lint and type-check
+        run: |
+          cd frontend
+          npm run lint --if-present
+          npm run type-check --if-present
+
+      - name: Build frontend for staging
+        run: |
+          cd frontend
+          npm run build:staging
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.STAGING_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: rag-prompt-library-staging.firebaseapp.com
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.STAGING_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: rag-prompt-library-staging.firebasestorage.app
+          VITE_FIREBASE_MESSAGING_SENDER_ID: 857724136585
+          VITE_FIREBASE_APP_ID: 1:857724136585:web:aa8f0aaf24ff930aabea58
+          VITE_FIREBASE_MEASUREMENT_ID: G-MMB37GGBEN
+          VITE_APP_ENVIRONMENT: staging
+          VITE_USE_EMULATORS: false
+
+      # Deploy Hosting to staging project using a dedicated service account secret
+      - name: Deploy to Firebase Hosting (staging)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_STAGING }}"
+          projectId: "${{ secrets.STAGING_PROJECT_ID }}"
+          channelId: live
+
+      # Optional: Upload Playwright report artifacts for staging checks (if available)
+      - name: Upload Playwright report (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-staging
+          path: frontend/playwright-report
+          if-no-files-found: ignore

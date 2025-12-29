@@ -1,0 +1,147 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.59,
+    "values": [
+      0.59
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "error",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.95,
+    "actual": 0.9,
+    "values": [
+      0.9
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "accessibility",
+    "auditId": "categories",
+    "level": "error",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.66,
+    "values": [
+      0.66
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "seo",
+    "auditId": "categories",
+    "level": "error",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1"
+  },
+  {
+    "name": "auditRan",
+    "expected": 1,
+    "actual": 0,
+    "values": [
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "pwa",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1"
+  },
+  {
+    "name": "auditRan",
+    "expected": 1,
+    "actual": 0,
+    "values": [
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "message": "\"experimental-interaction-to-next-paint\" is not a known audit.",
+    "auditId": "experimental-interaction-to-next-paint",
+    "level": "error",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 0.1,
+    "actual": 0.7862374451420096,
+    "values": [
+      0.7862374451420096
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "cumulative-layout-shift",
+    "level": "error",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1",
+    "auditTitle": "Cumulative Layout Shift",
+    "auditDocumentationLink": "https://web.dev/articles/cls"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 512000,
+    "actual": 562624,
+    "values": [
+      562624
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditProperty": "script.size",
+    "auditId": "resource-summary",
+    "level": "error",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1",
+    "auditTitle": "Resources Summary"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 1048576,
+    "actual": 2241281,
+    "values": [
+      2241281
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditProperty": "image.size",
+    "auditId": "resource-summary",
+    "level": "warn",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1",
+    "auditTitle": "Resources Summary"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 2097152,
+    "actual": 3023616,
+    "values": [
+      3023616
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditProperty": "total.size",
+    "auditId": "resource-summary",
+    "level": "warn",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1",
+    "auditTitle": "Resources Summary"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 0.2,
+    "actual": 280,
+    "values": [
+      280
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unused-javascript",
+    "level": "warn",
+    "url": "https://rag-prompt-library-staging--staging-contrast-fix-9bq4bndp.web.app/?no-sw=1",
+    "auditTitle": "Reduce unused JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/"
+  }
+]

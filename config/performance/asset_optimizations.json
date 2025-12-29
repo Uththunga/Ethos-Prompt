@@ -1,0 +1,21 @@
+{
+  "image_optimization": {
+    "format_optimization": true,
+    "compression": true,
+    "responsive_images": true,
+    "lazy_loading": true,
+    "webp_support": true
+  },
+  "font_optimization": {
+    "font_display_swap": true,
+    "font_preloading": true,
+    "font_subsetting": true,
+    "woff2_format": true
+  },
+  "css_optimization": {
+    "critical_css": true,
+    "css_minification": true,
+    "unused_css_removal": true,
+    "css_splitting": true
+  }
+}

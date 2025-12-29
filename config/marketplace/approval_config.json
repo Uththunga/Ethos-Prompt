@@ -1,0 +1,63 @@
+{
+  "automated_checks": {
+    "content_validation": {
+      "syntax_checking": true,
+      "variable_validation": true,
+      "completeness_check": true,
+      "format_validation": true
+    },
+    "quality_assessment": {
+      "readability_score": true,
+      "complexity_analysis": true,
+      "best_practices_check": true,
+      "performance_estimation": true
+    },
+    "safety_checks": {
+      "malicious_code_detection": true,
+      "privacy_compliance": true,
+      "content_appropriateness": true,
+      "copyright_check": true
+    }
+  },
+  "human_review": {
+    "reviewer_assignment": {
+      "expertise_matching": true,
+      "workload_balancing": true,
+      "conflict_of_interest_check": true,
+      "reviewer_rotation": true
+    },
+    "review_criteria": {
+      "technical_accuracy": true,
+      "usability": true,
+      "documentation_quality": true,
+      "originality": true,
+      "market_fit": true
+    },
+    "review_workflow": {
+      "initial_review": "24 hours",
+      "detailed_review": "48 hours",
+      "final_approval": "72 hours",
+      "appeal_process": "5 days"
+    }
+  },
+  "approval_criteria": {
+    "minimum_scores": {
+      "technical_quality": 70,
+      "usability": 75,
+      "documentation": 80,
+      "originality": 60,
+      "overall": 75
+    },
+    "automatic_approval": {
+      "verified_authors": true,
+      "score_threshold": 90,
+      "category_whitelist": true
+    },
+    "rejection_reasons": {
+      "quality_issues": true,
+      "policy_violations": true,
+      "duplicate_content": true,
+      "incomplete_submission": true
+    }
+  }
+}

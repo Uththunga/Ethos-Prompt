@@ -1,0 +1,26 @@
+{
+  "predictive_analytics": {
+    "trend_forecasting": true,
+    "anomaly_detection": true,
+    "user_behavior_prediction": true,
+    "capacity_planning": true
+  },
+  "machine_learning": {
+    "clustering_analysis": true,
+    "classification_models": true,
+    "recommendation_engine": true,
+    "pattern_recognition": true
+  },
+  "statistical_analysis": {
+    "correlation_analysis": true,
+    "regression_analysis": true,
+    "hypothesis_testing": true,
+    "confidence_intervals": true
+  },
+  "business_intelligence": {
+    "cohort_analysis": true,
+    "funnel_analysis": true,
+    "retention_analysis": true,
+    "attribution_modeling": true
+  }
+}

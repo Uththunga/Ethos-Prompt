@@ -1,0 +1,275 @@
+{
+  "timestamp": "2025-07-24T20:42:28.054231",
+  "summary": {
+    "total_tests": 42,
+    "passed_tests": 38,
+    "failed_tests": 4,
+    "success_rate": 90.48,
+    "implementation_complete": false
+  },
+  "results": [
+    {
+      "test": "Endpoint Definition: health",
+      "success": false,
+      "timestamp": "2025-07-24T20:42:27.935386",
+      "details": {
+        "error": "Function health not found in main.py"
+      }
+    },
+    {
+      "test": "Endpoint Definition: health_detailed",
+      "success": false,
+      "timestamp": "2025-07-24T20:42:27.935887",
+      "details": {
+        "error": "Function health_detailed not found in main.py"
+      }
+    },
+    {
+      "test": "Endpoint Definition: health_ready",
+      "success": false,
+      "timestamp": "2025-07-24T20:42:27.936314",
+      "details": {
+        "error": "Function health_ready not found in main.py"
+      }
+    },
+    {
+      "test": "Health Endpoints Syntax",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.971555",
+      "details": {
+        "syntax_valid": true,
+        "file": "main.py"
+      }
+    },
+    {
+      "test": "Pattern Check: @https_fn.on_request",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.975226",
+      "details": {}
+    },
+    {
+      "test": "Pattern Check: def health(",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.981358",
+      "details": {}
+    },
+    {
+      "test": "Pattern Check: def health_detailed(",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.982152",
+      "details": {}
+    },
+    {
+      "test": "Pattern Check: def health_ready(",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.983249",
+      "details": {}
+    },
+    {
+      "test": "Component: timestamp",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.984665",
+      "details": {}
+    },
+    {
+      "test": "Component: status",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.984750",
+      "details": {}
+    },
+    {
+      "test": "Component: _cors_enabled_response",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.984803",
+      "details": {}
+    },
+    {
+      "test": "Component: datetime.now(timezone.utc)",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.984897",
+      "details": {}
+    },
+    {
+      "test": "Component: health_status",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.984965",
+      "details": {}
+    },
+    {
+      "test": "Component: services",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.985127",
+      "details": {}
+    },
+    {
+      "test": "Component: metrics",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.985303",
+      "details": {}
+    },
+    {
+      "test": "Error Handling: try:",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.985420",
+      "details": {}
+    },
+    {
+      "test": "Error Handling: except Exception as e:",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.986774",
+      "details": {}
+    },
+    {
+      "test": "Error Handling: logger.error",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.986936",
+      "details": {}
+    },
+    {
+      "test": "CORS Pattern: cors=options.CorsOptions",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.987811",
+      "details": {}
+    },
+    {
+      "test": "CORS Pattern: cors_origins=[\"*\"]",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.988006",
+      "details": {}
+    },
+    {
+      "test": "CORS Pattern: cors_methods=[\"GET\", \"POST\", \"OPTIONS\"]",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.988099",
+      "details": {}
+    },
+    {
+      "test": "CORS Pattern: cors_headers=[\"Content-Type\", \"Authorization\"]",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.988167",
+      "details": {}
+    },
+    {
+      "test": "CORS Pattern: _handle_preflight()",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.988246",
+      "details": {}
+    },
+    {
+      "test": "Response Field: 'status':",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:27.997776",
+      "details": {}
+    },
+    {
+      "test": "Response Field: 'timestamp':",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.000780",
+      "details": {}
+    },
+    {
+      "test": "Response Field: 'version':",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.001616",
+      "details": {}
+    },
+    {
+      "test": "Response Field: 'environment':",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.002802",
+      "details": {}
+    },
+    {
+      "test": "Response Field: 'services':",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.003146",
+      "details": {}
+    },
+    {
+      "test": "Response Field: 'metrics':",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.003460",
+      "details": {}
+    },
+    {
+      "test": "Response Field: 'ready':",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.004565",
+      "details": {}
+    },
+    {
+      "test": "Status Code: status_code = 200",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.004989",
+      "details": {}
+    },
+    {
+      "test": "Status Code: status_code = 503",
+      "success": false,
+      "timestamp": "2025-07-24T20:42:28.005253",
+      "details": {
+        "error": "Status code pattern not found: status_code = 503"
+      }
+    },
+    {
+      "test": "Status Code: _cors_enabled_response(error_response, 500)",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.008242",
+      "details": {}
+    },
+    {
+      "test": "Service Check: google_embeddings",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.017675",
+      "details": {}
+    },
+    {
+      "test": "Service Check: openrouter_fallback",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.024259",
+      "details": {}
+    },
+    {
+      "test": "Service Check: firestore",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.025475",
+      "details": {}
+    },
+    {
+      "test": "Service Check: ai_service",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.025732",
+      "details": {}
+    },
+    {
+      "test": "Service Check: database",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.028708",
+      "details": {}
+    },
+    {
+      "test": "Latency Measurement: latency_ms",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.037103",
+      "details": {}
+    },
+    {
+      "test": "Latency Measurement: response_time_ms",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.041006",
+      "details": {}
+    },
+    {
+      "test": "Latency Measurement: time.time()",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.042172",
+      "details": {}
+    },
+    {
+      "test": "Latency Measurement: test_start",
+      "success": true,
+      "timestamp": "2025-07-24T20:42:28.050247",
+      "details": {}
+    }
+  ]
+}

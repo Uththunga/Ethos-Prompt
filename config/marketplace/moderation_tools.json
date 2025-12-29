@@ -1,0 +1,20 @@
+{
+  "reviewer_dashboard": {
+    "queue_management": true,
+    "review_templates": true,
+    "collaboration_tools": true,
+    "performance_metrics": true
+  },
+  "automated_assistance": {
+    "ai_pre_screening": true,
+    "similarity_detection": true,
+    "quality_prediction": true,
+    "risk_assessment": true
+  },
+  "community_moderation": {
+    "user_reporting": true,
+    "community_voting": true,
+    "expert_escalation": true,
+    "transparency_reports": true
+  }
+}

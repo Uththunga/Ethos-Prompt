@@ -1,0 +1,329 @@
+# Production Environment Configuration
+# EthosPrompt Marketing Agent - Intelligent Caching
+
+# Google Cloud Run Service Configuration
+# Deploy with: gcloud run services replace production_config.yaml
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: marketing-api
+  labels:
+    cloud.googleapis.com/location: australia-southeast1
+    app: marketing-agent
+    version: v2.0-intelligent-caching
+  annotations:
+    run.googleapis.com/client-name: gcloud
+    run.googleapis.com/ingress: all
+    run.googleapis.com/launch-stage: BETA
+spec:
+  template:
+    metadata:
+      annotations:
+        # === Performance Settings ===
+        run.googleapis.com/cpu-boost: "true"  # CPU boost for faster cold starts
+        run.googleapis.com/startup-cpu-boost: "true"
+
+        # === Scaling Settings ===
+        autoscaling.knative.dev/minScale: "1"  # Keep 1 instance warm (eliminates cold starts)
+        autoscaling.knative.dev/maxScale: "10"  # Max 10 instances
+        autoscaling.knative.dev/target: "80"  # Target 80 concurrent requests per instance
+
+        # === Timeout Settings ===
+        run.googleapis.com/timeout: "300s"  # 5 minutes max (for long responses)
+
+        # === VPC Connector (if needed for Firestore/Redis) ===
+        #run.googleapis.com/vpc-access-connector: projects/PROJECT_ID/locations/australia-southeast1/connectors/vpc-connector
+        #run.googleapis.com/vpc-access-egress: private-ranges-only
+
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      serviceAccountName: marketing-agent-sa@PROJECT_ID.iam.gserviceaccount.com
+
+      containers:
+      - name: marketing-agent
+        image: gcr.io/PROJECT_ID/marketing-agent:latest
+
+        ports:
+        - name: http1
+          containerPort: 8080
+
+        # === Environment Variables ===
+        env:
+        # Core App Settings
+        - name: ENVIRONMENT
+          value: "production"
+
+        - name: PORT
+          value: "8080"
+
+        # LLM Settings
+        - name: USE_GRANITE_LLM
+          value: "true"
+
+        - name: MARKETING_AGENT_MAX_TOKENS
+          value: "1500"
+
+        # Watsonx Credentials (from Secret Manager)
+        - name: WATSONX_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: watsonx-api-key
+              key: latest
+
+        - name: WATSONX_PROJECT_ID
+          valueFrom:
+            secretKeyRef:
+              name: watsonx-project-id
+              key: latest
+
+        # === INTELLIGENT CACHING SETTINGS ===
+        - name: CACHE_ENABLED
+          value: "true"
+
+        - name: CACHE_TTL
+          value: "2592000"  # 30 days in seconds
+
+        - name: SIMILARITY_THRESHOLD
+          value: "0.85"  # 85% similarity for cache hit
+
+        - name: QUALITY_THRESHOLD
+          value: "0.7"  # 70% quality minimum
+
+        - name: EMBEDDING_MODEL
+          value: "all-MiniLM-L6-v2"
+
+        - name: PII_DETECTION_THRESHOLD
+          value: "0.5"
+
+        - name: ENFORCE_PII_PROTECTION
+          value: "true"  # Fail-closed if PII detection fails
+
+        # Firestore Settings
+        - name: GOOGLE_CLOUD_PROJECT
+          value: "PROJECT_ID"
+
+        - name: FIRESTORE_DATABASE
+          value: "(default)"
+
+        # Optional: Redis Cache (if using)
+        #- name: REDIS_URL
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: redis-url
+        #      key: latest
+
+        # Monitoring & Logging
+        - name: LOG_LEVEL
+          value: "INFO"  # DEBUG, INFO, WARNING, ERROR
+
+        - name: ENABLE_STRUCTURED_LOGGING
+          value: "true"
+
+        # Rate Limiting
+        - name: RATE_LIMIT_ENABLED
+          value: "true"
+
+        - name: RATE_LIMIT_PER_MINUTE
+          value: "10"  # 10 requests/min per IP for streaming
+
+        # GDPR & Privacy
+        - name: CACHE_CONSENT_REQUIRED
+          value: "false"  # Set to true once frontend consent implemented
+
+        # Admin API Key (from Secret Manager)
+        - name: ADMIN_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: admin-api-key
+              key: latest
+
+        # === Resource Limits ===
+        resources:
+          limits:
+            cpu: "2000m"  # 2 vCPUs
+            memory: "4Gi"  # 4GB RAM (for embedding model)
+          requests:
+            cpu: "1000m"  # 1 vCPU minimum
+            memory: "2Gi"  # 2GB RAM minimum
+
+        # === Health Checks ===
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 30  # 300s total startup time allowed
+
+  # === Traffic Routing ===
+  traffic:
+  - percent: 100
+    latestRevision: true
+    #tag: stable  # Optional: tag for A/B testing
+
+---
+
+# Service Account Permissions
+# Create with: gcloud iam service-accounts create marketing-agent-sa
+
+# Required IAM Roles:
+# - roles/datastore.user  # Firestore access
+# - roles/secretmanager.secretAccessor  # Secret Manager access
+# - roles/logging.logWriter  # Cloud Logging
+# - roles/cloudtrace.agent  # Cloud Trace
+# - roles/monitoring.metricWriter  # Cloud Monitoring
+
+---
+
+# Secret Manager Secrets (create these first)
+secrets:
+  watsonx-api-key:
+    command: |
+      echo -n "YOUR_WATSONX_API_KEY" | \
+      gcloud secrets create watsonx-api-key \
+        --data-file=- \
+        --replication-policy=automatic
+
+  watsonx-project-id:
+    command: |
+      echo -n "YOUR_WATSONX_PROJECT_ID" | \
+      gcloud secrets create watsonx-project-id \
+        --data-file=- \
+        --replication-policy=automatic
+
+  admin-api-key:
+    command: |
+      openssl rand -base64 32 | \
+      gcloud secrets create admin-api-key \
+        --data-file=- \
+        --replication-policy=automatic
+
+---
+
+# Deployment Command
+deployment:
+  # Build and deploy
+  command: |
+    gcloud run deploy marketing-api \
+      --source functions \
+      --region australia-southeast1 \
+      --platform managed \
+      --allow-unauthenticated \
+      --service-account marketing-agent-sa@PROJECT_ID.iam.gserviceaccount.com \
+      --min-instances 1 \
+      --max-instances 10 \
+      --cpu 2 \
+      --memory 4Gi \
+      --timeout 300 \
+      --cpu-boost \
+      --set-env-vars="CACHE_ENABLED=true,CACHE_TTL=2592000,SIMILARITY_THRESHOLD=0.85" \
+      --update-secrets="WATSONX_API_KEY=watsonx-api-key:latest,WATSONX_PROJECT_ID=watsonx-project-id:latest,ADMIN_API_KEY=admin-api-key:latest"
+
+---
+
+# Firestore Indexes
+# Deploy with: gcloud firestore indexes create --composite-index=...
+
+indexes:
+  - collection: cache_responses
+    fields:
+      - fieldPath: page_context
+        mode: ASCENDING
+      - fieldPath: cached_at
+        mode: DESCENDING
+    queryScope: COLLECTION
+
+  - collection: cache_responses
+    fields:
+      - fieldPath: query_embedding
+        mode: ASCENDING  # For similarity search
+      - fieldPath: quality_score
+        mode: DESCENDING
+    queryScope: COLLECTION
+
+---
+
+# Monitoring & Alerts Setup
+
+monitoring:
+  uptime_check:
+    name: marketing-api-uptime
+    endpoint: https://marketing-api-HASH-uc.a.run.app/health
+    interval: 60s  # Check every minute
+    locations:
+      - australia-southeast1
+      - asia-southeast1
+
+  alert_policies:
+    - name: high-error-rate
+      condition: error_rate > 1%
+      duration: 5m
+      notification: pagerduty + email
+
+    - name: high-latency
+      condition: p95_latency > 5000ms
+      duration: 5m
+      notification: slack
+
+    - name: cache-failure
+      condition: cache_hit_rate < 30%
+      duration: 15m
+      notification: email
+
+---
+
+# Cost Optimization
+cost_controls:
+  # Max monthly budget alert
+  budget:
+    amount: "$500"
+    alert_thresholds: [50, 75, 90, 100]
+    notifications:
+      - email: devops@example.com
+      - pubsub: budget-alerts
+
+  # Auto-scaling limits
+  scaling:
+    min_instances: 1  # Keep warm, but not expensive
+    max_instances: 10  # Cap at 10 to control costs
+
+  # Resource limits
+  resources:
+    cpu: 2  # Don't over-provision
+    memory: 4Gi  # Enough for embedding model
+
+---
+
+# Backup & Disaster Recovery
+backup:
+  firestore:
+    frequency: daily
+    retention: 30_days
+    location: australia-southeast1
+
+  secrets:
+    backup_command: |
+      gcloud secrets versions access latest --secret=watsonx-api-key > backup/watsonx-api-key.txt
+      gcloud secrets versions access latest --secret=admin-api-key > backup/admin-api-key.txt
+
+---
+
+# Rollback Configuration
+rollback:
+  previous_revision: marketing-api-blue
+  rollback_command: |
+    gcloud run services update-traffic marketing-api \
+      --to-revisions=marketing-api-blue=100 \
+      --region=australia-southeast1

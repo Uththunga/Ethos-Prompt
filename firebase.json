@@ -1,0 +1,247 @@
+{
+  "hosting": [
+    {
+      "target": "staging",
+      "public": "frontend/dist",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+      {
+        "source": "/api/ai/marketing-chat",
+        "run": {
+          "serviceId": "marketing-api",
+          "region": "australia-southeast1"
+        }
+      },
+
+      {
+        "source": "/api/ai/marketing/**",
+        "run": {
+          "serviceId": "marketing-api",
+          "region": "australia-southeast1"
+        }
+      },
+
+      {
+        "source": "/api/**",
+        "function": {
+          "functionId": "httpApi",
+          "region": "australia-southeast1"
+        }
+      },
+      {
+        "source": "!/@(assets|vite.svg|sw.js|offline.html)/**",
+        "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+      { "source": "/prompts", "destination": "/dashboard/prompts", "type": 302 },
+      { "source": "/documents", "destination": "/dashboard/documents", "type": 302 },
+      { "source": "/executions", "destination": "/dashboard/executions", "type": 302 },
+      { "source": "/marketplace", "destination": "/dashboard/marketplace", "type": 302 },
+      { "source": "/analytics", "destination": "/dashboard/analytics", "type": 302 },
+      { "source": "/workspaces", "destination": "/dashboard/workspaces", "type": 302 },
+      { "source": "/help", "destination": "/dashboard/help", "type": 302 },
+      { "source": "/settings", "destination": "/dashboard/settings", "type": 302 },
+      {
+        "source": "/services/intelligent-applications",
+        "destination": "/services/digital-solutions",
+        "type": 301
+      },
+      {
+        "source": "/services/digital-transformation",
+        "destination": "/services/digital-solutions",
+        "type": 301
+      }
+      ],
+      "headers": [
+      {
+        "source": "**/*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          },
+          {
+            "key": "Pragma",
+            "value": "no-cache"
+          },
+          {
+            "key": "Expires",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "DENY"
+          },
+          {
+            "key": "X-XSS-Protection",
+            "value": "1; mode=block"
+          },
+          {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=31536000; includeSubDomains; preload"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          }
+        ]
+      },
+      {
+        "source": "**/*.js",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/javascript; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "**/*.mjs",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/javascript; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/assets/**/*.js",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/javascript; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/assets/**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      },
+      {
+        "source": "**/*.css",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/css; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(woff|woff2|ttf|eot)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(png|jpg|jpeg|gif|svg|webp|ico)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: https: blob: https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://apis.google.com https://*.googleapis.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com; font-src 'self' https: https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https: wss: https://www.google.com https://www.googletagmanager.com https://apis.google.com https://*.googleapis.com https://*.firebase.com https://*.firebaseapp.com https://*.cloudfunctions.net https://firebasestorage.googleapis.com https://www.google-analytics.com https://analytics.google.com https://openrouter.ai https://accounts.google.com wss://*.firebaseapp.com; frame-src 'self' https: https://accounts.google.com https://www.google.com; object-src 'none'; base-uri 'self'"
+          },
+          {
+            "key": "Cross-Origin-Opener-Policy",
+            "value": "same-origin-allow-popups"
+          },
+          {
+            "key": "Cross-Origin-Embedder-Policy",
+            "value": "unsafe-none"
+          }
+        ]
+      }
+      ],
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "appAssociation": "AUTO"
+    }
+  ],
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "runtime": "nodejs20",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.py",
+        "__pycache__",
+        "src/"
+      ]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json",
+    "location": "australia-southeast1"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "storage": {
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    },
+    "singleProjectMode": true
+  }
+}

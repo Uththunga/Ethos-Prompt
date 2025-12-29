@@ -1,0 +1,78 @@
+{
+  "submission_process": {
+    "template_validation": {
+      "required_fields": [
+        "title",
+        "description",
+        "content",
+        "category"
+      ],
+      "content_validation": true,
+      "variable_validation": true,
+      "syntax_checking": true
+    },
+    "metadata_requirements": {
+      "tags": {
+        "min": 3,
+        "max": 10
+      },
+      "description": {
+        "min_length": 100,
+        "max_length": 1000
+      },
+      "variables": {
+        "documentation_required": true
+      },
+      "examples": {
+        "required": true,
+        "min_examples": 2
+      }
+    },
+    "content_guidelines": {
+      "quality_standards": true,
+      "originality_check": true,
+      "plagiarism_detection": true,
+      "content_moderation": true
+    }
+  },
+  "review_stages": {
+    "automated_review": {
+      "duration": "5 minutes",
+      "checks": [
+        "syntax",
+        "completeness",
+        "guidelines"
+      ],
+      "auto_approval_threshold": 95
+    },
+    "community_review": {
+      "duration": "24-48 hours",
+      "reviewers_required": 3,
+      "approval_threshold": 80,
+      "feedback_required": true
+    },
+    "expert_review": {
+      "duration": "2-5 days",
+      "for_premium_templates": true,
+      "detailed_feedback": true,
+      "quality_certification": true
+    }
+  },
+  "publication_options": {
+    "immediate_publication": {
+      "for_verified_authors": true,
+      "quality_score_threshold": 90,
+      "auto_moderation": true
+    },
+    "scheduled_publication": {
+      "date_scheduling": true,
+      "promotional_campaigns": true,
+      "feature_coordination": true
+    },
+    "draft_management": {
+      "unlimited_drafts": true,
+      "version_control": true,
+      "collaboration": true
+    }
+  }
+}

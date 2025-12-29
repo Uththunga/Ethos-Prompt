@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Tracking Dashboard - RAG Prompt Library</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .dashboard { max-width: 1400px; margin: 0 auto; }
+        .header { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .metric-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .metric-value { font-size: 2em; font-weight: bold; margin-bottom: 5px; }
+        .metric-label { color: #666; font-size: 0.9em; }
+        .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .chart-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .error-list { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .error-item { padding: 10px; border-bottom: 1px solid #eee; }
+        .error-type { font-weight: bold; color: #d32f2f; }
+        .error-message { color: #666; margin: 5px 0; }
+        .error-time { font-size: 0.8em; color: #999; }
+        .status-good { color: #4CAF50; }
+        .status-warning { color: #FF9800; }
+        .status-error { color: #F44336; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>🚨 Error Tracking Dashboard</h1>
+            <p>Real-time error monitoring and analysis</p>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value status-error" id="totalErrors">0</div>
+                <div class="metric-label">Total Errors (24h)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value status-warning" id="errorRate">0</div>
+                <div class="metric-label">Errors per Hour</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value status-error" id="affectedUsers">0</div>
+                <div class="metric-label">Affected Users</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value status-good" id="uptime">99.9%</div>
+                <div class="metric-label">System Uptime</div>
+            </div>
+        </div>
+        
+        <div class="charts">
+            <div class="chart-container">
+                <h3>Error Trends (24h)</h3>
+                <canvas id="errorTrendChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Error Types Distribution</h3>
+                <canvas id="errorTypeChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="error-list">
+            <h3>Recent Errors</h3>
+            <div id="recentErrors">Loading...</div>
+        </div>
+    </div>
+
+    <script>
+        class ErrorDashboard {
+            constructor() {
+                this.init();
+                this.loadData();
+                setInterval(() => this.loadData(), 30000); // Refresh every 30 seconds
+            }
+
+            init() {
+                this.createErrorTrendChart();
+                this.createErrorTypeChart();
+            }
+
+            createErrorTrendChart() {
+                const ctx = document.getElementById('errorTrendChart').getContext('2d');
+                this.errorTrendChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'Errors per Hour',
+                            data: [],
+                            borderColor: '#F44336',
+                            backgroundColor: 'rgba(244, 67, 54, 0.1)',
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            createErrorTypeChart() {
+                const ctx = document.getElementById('errorTypeChart').getContext('2d');
+                this.errorTypeChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            data: [],
+                            backgroundColor: [
+                                '#F44336',
+                                '#FF9800',
+                                '#2196F3',
+                                '#4CAF50',
+                                '#9C27B0'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                });
+            }
+
+            async loadData() {
+                try {
+                    // Simulate loading error data
+                    const errorData = this.generateMockData();
+                    
+                    this.updateMetrics(errorData);
+                    this.updateCharts(errorData);
+                    this.updateRecentErrors(errorData);
+                } catch (error) {
+                    console.error('Failed to load error data:', error);
+                }
+            }
+
+            generateMockData() {
+                // Generate mock error data for demonstration
+                const hours = Array.from({length: 24}, (_, i) => {
+                    const hour = new Date();
+                    hour.setHours(hour.getHours() - (23 - i));
+                    return hour.getHours() + ':00';
+                });
+
+                const errorCounts = hours.map(() => Math.floor(Math.random() * 10));
+                
+                const errorTypes = {
+                    'api_error': Math.floor(Math.random() * 20),
+                    'ui_error': Math.floor(Math.random() * 15),
+                    'auth_error': Math.floor(Math.random() * 5),
+                    'data_error': Math.floor(Math.random() * 8),
+                    'network_error': Math.floor(Math.random() * 12)
+                };
+
+                const recentErrors = [
+                    {
+                        type: 'api_error',
+                        message: 'Failed to fetch user data',
+                        timestamp: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
+                        component: 'UserProfile'
+                    },
+                    {
+                        type: 'ui_error',
+                        message: 'Cannot read property of undefined',
+                        timestamp: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+                        component: 'PromptEditor'
+                    },
+                    {
+                        type: 'network_error',
+                        message: 'Network request failed',
+                        timestamp: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+                        component: 'DocumentUpload'
+                    }
+                ];
+
+                return {
+                    hourlyTrends: { hours, errorCounts },
+                    errorTypes,
+                    recentErrors,
+                    totalErrors: Object.values(errorTypes).reduce((a, b) => a + b, 0),
+                    affectedUsers: Math.floor(Math.random() * 50)
+                };
+            }
+
+            updateMetrics(data) {
+                document.getElementById('totalErrors').textContent = data.totalErrors;
+                document.getElementById('errorRate').textContent = (data.totalErrors / 24).toFixed(1);
+                document.getElementById('affectedUsers').textContent = data.affectedUsers;
+                
+                // Update uptime based on error rate
+                const uptime = Math.max(99.0, 100 - (data.totalErrors / 100));
+                document.getElementById('uptime').textContent = uptime.toFixed(1) + '%';
+            }
+
+            updateCharts(data) {
+                // Update error trend chart
+                this.errorTrendChart.data.labels = data.hourlyTrends.hours;
+                this.errorTrendChart.data.datasets[0].data = data.hourlyTrends.errorCounts;
+                this.errorTrendChart.update();
+
+                // Update error type chart
+                this.errorTypeChart.data.labels = Object.keys(data.errorTypes);
+                this.errorTypeChart.data.datasets[0].data = Object.values(data.errorTypes);
+                this.errorTypeChart.update();
+            }
+
+            updateRecentErrors(data) {
+                const container = document.getElementById('recentErrors');
+                container.innerHTML = data.recentErrors.map(error => `
+                    <div class="error-item">
+                        <div class="error-type">${error.type.toUpperCase()}</div>
+                        <div class="error-message">${error.message}</div>
+                        <div class="error-time">
+                            ${error.component} • ${new Date(error.timestamp).toLocaleTimeString()}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Initialize dashboard
+        new ErrorDashboard();
+    </script>
+</body>
+</html>
