@@ -1,5 +1,5 @@
 """
-Setup configuration for RAG Prompt Library Python SDK
+Setup configuration for EthosPrompt Python SDK
 """
 
 from setuptools import setup, find_packages
@@ -11,7 +11,7 @@ def read_readme():
     if os.path.exists(readme_path):
         with open(readme_path, 'r', encoding='utf-8') as f:
             return f.read()
-    return "RAG Prompt Library Python SDK"
+    return "EthosPrompt Python SDK"
 
 # Read requirements
 def read_requirements():
@@ -22,18 +22,18 @@ def read_requirements():
     return ['httpx>=0.24.0', 'typing-extensions>=4.0.0']
 
 setup(
-    name="rag-prompt-library",
+    name="ethosprompt",
     version="1.0.0",
-    description="Official Python SDK for the RAG Prompt Library API",
+    description="Official Python SDK for the EthosPrompt API",
     long_description=read_readme(),
     long_description_content_type="text/markdown",
-    author="RAG Prompt Library Team",
-    author_email="support@rag-prompt-library.com",
-    url="https://github.com/rag-prompt-library/sdk-python",
+    author="EthosPrompt Team",
+    author_email="support@ethosprompt.com",
+    url="https://github.com/ethosprompt/sdk-python",
     project_urls={
-        "Documentation": "https://docs.rag-prompt-library.com/sdk/python",
-        "Source": "https://github.com/rag-prompt-library/sdk-python",
-        "Tracker": "https://github.com/rag-prompt-library/sdk-python/issues",
+        "Documentation": "https://docs.ethosprompt.com/sdk/python",
+        "Source": "https://github.com/ethosprompt/sdk-python",
+        "Tracker": "https://github.com/ethosprompt/sdk-python/issues",
     },
     packages=find_packages(),
     python_requires=">=3.8",

@@ -1,10 +1,10 @@
 
-# RAG Prompt Library - API Documentation
+# EthosPrompt - API Documentation
 
 ## Overview
-Complete API documentation for the RAG Prompt Library production deployment using Firebase Callable Functions.
+Complete API documentation for the EthosPrompt production deployment using Firebase Callable Functions.
 
-**Frontend URL:** `https://react-app-000730.web.app`
+**Frontend URL:** `https://ethosprompt.web.app`
 **Functions Region:** `australia-southeast1`
 **Authentication:** Firebase Auth tokens (automatic with Firebase SDK)
 **API Type:** Firebase Callable Functions (not REST endpoints)
@@ -225,6 +225,6 @@ export class ApiService {
 - **Region**: All functions deployed to `australia-southeast1`
 
 ## Support
-- **Firebase Console**: [https://console.firebase.google.com/project/react-app-000730](https://console.firebase.google.com/project/react-app-000730)
-- **Live Application**: [https://react-app-000730.web.app](https://react-app-000730.web.app)
+- **Firebase Console**: [https://console.firebase.google.com/project/ethosprompt](https://console.firebase.google.com/project/ethosprompt)
+- **Live Application**: [https://ethosprompt.web.app](https://ethosprompt.web.app)
 - **Documentation**: See `/docs` folder for additional guides

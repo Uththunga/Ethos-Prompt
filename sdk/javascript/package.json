@@ -1,7 +1,7 @@
 {
-  "name": "@rag-prompt-library/sdk",
+  "name": "@ethosprompt/sdk",
   "version": "1.0.0",
-  "description": "Official JavaScript/TypeScript SDK for the RAG Prompt Library API",
+  "description": "Official JavaScript/TypeScript SDK for the EthosPrompt API",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -33,16 +33,16 @@
     "typescript",
     "javascript"
   ],
-  "author": "RAG Prompt Library Team",
+  "author": "EthosPrompt Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rag-prompt-library/sdk-javascript.git"
+    "url": "https://github.com/ethosprompt/sdk-javascript.git"
   },
   "bugs": {
-    "url": "https://github.com/rag-prompt-library/sdk-javascript/issues"
+    "url": "https://github.com/ethosprompt/sdk-javascript/issues"
   },
-  "homepage": "https://docs.rag-prompt-library.com/sdk/javascript",
+  "homepage": "https://docs.ethosprompt.com/sdk/javascript",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",

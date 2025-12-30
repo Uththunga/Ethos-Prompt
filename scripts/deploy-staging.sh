@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deploy RAG Prompt Library to Staging Environment
+# Deploy EthosPrompt to Staging Environment
 # Comprehensive deployment script for all components
 #
 # Usage: bash scripts/deploy-staging.sh [component]
@@ -17,7 +17,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 # Configuration
-PROJECT_ID="rag-prompt-library-staging"
+PROJECT_ID="ethosprompt-staging"
 REGION="australia-southeast1"
 COMPONENT="${1:-all}"
 
@@ -48,9 +48,9 @@ log_step() {
 
 # Print header
 echo ""
-echo "============================================"
-echo "🚀 RAG Prompt Library - Staging Deployment"
-echo "============================================"
+echo "════════════════════════════════════════════"
+echo "🚀 EthosPrompt - Staging Deployment"
+echo "════════════════════════════════════════════"
 echo ""
 log_info "Project: $PROJECT_ID"
 log_info "Region: $REGION"
@@ -81,15 +81,15 @@ log_success "Using project: $PROJECT_ID"
 # Function: Deploy Firestore Rules and Indexes
 deploy_firestore() {
     log_step "Step 1: Deploy Firestore Rules and Indexes"
-    
+
     log_info "Deploying Firestore security rules..."
     firebase deploy --only firestore:rules --project $PROJECT_ID
     log_success "Firestore rules deployed"
-    
+
     log_info "Deploying Firestore indexes..."
     firebase deploy --only firestore:indexes --project $PROJECT_ID
     log_success "Firestore indexes deployed"
-    
+
     log_warning "Note: Index builds may take several minutes to complete"
     log_info "Monitor index status at:"
     echo "https://console.firebase.google.com/project/$PROJECT_ID/firestore/indexes"
@@ -98,28 +98,28 @@ deploy_firestore() {
 # Function: Deploy Cloud Functions
 deploy_functions() {
     log_step "Step 2: Deploy Cloud Functions"
-    
+
     log_info "Installing function dependencies..."
     cd functions
     npm ci
     log_success "Dependencies installed"
-    
+
     log_info "Running linter..."
     npm run lint || log_warning "Linting warnings detected (non-blocking)"
-    
+
     log_info "Deploying Cloud Functions..."
     cd ..
     firebase deploy --only functions --project $PROJECT_ID
     log_success "Cloud Functions deployed"
-    
+
     log_info "Verifying health endpoint..."
     sleep 10  # Wait for functions to be ready
-    
+
     HEALTH_URL="https://$REGION-$PROJECT_ID.cloudfunctions.net/api"
     HEALTH_RESPONSE=$(curl -s -X POST "$HEALTH_URL" \
         -H "Content-Type: application/json" \
         -d '{"data":{"endpoint":"health"}}' || echo "ERROR")
-    
+
     if echo "$HEALTH_RESPONSE" | grep -q "healthy"; then
         log_success "Health check passed"
     else
@@ -130,28 +130,28 @@ deploy_functions() {
 # Function: Deploy Frontend
 deploy_frontend() {
     log_step "Step 3: Deploy Frontend to Firebase Hosting"
-    
+
     log_info "Installing frontend dependencies..."
     cd frontend
     npm ci
     log_success "Dependencies installed"
-    
+
     log_info "Building frontend for staging..."
     npm run build:staging
     log_success "Frontend built successfully"
-    
+
     log_info "Checking performance budgets..."
     npm run check:budget || log_warning "Performance budget warnings detected (non-blocking)"
-    
+
     log_info "Deploying to Firebase Hosting..."
     cd ..
     firebase deploy --only hosting --project $PROJECT_ID
     log_success "Frontend deployed"
-    
+
     log_info "Frontend URL: https://$PROJECT_ID.web.app"
     log_info "Verifying frontend accessibility..."
     sleep 5
-    
+
     FRONTEND_HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$PROJECT_ID.web.app" || echo "000")
     if [ "$FRONTEND_HTTP_CODE" = "200" ]; then
         log_success "Frontend accessible (HTTP $FRONTEND_HTTP_CODE)"
@@ -163,7 +163,7 @@ deploy_frontend() {
 # Function: Run Smoke Tests
 run_smoke_tests() {
     log_step "Step 4: Run Smoke Tests"
-    
+
     if [ -f "scripts/staging-smoke-tests.sh" ]; then
         log_info "Running automated smoke tests..."
         bash scripts/staging-smoke-tests.sh
@@ -217,4 +217,3 @@ echo "  3. Check Firebase Console for any errors"
 echo "  4. Monitor function logs: firebase functions:log --project $PROJECT_ID"
 echo ""
 log_success "Staging deployment complete! 🎉"
-

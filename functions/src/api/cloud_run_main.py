@@ -269,10 +269,8 @@ async def add_security_headers(request: Request, call_next):
 _env = os.getenv("ENVIRONMENT", "production").lower()
 if _env == "production":
     _allowed_origins = [
-        "https://rag-prompt-library.web.app",
-        "https://rag-prompt-library.firebaseapp.com",
-        "https://react-app-000730.web.app",
-        "https://react-app-000730.firebaseapp.com",
+        "https://ethosprompt.web.app",
+        "https://ethosprompt.firebaseapp.com",
     ]
 else:
     _allowed_origins = [
@@ -280,11 +278,9 @@ else:
         "http://localhost:5173",
         "http://localhost:5174",
         "http://localhost:5175",
-        "https://rag-prompt-library-staging.web.app",
-        "https://rag-prompt-library.web.app",
-        "https://rag-prompt-library.firebaseapp.com",
-        "https://react-app-000730.web.app",
-        "https://react-app-000730.firebaseapp.com",
+        "https://ethosprompt-staging.web.app",
+        "https://ethosprompt.web.app",
+        "https://ethosprompt.firebaseapp.com",
     ]
 
 app.add_middleware(

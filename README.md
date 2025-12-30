@@ -4,7 +4,7 @@ A modern, Firebase-powered platform for managing AI prompts with integrated Retr
 
 ## 🎯 **Current Status: Phase 1 Complete - Production Ready**
 
-- ✅ **Frontend Deployed**: Live at [react-app-000730.web.app](https://react-app-000730.web.app)
+- ✅ **Frontend Deployed**: Live at [ethosprompt.web.app](https://ethosprompt.web.app)
 - ✅ **Firebase Functions**: Full API with Python 3.13 backend operational
 - ✅ **Authentication**: Firebase Auth with email/password working
 - ✅ **AI Integration**: OpenRouter.ai with 4 stable free models (100% success rate)
@@ -12,10 +12,10 @@ A modern, Firebase-powered platform for managing AI prompts with integrated Retr
 - ✅ **Streaming**: Real-time streaming with typewriter effect and cancellation
 - ✅ **Cost Tracking**: 100% accuracy validated, $0.00 with free models
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-blue.svg)](https://react-app-000730.web.app)
-[![Firebase](https://img.shields.io/badge/Firebase-Deployed-orange.svg)](https://console.firebase.google.com/project/react-app-000730)
-[![API Status](https://img.shields.io/badge/API-Basic%20Functions-yellow.svg)](https://australia-southeast1-react-app-000730.cloudfunctions.net)
-[![Development](https://img.shields.io/badge/Status-Active%20Development-blue.svg)](https://github.com/your-repo/rag-prompt-library)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-blue.svg)](https://ethosprompt.web.app)
+[![Firebase](https://img.shields.io/badge/Firebase-Deployed-orange.svg)](https://console.firebase.google.com/project/ethosprompt)
+[![API Status](https://img.shields.io/badge/API-Basic%20Functions-yellow.svg)](https://australia-southeast1-ethosprompt.cloudfunctions.net)
+[![Development](https://img.shields.io/badge/Status-Active%20Development-blue.svg)](https://github.com/your-repo/ethosprompt)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## 🚀 Features
@@ -62,7 +62,7 @@ A modern, Firebase-powered platform for managing AI prompts with integrated Retr
 
 ### Live Demo
 
-**Production Application**: [https://react-app-000730.web.app](https://react-app-000730.web.app)
+**Production Application**: [https://ethosprompt.web.app](https://ethosprompt.web.app)
 
 ### API Access
 
@@ -74,8 +74,8 @@ A modern, Firebase-powered platform for managing AI prompts with integrated Retr
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/react-app-000730.git
-cd react-app-000730
+git clone https://github.com/your-org/ethosprompt.git
+cd ethosprompt
 
 # Install dependencies
 cd frontend && npm install
@@ -155,7 +155,7 @@ For detailed setup instructions, see [Deployment Guide](docs/DEPLOYMENT_GUIDE.md
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd React-App-000730
+cd EthosPrompt
 
 # Run automated setup script
 # Windows
@@ -171,7 +171,7 @@ cd React-App-000730
 
    ```bash
    git clone <repository-url>
-   cd React-App-000730
+   cd EthosPrompt
    ```
 
 2. **Install dependencies**
@@ -259,7 +259,7 @@ cd React-App-000730
 ## Environments
 
 - **Staging**: See [docs/STAGING_DEPLOYMENT_GUIDE.md](docs/STAGING_DEPLOYMENT_GUIDE.md) for setup, deploy, and smoke tests
-- **Production**: Deployed at https://react-app-000730.web.app
+- **Production**: Deployed at https://ethosprompt.web.app
 
 ### Critical Gaps Remediation
 

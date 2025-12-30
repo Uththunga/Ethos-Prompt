@@ -1,7 +1,7 @@
 """
-RAG Prompt Library Python SDK
+EthosPrompt Python SDK
 
-A comprehensive Python SDK for interacting with the RAG Prompt Library API.
+A comprehensive Python SDK for interacting with the EthosPrompt API.
 Supports both synchronous and asynchronous operations with type hints.
 """
 
@@ -14,8 +14,8 @@ from enum import Enum
 import httpx
 
 __version__ = "1.0.0"
-__author__ = "RAG Prompt Library Team"
-__email__ = "support@rag-prompt-library.com"
+__author__ = "EthosPrompt Team"
+__email__ = "support@ethosprompt.com"
 
 class VariableType(Enum):
     """Variable types for prompt templates"""
@@ -100,43 +100,43 @@ class APIResponse:
     timestamp: Optional[str] = None
     meta: Optional[Dict[str, Any]] = None
 
-class RAGPromptLibraryError(Exception):
-    """Base exception for RAG Prompt Library SDK"""
-    
+class EthosPromptError(Exception):
+    """Base exception for EthosPrompt SDK"""
+
     def __init__(self, message: str, code: Optional[int] = None, details: Optional[Any] = None):
         super().__init__(message)
         self.message = message
         self.code = code
         self.details = details
 
-class AuthenticationError(RAGPromptLibraryError):
+class AuthenticationError(EthosPromptError):
     """Authentication related errors"""
     pass
 
-class RateLimitError(RAGPromptLibraryError):
+class RateLimitError(EthosPromptError):
     """Rate limit exceeded errors"""
     pass
 
-class NotFoundError(RAGPromptLibraryError):
+class NotFoundError(EthosPromptError):
     """Resource not found errors"""
     pass
 
-class ValidationError(RAGPromptLibraryError):
+class ValidationError(EthosPromptError):
     """Request validation errors"""
     pass
 
-class RAGPromptLibraryClient:
+class EthosPromptClient:
     """
-    Synchronous client for RAG Prompt Library API
-    
+    Synchronous client for EthosPrompt API
+
     Example:
-        client = RAGPromptLibraryClient(api_key="your_api_key")
+        client = EthosPromptClient(api_key="your_api_key")
         prompts = client.get_prompts()
     """
-    
+
     def __init__(
         self,
-        base_url: str = "https://us-central1-rag-prompt-library.cloudfunctions.net/api",
+        base_url: str = "https://australia-southeast1-ethosprompt.cloudfunctions.net/api",
         api_key: Optional[str] = None,
         access_token: Optional[str] = None,
         timeout: float = 30.0,
@@ -147,50 +147,50 @@ class RAGPromptLibraryClient:
         self.access_token = access_token
         self.timeout = timeout
         self.retries = retries
-        
+
         # Create HTTP client
         self._client = httpx.Client(
             timeout=timeout,
             headers=self._get_headers()
         )
-    
+
     def __enter__(self):
         return self
-    
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
-    
+
     def close(self):
         """Close the HTTP client"""
         self._client.close()
-    
+
     def _get_headers(self) -> Dict[str, str]:
         """Get request headers"""
         headers = {
             "Content-Type": "application/json",
-            "User-Agent": f"RAG-Prompt-Library-Python-SDK/{__version__}"
+            "User-Agent": f"EthosPrompt-Python-SDK/{__version__}"
         }
-        
+
         if self.access_token:
             headers["Authorization"] = f"Bearer {self.access_token}"
         elif self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
-        
+
         return headers
-    
+
     def _handle_response(self, response: httpx.Response) -> APIResponse:
         """Handle HTTP response and convert to APIResponse"""
         try:
             data = response.json()
         except json.JSONDecodeError:
-            raise RAGPromptLibraryError(f"Invalid JSON response: {response.text}")
-        
+            raise EthosPromptError(f"Invalid JSON response: {response.text}")
+
         if not response.is_success:
             error_data = data.get('error', {})
             message = error_data.get('message', f"HTTP {response.status_code}")
             code = error_data.get('code', response.status_code)
             details = error_data.get('details')
-            
+
             # Raise specific exception types
             if response.status_code == 401:
                 raise AuthenticationError(message, code, details)
@@ -203,8 +203,8 @@ class RAGPromptLibraryClient:
             elif response.status_code >= 400 and response.status_code < 500:
                 raise ValidationError(message, code, details)
             else:
-                raise RAGPromptLibraryError(message, code, details)
-        
+                raise EthosPromptError(message, code, details)
+
         return APIResponse(
             success=data.get('success', True),
             message=data.get('message'),
@@ -212,7 +212,7 @@ class RAGPromptLibraryClient:
             timestamp=data.get('timestamp'),
             meta=data.get('meta')
         )
-    
+
     def _request(
         self,
         method: str,
@@ -222,7 +222,7 @@ class RAGPromptLibraryClient:
     ) -> APIResponse:
         """Make HTTP request with retry logic"""
         url = f"{self.base_url}{endpoint}"
-        
+
         last_exception = None
         for attempt in range(self.retries + 1):
             try:
@@ -233,7 +233,7 @@ class RAGPromptLibraryClient:
                     params=params
                 )
                 return self._handle_response(response)
-                
+
             except (httpx.RequestError, httpx.TimeoutException) as e:
                 last_exception = e
                 if attempt < self.retries:
@@ -241,23 +241,23 @@ class RAGPromptLibraryClient:
                     time.sleep(2 ** attempt)
                     continue
                 else:
-                    raise RAGPromptLibraryError(f"Request failed after {self.retries + 1} attempts: {str(e)}")
-            
+                    raise EthosPromptError(f"Request failed after {self.retries + 1} attempts: {str(e)}")
+
             except (AuthenticationError, ValidationError, NotFoundError) as e:
                 # Don't retry client errors
                 raise e
-        
+
         raise last_exception
-    
+
     # HEALTH CHECK
-    
+
     def health(self) -> Dict[str, Any]:
         """Check API health status"""
         response = self._request("GET", "/v1/health")
         return response.data
-    
+
     # PROMPTS
-    
+
     def get_prompts(
         self,
         page: int = 1,
@@ -269,7 +269,7 @@ class RAGPromptLibraryClient:
     ) -> List[Prompt]:
         """Get a list of prompts with optional filtering"""
         params = {"page": page, "limit": limit}
-        
+
         if search:
             params["search"] = search
         if category:
@@ -278,9 +278,9 @@ class RAGPromptLibraryClient:
             params["workspace_id"] = workspace_id
         if tags:
             params["tags"] = tags
-        
+
         response = self._request("GET", "/v1/prompts", params=params)
-        
+
         # Convert to Prompt objects
         prompts = []
         for prompt_data in response.data or []:
@@ -298,7 +298,7 @@ class RAGPromptLibraryClient:
                     )
                     for var in prompt_data['variables']
                 ]
-            
+
             prompt = Prompt(
                 id=prompt_data['id'],
                 title=prompt_data['title'],
@@ -319,14 +319,14 @@ class RAGPromptLibraryClient:
                 comments_count=prompt_data.get('comments_count', 0)
             )
             prompts.append(prompt)
-        
+
         return prompts
-    
+
     def get_prompt(self, prompt_id: str) -> Prompt:
         """Get a specific prompt by ID"""
         response = self._request("GET", f"/v1/prompts/{prompt_id}")
         prompt_data = response.data
-        
+
         # Convert variables
         variables = None
         if prompt_data.get('variables'):
@@ -341,7 +341,7 @@ class RAGPromptLibraryClient:
                 )
                 for var in prompt_data['variables']
             ]
-        
+
         return Prompt(
             id=prompt_data['id'],
             title=prompt_data['title'],
@@ -361,7 +361,7 @@ class RAGPromptLibraryClient:
             like_count=prompt_data.get('like_count', 0),
             comments_count=prompt_data.get('comments_count', 0)
         )
-    
+
     def create_prompt(
         self,
         title: str,
@@ -379,7 +379,7 @@ class RAGPromptLibraryClient:
             "content": content,
             "is_public": is_public
         }
-        
+
         if description:
             data["description"] = description
         if category:
@@ -400,10 +400,10 @@ class RAGPromptLibraryClient:
                 }
                 for var in variables
             ]
-        
+
         response = self._request("POST", "/v1/prompts", data=data)
         return self.get_prompt(response.data['id'])
-    
+
     def update_prompt(
         self,
         prompt_id: str,
@@ -417,7 +417,7 @@ class RAGPromptLibraryClient:
     ) -> Prompt:
         """Update an existing prompt"""
         data = {}
-        
+
         if title is not None:
             data["title"] = title
         if content is not None:
@@ -442,17 +442,17 @@ class RAGPromptLibraryClient:
                 }
                 for var in variables
             ]
-        
+
         response = self._request("PUT", f"/v1/prompts/{prompt_id}", data=data)
         return self.get_prompt(prompt_id)
-    
+
     def delete_prompt(self, prompt_id: str) -> bool:
         """Delete a prompt"""
         response = self._request("DELETE", f"/v1/prompts/{prompt_id}")
         return response.success
-    
+
     # DOCUMENTS
-    
+
     def get_documents(
         self,
         page: int = 1,
@@ -461,12 +461,12 @@ class RAGPromptLibraryClient:
     ) -> List[Document]:
         """Get a list of documents"""
         params = {"page": page, "limit": limit}
-        
+
         if status:
             params["status"] = status
-        
+
         response = self._request("GET", "/v1/documents", params=params)
-        
+
         # Convert to Document objects
         documents = []
         for doc_data in response.data or []:
@@ -483,14 +483,14 @@ class RAGPromptLibraryClient:
                 metadata=doc_data.get('metadata')
             )
             documents.append(document)
-        
+
         return documents
-    
+
     def get_document(self, document_id: str) -> Document:
         """Get a specific document by ID"""
         response = self._request("GET", f"/v1/documents/{document_id}")
         doc_data = response.data
-        
+
         return Document(
             id=doc_data['id'],
             filename=doc_data['filename'],
@@ -503,14 +503,14 @@ class RAGPromptLibraryClient:
             chunks_count=doc_data.get('chunks_count'),
             metadata=doc_data.get('metadata')
         )
-    
+
     def delete_document(self, document_id: str) -> bool:
         """Delete a document"""
         response = self._request("DELETE", f"/v1/documents/{document_id}")
         return response.success
-    
+
     # UTILITY METHODS
-    
+
     def test_connection(self) -> Dict[str, Any]:
         """Test API connectivity and authentication"""
         try:
@@ -530,43 +530,43 @@ class RAGPromptLibraryClient:
 # Async client implementation would go here...
 # For brevity, I'll create a placeholder
 
-class AsyncRAGPromptLibraryClient:
+class AsyncEthosPromptClient:
     """
-    Asynchronous client for RAG Prompt Library API
-    
+    Asynchronous client for EthosPrompt API
+
     Example:
-        async with AsyncRAGPromptLibraryClient(api_key="your_api_key") as client:
+        async with AsyncEthosPromptClient(api_key="your_api_key") as client:
             prompts = await client.get_prompts()
     """
-    
+
     def __init__(self, **kwargs):
         # Implementation similar to sync client but with httpx.AsyncClient
         pass
-    
+
     async def __aenter__(self):
         return self
-    
+
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         await self.close()
-    
+
     async def close(self):
         """Close the async HTTP client"""
         pass
 
 # Convenience functions
-def create_client(**kwargs) -> RAGPromptLibraryClient:
+def create_client(**kwargs) -> EthosPromptClient:
     """Create a new synchronous client instance"""
-    return RAGPromptLibraryClient(**kwargs)
+    return EthosPromptClient(**kwargs)
 
-def create_async_client(**kwargs) -> AsyncRAGPromptLibraryClient:
+def create_async_client(**kwargs) -> AsyncEthosPromptClient:
     """Create a new asynchronous client instance"""
-    return AsyncRAGPromptLibraryClient(**kwargs)
+    return AsyncEthosPromptClient(**kwargs)
 
 # Export main classes and functions
 __all__ = [
-    "RAGPromptLibraryClient",
-    "AsyncRAGPromptLibraryClient", 
-    "RAGPromptLibraryError",
+    "EthosPromptClient",
+    "AsyncEthosPromptClient",
+    "EthosPromptError",
     "AuthenticationError",
     "RateLimitError",
     "NotFoundError",

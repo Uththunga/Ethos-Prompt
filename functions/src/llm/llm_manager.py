@@ -49,9 +49,17 @@ try:
 except ImportError:
     OPENROUTER_AVAILABLE = False
 
+# WatsonX/IBM Granite
+try:
+    from .watsonx_client import WatsonxGraniteClient
+    WATSONX_AVAILABLE = True
+except ImportError:
+    WATSONX_AVAILABLE = False
+
 logger = logging.getLogger(__name__)
 
 class ProviderType(Enum):
+    WATSONX = "watsonx"  # PRIMARY PROVIDER
     OPENAI = "openai"
     ANTHROPIC = "anthropic"
     GOOGLE = "google"
@@ -81,37 +89,41 @@ class LLMManager:
     """
     Central manager for all LLM providers with failover and load balancing
     """
-    
+
     def __init__(self):
         self.providers = {}
         self.provider_configs = {}
         self.usage_stats = {}
         self._initialize_providers()
-    
-    def _initialize_providers(self):
-        """Initialize available LLM providers"""
-        # OpenAI
-        if OPENAI_AVAILABLE and os.getenv('OPENAI_API_KEY'):
-            self._setup_openai()
-        
-        # Anthropic
-        if ANTHROPIC_AVAILABLE and os.getenv('ANTHROPIC_API_KEY'):
-            self._setup_anthropic()
-        
-        # Google
-        if GOOGLE_AVAILABLE and os.getenv('GOOGLE_API_KEY'):
-            self._setup_google()
-        
-        # Cohere
-        if COHERE_AVAILABLE and os.getenv('COHERE_API_KEY'):
-            self._setup_cohere()
 
-        # OpenRouter
-        if OPENROUTER_AVAILABLE and os.getenv('OPENROUTER_API_KEY'):
-            self._setup_openrouter()
+    def _initialize_providers(self):
+        """Initialize available LLM providers - WatsonX is PRIMARY"""
+        # WatsonX/IBM Granite - PRIMARY PROVIDER
+        if WATSONX_AVAILABLE and os.getenv('WATSONX_API_KEY'):
+            self._setup_watsonx()
+
+        # OpenAI - DISABLED in WatsonX-only mode
+        # if OPENAI_AVAILABLE and os.getenv('OPENAI_API_KEY'):
+        #     self._setup_openai()
+
+        # Anthropic - DISABLED in WatsonX-only mode
+        # if ANTHROPIC_AVAILABLE and os.getenv('ANTHROPIC_API_KEY'):
+        #     self._setup_anthropic()
+
+        # Google - DISABLED in WatsonX-only mode
+        # if GOOGLE_AVAILABLE and os.getenv('GOOGLE_API_KEY'):
+        #     self._setup_google()
+
+        # Cohere - DISABLED in WatsonX-only mode
+        # if COHERE_AVAILABLE and os.getenv('COHERE_API_KEY'):
+        #     self._setup_cohere()
+
+        # OpenRouter - DISABLED in WatsonX-only mode
+        # if OPENROUTER_AVAILABLE and os.getenv('OPENROUTER_API_KEY'):
+        #     self._setup_openrouter()
 
         logger.info(f"Initialized LLM providers: {list(self.providers.keys())}")
-    
+
     def _setup_openai(self):
         """Setup OpenAI provider"""
         try:
@@ -127,7 +139,7 @@ class LLMManager:
             logger.info("OpenAI provider initialized")
         except Exception as e:
             logger.error(f"Failed to initialize OpenAI: {e}")
-    
+
     def _setup_anthropic(self):
         """Setup Anthropic provider"""
         try:
@@ -143,7 +155,7 @@ class LLMManager:
             logger.info("Anthropic provider initialized")
         except Exception as e:
             logger.error(f"Failed to initialize Anthropic: {e}")
-    
+
     def _setup_google(self):
         """Setup Google provider"""
         try:
@@ -159,7 +171,7 @@ class LLMManager:
             logger.info("Google provider initialized")
         except Exception as e:
             logger.error(f"Failed to initialize Google: {e}")
-    
+
     def _setup_cohere(self):
         """Setup Cohere provider"""
         try:
@@ -177,7 +189,7 @@ class LLMManager:
             logger.error(f"Failed to initialize Cohere: {e}")
 
     def _setup_openrouter(self):
-        """Setup OpenRouter provider"""
+        """Setup OpenRouter provider - DISABLED in WatsonX-only mode"""
         try:
             api_key = os.getenv('OPENROUTER_API_KEY')
             logger.info(f"OpenRouter API key found: {bool(api_key)}")
@@ -201,38 +213,71 @@ class LLMManager:
         except Exception as e:
             logger.error(f"Failed to initialize OpenRouter: {e}")
 
+    def _setup_watsonx(self):
+        """Setup WatsonX/IBM Granite provider - PRIMARY PROVIDER"""
+        try:
+            api_key = os.getenv('WATSONX_API_KEY')
+            project_id = os.getenv('WATSONX_PROJECT_ID')
+
+            logger.info(f"WatsonX API key found: {bool(api_key)}")
+            logger.info(f"WatsonX project ID found: {bool(project_id)}")
+
+            if not api_key or not project_id:
+                logger.warning("WatsonX credentials incomplete - skipping initialization")
+                return
+
+            client = WatsonxGraniteClient(
+                api_key=api_key,
+                project_id=project_id,
+                model_id=os.getenv('WATSONX_MODEL', 'ibm/granite-4-h-small'),
+                temperature=float(os.getenv('WATSONX_TEMPERATURE', '0.6')),
+                max_tokens=int(os.getenv('WATSONX_MAX_TOKENS', '8192'))
+            )
+
+            self.providers[ProviderType.WATSONX] = client
+            self.provider_configs[ProviderType.WATSONX] = ProviderConfig(
+                provider_type=ProviderType.WATSONX,
+                api_key=api_key,
+                model=os.getenv('WATSONX_MODEL', 'ibm/granite-4-h-small'),
+                max_tokens=int(os.getenv('WATSONX_MAX_TOKENS', '8192')),
+                temperature=float(os.getenv('WATSONX_TEMPERATURE', '0.6'))
+            )
+            logger.info("WatsonX/IBM Granite provider initialized as PRIMARY")
+        except Exception as e:
+            logger.error(f"Failed to initialize WatsonX: {e}")
+
     async def generate_response(
-        self, 
-        prompt: str, 
+        self,
+        prompt: str,
         provider: Optional[ProviderType] = None,
         **kwargs
     ) -> LLMResponse:
         """
-        Generate response using specified provider or auto-select
+        Generate response using specified provider or auto-select (WatsonX is PRIMARY)
         """
         if provider and provider in self.providers:
             return await self._generate_with_provider(prompt, provider, **kwargs)
-        
-        # Auto-select provider (prefer OpenRouter, then OpenAI, then others)
-        for provider_type in [ProviderType.OPENROUTER, ProviderType.OPENAI, ProviderType.ANTHROPIC, ProviderType.GOOGLE, ProviderType.COHERE]:
+
+        # Auto-select provider - WatsonX is PRIMARY (WatsonX-only mode)
+        for provider_type in [ProviderType.WATSONX, ProviderType.OPENROUTER, ProviderType.OPENAI, ProviderType.ANTHROPIC, ProviderType.GOOGLE, ProviderType.COHERE]:
             if provider_type in self.providers:
                 try:
                     return await self._generate_with_provider(prompt, provider_type, **kwargs)
                 except Exception as e:
                     logger.warning(f"Provider {provider_type} failed: {e}")
                     continue
-        
-        raise Exception("No available providers")
-    
+
+        raise Exception("No available providers - WatsonX is primary, ensure WATSONX_API_KEY and WATSONX_PROJECT_ID are set")
+
     async def _generate_with_provider(
-        self, 
-        prompt: str, 
-        provider: ProviderType, 
+        self,
+        prompt: str,
+        provider: ProviderType,
         **kwargs
     ) -> LLMResponse:
         """Generate response with specific provider"""
         start_time = datetime.now()
-        
+
         try:
             if provider == ProviderType.OPENAI:
                 return await self._generate_openai(prompt, **kwargs)
@@ -244,20 +289,63 @@ class LLMManager:
                 return await self._generate_cohere(prompt, **kwargs)
             elif provider == ProviderType.OPENROUTER:
                 return await self._generate_openrouter(prompt, **kwargs)
+            elif provider == ProviderType.WATSONX:
+                return await self._generate_watsonx(prompt, **kwargs)
             else:
                 raise ValueError(f"Unsupported provider: {provider}")
-        
+
         except Exception as e:
             logger.error(f"Error generating response with {provider}: {e}")
             raise
-    
+
+    async def _generate_watsonx(self, prompt: str, **kwargs) -> LLMResponse:
+        """Generate response using WatsonX/IBM Granite - PRIMARY PROVIDER"""
+        client = self.providers[ProviderType.WATSONX]
+        config = self.provider_configs[ProviderType.WATSONX]
+
+        start_time = datetime.now()
+
+        try:
+            response = await client.generate(
+                prompt=prompt,
+                max_tokens=kwargs.get('max_tokens', config.max_tokens),
+                temperature=kwargs.get('temperature', config.temperature)
+            )
+
+            end_time = datetime.now()
+            response_time = (end_time - start_time).total_seconds()
+
+            # Extract usage from WatsonX response
+            usage = response.get('usage', {})
+            input_tokens = usage.get('prompt_tokens', usage.get('input_tokens', 0))
+            output_tokens = usage.get('completion_tokens', usage.get('generated_token_count', 0))
+            total_tokens = input_tokens + output_tokens
+
+            return LLMResponse(
+                content=response.get('text', response.get('generated_text', '')),
+                provider="watsonx",
+                model=config.model,
+                tokens_used=total_tokens,
+                cost=self._calculate_watsonx_cost(input_tokens, output_tokens, config.model),
+                response_time=response_time,
+                metadata={
+                    "input_tokens": input_tokens,
+                    "output_tokens": output_tokens,
+                    "finish_reason": response.get('stop_reason', 'unknown'),
+                    "model": response.get('model', config.model)
+                }
+            )
+        except Exception as e:
+            logger.error(f"WatsonX generation error: {e}")
+            raise Exception(f"WatsonX generation failed: {str(e)}")
+
     async def _generate_openai(self, prompt: str, **kwargs) -> LLMResponse:
         """Generate response using OpenAI"""
         client = self.providers[ProviderType.OPENAI]
         config = self.provider_configs[ProviderType.OPENAI]
-        
+
         start_time = datetime.now()
-        
+
         response = client.chat.completions.create(
             model=config.model,
             messages=[{"role": "user", "content": prompt}],
@@ -265,10 +353,10 @@ class LLMManager:
             temperature=config.temperature,
             **kwargs
         )
-        
+
         end_time = datetime.now()
         response_time = (end_time - start_time).total_seconds()
-        
+
         return LLMResponse(
             content=response.choices[0].message.content,
             provider="openai",
@@ -710,11 +798,24 @@ class LLMManager:
         input_cost = (input_tokens / 1000) * rates["input"]
         output_cost = (output_tokens / 1000) * rates["output"]
         return input_cost + output_cost
-    
+
+    def _calculate_watsonx_cost(self, input_tokens: int, output_tokens: int, model: str) -> float:
+        """Calculate WatsonX/IBM Granite cost based on tokens and model"""
+        # IBM Granite pricing (approximate - check IBM pricing for exact rates)
+        cost_per_1k_tokens = {
+            "ibm/granite-4-h-small": {"input": 0.0002, "output": 0.0006},
+            "ibm/granite-3-8b-instruct": {"input": 0.00015, "output": 0.0004},
+        }
+
+        rates = cost_per_1k_tokens.get(model, {"input": 0.0002, "output": 0.0006})
+        input_cost = (input_tokens / 1000) * rates["input"]
+        output_cost = (output_tokens / 1000) * rates["output"]
+        return input_cost + output_cost
+
     def get_available_providers(self) -> List[str]:
         """Get list of available providers"""
         return [provider.value for provider in self.providers.keys()]
-    
+
     def get_provider_status(self) -> Dict[str, Any]:
         """Get status of all providers"""
         status = {}

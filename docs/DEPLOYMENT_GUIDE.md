@@ -1,11 +1,11 @@
-# RAG Prompt Library - Production Deployment Guide
+# EthosPrompt - Production Deployment Guide
 
 ## Overview
 
-This guide covers deploying the RAG Prompt Library to production using Firebase hosting and Cloud Functions. The application is currently deployed and running at:
+This guide covers deploying EthosPrompt to production using Firebase hosting and Cloud Functions. The application is currently deployed and running at:
 
-- **Frontend**: https://react-app-000730.web.app
-- **Functions**: https://australia-southeast1-react-app-000730.cloudfunctions.net
+- **Frontend**: https://ethosprompt.web.app
+- **Functions**: https://australia-southeast1-ethosprompt.cloudfunctions.net
 - **Region**: Australia Southeast 1
 
 ## Prerequisites
@@ -24,17 +24,17 @@ This guide covers deploying the RAG Prompt Library to production using Firebase 
   - Google AI API key (planned for Gemini models)
 
 ### Current Production Configuration
-- **Firebase Project ID**: `react-app-000730`
-- **Hosting URL**: `react-app-000730.web.app`
+- **Firebase Project ID**: `ethosprompt`
+- **Hosting URL**: `ethosprompt.web.app`
 - **Functions Region**: `australia-southeast1`
-- **Storage Bucket**: `react-app-000730.appspot.com`
+- **Storage Bucket**: `ethosprompt.appspot.com`
 
 ## Quick Start (Production Deployment)
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/your-org/react-app-000730.git
-cd react-app-000730
+git clone https://github.com/your-org/ethosprompt.git
+cd ethosprompt
 ```
 
 ### 2. Install Dependencies
@@ -55,7 +55,7 @@ cd ..
 firebase login
 
 # Set the project
-firebase use react-app-000730
+firebase use ethosprompt
 ```
 
 ### 4. Environment Configuration
@@ -64,15 +64,15 @@ firebase use react-app-000730
 ```bash
 # Firebase Configuration (from Firebase Console)
 VITE_FIREBASE_API_KEY=AIzaSyC...
-VITE_FIREBASE_AUTH_DOMAIN=react-app-000730.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=react-app-000730
-VITE_FIREBASE_STORAGE_BUCKET=react-app-000730.appspot.com
+VITE_FIREBASE_AUTH_DOMAIN=ethosprompt.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=ethosprompt
+VITE_FIREBASE_STORAGE_BUCKET=ethosprompt.appspot.com
 VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
 VITE_FIREBASE_APP_ID=1:123456789:web:abcdef
 VITE_FIREBASE_MEASUREMENT_ID=G-XXXXXXXXXX
 
 # Application Configuration
-VITE_APP_NAME="RAG Prompt Library"
+VITE_APP_NAME="EthosPrompt"
 VITE_APP_VERSION="1.0.0"
 VITE_ENVIRONMENT="production"
 ```
@@ -86,7 +86,7 @@ VITE_ENVIRONMENT="production"
 
 # Application Settings
 ENVIRONMENT=production
-CORS_ORIGINS=https://react-app-000730.web.app
+CORS_ORIGINS=https://ethosprompt.web.app
 ```
 
 **Note**: API keys are currently optional as the deployed functions use mock responses. They will be required when full AI integration is implemented.
@@ -132,10 +132,10 @@ curl https://react-app-000730.web.app
 ```
 
 ### 8. Monitor Deployment
-- **Firebase Console**: https://console.firebase.google.com/project/react-app-000730
-- **Hosting**: https://console.firebase.google.com/project/react-app-000730/hosting
-- **Functions**: https://console.firebase.google.com/project/react-app-000730/functions
-- **Analytics**: https://console.firebase.google.com/project/react-app-000730/analytics
+- **Firebase Console**: https://console.firebase.google.com/project/ethosprompt
+- **Hosting**: https://console.firebase.google.com/project/ethosprompt/hosting
+- **Functions**: https://console.firebase.google.com/project/ethosprompt/functions
+- **Analytics**: https://console.firebase.google.com/project/ethosprompt/analytics
 
 ## Local Development
 

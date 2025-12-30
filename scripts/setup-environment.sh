@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# RAG Prompt Library - Environment Setup Script
+# EthosPrompt - Environment Setup Script
 # This script sets up the environment configuration for different deployment stages
 
 set -e
@@ -37,23 +37,23 @@ command_exists() {
 # Function to validate environment
 validate_environment() {
     print_status "Validating environment..."
-    
+
     # Check for required commands
     if ! command_exists "node"; then
         print_error "Node.js is not installed. Please install Node.js 18 or later."
         exit 1
     fi
-    
+
     if ! command_exists "npm"; then
         print_error "npm is not installed. Please install npm."
         exit 1
     fi
-    
+
     if ! command_exists "firebase"; then
         print_warning "Firebase CLI is not installed. Installing..."
         npm install -g firebase-tools
     fi
-    
+
     print_success "Environment validation completed"
 }
 
@@ -61,9 +61,9 @@ validate_environment() {
 setup_frontend_env() {
     local env_type=$1
     print_status "Setting up frontend environment for: $env_type"
-    
+
     cd frontend
-    
+
     case $env_type in
         "development")
             if [ ! -f ".env" ]; then
@@ -86,7 +86,7 @@ setup_frontend_env() {
             exit 1
             ;;
     esac
-    
+
     cd ..
 }
 
@@ -94,9 +94,9 @@ setup_frontend_env() {
 setup_backend_env() {
     local env_type=$1
     print_status "Setting up backend environment for: $env_type"
-    
+
     cd functions
-    
+
     if [ ! -f ".env" ]; then
         cp .env.example .env
         print_success "Created .env from .env.example"
@@ -104,67 +104,67 @@ setup_backend_env() {
     else
         print_warning "functions/.env already exists, skipping creation"
     fi
-    
+
     cd ..
 }
 
 # Function to install dependencies
 install_dependencies() {
     print_status "Installing dependencies..."
-    
+
     # Frontend dependencies
     print_status "Installing frontend dependencies..."
     cd frontend
     npm install
     cd ..
-    
+
     # Backend dependencies
     print_status "Installing backend dependencies..."
     cd functions
     npm install
     pip install -r requirements.txt
     cd ..
-    
+
     print_success "Dependencies installed successfully"
 }
 
 # Function to setup Firebase emulators
 setup_emulators() {
     print_status "Setting up Firebase emulators..."
-    
+
     # Check if firebase.json exists
     if [ ! -f "firebase.json" ]; then
         print_error "firebase.json not found. Please run 'firebase init' first."
         exit 1
     fi
-    
+
     # Install emulator dependencies
     firebase setup:emulators:firestore
     firebase setup:emulators:auth
     firebase setup:emulators:functions
     firebase setup:emulators:storage
-    
+
     print_success "Firebase emulators setup completed"
 }
 
 # Function to validate configuration
 validate_config() {
     print_status "Validating configuration..."
-    
+
     # Check frontend config
     if [ -f "frontend/.env" ]; then
         print_success "Frontend environment configuration found"
     else
         print_warning "Frontend environment configuration not found"
     fi
-    
+
     # Check backend config
     if [ -f "functions/.env" ]; then
         print_success "Backend environment configuration found"
     else
         print_warning "Backend environment configuration not found"
     fi
-    
+
     # Check Firebase config
     if [ -f "firebase.json" ]; then
         print_success "Firebase configuration found"
@@ -199,23 +199,23 @@ show_next_steps() {
 # Main function
 main() {
     local env_type=${1:-"development"}
-    
-    print_status "RAG Prompt Library - Environment Setup"
+
+    print_status "EthosPrompt - Environment Setup"
     print_status "Environment: $env_type"
     echo ""
-    
+
     validate_environment
     setup_frontend_env "$env_type"
     setup_backend_env "$env_type"
-    
+
     if [ "$env_type" = "development" ]; then
         setup_emulators
     fi
-    
+
     install_dependencies
     validate_config
     show_next_steps
-    
+
     print_success "Environment setup completed successfully!"
 }
 

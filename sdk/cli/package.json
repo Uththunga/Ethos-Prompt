@@ -1,7 +1,7 @@
 {
   "name": "@rag-prompt-library/cli",
   "version": "1.0.0",
-  "description": "Command-line interface for RAG Prompt Library",
+  "description": "Command-line interface for EthosPrompt",
   "main": "rag-cli.js",
   "bin": {
     "rag": "./rag-cli.js"
@@ -20,7 +20,7 @@
     "llm",
     "command-line"
   ],
-  "author": "RAG Prompt Library Team",
+  "author": "EthosPrompt Team",
   "license": "MIT",
   "dependencies": {
     "@rag-prompt-library/sdk": "^1.0.0",

@@ -1,16 +1,16 @@
-# RAG Prompt Library - Quick Reference
+# EthosPrompt - Quick Reference
 
 ## 🌐 Production URLs
-- **Live Application**: https://react-app-000730.web.app
-- **API Base**: https://australia-southeast1-react-app-000730.cloudfunctions.net
-- **Firebase Console**: https://console.firebase.google.com/project/react-app-000730
+- **Live Application**: https://ethosprompt.web.app
+- **API Base**: https://australia-southeast1-ethosprompt.cloudfunctions.net
+- **Firebase Console**: https://console.firebase.google.com/project/ethosprompt
 
 ## 🚀 Quick Start Commands
 
 ### Development Setup
 ```bash
 # Clone and setup
-git clone <repo-url> && cd React-App-000730
+git clone <repo-url> && cd EthosPrompt
 ./scripts/setup-environment.sh development
 
 # Start development
@@ -64,7 +64,7 @@ Analyze the following {{content_type}}: {{content}}
 
 Provide analysis covering:
 - Key insights
-- Strengths and weaknesses  
+- Strengths and weaknesses
 - Recommendations
 - Next steps
 
@@ -273,14 +273,14 @@ curl -X POST https://api.ragpromptlibrary.com/v1/documents \
 
 ### Support Channels
 - **In-App Help**: Click help icon
-- **Email**: support@ragpromptlibrary.com
+- **Email**: support@ethosprompt.com
 - **Community**: Discord/Slack channels
 - **GitHub**: Issues and discussions
 
 ### Emergency Contacts
-- **Critical Issues**: emergency@ragpromptlibrary.com
-- **Security Issues**: security@ragpromptlibrary.com
-- **Data Issues**: data@ragpromptlibrary.com
+- **Critical Issues**: emergency@ethosprompt.com
+- **Security Issues**: security@ethosprompt.com
+- **Data Issues**: data@ethosprompt.com
 
 ---
 

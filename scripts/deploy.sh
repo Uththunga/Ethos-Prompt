@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Enhanced Deployment script for RAG Prompt Library
+# Enhanced Deployment script for EthosPrompt
 # This script handles the complete deployment process with validation and monitoring
 
 set -e
@@ -30,7 +30,7 @@ error() {
     exit 1
 }
 
-log "🚀 Starting RAG Prompt Library Deployment"
+log "🚀 Starting EthosPrompt Deployment"
 
 # Check if Firebase CLI is available (via npx or global)
 if ! command -v firebase &> /dev/null && ! npx firebase --version &> /dev/null; then
@@ -107,17 +107,17 @@ case $ENVIRONMENT in
     "production")
         $FIREBASE_CMD use production
         $FIREBASE_CMD deploy --only hosting,functions
-        DEPLOY_URL="https://rag-prompt-library.web.app"
+        DEPLOY_URL="https://ethosprompt.web.app"
         ;;
     "staging")
         $FIREBASE_CMD use staging
         $FIREBASE_CMD deploy --only hosting,functions
-        DEPLOY_URL="https://rag-prompt-library-staging.web.app"
+        DEPLOY_URL="https://ethosprompt-staging.web.app"
         ;;
     *)
         $FIREBASE_CMD use development
         $FIREBASE_CMD deploy --only hosting,functions
-        DEPLOY_URL="https://rag-prompt-library-dev.web.app"
+        DEPLOY_URL="https://ethosprompt-dev.web.app"
         ;;
 esac
 

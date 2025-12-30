@@ -1,7 +1,7 @@
 /**
- * RAG Prompt Library JavaScript/TypeScript SDK
- * 
- * A comprehensive SDK for interacting with the RAG Prompt Library API.
+ * EthosPrompt JavaScript/TypeScript SDK
+ *
+ * A comprehensive SDK for interacting with the EthosPrompt API.
  * Supports both Node.js and browser environments with TypeScript support.
  */
 
@@ -120,24 +120,24 @@ export interface UpdatePromptData {
   is_public?: boolean;
 }
 
-export class RAGPromptLibraryError extends Error {
+export class EthosPromptError extends Error {
   public code: number;
   public details?: any;
 
   constructor(message: string, code: number, details?: any) {
     super(message);
-    this.name = 'RAGPromptLibraryError';
+    this.name = 'EthosPromptError';
     this.code = code;
     this.details = details;
   }
 }
 
-export class RAGPromptLibraryClient {
+export class EthosPromptClient {
   private config: Required<APIConfig>;
 
   constructor(config: APIConfig = {}) {
     this.config = {
-      baseURL: config.baseURL || 'https://us-central1-rag-prompt-library.cloudfunctions.net/api',
+      baseURL: config.baseURL || 'https://australia-southeast1-ethosprompt.cloudfunctions.net/api',
       apiKey: config.apiKey || '',
       accessToken: config.accessToken || '',
       timeout: config.timeout || 30000,
@@ -169,10 +169,10 @@ export class RAGPromptLibraryClient {
     options: RequestInit = {}
   ): Promise<APIResponse<T>> {
     const url = `${this.config.baseURL}${endpoint}`;
-    
+
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'User-Agent': 'RAG-Prompt-Library-SDK/1.0.0',
+      'User-Agent': 'EthosPrompt-SDK/1.0.0',
       ...options.headers as Record<string, string>
     };
 
@@ -194,53 +194,53 @@ export class RAGPromptLibraryClient {
     }
 
     let lastError: Error;
-    
+
     for (let attempt = 0; attempt <= this.config.retries; attempt++) {
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), this.config.timeout);
-        
+
         const response = await fetch(url, {
           ...requestOptions,
           signal: controller.signal
         });
-        
+
         clearTimeout(timeoutId);
-        
+
         const responseData = await response.json();
-        
+
         if (!response.ok) {
           if (responseData.error) {
-            throw new RAGPromptLibraryError(
+            throw new EthosPromptError(
               responseData.error.message,
               responseData.error.code,
               responseData.error.details
             );
           } else {
-            throw new RAGPromptLibraryError(
+            throw new EthosPromptError(
               `HTTP ${response.status}: ${response.statusText}`,
               response.status
             );
           }
         }
-        
+
         return responseData;
-        
+
       } catch (error) {
         lastError = error as Error;
-        
+
         // Don't retry on client errors (4xx)
-        if (error instanceof RAGPromptLibraryError && error.code >= 400 && error.code < 500) {
+        if (error instanceof EthosPromptError && error.code >= 400 && error.code < 500) {
           throw error;
         }
-        
+
         // Wait before retry (exponential backoff)
         if (attempt < this.config.retries) {
           await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));
         }
       }
     }
-    
+
     throw lastError!;
   }
 
@@ -260,7 +260,7 @@ export class RAGPromptLibraryClient {
    */
   async getPrompts(filters: PromptFilters = {}): Promise<APIResponse<Prompt[]>> {
     const params = new URLSearchParams();
-    
+
     if (filters.page) params.append('page', filters.page.toString());
     if (filters.limit) params.append('limit', filters.limit.toString());
     if (filters.search) params.append('search', filters.search);
@@ -269,10 +269,10 @@ export class RAGPromptLibraryClient {
     if (filters.tags) {
       filters.tags.forEach(tag => params.append('tags', tag));
     }
-    
+
     const queryString = params.toString();
     const endpoint = `/v1/prompts${queryString ? `?${queryString}` : ''}`;
-    
+
     return this.request('GET', endpoint);
   }
 
@@ -311,14 +311,14 @@ export class RAGPromptLibraryClient {
    */
   async getDocuments(options: PaginationOptions & { status?: string } = {}): Promise<APIResponse<Document[]>> {
     const params = new URLSearchParams();
-    
+
     if (options.page) params.append('page', options.page.toString());
     if (options.limit) params.append('limit', options.limit.toString());
     if (options.status) params.append('status', options.status);
-    
+
     const queryString = params.toString();
     const endpoint = `/v1/documents${queryString ? `?${queryString}` : ''}`;
-    
+
     return this.request('GET', endpoint);
   }
 
@@ -344,14 +344,14 @@ export class RAGPromptLibraryClient {
   async getOpenAPISpec(format: 'json' | 'yaml' = 'json'): Promise<any> {
     const endpoint = format === 'yaml' ? '/v1/openapi.yaml' : '/v1/openapi.json';
     const response = await fetch(`${this.config.baseURL}${endpoint}`);
-    
+
     if (!response.ok) {
-      throw new RAGPromptLibraryError(
+      throw new EthosPromptError(
         `Failed to fetch OpenAPI spec: ${response.statusText}`,
         response.status
       );
     }
-    
+
     return format === 'yaml' ? response.text() : response.json();
   }
 
@@ -370,21 +370,21 @@ export class RAGPromptLibraryClient {
       return {
         success: false,
         message: error instanceof Error ? error.message : 'Unknown error',
-        details: error instanceof RAGPromptLibraryError ? error.details : undefined
+        details: error instanceof EthosPromptError ? error.details : undefined
       };
     }
   }
 }
 
 // Default export
-export default RAGPromptLibraryClient;
+export default EthosPromptClient;
 
 // Named exports for convenience
-export { RAGPromptLibraryClient as Client };
+export { EthosPromptClient as Client };
 
 /**
  * Create a new client instance
  */
-export function createClient(config?: APIConfig): RAGPromptLibraryClient {
-  return new RAGPromptLibraryClient(config);
+export function createClient(config?: APIConfig): EthosPromptClient {
+  return new EthosPromptClient(config);
 }

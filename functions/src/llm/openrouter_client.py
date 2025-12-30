@@ -254,8 +254,8 @@ class OpenRouterClient:
         return {
             "Authorization": f"Bearer {self.config.api_key}",
             "Content-Type": "application/json",
-            "HTTP-Referer": "https://react-app-000730.web.app",
-            "X-Title": "Prompt Library Dashboard"
+            "HTTP-Referer": "https://ethosprompt.web.app",
+            "X-Title": "EthosPrompt Dashboard"
         }
 
     def _build_request_payload(
