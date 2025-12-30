@@ -21,7 +21,7 @@ export const ServiceCTA: React.FC<ServiceCTAProps> = ({
 }) => {
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const footerBackgroundPath = `${baseUrl}assets/marketing/images/footer-background.jpg`;
+  const footerBackgroundPath = `${baseUrl}assets/marketing/images/footer-background.webp`;
 
   return (
     <section

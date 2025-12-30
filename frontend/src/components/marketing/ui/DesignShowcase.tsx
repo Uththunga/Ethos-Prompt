@@ -9,11 +9,11 @@ const industries = [
     name: 'Ag-Tech',
     description: 'Smart farming & agricultural solutions',
     images: [
-      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (1).jpeg',
-      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (7).jpeg',
-      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (8).jpeg',
-      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (10).jpeg',
-      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (11).jpeg',
+      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (1).webp',
+      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (7).webp',
+      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (8).webp',
+      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (10).webp',
+      '/assets/marketing/Mockups/Ag-Tech/Ag-Tech (11).webp',
     ],
   },
   {
@@ -21,11 +21,11 @@ const industries = [
     name: 'Education',
     description: 'Learning management & educational platforms',
     images: [
-      '/assets/marketing/Mockups/Education/Education (1).jpeg',
-      '/assets/marketing/Mockups/Education/Education (2).jpeg',
-      '/assets/marketing/Mockups/Education/Education (3).jpeg',
-      '/assets/marketing/Mockups/Education/Education (4).jpeg',
-      '/assets/marketing/Mockups/Education/Education (6).jpeg',
+      '/assets/marketing/Mockups/Education/Education (1).webp',
+      '/assets/marketing/Mockups/Education/Education (2).webp',
+      '/assets/marketing/Mockups/Education/Education (3).webp',
+      '/assets/marketing/Mockups/Education/Education (4).webp',
+      '/assets/marketing/Mockups/Education/Education (6).webp',
     ],
   },
   {
@@ -33,11 +33,11 @@ const industries = [
     name: 'Legal',
     description: 'Law firm & legal practice management',
     images: [
-      '/assets/marketing/Mockups/Legal/Legal (1).jpeg',
-      '/assets/marketing/Mockups/Legal/Legal (2).jpeg',
-      '/assets/marketing/Mockups/Legal/Legal (3).jpeg',
-      '/assets/marketing/Mockups/Legal/Legal (4).jpeg',
-      '/assets/marketing/Mockups/Legal/Legal (1).jpeg',
+      '/assets/marketing/Mockups/Legal/Legal (1).webp',
+      '/assets/marketing/Mockups/Legal/Legal (2).webp',
+      '/assets/marketing/Mockups/Legal/Legal (3).webp',
+      '/assets/marketing/Mockups/Legal/Legal (4).webp',
+      '/assets/marketing/Mockups/Legal/Legal (1).webp',
     ],
   },
   {
@@ -45,11 +45,11 @@ const industries = [
     name: 'Travel',
     description: 'Booking & travel experience platforms',
     images: [
-      '/assets/marketing/Mockups/Travel/Travel- (1).jpeg',
-      '/assets/marketing/Mockups/Travel/Travel- (2).jpeg',
-      '/assets/marketing/Mockups/Travel/Travel- (3).jpeg',
-      '/assets/marketing/Mockups/Travel/Travel- (4).jpeg',
-      '/assets/marketing/Mockups/Travel/Travel (15).jpeg',
+      '/assets/marketing/Mockups/Travel/Travel- (1).webp',
+      '/assets/marketing/Mockups/Travel/Travel- (2).webp',
+      '/assets/marketing/Mockups/Travel/Travel- (3).webp',
+      '/assets/marketing/Mockups/Travel/Travel- (4).webp',
+      '/assets/marketing/Mockups/Travel/Travel (15).webp',
     ],
   },
   {
@@ -57,14 +57,15 @@ const industries = [
     name: 'Wellness',
     description: 'Health, fitness & wellness applications',
     images: [
-      '/assets/marketing/Mockups/Wellness/Wellness (1).jpeg',
-      '/assets/marketing/Mockups/Wellness/Wellness (2).jpeg',
-      '/assets/marketing/Mockups/Wellness/Wellness (3).jpeg',
-      '/assets/marketing/Mockups/Wellness/Wellness (4).jpeg',
-      '/assets/marketing/Mockups/Wellness/Wellness (1).jpeg',
+      '/assets/marketing/Mockups/Wellness/Wellness (1).webp',
+      '/assets/marketing/Mockups/Wellness/Wellness (2).webp',
+      '/assets/marketing/Mockups/Wellness/Wellness (3).webp',
+      '/assets/marketing/Mockups/Wellness/Wellness (4).webp',
+      '/assets/marketing/Mockups/Wellness/Wellness (1).webp',
     ],
   },
 ];
+
 
 // Image preloader hook for smooth transitions
 function useImagePreloader(images: string[]) {

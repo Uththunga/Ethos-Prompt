@@ -355,7 +355,7 @@ interface TrustSignalsProps {
 export const TrustSignals: React.FC<TrustSignalsProps> = ({ signals }) => {
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const bannerBackgroundPath = `${baseUrl}assets/marketing/images/banner-background.jpg`;
+  const bannerBackgroundPath = `${baseUrl}assets/marketing/images/banner-background.webp`;
 
   return (
     <section className="w-full relative overflow-hidden bg-white">

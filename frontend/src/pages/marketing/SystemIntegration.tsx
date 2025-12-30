@@ -321,7 +321,7 @@ export default function SystemIntegration() {
       heroImage={
         <div className="relative w-full">
           <img
-            src="/assets/marketing/images/system-integration.png"
+            src="/assets/marketing/images/system-integration.webp"
             alt="Enterprise system integration platform connecting CRM, ERP, marketing automation, customer support, accounting software, and 600+ business applications in a unified automated workflow ecosystem eliminating manual data entry"
             className="w-full h-auto max-h-[350px] sm:max-h-[450px] md:max-h-[550px] lg:max-h-[600px] xl:max-h-[650px] max-w-full sm:max-w-xl lg:max-w-4xl xl:max-w-5xl -mt-10 lg:-mt-20 mx-auto object-contain mix-blend-multiply"
             loading="eager"

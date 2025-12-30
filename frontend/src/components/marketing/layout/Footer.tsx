@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 export const Footer = () => {
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const footerBackgroundPath = `${baseUrl}assets/marketing/images/footer-background.jpg`;
-  const ethosBrainPath = `${baseUrl}assets/marketing/images/brainicon.png`;
+  const footerBackgroundPath = `${baseUrl}assets/marketing/images/footer-background.webp`;
+  const ethosBrainPath = `${baseUrl}assets/marketing/images/brainicon.webp`;
 
   const currentYear = new Date().getFullYear();
 

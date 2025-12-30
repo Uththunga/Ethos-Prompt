@@ -159,7 +159,7 @@ export default function AboutUs() {
               {/* Right Column - Image */}
               <div className="relative w-full z-0">
                 <img
-                  src="/assets/marketing/images/b2b-partnership-hero.png"
+                  src="/assets/marketing/images/b2b-partnership-hero.webp"
                   alt="B2B Partnership - Human collaboration enhanced by AI technology"
                   className="w-full h-auto max-h-[400px] sm:max-h-[500px] md:max-h-[550px] lg:max-h-[600px] xl:max-h-[650px] max-w-full sm:max-w-2xl lg:max-w-5xl xl:max-w-6xl -mt-8 sm:-mt-12 md:-mt-16 lg:-mt-20 mx-auto object-contain mix-blend-multiply"
                   loading="eager"

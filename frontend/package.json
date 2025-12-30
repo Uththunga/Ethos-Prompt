@@ -185,6 +185,7 @@
     "puppeteer": "^24.15.0",
     "purgecss": "^7.0.2",
     "rollup-plugin-visualizer": "^6.0.3",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.11",
     "terser": "^5.43.1",
     "typescript": "~5.8.3",

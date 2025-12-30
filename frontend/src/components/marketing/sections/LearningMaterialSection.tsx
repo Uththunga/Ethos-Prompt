@@ -9,7 +9,7 @@ interface LearningMaterialSectionProps {
 export const LearningMaterialSection: React.FC<LearningMaterialSectionProps> = ({
   baseUrl
 }) => {
-  const backgroundImagePath = `${baseUrl}assets/marketing/images/footer-background.jpg`;
+  const backgroundImagePath = `${baseUrl}assets/marketing/images/footer-background.webp`;
 
   return (
     <section
