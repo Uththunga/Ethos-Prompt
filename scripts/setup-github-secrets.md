@@ -29,7 +29,7 @@ VITE_FIREBASE_APP_ID = 1:743998930129:web:69dd61394ed81598cd99f0
 FIREBASE_SERVICE_ACCOUNT = {
   "type": "service_account",
   "project_id": "rag-prompt-library",
-  "private_key_id": "REDACTED_KEY_ID",
+  "private_key_id": "YOUR_PRIVATE_KEY_ID",
   "private_key": "-----BEGIN PRIVATE KEY-----\n[YOUR_PRIVATE_KEY_CONTENT]\n-----END PRIVATE KEY-----\n",
   "client_email": "firebase-adminsdk-fbsvc@rag-prompt-library.iam.gserviceaccount.com",
   "client_id": "117234567890123456789",

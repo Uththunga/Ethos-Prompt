@@ -32,7 +32,7 @@ context_retriever = ContextRetriever(embedding_generator)
 
 # Initialize LLM components
 openrouter_config = OpenRouterConfig(
-    api_key=os.environ.get('OPENROUTER_API_KEY', 'REDACTED_API_KEY'),
+    api_key=os.environ.get('OPENROUTER_API_KEY', ''),
     model="meta-llama/llama-3.2-11b-vision-instruct:free"
 )
 token_counter = TokenCounter(model=openrouter_config.model)
