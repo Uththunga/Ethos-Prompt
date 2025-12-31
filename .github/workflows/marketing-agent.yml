@@ -181,8 +181,8 @@ jobs:
             --set-secrets="WATSONX_API_KEY=WATSONX_API_KEY:latest,WATSONX_PROJECT_ID=WATSONX_PROJECT_ID:latest" \
             --min-instances=0 \
             --max-instances=10 \
-            --memory=2Gi \
-            --cpu=2 \
+            --memory=1Gi \
+            --cpu=1 \
             --timeout=300s \
             --concurrency=80 \
             --labels=environment=staging,service=marketing-agent,version=${{ github.sha }}
@@ -251,9 +251,9 @@ jobs:
             --set-env-vars="ENVIRONMENT=production,USE_GRANITE_LLM=true" \
             --set-secrets="WATSONX_API_KEY=WATSONX_API_KEY:latest,WATSONX_PROJECT_ID=WATSONX_PROJECT_ID:latest" \
             --min-instances=1 \
-            --max-instances=50 \
-            --memory=2Gi \
-            --cpu=2 \
+            --max-instances=20 \
+            --memory=1Gi \
+            --cpu=1 \
             --timeout=300s \
             --concurrency=80 \
             --labels=environment=production,service=marketing-agent,version=${{ github.sha }}

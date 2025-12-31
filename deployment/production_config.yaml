@@ -25,7 +25,7 @@ spec:
         run.googleapis.com/startup-cpu-boost: "true"
 
         # === Scaling Settings ===
-        autoscaling.knative.dev/minScale: "1"  # Keep 1 instance warm (eliminates cold starts)
+        autoscaling.knative.dev/minScale: "1"  # Keep 1 warm for 24/7 marketing chat promise
         autoscaling.knative.dev/maxScale: "10"  # Max 10 instances
         autoscaling.knative.dev/target: "80"  # Target 80 concurrent requests per instance
 
@@ -142,11 +142,11 @@ spec:
         # === Resource Limits ===
         resources:
           limits:
-            cpu: "2000m"  # 2 vCPUs
-            memory: "4Gi"  # 4GB RAM (for embedding model)
+            cpu: "1000m"  # 1 vCPU (reduced from 2)
+            memory: "2Gi"  # 2GB RAM (reduced from 4GB)
           requests:
-            cpu: "1000m"  # 1 vCPU minimum
-            memory: "2Gi"  # 2GB RAM minimum
+            cpu: "500m"  # 0.5 vCPU minimum
+            memory: "1Gi"  # 1GB RAM minimum
 
         # === Health Checks ===
         livenessProbe:
@@ -224,8 +224,8 @@ deployment:
       --service-account marketing-agent-sa@PROJECT_ID.iam.gserviceaccount.com \
       --min-instances 1 \
       --max-instances 10 \
-      --cpu 2 \
-      --memory 4Gi \
+      --cpu 1 \
+      --memory 2Gi \
       --timeout 300 \
       --cpu-boost \
       --set-env-vars="CACHE_ENABLED=true,CACHE_TTL=2592000,SIMILARITY_THRESHOLD=0.85" \

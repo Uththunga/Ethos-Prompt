@@ -16,7 +16,7 @@ metadata:
     app: rag-ai-backend
     version: v1
 spec:
-  replicas: 3
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -251,7 +251,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: rag-ai-backend
-  minReplicas: 3
+  minReplicas: 2
   maxReplicas: 10
   metrics:
   - type: Resource
@@ -259,7 +259,7 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 70
+        averageUtilization: 80
   - type: Resource
     resource:
       name: memory

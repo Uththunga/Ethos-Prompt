@@ -17,12 +17,12 @@
       }
     },
     "execute_prompt": {
-      "memory": "2GiB",
+      "memory": "1GiB",
       "timeout": "540s",
-      "maxInstances": 50,
-      "minInstances": 1,
+      "maxInstances": 20,
+      "minInstances": 0,
       "concurrency": 40,
-      "cpu": 2,
+      "cpu": 1,
       "environmentVariables": {
         "GOOGLE_API_KEY": "",
         "OPENROUTER_API_KEY": "",
@@ -33,12 +33,12 @@
       }
     },
     "process_document": {
-      "memory": "4GiB",
+      "memory": "2GiB",
       "timeout": "1800s",
       "maxInstances": 10,
       "minInstances": 0,
       "concurrency": 10,
-      "cpu": 2,
+      "cpu": 1,
       "eventTrigger": {
         "eventType": "providers/cloud.firestore/eventTypes/document.create",
         "resource": "projects/{project}/databases/(default)/documents/rag_documents/{document}"
