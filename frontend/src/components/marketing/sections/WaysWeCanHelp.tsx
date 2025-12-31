@@ -70,7 +70,7 @@ export const WaysWeCanHelp = () => {
 
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const moleImagePath = `${baseUrl}assets/marketing/images/mole1.webp`;
+  const moleImagePath = `${baseUrl}assets/marketing/images/mole1.png`;
 
   const services = [
     {
@@ -173,7 +173,7 @@ export const WaysWeCanHelp = () => {
                   <div className="relative w-7 h-7 flex-shrink-0 mt-1">
                     <div className="w-7 h-7 rounded-full bg-gradient-to-r from-[#6D6AED] to-[#7900E3]" />
                     <img
-                      src={`${baseUrl}assets/marketing/images/check-icon.webp`}
+                      src={`${baseUrl}assets/marketing/images/check-icon.png`}
                       alt=""
                       className="w-4 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                       aria-hidden="true"

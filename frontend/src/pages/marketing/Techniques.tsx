@@ -114,7 +114,7 @@ export const Techniques = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
             style={{
-              backgroundImage: `url(${baseUrl}assets/marketing/images/techniques-hero-image.webp)`,
+              backgroundImage: `url(${baseUrl}assets/marketing/images/techniques-hero-image.jpg)`,
               backgroundPosition: 'right center',
             }}
             aria-hidden="true"
@@ -176,7 +176,7 @@ export const Techniques = () => {
               {/* Right Side - Image */}
               <div className="hidden lg:flex items-center justify-center">
                 <img
-                  src={`${baseUrl}assets/marketing/images/techniques/Group 205.webp`}
+                  src={`${baseUrl}assets/marketing/images/techniques/Group 205.png`}
                   alt="Prompt Engineering Illustration"
                   className="max-w-full h-auto object-contain"
                 />
@@ -397,7 +397,7 @@ export const Techniques = () => {
 
               <div className="flex justify-center">
                 <img
-                  src={`${baseUrl}assets/marketing/images/techniques/technique-33d3874838600fa90097bf09b02e6fa049405c93.webp`}
+                  src={`${baseUrl}assets/marketing/images/techniques/technique-33d3874838600fa90097bf09b02e6fa049405c93.jpg`}
                   alt="Chain of Thoughts illustration"
                   className="w-full h-auto object-contain"
                 />
@@ -489,7 +489,7 @@ export const Techniques = () => {
                 {/* Center Image */}
                 <div className="order-1 lg:order-2 flex justify-center items-center w-full max-w-[240px] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[400px] xl:max-w-[440px] mx-auto h-full min-h-[200px] lg:min-h-[300px] my-auto">
                   <img
-                    src={`${baseUrl}assets/marketing/images/techniques/ai5.webp`}
+                    src={`${baseUrl}assets/marketing/images/techniques/ai5.png`}
                     alt="Best practices illustration"
                     className="w-full h-auto object-contain"
                     loading="lazy"
@@ -582,7 +582,7 @@ export const Techniques = () => {
             {/* Desktop: Show diagram image */}
             <div className="hidden md:block relative z-10 flex justify-center">
               <img
-                src={`${baseUrl}assets/marketing/images/techniques/Group 281.webp`}
+                src={`${baseUrl}assets/marketing/images/techniques/Group 281.png`}
                 alt="Prompt Engineering Process Diagram"
                 className="w-full h-auto object-contain"
               />
@@ -980,7 +980,7 @@ export const Techniques = () => {
           {/* Full-width background image */}
           <div className="absolute inset-0 w-full h-full pointer-events-none">
             <img
-              src={withBase('assets/marketing/images/prompting-guide/Group 216.webp')}
+              src={withBase('assets/marketing/images/prompting-guide/Group 216.png')}
               alt="Learning journey background illustration"
               className="w-full h-full object-contain opacity-80"
               loading="lazy"

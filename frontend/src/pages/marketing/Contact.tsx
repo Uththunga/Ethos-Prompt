@@ -143,7 +143,7 @@ export const Contact = () => {
                       <div className="relative w-7 h-7 flex-shrink-0 mt-1">
                         <div className="w-7 h-7 rounded-full bg-gradient-to-r from-[#6D6AED] to-[#7900E3]"></div>
                         <img
-                          src={`${baseUrl}assets/marketing/images/check-icon.webp`}
+                          src={`${baseUrl}assets/marketing/images/check-icon.png`}
                           alt=""
                           className="w-4 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                           aria-hidden="true"
@@ -158,7 +158,7 @@ export const Contact = () => {
                       <div className="relative w-7 h-7 flex-shrink-0 mt-1">
                         <div className="w-7 h-7 rounded-full bg-gradient-to-r from-[#6D6AED] to-[#7900E3]"></div>
                         <img
-                          src={`${baseUrl}assets/marketing/images/check-icon.webp`}
+                          src={`${baseUrl}assets/marketing/images/check-icon.png`}
                           alt=""
                           className="w-4 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                           aria-hidden="true"
@@ -176,7 +176,7 @@ export const Contact = () => {
                       <div className="relative w-7 h-7 flex-shrink-0 mt-1">
                         <div className="w-7 h-7 rounded-full bg-gradient-to-r from-[#6D6AED] to-[#7900E3]"></div>
                         <img
-                          src={`${baseUrl}assets/marketing/images/check-icon.webp`}
+                          src={`${baseUrl}assets/marketing/images/check-icon.png`}
                           alt=""
                           className="w-4 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                           aria-hidden="true"
@@ -191,7 +191,7 @@ export const Contact = () => {
                       <div className="relative w-7 h-7 flex-shrink-0 mt-1">
                         <div className="w-7 h-7 rounded-full bg-gradient-to-r from-[#6D6AED] to-[#7900E3]"></div>
                         <img
-                          src={`${baseUrl}assets/marketing/images/check-icon.webp`}
+                          src={`${baseUrl}assets/marketing/images/check-icon.png`}
                           alt=""
                           className="w-4 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                           aria-hidden="true"

@@ -196,7 +196,7 @@ export default function SmartBusinessAssistant() {
       heroImage={
         <div className="relative w-full">
           <img
-            src="/assets/marketing/images/CAS.webp"
+            src="/assets/marketing/images/CAS.png"
             alt="Smart Business Assistant AI-powered interface displaying automated customer service conversations, real-time business analytics dashboards, intelligent lead generation workflows, and 24/7 task automation capabilities for modern businesses"
             className="w-full h-auto max-h-[400px] sm:max-h-[500px] md:max-h-[550px] lg:max-h-[600px] xl:max-h-[650px] max-w-full sm:max-w-2xl lg:max-w-5xl xl:max-w-6xl -mt-16 mx-auto object-contain mix-blend-multiply"
             loading="eager"
@@ -354,7 +354,7 @@ export default function SmartBusinessAssistant() {
                         <div className="relative w-7 h-7 flex-shrink-0 mt-1">
                           <div className="w-7 h-7 rounded-full bg-gradient-to-r from-[#6D6AED] to-[#7900E3]" />
                           <img
-                            src={`${import.meta.env.BASE_URL || '/'}assets/marketing/images/check-icon.webp`}
+                            src={`${import.meta.env.BASE_URL || '/'}assets/marketing/images/check-icon.png`}
                             alt=""
                             className="w-4 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                             aria-hidden="true"

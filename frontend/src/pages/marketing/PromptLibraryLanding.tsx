@@ -250,7 +250,7 @@ export const PromptLibraryLanding = memo(function PromptLibraryLanding() {
                       filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15)) brightness(1.05) saturate(1.1) contrast(1.05) hue-rotate(-5deg)',
                     }}
                     onError={(e) => {
-                      e.currentTarget.src = withBase('assets/marketing/images/Group 303.webp');
+                      e.currentTarget.src = withBase('assets/marketing/images/Group 303.png');
                     }}
                   />
                 </div>
@@ -382,7 +382,7 @@ export const PromptLibraryLanding = memo(function PromptLibraryLanding() {
                     }}
                     onError={(e) => {
                       // Fallback to PNG if WebP fails to load
-                      e.currentTarget.src = withBase('assets/marketing/images/Group 303.webp');
+                      e.currentTarget.src = withBase('assets/marketing/images/Group 303.png');
                     }}
                   />
                 </div>

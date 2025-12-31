@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export const HeaderCTA = () => {
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const footerBackgroundPath = `${baseUrl}assets/marketing/images/footer-background.webp`;
+  const footerBackgroundPath = `${baseUrl}assets/marketing/images/footer-background.jpg`;
 
   return (
     <section

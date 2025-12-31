@@ -151,7 +151,7 @@ export const PromptingGuide = () => {
             {/* Hero Image - positioned below the title */}
             <div className="w-full max-w-7xl mx-auto mb-8 lg:mb-12 px-4 sm:px-6 -mt-12 sm:-mt-16">
               <img
-                src={withBase('assets/marketing/images/ai-communication-illustration.webp')}
+                src={withBase('assets/marketing/images/ai-communication-illustration.jpg')}
                 alt=""
                 className="w-full h-auto object-contain"
                 style={{ maxHeight: '70vh', width: '100%' }}
@@ -329,7 +329,7 @@ export const PromptingGuide = () => {
                   <div className="order-1 lg:order-2 relative w-full">
                     <div className="flex justify-center w-full">
                       <img
-                        src={withBase('assets/marketing/images/prompting-illustration.webp')}
+                        src={withBase('assets/marketing/images/prompting-illustration.jpg')}
                         alt="Interactive prompting illustration demonstrating AI conversation principles"
                         className="w-full max-w-none h-auto object-contain"
                         style={{ maxHeight: '56vh', width: 'auto' }}
@@ -496,7 +496,7 @@ export const PromptingGuide = () => {
                 {/* Background Grid Pattern */}
                 <div className="absolute inset-0 flex justify-center items-center opacity-20 pointer-events-none">
                   <img
-                    src={withBase('assets/marketing/images/background-grid-pattern.webp')}
+                    src={withBase('assets/marketing/images/background-grid-pattern.png')}
                     alt=""
                     className="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[700px] h-auto transform -rotate-45"
                     aria-hidden="true"
@@ -507,7 +507,7 @@ export const PromptingGuide = () => {
                 {/* Main Illustration */}
                 <div className="relative z-50 flex justify-start items-end h-full w-full p-0 overflow-visible pl-8">
                   <img
-                    src={withBase('assets/marketing/images/prompting-guide/Group 281.webp')}
+                    src={withBase('assets/marketing/images/prompting-guide/Group 281.png')}
                     alt="AI prompt breakdown illustration showing the components of effective prompting"
                     className="h-auto w-auto max-h-[60vh] max-w-[92vw] md:max-h-[70vh] md:max-w-[80vw] object-contain object-bottom"
                     loading="lazy"
@@ -526,7 +526,7 @@ export const PromptingGuide = () => {
           {/* Full-width background image */}
           <div className="absolute inset-0 w-full h-full pointer-events-none">
             <img
-              src={withBase('assets/marketing/images/prompting-guide/Group 216.webp')}
+              src={withBase('assets/marketing/images/prompting-guide/Group 216.png')}
               alt="Learning journey background illustration"
               className="w-full h-full object-contain opacity-80"
               loading="lazy"

@@ -33,7 +33,7 @@ export const Basics = () => {
           {/* Background Image */}
           <div className="absolute right-96 top-0 bottom-0 w-1/2 pointer-events-none opacity-80 hidden md:block">
             <img
-              src={`${baseUrl}assets/marketing/images/basics/Group 287.webp`}
+              src={`${baseUrl}assets/marketing/images/basics/Group 287.png`}
               alt=""
               className="h-[120%] w-auto object-contain object-right-bottom"
               style={{ transform: 'translateY(-5%)' }}
@@ -304,7 +304,7 @@ export const Basics = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src={`${baseUrl}assets/marketing/images/basics/Image.webp`}
+              src={`${baseUrl}assets/marketing/images/basics/Image.png`}
               alt=""
               className="w-full h-full object-cover opacity-40"
               aria-hidden="true"
@@ -317,7 +317,7 @@ export const Basics = () => {
                 {/* Left Column - App Logos Image */}
                 <div className="flex justify-center items-center">
                   <img
-                    src={`${baseUrl}assets/marketing/images/basics/App Logos.webp`}
+                    src={`${baseUrl}assets/marketing/images/basics/App Logos.png`}
                     alt="Collection of LLM logos and AI platforms"
                     className="w-full h-auto max-w-[500px]"
                   />

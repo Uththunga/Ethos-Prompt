@@ -68,7 +68,7 @@ export const ServicePageTemplate = memo(function ServicePageTemplate({
   heroTitle,
   heroSubtitle,
   heroDescription,
-  heroImage = 'assets/marketing/images/digitaltransformation.webp',
+  heroImage = 'assets/marketing/images/digitaltransformation.png',
   heroImageAlt = 'Digital Transformation',
   heroImageClassName,
   showHeroCTA = false, // Default to false to hide the button on all service pages

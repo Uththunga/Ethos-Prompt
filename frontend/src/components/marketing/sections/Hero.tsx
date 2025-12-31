@@ -3,7 +3,7 @@ import { ImageWithFallback } from '@/components/marketing/ui/image-with-fallback
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 // Use a relative path that works in all environments
-const groupHeroPath = '/assets/marketing/images/Group%20282.webp';
+const groupHeroPath = '/assets/marketing/images/Group%20282.png';
 
 export const Hero = memo(() => {
   // Removed loading state tracking - images now render immediately with reserved space
@@ -134,7 +134,7 @@ export const Hero = memo(() => {
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
   const group282Path = `${baseUrl}assets/marketing/images/Group 288.webp`;
-  const botPath = `${baseUrl}assets/marketing/images/bot.webp`;
+  const botPath = `${baseUrl}assets/marketing/images/bot.png`;
   const group287Path = `${baseUrl}assets/marketing/images/Group 287.svg`;
 
   return (

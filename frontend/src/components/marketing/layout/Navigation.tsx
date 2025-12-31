@@ -25,7 +25,7 @@ export const Navigation = ({
 
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const ethosBrainPath = `${baseUrl}assets/marketing/images/brainicon.webp`;
+  const ethosBrainPath = `${baseUrl}assets/marketing/images/brainicon.png`;
 
   // Refs
   const navRef = useRef<HTMLDivElement>(null);

@@ -9,7 +9,7 @@ interface PromptManagementBannerProps {
 export const PromptManagementBanner: React.FC<PromptManagementBannerProps> = ({ onGetStarted }) => {
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const bannerBackgroundPath = `${baseUrl}assets/marketing/images/banner-background.webp`;
+  const bannerBackgroundPath = `${baseUrl}assets/marketing/images/banner-background.jpg`;
 
   return (
     <section
@@ -86,7 +86,7 @@ export const PromptManagementBanner: React.FC<PromptManagementBannerProps> = ({ 
                 <div className="hidden lg:flex relative z-10 w-full h-full items-end justify-end pt-[40px]">
                   <div className="relative w-full max-w-[95%]" style={{ marginBottom: '0', marginTop: '0' }}>
                     <img
-                      src={`${baseUrl}assets/marketing/images/promptmole.webp`}
+                      src={`${baseUrl}assets/marketing/images/promptmole.png`}
                       alt=""
                       className="w-full h-auto"
                       style={{

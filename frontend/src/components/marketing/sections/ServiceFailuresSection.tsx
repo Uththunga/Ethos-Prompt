@@ -6,7 +6,7 @@ export const ServiceFailuresSection = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   // For assets in the public directory, we should use the Vite base URL
   const baseUrl = import.meta.env.BASE_URL || '/';
-  const aiImagePath = `${baseUrl}assets/marketing/images/ai 3 1.webp`;
+  const aiImagePath = `${baseUrl}assets/marketing/images/ai 3 1.png`;
 
   return (
     <section
